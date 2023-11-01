@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-11-01T13:34:25.271Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="4XpZGruGBS-1hDhsodUF" version="22.0.3" type="device">
+<mxfile host="Electron" modified="2023-11-01T15:30:33.075Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.3 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="uPc8so-PBQeUPUvMUV87" version="22.0.3" type="device">
   <diagram name="페이지-1" id="jrO1e414muNWcl9nCNZX">
-    <mxGraphModel dx="7170" dy="4220" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
+    <mxGraphModel dx="1576" dy="920" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -109,7 +109,7 @@
         <mxCell id="HdjLqqNd7MRLsVANML2u-52" value="class EquipmentDataManager : IProductMaker" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="1690" y="1090" width="540" height="280" as="geometry" />
         </mxCell>
-        <mxCell id="HdjLqqNd7MRLsVANML2u-53" value="static Dictionary&amp;lt;string,&amp;nbsp;BasicEquipments&amp;gt; unlocks&lt;br&gt;static Dictionary&amp;lt;string,&amp;nbsp;BasicEquipments&amp;gt; locks&amp;nbsp;&lt;br&gt;static Dictionary&amp;lt;string, Weapon&amp;gt; weaponBasicTable&lt;br&gt;static Dictionary&amp;lt;string,&amp;nbsp;Armor&amp;gt; armorBasicTable&lt;br&gt;static Dictionary&amp;lt;string,&amp;nbsp;Shoes&amp;gt; shoesBasicTable&lt;br&gt;&lt;br&gt;void 초기화()&lt;br&gt;- db에서&amp;nbsp;BasicEquipments 리스트 만듬&lt;br&gt;- 파츠별 그대로 읽어들이기&amp;nbsp;Weapon, Armor, Shoes&lt;br&gt;- Weapon, Armor, Shoes에 없는 이름은 애초에 안읽으면 됨&lt;br&gt;- 장비 공통 읽기&amp;nbsp;item,&amp;nbsp;itemUnlock,&amp;nbsp;EquipmentBasic&lt;br&gt;&lt;br&gt;IProduct 구현(info = 티어 미니멈, 티어 맥시멈, 랜덤뽑기 개수)&lt;br&gt;- 상점에서 바로 사용 가능하게 목록 만듬&lt;br&gt;- 언락된 장비 내에서만 돌리기 가능" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="HdjLqqNd7MRLsVANML2u-52" vertex="1">
+        <mxCell id="HdjLqqNd7MRLsVANML2u-53" value="static Dictionary&amp;lt;string,&amp;nbsp;BasicEquipments&amp;gt; unlocks&lt;br&gt;static Dictionary&amp;lt;string,&amp;nbsp;BasicEquipments&amp;gt; locks&amp;nbsp;&lt;br&gt;static Dictionary&amp;lt;string, Weapon&amp;gt; weaponBasicTable&lt;br&gt;static Dictionary&amp;lt;string,&amp;nbsp;Armor&amp;gt; armorBasicTable&lt;br&gt;static Dictionary&amp;lt;string,&amp;nbsp;Shoes&amp;gt; shoesBasicTable&lt;br&gt;&lt;br&gt;void 초기화()&lt;br&gt;- db에서&amp;nbsp;BasicEquipments 리스트 만듬&lt;br&gt;- 파츠별 그대로 읽어들이기&amp;nbsp;Weapon, Armor, Shoes&lt;br&gt;- Weapon, Armor, Shoes에 없는 이름은 애초에 안읽으면 됨&lt;br&gt;- 장비 공통 읽기&amp;nbsp;item,&amp;nbsp;itemUnlock,&amp;nbsp;EquipmentBasic&lt;br&gt;&lt;br&gt;IProductMaker 구현(info = 티어 미니멈, 티어 맥시멈, 랜덤뽑기 개수)&lt;br&gt;- 상점에서 바로 사용 가능하게 목록 만듬&lt;br&gt;- 언락된 장비 내에서만 돌리기 가능" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="HdjLqqNd7MRLsVANML2u-52" vertex="1">
           <mxGeometry y="50" width="540" height="230" as="geometry" />
         </mxCell>
         <mxCell id="HdjLqqNd7MRLsVANML2u-54" value="enum EquipmentType" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
@@ -352,7 +352,7 @@
         <mxCell id="HdjLqqNd7MRLsVANML2u-161" value="class DungeonItemManager : IProductMaker" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="1770" y="2030" width="490" height="284" as="geometry" />
         </mxCell>
-        <mxCell id="HdjLqqNd7MRLsVANML2u-162" value="static readonly int hpPotionMax&lt;br&gt;static readonly int manaPotionMax&lt;br&gt;static readonly int bombMax&lt;br&gt;static readonly int&amp;nbsp;barrier&lt;span style=&quot;background-color: initial;&quot;&gt;Max&lt;br&gt;&lt;/span&gt;맥스값은 걍 하드코딩하면 될듯&lt;br&gt;&lt;br&gt;static int hpPotionNow&lt;br&gt;static int manaPotionNow&lt;br&gt;static int bombNow&lt;br&gt;static int&amp;nbsp;barrierNow&lt;br&gt;&lt;br&gt;void 초기화()&lt;br&gt;- now 변수 싹 초기화&lt;br&gt;&lt;br&gt;IProduct 구현(info = 품목, 개수)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="HdjLqqNd7MRLsVANML2u-161" vertex="1">
+        <mxCell id="HdjLqqNd7MRLsVANML2u-162" value="static readonly int hpPotionMax&lt;br&gt;static readonly int manaPotionMax&lt;br&gt;static readonly int bombMax&lt;br&gt;static readonly int&amp;nbsp;barrier&lt;span style=&quot;background-color: initial;&quot;&gt;Max&lt;br&gt;&lt;/span&gt;맥스값은 걍 하드코딩하면 될듯&lt;br&gt;&lt;br&gt;static int hpPotionNow&lt;br&gt;static int manaPotionNow&lt;br&gt;static int bombNow&lt;br&gt;static int&amp;nbsp;barrierNow&lt;br&gt;&lt;br&gt;void 초기화()&lt;br&gt;- now 변수 싹 초기화&lt;br&gt;&lt;br&gt;IProductMaker 구현(info = 품목, 개수)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="HdjLqqNd7MRLsVANML2u-161" vertex="1">
           <mxGeometry y="50" width="490" height="234" as="geometry" />
         </mxCell>
         <mxCell id="7JnoTJpk7oa8gjy23Xpb-6" value="스탯구매&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 정직하게 올림&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 깎음 혹은 리셋 없음&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 가중치 있음&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 증가량 가중치&lt;br&gt;&lt;br&gt;스탯&lt;br style=&quot;padding: 0px; margin: 0px; background-color: rgb(42, 37, 47);&quot;&gt;&lt;span style=&quot;background-color: rgb(42, 37, 47);&quot;&gt;- 재화로 업그레이드 가능&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; background-color: rgb(42, 37, 47);&quot;&gt;&lt;span style=&quot;background-color: rgb(42, 37, 47);&quot;&gt;- 마을에서만 업글 가능&lt;/span&gt;" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
@@ -361,7 +361,7 @@
         <mxCell id="HdjLqqNd7MRLsVANML2u-164" value="class PlayerStatsManager : IProductMaker" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="1780" y="2620" width="490" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="HdjLqqNd7MRLsVANML2u-165" value="static&amp;nbsp;string name&lt;br&gt;static&amp;nbsp;int cashNow&lt;br&gt;static&amp;nbsp;int&amp;nbsp;staminaMax&lt;br&gt;static&amp;nbsp;int manaMax&lt;br&gt;static&amp;nbsp;float powerWeight&lt;br&gt;&lt;br&gt;void 초기화()&lt;br&gt;- 플레이어 스탯 읽기&lt;br&gt;-&amp;nbsp;item테이블에서 스탯 판매 읽기&lt;br&gt;&lt;br&gt;IProduct 구현(info = 품목, 개수)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="HdjLqqNd7MRLsVANML2u-164" vertex="1">
+        <mxCell id="HdjLqqNd7MRLsVANML2u-165" value="static&amp;nbsp;string name&lt;br&gt;static&amp;nbsp;int cashNow&lt;br&gt;static&amp;nbsp;int&amp;nbsp;staminaMax&lt;br&gt;static&amp;nbsp;int manaMax&lt;br&gt;static&amp;nbsp;float powerWeight&lt;br&gt;&lt;br&gt;void 초기화()&lt;br&gt;- 플레이어 스탯 읽기&lt;br&gt;-&amp;nbsp;item테이블에서 스탯 판매 읽기&lt;br&gt;&lt;br&gt;IProductMaker 구현(info = 품목, 개수)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="HdjLqqNd7MRLsVANML2u-164" vertex="1">
           <mxGeometry y="50" width="490" height="190" as="geometry" />
         </mxCell>
         <mxCell id="HdjLqqNd7MRLsVANML2u-166" value="table, struct playerData" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
@@ -382,7 +382,7 @@
         <mxCell id="HdjLqqNd7MRLsVANML2u-170" value="float powerWeight" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="HdjLqqNd7MRLsVANML2u-166" vertex="1">
           <mxGeometry y="146" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-10" value="string&amp;nbsp;activeSkill1 ~" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="HdjLqqNd7MRLsVANML2u-166">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-10" value="string&amp;nbsp;activeSkill1 ~" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="HdjLqqNd7MRLsVANML2u-166" vertex="1">
           <mxGeometry y="176" width="200" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HdjLqqNd7MRLsVANML2u-176" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="7JnoTJpk7oa8gjy23Xpb-24" source="HdjLqqNd7MRLsVANML2u-166" target="HdjLqqNd7MRLsVANML2u-165" edge="1">
@@ -430,34 +430,34 @@
         <mxCell id="HdjLqqNd7MRLsVANML2u-216" value="string name&lt;br&gt;int mana&lt;br&gt;float coolTime&lt;br&gt;&lt;br&gt;void 초기화()&lt;br&gt;&lt;br&gt;void Use()" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="HdjLqqNd7MRLsVANML2u-215" vertex="1">
           <mxGeometry y="50" width="270" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="7JnoTJpk7oa8gjy23Xpb-24" source="IyLN2JJDs78Yjf1W3HO8-4" target="HdjLqqNd7MRLsVANML2u-195">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="7JnoTJpk7oa8gjy23Xpb-24" source="IyLN2JJDs78Yjf1W3HO8-4" target="HdjLqqNd7MRLsVANML2u-195" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1480" y="3750" as="sourcePoint" />
             <mxPoint x="1660" y="3760" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="7JnoTJpk7oa8gjy23Xpb-24" source="HdjLqqNd7MRLsVANML2u-40" target="HdjLqqNd7MRLsVANML2u-195">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="7JnoTJpk7oa8gjy23Xpb-24" source="HdjLqqNd7MRLsVANML2u-40" target="HdjLqqNd7MRLsVANML2u-195" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="380" y="2672" as="sourcePoint" />
             <mxPoint x="1790" y="2680" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-4" value="table activeSkill" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="7JnoTJpk7oa8gjy23Xpb-24">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-4" value="table activeSkill" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="1370" y="3760" width="200" height="116" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-5" value="string key item.name" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="IyLN2JJDs78Yjf1W3HO8-4">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-5" value="string key item.name" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="IyLN2JJDs78Yjf1W3HO8-4" vertex="1">
           <mxGeometry y="26" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-6" value="int mana" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="IyLN2JJDs78Yjf1W3HO8-4">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-6" value="int mana" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="IyLN2JJDs78Yjf1W3HO8-4" vertex="1">
           <mxGeometry y="56" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-7" value="float coolTime" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" vertex="1" parent="IyLN2JJDs78Yjf1W3HO8-4">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-7" value="float coolTime" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;" parent="IyLN2JJDs78Yjf1W3HO8-4" vertex="1">
           <mxGeometry y="86" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-13" value="abstract class Shop" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="7JnoTJpk7oa8gjy23Xpb-24">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-13" value="abstract class Shop" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="4220" y="1720" width="360" height="230" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-14" value="IProductMaker factory&lt;br&gt;물품 뽑는 목록&lt;br&gt;&lt;br&gt;List&amp;lt;IProduct&amp;gt; 뽑아낸 물품 저장&lt;br&gt;&lt;br&gt;void InitShop()&lt;br&gt;- 초기화, 리셋 기능&lt;br&gt;-&amp;nbsp;ShopUI 생성 혹은 이미 존재하는거 끌어다 UI 초기화시킴&lt;br&gt;&lt;br&gt;void OpenShop()&lt;br&gt;- UI 열기" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="IyLN2JJDs78Yjf1W3HO8-13">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-14" value="IProductMaker factory&lt;br&gt;물품 뽑는 목록&lt;br&gt;&lt;br&gt;List&amp;lt;IProduct&amp;gt; 뽑아낸 물품 저장&lt;br&gt;&lt;br&gt;void InitShop()&lt;br&gt;- 초기화, 리셋 기능&lt;br&gt;-&amp;nbsp;ShopUI 생성 혹은 이미 존재하는거 끌어다 UI 초기화시킴&lt;br&gt;&lt;br&gt;void OpenShop()&lt;br&gt;- UI 열기" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="IyLN2JJDs78Yjf1W3HO8-13" vertex="1">
           <mxGeometry y="50" width="360" height="180" as="geometry" />
         </mxCell>
         <mxCell id="7JnoTJpk7oa8gjy23Xpb-9" value="상점방&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 비싼 바가지 포션&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 장비 고티어 가능&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 가끔 드물게 폭탄이나 베리어 파는데 이것도 바가지&lt;br style=&quot;padding: 0px; margin: 0px;&quot;&gt;- 나머지 룰은 마을 상점 따라감" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
@@ -478,16 +478,16 @@
         <mxCell id="7JnoTJpk7oa8gjy23Xpb-23" value="가로화면 내에서의 비율 조정시 커버되어야함&lt;br&gt;모바일 화면비 알아서.....&lt;br&gt;&lt;br&gt;ui 구성시 앵커, aspect ratio fitter 이런 쪽으로 알아보면 됨" style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;verticalAlign=top;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="3850" y="1960" width="320" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-23" value="class&amp;nbsp;IconSet : 스크립터블오브젝트" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="7JnoTJpk7oa8gjy23Xpb-24">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-23" value="class&amp;nbsp;IconSet : 스크립터블오브젝트" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="3650" y="1807.5" width="240" height="85" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-24" value="Icon[] 아이콘 모음" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="IyLN2JJDs78Yjf1W3HO8-23">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-24" value="Icon[] 아이콘 모음" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="IyLN2JJDs78Yjf1W3HO8-23" vertex="1">
           <mxGeometry y="50" width="240" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-25" value="class&amp;nbsp;Icon" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="7JnoTJpk7oa8gjy23Xpb-24">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-25" value="class&amp;nbsp;Icon" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">
           <mxGeometry x="3520" y="1802.5" width="110" height="95" as="geometry" />
         </mxCell>
-        <mxCell id="IyLN2JJDs78Yjf1W3HO8-26" value="string name&lt;br&gt;Sprite icon" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="IyLN2JJDs78Yjf1W3HO8-25">
+        <mxCell id="IyLN2JJDs78Yjf1W3HO8-26" value="string name&lt;br&gt;Sprite icon" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="IyLN2JJDs78Yjf1W3HO8-25" vertex="1">
           <mxGeometry y="50" width="110" height="45" as="geometry" />
         </mxCell>
         <mxCell id="7JnoTJpk7oa8gjy23Xpb-2" value="class Village : 모노비헤이비어" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="7JnoTJpk7oa8gjy23Xpb-24" vertex="1">

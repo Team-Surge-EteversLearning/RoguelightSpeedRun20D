@@ -7,9 +7,9 @@ public class Armor : Equipment
 
     public Armor(string name, BasicEquipments basicData, ArmorData data)
     {
-        this.Name = name;
-        this.SellWhenClear = basicData.SellWhenClear;
-        this.Type = basicData.Type;
+        this.name = name;
+        this.sellWhenClear = basicData.SellWhenClear;
+        this.type = basicData.Type;
         this.MaxHp = data.MaxHp;
         this.TrapAvoid = data.TrapAvoid;
         this.MaxMana = data.MaxMana;

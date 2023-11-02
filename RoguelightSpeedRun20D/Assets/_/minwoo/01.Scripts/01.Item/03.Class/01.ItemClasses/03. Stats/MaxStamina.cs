@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxStamina : Stat, IProduct
+public class MaxStamina : IProduct
 {
-    public MaxStamina(string name) : base(name)
+
+    public void Buy()
     {
     }
 }

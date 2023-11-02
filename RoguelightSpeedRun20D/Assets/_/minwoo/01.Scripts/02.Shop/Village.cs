@@ -8,13 +8,12 @@ public class Village : MonoBehaviour
     [SerializeField] GameObject targetUI;
     private void Awake()
     {
-        InitShops();
     }
+    [ContextMenu("INIT")]
     public void InitShops()
     {
         V_EquipShop v_EquipShop = new V_EquipShop();
         shops.Add(v_EquipShop);
-        print(shops.Count);
         shops[0].InitShop(targetUI);
     }
 }

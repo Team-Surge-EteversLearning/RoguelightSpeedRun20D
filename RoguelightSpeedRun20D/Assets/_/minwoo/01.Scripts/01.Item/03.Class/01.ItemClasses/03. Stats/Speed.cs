@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Speed : IProduct
+public class Speed : Stat, IProduct
 {
-
-    public void Buy()
+    public Speed(string name) : base(name)
     {
     }
 }

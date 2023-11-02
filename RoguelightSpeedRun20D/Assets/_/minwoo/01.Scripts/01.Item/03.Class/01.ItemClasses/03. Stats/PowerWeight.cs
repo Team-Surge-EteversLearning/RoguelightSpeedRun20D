@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerWeight : IProduct
+public class PowerWeight : Stat, IProduct
 {
-
-    public void Buy()
+    public PowerWeight(string name) : base(name)
     {
     }
 }

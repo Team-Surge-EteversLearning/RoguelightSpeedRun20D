@@ -15,7 +15,11 @@ public class EquipmentDataManager : IProductMaker
         //read db
         //Categorize to each list
     }
-
+    /// <summary>
+    /// input int3 (tierMin, tierMax, quantity)
+    /// </summary>
+    /// <param name="info"></param>
+    /// <returns></returns>
     public List<ShopProduct> Make(string info)
     {
         string[] infoSplit = info.Split(',');
@@ -39,15 +43,15 @@ public class EquipmentDataManager : IProductMaker
             {
                 case EquipmentType.Armor:
                     Armor newArmor = new Armor(key, unlocks[key], armorBasicTable[key]); //constructor:Armor(string name, BasicEquipments basicData, ArmorData data)
-                    displayItemListWithPrice.Add(new ShopProduct(unlocks[key].Price, newArmor));
+                    displayItemListWithPrice.Add(new ShopProduct( newArmor, unlocks[key].Price));
                     break;
                 case EquipmentType.Weapon:
                     Weapon newWeapon = new Weapon(key, unlocks[key], weaponBasicTable[key]);
-                    displayItemListWithPrice.Add(new ShopProduct(unlocks[key].Price, newWeapon));
+                    displayItemListWithPrice.Add(new ShopProduct(newWeapon, unlocks[key].Price));
                     break;
                 case EquipmentType.Shoes:
                     Shoes newShoes = new Shoes(key, unlocks[key], shoesBasicTable[key]);
-                    displayItemListWithPrice.Add(new ShopProduct(unlocks[key].Price, newShoes));
+                    displayItemListWithPrice.Add(new ShopProduct(newShoes, unlocks[key].Price));
                     break;
             }
         }

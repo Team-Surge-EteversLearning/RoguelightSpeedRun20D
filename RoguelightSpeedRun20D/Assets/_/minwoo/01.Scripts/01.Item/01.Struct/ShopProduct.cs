@@ -3,7 +3,7 @@ public struct ShopProduct
     int price;
     IProduct product;
 
-    public ShopProduct(int price, IProduct product)
+    public ShopProduct(IProduct product, int price = 0)
     {
         this.price = price;
         this.product = product;

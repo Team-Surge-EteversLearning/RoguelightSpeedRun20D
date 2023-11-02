@@ -1,30 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Quest
+public abstract class Quest
 {
-    public string name;
-    public string explanation;
-    public int reward;
+    public string Name { get; set; }
+     public string Description { get; set; }
+     public bool IsCompleted { get; set; }
+     public QuestType QuestType { get; set;}
     
-    public bool isCompleted;
+     public int rewardGold { get; set; }
 
-    public Quest(string name, string explanation, int reward)
+    
+    protected Quest(QuestType type) 
     {
-        this.name = name;
-        this.explanation = this.explanation;
-        this.reward = reward;
-        this.isCompleted = false;
+        QuestType = type;
     }
 
-    public void CompleteQuest()
-    {
-        this.isCompleted = true;
-    }
+    public abstract void CheckQuestStatus();
+}
 
-    public void FailQuest()
-    {
-        this.isCompleted = false;
-    }
+public enum QuestType
+{
+    Hunting,
+    CollectItem,
+    OpenBox,
+    TotalDamage,
+    VisitedRoom,
+    ClearTime,
+    SuccessGuard,
+    KillBoss
 }

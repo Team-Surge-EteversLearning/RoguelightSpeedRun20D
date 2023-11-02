@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaxHp : IProduct
+public class MaxHp : Stat, IProduct
 {
-
-    public void Buy()
+    public MaxHp(string name) : base(name)
     {
     }
 }

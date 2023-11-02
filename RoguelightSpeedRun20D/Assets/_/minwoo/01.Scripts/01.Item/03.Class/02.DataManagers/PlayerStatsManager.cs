@@ -33,7 +33,7 @@ public class PlayerStatsManager : IProductMaker
         {
             //Since each statProduct has only one type and does not have different information,
             //it was judged that it was okay to generate it every time.
-            new MaxHp(), new MaxStamina(),new MaxStamina(), new PowerWeight(), new Speed()
+            new MaxHp("MaxHp"), new MaxStamina("MaxStamina"),new MaxStamina("MaxStamina"), new PowerWeight("PowerWeight"), new Speed("Speed")
         };
         priceTable.Add(stats[0], hpMaxPrice);
         priceTable.Add(stats[1], staminaMaxPrice);

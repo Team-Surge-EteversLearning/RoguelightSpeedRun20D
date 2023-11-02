@@ -20,7 +20,7 @@ public class SqlTester : MonoBehaviour
         if(sql.read && sql.dataReader.Read())
         {
             Debug.Log($"read someindex({sql.dataReader.GetDecimal(0)}), value({sql.dataReader.GetDecimal(1)})");
-            sql.SqlExecute($"INSERT INTO test(someindex, value) VALUES (2, 21)");
+            sql.SqlExecute($"INSERT INTO test(someindex, value) VALUES (10, 40)");
             Debug.Log($"add someindex({2}), value({21})");
             sql.ShutDown();
             enabled = false;

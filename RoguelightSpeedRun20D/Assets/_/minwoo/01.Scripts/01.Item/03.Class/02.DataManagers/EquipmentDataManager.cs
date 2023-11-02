@@ -1,20 +1,83 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using Random = System.Random;
 
 public class EquipmentDataManager : IProductMaker
 {
-    static Dictionary<string, BasicEquipments> unlocks;
-    static Dictionary<string, BasicEquipments> locks;
-    static Dictionary<string, WeaponData> weaponBasicTable;
-    static Dictionary<string, ArmorData> armorBasicTable;
-    static Dictionary<string, ShoesData> shoesBasicTable;
+    static Dictionary<string, BasicEquipments> unlocks = new Dictionary<string, BasicEquipments>();
+    static Dictionary<string, BasicEquipments> locks = new Dictionary<string, BasicEquipments>();
+    static Dictionary<string, WeaponData> weaponBasicTable = new Dictionary<string, WeaponData>();
+    static Dictionary<string, ArmorData> armorBasicTable = new Dictionary<string, ArmorData>();
+    static Dictionary<string, ShoesData> shoesBasicTable = new Dictionary<string, ShoesData>();
 
-    void Init()
+    SqlAccess sql;
+    public void Init()
     {
+        WeaponTableLoad();
+        ArmorTableLoad();
+        ShoesTableLoad();
         //read db
         //Categorize to each list
     }
+
+    private void WeaponTableLoad()
+    {
+        sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
+        sql.Open();
+        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, Weapon.damage, Weapon.isRangeAttack, Weapon.size, Weapon.coolTime FROM item JOIN Weapon ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
+
+        while (sql.read && sql.dataReader.Read())
+        {
+            string currentName = sql.dataReader.GetValue(0).ToString();
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon);
+            WeaponData weaponData = new WeaponData(sql.dataReader.GetInt32(4), Convert.ToBoolean(sql.dataReader.GetInt32(5)), sql.dataReader.GetInt32(6), sql.dataReader.GetFloat(7));
+
+            locks.Add(currentName, basicEquipments);
+            weaponBasicTable.Add(currentName, weaponData);
+        }
+        sql.dataReader.Close();
+        sql.ShutDown();
+    }
+    private void ArmorTableLoad()
+    {
+        sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
+        sql.Open();
+        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, Armor.maxHp, Armor.trapAvoid, Armor.maxMana, Armor.manaRegen FROM item JOIN Armor ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
+
+        while (sql.read && sql.dataReader.Read())
+        {
+            string currentName = sql.dataReader.GetValue(0).ToString();
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon);
+            ArmorData armorData = new ArmorData(sql.dataReader.GetInt32(4), Convert.ToBoolean(sql.dataReader.GetInt32(5)), sql.dataReader.GetInt32(6), sql.dataReader.GetFloat(7));
+
+            locks.Add(currentName, basicEquipments); 
+            armorBasicTable.Add(currentName, armorData);
+        }
+        sql.dataReader.Close();
+        sql.ShutDown();
+    }
+    private void ShoesTableLoad()
+    {
+        sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
+        sql.Open();
+        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, Shoes.maxHp, Shoes.speed, Shoes.maxStamina, Shoes.staminaRegen FROM item JOIN Weapon ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
+
+        while (sql.read && sql.dataReader.Read())
+        {
+            string currentName = sql.dataReader.GetValue(0).ToString();
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon);
+            ShoesData shoesData = new ShoesData(sql.dataReader.GetInt32(4), sql.dataReader.GetFloat(5), sql.dataReader.GetInt32(6), sql.dataReader.GetFloat(7));
+
+            locks.Add(currentName, basicEquipments);
+            shoesBasicTable.Add(currentName, shoesData);
+        }
+        sql.dataReader.Close();
+        sql.ShutDown();
+    }
+
+
     /// <summary>
     /// input int3 (tierMin, tierMax, quantity)
     /// </summary>
@@ -31,8 +94,10 @@ public class EquipmentDataManager : IProductMaker
         tierMax = int.TryParse(infoSplit[1].Trim(), out int tempVal2) ? tempVal2 : 0;
         quantity = int.TryParse(infoSplit[2].Trim(), out int tempVal3) ? tempVal3 : 0;
 
+  
         // Creaate Random keys in unlocks
         List<string> displayItemNames = GetRandomItem(quantity);
+        Debug.Log(displayItemNames.Count);
         //List for return
         List<ShopProduct> displayItemListWithPrice = new List<ShopProduct>();
 
@@ -59,11 +124,11 @@ public class EquipmentDataManager : IProductMaker
     }
 
     //return string list in unlocks.keys
-    private static List<string> GetRandomItem(int n)
+    private List<string> GetRandomItem(int n)
     {
         Random random = new Random();
-        List<string> values = unlocks.Keys.ToList();
-
+        List<string> values = locks.Keys.ToList(); //test
+        Debug.Log(unlocks.Count);
         // shffle List
         for (int i = values.Count - 1; i > 0; i--)
         {

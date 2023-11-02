@@ -1,8 +1,12 @@
 public abstract class Equipment : IProduct
 {
-    protected string name;
-    protected int sellWhenClear;
-    protected EquipmentType type;
+    private string name;
+    private int sellWhenClear;
+    private EquipmentType type;
+
+    public string Name { get => name; set => name = value; }
+    public int SellWhenClear { get => sellWhenClear; set => sellWhenClear = value; }
+    public EquipmentType Type { get => type; set => type = value; }
 
     public void Buy()
     {

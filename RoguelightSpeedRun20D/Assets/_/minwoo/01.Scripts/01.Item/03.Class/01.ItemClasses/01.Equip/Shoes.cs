@@ -7,9 +7,9 @@ public class Shoes : Equipment
 
     public Shoes(string name, BasicEquipments basicData, ShoesData data)
     {
-        this.name = name;
-        this.sellWhenClear = basicData.SellWhenClear;
-        this.type = basicData.Type;
+        this.Name = name;
+        this.SellWhenClear = basicData.SellWhenClear;
+        this.Type = basicData.Type;
         this.MaxHp = data.MaxHp;
         this.Speed = data.Speed;
         this.MaxStamina = data.MaxStamina;

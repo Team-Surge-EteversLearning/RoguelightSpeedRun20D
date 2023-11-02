@@ -7,9 +7,9 @@ public class Weapon : Equipment
 
     public Weapon(string name, BasicEquipments basicData, WeaponData data)
     {
-        this.name = name;
-        this.sellWhenClear = basicData.SellWhenClear;
-        this.type = basicData.Type;
+        this.Name = name;
+        this.SellWhenClear = basicData.SellWhenClear;
+        this.Type = basicData.Type;
         this.damage = data.Damage;
         this.isRangeAttack = data.IsRangeAttack;
         this.size = data.Size;

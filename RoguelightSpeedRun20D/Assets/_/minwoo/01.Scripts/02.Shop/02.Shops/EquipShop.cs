@@ -7,15 +7,22 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class V_EquipShop : Shop
+public class EquipShop : Shop
 {
+    private string range;
+
+    public EquipShop(int minTier, int maxTier)
+    {
+        this.range = $"{minTier},{maxTier},";
+    }
+
     public override void ResetShop()
     {  
         products.Clear();
         productSlots.Clear();
 
         EquipmentDataManager equipFactory = new EquipmentDataManager();
-        products = equipFactory.Make("0,3,2");
+        products = equipFactory.Make($"{range}2");
         SettingShopUI();
         OpenShop();
     }

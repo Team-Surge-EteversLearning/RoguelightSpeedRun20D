@@ -21,11 +21,11 @@ public class Village : MonoBehaviour
             BtnShopUIPair.Add(allProductSlots[i], new ShopUI(allProductSlots[i]));
         }
 
-        V_EquipShop v_EquipShop = new V_EquipShop();
+        EquipShop v_EquipShop = new EquipShop(0, 3);
         nameShopPair.Add("v_EquipShop", v_EquipShop);
         nameShopPair["v_EquipShop"].InitShop(targetUI, this);
 
-        V_PotionShop v_PotionShop = new V_PotionShop();
+        PotionShop v_PotionShop = new PotionShop("v");
         nameShopPair.Add("v_PotionShop", v_PotionShop);
         nameShopPair["v_PotionShop"].InitShop(targetUI, this);
 

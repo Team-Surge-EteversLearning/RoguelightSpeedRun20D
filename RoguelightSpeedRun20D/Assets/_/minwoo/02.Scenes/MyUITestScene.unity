@@ -2270,7 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetUI: {fileID: 174002507}
-  shopName: v_EquipShop
+  shopName: statShop
 --- !u!4 &1757596182
 Transform:
   m_ObjectHideFlags: 0

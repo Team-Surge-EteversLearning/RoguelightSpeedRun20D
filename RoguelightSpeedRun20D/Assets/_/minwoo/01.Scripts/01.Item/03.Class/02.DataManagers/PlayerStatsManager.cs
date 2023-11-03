@@ -10,11 +10,11 @@ public class PlayerStatsManager : IProductMaker
     static string name;
     static int cashNow;
 
-    static int hpMax;
-    static int staminaMax;
-    static int manaMax;
-    static float speed;
-    static float powerWeight;
+    static int hpMax = 10;
+    static int staminaMax = 10;
+    static int manaMax = 10;
+    static float speed = 10;
+    static float powerWeight = 10;
 
     static int hpMaxPrice = 2;
     static int staminaMaxPrice = 2;
@@ -26,6 +26,20 @@ public class PlayerStatsManager : IProductMaker
     static List<IProduct> stats;
     static Dictionary<IProduct, int> priceTable = new Dictionary<IProduct, int>();
     static List<int> priceWeightList = new List<int>();
+    #region property
+    public static string Name { get => name; set => name = value; }
+    public static int CashNow { get => cashNow; set => cashNow = value; }
+    public static int HpMax { get => hpMax; set => hpMax = value; }
+    public static int StaminaMax { get => staminaMax; set => staminaMax = value; }
+    public static int ManaMax { get => manaMax; set => manaMax = value; }
+    public static float Speed { get => speed; set => speed = value; }
+    public static float PowerWeight { get => powerWeight; set => powerWeight = value; }
+    public static int HpMaxPrice { get => hpMaxPrice; set => hpMaxPrice = value; }
+    public static int StaminaMaxPrice { get => staminaMaxPrice; set => staminaMaxPrice = value; }
+    public static int ManaMaxPrice { get => manaMaxPrice; set => manaMaxPrice = value; }
+    public static int SpeedPrice { get => speedPrice; set => speedPrice = value; }
+    public static int PowerWeightPrice { get => powerWeightPrice; set => powerWeightPrice = value; }
+    #endregion
     public void Init()
     {
         //read PlayerData and it's stored in the variable
@@ -33,19 +47,19 @@ public class PlayerStatsManager : IProductMaker
         {
             //Since each statProduct has only one type and does not have different information,
             //it was judged that it was okay to generate it every time.
-            new MaxHp("MaxHp", 0), new MaxStamina("MaxStamina", 1),new MaxStamina("MaxMp", 2), new PowerWeight("PowerWeight", 3), new Speed("Speed", 4)
+            new MaxHp("MaxHp", 0), new MaxStamina("MaxStamina", 1),new MaxMp("MaxMp", 2), new PowerWeight("PowerWeight", 3), new Speed("Speed", 4)
         };
-        priceTable.Add(stats[0], hpMaxPrice);
-        priceTable.Add(stats[1], staminaMaxPrice);
-        priceTable.Add(stats[2], manaMaxPrice);
-        priceTable.Add(stats[3], speedPrice);
-        priceTable.Add(stats[4], powerWeightPrice);
+        priceTable.Add(stats[0], HpMaxPrice);
+        priceTable.Add(stats[1], StaminaMaxPrice);
+        priceTable.Add(stats[2], ManaMaxPrice);
+        priceTable.Add(stats[3], SpeedPrice);
+        priceTable.Add(stats[4], PowerWeightPrice);
     }
 
     public static void AddPrice(int index) 
     {
         priceTable[stats[index]] = (int)Math.Ceiling((double)priceTable[stats[index]] * 1.3);
-        Debug.Log(priceTable[stats[index]]);
+        Debug.Log($"MaxHp : {hpMax} MaxStamina : {staminaMax} MaxMp : {manaMax} PowerWeight : {powerWeight} Speed : {speed}");
     }
     /// <summary>
     /// you dont need input info

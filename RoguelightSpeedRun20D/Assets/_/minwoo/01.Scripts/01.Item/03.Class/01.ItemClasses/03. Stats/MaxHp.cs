@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MaxHp : Stat, IProduct
 {
-    public MaxHp(string name) : base(name)
+    public MaxHp(string name, int index) : base(name, index)
     {
     }
 }

@@ -28,6 +28,14 @@ public class Village : MonoBehaviour
         V_PotionShop v_PotionShop = new V_PotionShop();
         nameShopPair.Add("v_PotionShop", v_PotionShop);
         nameShopPair["v_PotionShop"].InitShop(targetUI, this);
+
+        StatShop statShop = new StatShop();
+        nameShopPair.Add("statShop", statShop);
+        nameShopPair["statShop"].InitShop(targetUI, this);
+
+        SkillShop skillShop = new SkillShop();
+        nameShopPair.Add("skillShop", skillShop);
+        nameShopPair["skillShop"].InitShop(targetUI, this);
     }
 
     [ContextMenu("INIT")]

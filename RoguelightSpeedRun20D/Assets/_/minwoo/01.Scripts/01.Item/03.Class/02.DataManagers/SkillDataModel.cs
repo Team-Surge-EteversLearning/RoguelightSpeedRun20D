@@ -7,22 +7,26 @@ using System.Threading.Tasks;
 
 public class SkillDataModel : IProductMaker
 {
-    static Dictionary<string, ActiveSkill> unlockActive;
-    static Dictionary<string, ActiveSkill> lockActive;
+    static Dictionary<string, ActiveSkill> unlockActive = new Dictionary<string, ActiveSkill>();
+    static Dictionary<string, ActiveSkill> lockActive = new Dictionary<string, ActiveSkill>();
 
     static int skillBookPrice;
-    void Init()
+
+    public static Dictionary<string, ActiveSkill> LockActive { get => lockActive; set => lockActive = value; }
+
+    public void Init()
     {
         //create all skills
         //lockActive add all skills
         //unlockSkills remove at lockaActive and add to unlockActive
+        FireBall fireBall = new FireBall("fireBall", 10, 1);
     }
 
-    public List<ShopProduct> Make(string info)
+    public List<ShopProduct> Make(string info = "")
     {
         List<ShopProduct> displayItemListWithPrice = new List<ShopProduct>();
         Random rand = new Random();
-        List<ActiveSkill> skillList = lockActive.Values.ToList();
+        List<ActiveSkill> skillList = LockActive.Values.ToList();
         int index = rand.Next(skillList.Count); // 0 ~ (dictList.Count - 1) 범위의 랜덤 정수 생성
 
         ActiveSkill randomSkill = skillList[index];

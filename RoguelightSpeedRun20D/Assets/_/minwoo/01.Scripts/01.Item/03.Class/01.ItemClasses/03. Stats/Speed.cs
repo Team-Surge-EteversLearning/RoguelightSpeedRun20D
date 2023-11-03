@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Speed : Stat, IProduct
 {
-    public Speed(string name) : base(name)
+    public Speed(string name, int index) : base(name, index)
     {
     }
 }

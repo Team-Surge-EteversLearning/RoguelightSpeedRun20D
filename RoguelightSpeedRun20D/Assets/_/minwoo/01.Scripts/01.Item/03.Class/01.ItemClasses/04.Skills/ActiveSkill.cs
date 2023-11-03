@@ -1,15 +1,29 @@
 
+using UnityEngine;
+
 public abstract class ActiveSkill : IProduct
 {
 
-    void Init()
+    protected string name;
+    protected int mana;
+    protected float coolTime;
+
+    protected ActiveSkill(string name, int mana, float coolTime)
     {
-
+        this.name = name;
+        this.mana = mana;
+        this.coolTime = coolTime;
+        Init();
     }
-
 
     public void Buy()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(name);
     }
+
+    protected virtual void Init()
+    {
+        SkillDataModel.LockActive.Add(name, this);
+    }
+    protected abstract void Use();
 }

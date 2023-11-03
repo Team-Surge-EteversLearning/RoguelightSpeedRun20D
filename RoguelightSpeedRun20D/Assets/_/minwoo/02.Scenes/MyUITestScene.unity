@@ -2255,6 +2255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetUI: {fileID: 174002507}
+  shopName: v_EquipShop
 --- !u!4 &1757596182
 Transform:
   m_ObjectHideFlags: 0
@@ -2291,27 +2292,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1817305609}
-  - component: {fileID: 1817305608}
+  - component: {fileID: 1817305610}
   m_Layer: 0
-  m_Name: IconDB
+  m_Name: DB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1817305608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817305607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21dcc132da1278948bcf58bc1cf03d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  iconSet: {fileID: 11400000, guid: 30331e91113692f4093c8ba3ad4f6226, type: 2}
 --- !u!4 &1817305609
 Transform:
   m_ObjectHideFlags: 0
@@ -2327,6 +2315,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1817305610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817305607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79794c7ddbc7f0c41a00b21ddf484e15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconSet: {fileID: 11400000, guid: 30331e91113692f4093c8ba3ad4f6226, type: 2}
 --- !u!1 &1884660183
 GameObject:
   m_ObjectHideFlags: 0

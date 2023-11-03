@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MaxStamina : Stat, IProduct
 {
-    public MaxStamina(string name) : base(name)
+    public MaxStamina(string name, int index) : base(name, index)
     {
     }
 }

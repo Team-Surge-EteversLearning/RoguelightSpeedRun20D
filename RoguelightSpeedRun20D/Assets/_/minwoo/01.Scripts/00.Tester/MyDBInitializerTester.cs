@@ -8,5 +8,11 @@ public class MyDBInitializerTester : MonoBehaviour
     {
         EquipmentDataManager eqdb = new EquipmentDataManager();
         eqdb.Init();
+        DungeonItemManager dungeon = new DungeonItemManager();
+        dungeon.InitPrcieTable();
+        PlayerStatsManager playerstats = new PlayerStatsManager();
+        playerstats.Init();
+        SkillDataModel skillDataModel = new SkillDataModel();
+        skillDataModel.Init();
     }
 }

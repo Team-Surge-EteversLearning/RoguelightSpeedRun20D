@@ -34,7 +34,12 @@ public class DungeonItemManager : IProductMaker
     static int bombNow;
     static int barrierNow;
 
-    void InitPrcieTable()
+    public static int HpPotionNow { get => hpPotionNow; set => hpPotionNow = value; }
+    public static int ManaPotionNow { get => manaPotionNow; set => manaPotionNow = value; }
+    public static int BombNow { get => bombNow; set => bombNow = value; }
+    public static int BarrierNow { get => barrierNow; set => barrierNow = value; }
+
+    public void InitPrcieTable()
     {
         //read PriceData on DB
         //priceList Init
@@ -44,14 +49,12 @@ public class DungeonItemManager : IProductMaker
         { hpPotionPriceWeight, manaPotionPriceWeight, bombPriceWeight, barrierPriceWeight };
     }
 
-    void ResetShop()
+    public void ResetShop()
     {
-        hpPotionNow = 0;
-        manaPotionNow = 0;
-        bombNow = 0;
-        barrierNow = 0;
-        //read db
-        //Categorize to each list
+        HpPotionNow = 0;
+        ManaPotionNow = 0;
+        BombNow = 0;
+        BarrierNow = 0;
     }
     /// <summary>
     /// input int4 + place (hpPotionQuantity, mpPotionQuantity, bombQuantity, barrierQuantity, D or V)
@@ -66,21 +69,21 @@ public class DungeonItemManager : IProductMaker
         string[] infoSplit = info.Split(',');
 
         // If you put in the correct value, it's stored in the variable, or it's stored in zero
-        hpPotionNow = int.TryParse(infoSplit[0].Trim(), out int tempVal1) ? tempVal1 : 0;
-        Mathf.Clamp(hpPotionNow, 0, hpPotionMax);
-        itemList.Add(hpPotionNow);
+        HpPotionNow = int.TryParse(infoSplit[0].Trim(), out int tempVal1) ? tempVal1 : 0;
+        Mathf.Clamp(HpPotionNow, 0, hpPotionMax);
+        itemList.Add(HpPotionNow);
 
-        manaPotionNow = int.TryParse(infoSplit[1].Trim(), out int tempVal2) ? tempVal2 : 0;
-        Mathf.Clamp(manaPotionNow, 0, manaPotionMax);
-        itemList.Add(manaPotionNow);
+        ManaPotionNow = int.TryParse(infoSplit[1].Trim(), out int tempVal2) ? tempVal2 : 0;
+        Mathf.Clamp(ManaPotionNow, 0, manaPotionMax);
+        itemList.Add(ManaPotionNow);
 
-        bombNow = int.TryParse(infoSplit[2].Trim(), out int tempVal3) ? tempVal3 : 0;
-        Mathf.Clamp(bombNow, 0, bombMax);
-        itemList.Add(bombNow);
+        BombNow = int.TryParse(infoSplit[2].Trim(), out int tempVal3) ? tempVal3 : 0;
+        Mathf.Clamp(BombNow, 0, bombMax);
+        itemList.Add(BombNow);
 
-        barrierNow = int.TryParse(infoSplit[3].Trim(), out int tempVal4) ? tempVal4 : 0;
-        Mathf.Clamp(barrierNow, 0, barrierMax);
-        itemList.Add(barrierNow);
+        BarrierNow = int.TryParse(infoSplit[3].Trim(), out int tempVal4) ? tempVal4 : 0;
+        Mathf.Clamp(BarrierNow, 0, barrierMax);
+        itemList.Add(BarrierNow);
 
         if (infoSplit[4].First() == 'D' || infoSplit[4].First() == 'd')
         {
@@ -93,7 +96,7 @@ public class DungeonItemManager : IProductMaker
         {
             if (itemList[i] != 0) //quantity 0 product not create 
             {
-                Useable newUse = new Useable(i);
+                Useable newUse = new Useable(i, itemList[i]);
                 ShopProduct product = new ShopProduct(newUse, priceTable[i]);
                 displayItemListWithPrice.Add(product);
             }

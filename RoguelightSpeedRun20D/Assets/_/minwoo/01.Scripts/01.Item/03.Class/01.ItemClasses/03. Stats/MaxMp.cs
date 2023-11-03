@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MaxMp : Stat, IProduct
 {
-    public MaxMp(string name) : base(name)
+    public MaxMp(string name, int index) : base(name, index)
     {
     }
 }

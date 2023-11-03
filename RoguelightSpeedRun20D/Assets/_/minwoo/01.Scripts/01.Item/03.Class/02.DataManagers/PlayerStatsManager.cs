@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UnityEngine;
 
 public class PlayerStatsManager : IProductMaker
 {
@@ -16,24 +16,24 @@ public class PlayerStatsManager : IProductMaker
     static float speed;
     static float powerWeight;
 
-    static int hpMaxPrice;
-    static int staminaMaxPrice;
-    static int manaMaxPrice;
-    static int speedPrice;
-    static int powerWeightPrice;
+    static int hpMaxPrice = 2;
+    static int staminaMaxPrice = 2;
+    static int manaMaxPrice = 2;
+    static int speedPrice = 2;
+    static int powerWeightPrice = 2;
     //if buy() stat, Price is added
 
     static List<IProduct> stats;
     static Dictionary<IProduct, int> priceTable = new Dictionary<IProduct, int>();
-
-    void Init()
+    static List<int> priceWeightList = new List<int>();
+    public void Init()
     {
         //read PlayerData and it's stored in the variable
         stats = new List<IProduct>()
         {
             //Since each statProduct has only one type and does not have different information,
             //it was judged that it was okay to generate it every time.
-            new MaxHp("MaxHp"), new MaxStamina("MaxStamina"),new MaxStamina("MaxStamina"), new PowerWeight("PowerWeight"), new Speed("Speed")
+            new MaxHp("MaxHp", 0), new MaxStamina("MaxStamina", 1),new MaxStamina("MaxMp", 2), new PowerWeight("PowerWeight", 3), new Speed("Speed", 4)
         };
         priceTable.Add(stats[0], hpMaxPrice);
         priceTable.Add(stats[1], staminaMaxPrice);
@@ -42,12 +42,17 @@ public class PlayerStatsManager : IProductMaker
         priceTable.Add(stats[4], powerWeightPrice);
     }
 
-    public void AddPrice(int index, int weightValue)
+    public static void AddPrice(int index) 
     {
-        priceTable[stats[index]] += weightValue;
+        priceTable[stats[index]] = (int)Math.Ceiling((double)priceTable[stats[index]] * 1.3);
+        Debug.Log(priceTable[stats[index]]);
     }
-
-    public List<ShopProduct> Make(string info)
+    /// <summary>
+    /// you dont need input info
+    /// </summary>
+    /// <param name="info"></param>
+    /// <returns></returns>
+    public List<ShopProduct> Make(string info = "")
     {
         List<ShopProduct> displayItemListWithPrice = new List<ShopProduct>();
 

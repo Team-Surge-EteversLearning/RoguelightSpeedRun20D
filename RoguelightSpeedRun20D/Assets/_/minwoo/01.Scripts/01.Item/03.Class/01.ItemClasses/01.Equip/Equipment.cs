@@ -1,5 +1,9 @@
 
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using static UnityEditorInternal.ReorderableList;
+
 public abstract class Equipment : IProduct
 {
     private string name;
@@ -13,5 +17,8 @@ public abstract class Equipment : IProduct
     public void Buy()
     {
         Debug.Log(name);
+        Button prvBtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        prvBtn.onClick.RemoveAllListeners();
+        prvBtn.image.sprite = TestDB.instance.iconSet.GetIcon("Default");
     }
 }

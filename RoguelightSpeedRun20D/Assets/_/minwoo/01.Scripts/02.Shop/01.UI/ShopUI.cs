@@ -38,7 +38,7 @@ public class ShopUI
 
     private void Display()
     {
-        ProductImage.sprite = IconDB.instance.iconSet.GetIcon(JudgeType());
+        ProductImage.sprite = TestDB.instance.iconSet.GetIcon(JudgeType());
     }
     private string JudgeType()
     {
@@ -52,6 +52,8 @@ public class ShopUI
         else if (Product.GetType() == typeof(Useable))
         {
             Useable useable = (Useable)Product;
+            productButton.GetComponentInChildren<Text>().text = useable.Quantity.ToString();
+            productButton.onClick.AddListener(() => productButton.GetComponentInChildren<Text>().text = useable.Quantity.ToString());
             return useable.ItemCode.ToString();
         }
         else if (statTypes.Contains(Product.GetType()))
@@ -59,11 +61,10 @@ public class ShopUI
             Stat stat = (Stat)Product;
             return stat.Name;
         }
-        else if (Product.GetType() == typeof(ActiveSkill))
+        else
         {
             ActiveSkill activeSkill = (ActiveSkill)Product;
             return "RandomSkillBook";
         }
-        return "";
     }
 }

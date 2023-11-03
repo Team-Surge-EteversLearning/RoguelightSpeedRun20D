@@ -7,14 +7,27 @@ using UnityEngine;
 
 public class Useable : IProduct
 {
-    public Useable(int itemCode)
+    public Useable(int itemCode, int quantity)
     {
         ItemCode = itemCode;
+        Quantity = quantity;
     }
-
     public int ItemCode { get; set; }
+
+    private int quantity;
+    public int Quantity { get => quantity; set => quantity = value; }
+
+
+
+
     public void Buy()
     {
+        if (quantity < 1)
+        {
+            Debug.Log("Sold Out");
+            return;
+        }
+            
         switch (ItemCode) 
         {
             case 0:
@@ -30,6 +43,7 @@ public class Useable : IProduct
                 Debug.Log("배리어 구매");
                 break;
         }
+        Quantity -= 1;
     }
 }
 

@@ -1,15 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class State
 {
-    private readonly string stateName;
-    private readonly float cooltime;
-    private readonly float motionSpeed;
+    public string stateName { get; protected set; }
+    public bool started {  get; protected set; }
 
-    public abstract State StateEnter(GameObject managerObject);
-    public abstract State StateUpdate(GameObject managerObject);
-    public abstract void StateEnd(GameObject managerObject);
+    protected float cooltime { get; set; }
+    protected float motionSpeed { get; set; }
+
+    public State() 
+    {
+        started = false;
+    }
+
+    public abstract void Initialize(GameObject managerObject);
+
+    protected abstract string StateEnter_();
+    public virtual string StateEnter()
+    {
+        started = true;
+        InputHandler.Debugs(stateName);
+        return StateEnter_();
+    }
+    public abstract string StateUpdate();
+    protected abstract void StateEnd();
+    public virtual void StateEnd_()
+    {
+        started = false;
+    }
     public abstract void Interrupt(GameObject managerObject);
 }

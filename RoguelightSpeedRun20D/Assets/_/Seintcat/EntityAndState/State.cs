@@ -22,7 +22,7 @@ public abstract class State
     public virtual string StateEnter()
     {
         started = true;
-        InputHandler.Debugs(stateName);
+        Debug.Log(stateName);
         return StateEnter_();
     }
     public abstract string StateUpdate();

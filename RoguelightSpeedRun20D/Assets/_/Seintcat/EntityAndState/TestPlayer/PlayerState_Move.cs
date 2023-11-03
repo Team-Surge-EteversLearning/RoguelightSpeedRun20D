@@ -7,6 +7,8 @@ public class PlayerState_Move : State
     private Animator animator;
     private Transform transform;
 
+    private string runCheck => InputHandler.running? "Run" : "";
+
     public PlayerState_Move()
     {
         stateName = "Move";
@@ -21,7 +23,7 @@ public class PlayerState_Move : State
 
     protected override string StateEnter_()
     {
-        animator.Play(stateName);
+        animator.Play(stateName + runCheck);
         return "";
     }
 
@@ -33,7 +35,8 @@ public class PlayerState_Move : State
         }
 
         Vector3 normalMove = new Vector3(InputHandler.move.x, transform.position.y, InputHandler.move.y).normalized;
-
+        animator.SetFloat("X", Mathf.Lerp(animator.GetFloat("X"), normalMove.x, Time.deltaTime * 2));
+        animator.SetFloat("Z", Mathf.Lerp(animator.GetFloat("Z"), normalMove.z, Time.deltaTime * 2));
         transform.Translate(normalMove * Time.deltaTime);
         return "";
     }
@@ -45,6 +48,6 @@ public class PlayerState_Move : State
 
     protected override void StateEnd()
     {
-
+        animator.Play("Idle" + runCheck);
     }
 }

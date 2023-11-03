@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class InputHandler : MonoBehaviour
 {
     public static PlayerInput playerInput { get; private set; }
-    public static Vector2 move {  get; private set; }
+    public static Vector2 move { get; private set; }
+    public static bool running { get; private set; }
 
     [SerializeField]
     private InputActionAsset actionAsset;
@@ -18,6 +19,8 @@ public class InputHandler : MonoBehaviour
         actionAsset.FindActionMap("Fighting").Enable();
         actionAsset.FindActionMap("Fighting").FindAction("Move").performed += OnMove;
         actionAsset.FindActionMap("Fighting").FindAction("Move").canceled += OnMove;
+        actionAsset.FindActionMap("Fighting").FindAction("Running").started += OnRunning;
+        actionAsset.FindActionMap("Fighting").FindAction("Running").canceled += OnRunning;
     }
 
     // Start is called before the first frame update
@@ -29,17 +32,19 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //Debug.Log(context.ReadValue<Vector2>());
         move = context.ReadValue<Vector2>();
     }
 
-    public static void Debugs(string str)
+    public void OnRunning(InputAction.CallbackContext context)
     {
-        Debug.Log(str);
+        if(context.ReadValue<float>() > 0.5f)
+            running = true;
+        else 
+            running = false;
     }
 }

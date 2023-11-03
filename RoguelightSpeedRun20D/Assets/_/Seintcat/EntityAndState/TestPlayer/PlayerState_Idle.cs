@@ -21,7 +21,6 @@ public class PlayerState_Idle : State
 
     protected override string StateEnter_()
     {
-        animator.Play(stateName);
         return "";
     }
 
@@ -31,6 +30,8 @@ public class PlayerState_Idle : State
         {
             return "Move";
         }
+        animator.SetFloat("X", Mathf.Lerp(animator.GetFloat("X"), 0, Time.deltaTime * 4));
+        animator.SetFloat("Z", Mathf.Lerp(animator.GetFloat("Z"), 0, Time.deltaTime * 4));
         return "";
     }
 

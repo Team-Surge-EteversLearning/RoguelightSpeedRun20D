@@ -19,11 +19,11 @@ public class Stat : IProduct
     }
 
     public string Name { get; set; }
-    private int statIndex;
+    protected int statIndex;
     protected int StatIndex { get => statIndex; set => statIndex = value; }
 
 
-    public void Buy()
+    public virtual void Buy()
     {
         PlayerStatsManager.AddPrice(statIndex);
     }

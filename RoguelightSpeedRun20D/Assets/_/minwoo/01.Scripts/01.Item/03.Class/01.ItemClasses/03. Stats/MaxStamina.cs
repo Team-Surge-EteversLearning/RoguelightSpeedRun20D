@@ -7,4 +7,9 @@ public class MaxStamina : Stat, IProduct
     public MaxStamina(string name, int index) : base(name, index)
     {
     }
+    public override void Buy()
+    {
+        PlayerStatsManager.StaminaMax += 1;
+        base.Buy();
+    }
 }

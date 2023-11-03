@@ -46,7 +46,7 @@ public abstract class Shop
             //change slots image and txt
             productSlots.Add(allProductSlots[i]);
             productSlots[i].gameObject.SetActive(true);
-            BtnUIPair[productSlots[i]].Product = products[i].Product;
+            BtnUIPair[productSlots[i]].SProduct = products[i];
         }
     }
 }

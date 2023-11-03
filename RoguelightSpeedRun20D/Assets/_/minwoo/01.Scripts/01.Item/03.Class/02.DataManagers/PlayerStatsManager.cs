@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerStatsManager : IProductMaker
 {
     static string name;
-    static int cashNow;
+    static int cashNow = 1000;
 
     static int hpMax = 10;
     static int staminaMax = 10;

@@ -1,3 +1,5 @@
+
+using UnityEngine;
 public abstract class Equipment : IProduct
 {
     private string name;
@@ -10,6 +12,6 @@ public abstract class Equipment : IProduct
 
     public void Buy()
     {
-        throw new System.NotImplementedException();
+        Debug.Log(name);
     }
 }

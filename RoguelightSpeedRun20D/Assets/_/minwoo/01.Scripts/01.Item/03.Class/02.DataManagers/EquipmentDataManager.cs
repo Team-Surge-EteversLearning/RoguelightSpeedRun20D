@@ -16,8 +16,8 @@ public class EquipmentDataManager : IProductMaker
     public void Init()
     {
         WeaponTableLoad();
-        ArmorTableLoad();
-        ShoesTableLoad();
+        //ArmorTableLoad();
+        //ShoesTableLoad();
         //read db
         //Categorize to each list
     }
@@ -34,7 +34,7 @@ public class EquipmentDataManager : IProductMaker
             BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon);
             WeaponData weaponData = new WeaponData(sql.dataReader.GetInt32(4), Convert.ToBoolean(sql.dataReader.GetInt32(5)), sql.dataReader.GetInt32(6), sql.dataReader.GetFloat(7));
 
-            locks.Add(currentName, basicEquipments);
+            unlocks.Add(currentName, basicEquipments);
             weaponBasicTable.Add(currentName, weaponData);
         }
         sql.dataReader.Close();
@@ -93,16 +93,16 @@ public class EquipmentDataManager : IProductMaker
         tierMin = int.TryParse(infoSplit[0].Trim(), out int tempVal1) ? tempVal1 : 0;
         tierMax = int.TryParse(infoSplit[1].Trim(), out int tempVal2) ? tempVal2 : 0;
         quantity = int.TryParse(infoSplit[2].Trim(), out int tempVal3) ? tempVal3 : 0;
+        Debug.Log(quantity);
 
-  
+
         // Creaate Random keys in unlocks
         List<string> displayItemNames = GetRandomItem(quantity);
-        Debug.Log(displayItemNames.Count);
         //List for return
         List<ShopProduct> displayItemListWithPrice = new List<ShopProduct>();
-
         for (int i = 0; i < displayItemNames.Count; i++)
         {
+
             string key = displayItemNames[i]; //current Item's name
             switch (unlocks[key].Type) //Create another object by type and add it to the list
             {
@@ -127,7 +127,7 @@ public class EquipmentDataManager : IProductMaker
     private List<string> GetRandomItem(int n)
     {
         Random random = new Random();
-        List<string> values = locks.Keys.ToList(); //test
+        List<string> values = unlocks.Keys.ToList(); //test
         Debug.Log(unlocks.Count);
         // shffle List
         for (int i = values.Count - 1; i > 0; i--)

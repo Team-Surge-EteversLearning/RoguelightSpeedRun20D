@@ -21,7 +21,7 @@ public class PlayerState_Move : State
 
     protected override string StateEnter_()
     {
-        //animator
+        animator.Play(stateName);
         return "";
     }
 

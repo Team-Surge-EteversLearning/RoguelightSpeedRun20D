@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,21 @@ public class Village : MonoBehaviour
 
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
 
+    public Action resetUI;
     private void Awake()
     {
         Button[] allProductSlots = targetUI.GetComponentsInChildren<Button>();
         for (int i = 0; i < allProductSlots.Length; i++)
         {
             BtnShopUIPair.Add(allProductSlots[i], new ShopUI(allProductSlots[i]));
+            resetUI = () =>
+            {
+                for (int j = 0; j < allProductSlots.Length; j++)
+                {
+                    allProductSlots[j].image.sprite = TestDB.instance.iconSet.GetIcon("Default");
+                    allProductSlots[j].onClick.RemoveAllListeners();
+                }
+            };
         }
 
         EquipShop v_EquipShop = new EquipShop(0, 3);
@@ -41,6 +51,7 @@ public class Village : MonoBehaviour
     [ContextMenu("INIT")]
     public void ResetTargetShops()
     {
+        resetUI();
         nameShopPair[shopName].ResetShop();
     }
 }

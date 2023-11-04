@@ -7,13 +7,17 @@ using UnityEngine;
 
 public class SkillShop : Shop
 {
+    public override void InitShop(GameObject ui, Village village)
+    {
+        base.InitShop(ui, village);
+        factory = new SkillDataModel();
+    }
     public override void ResetShop()
     {
         products.Clear();
         productSlots.Clear();
 
-        SkillDataModel skillFactory = new SkillDataModel();
-        products = skillFactory.Make();
+        products = factory.Make();
 
         SettingShopUI();
         OpenShop();

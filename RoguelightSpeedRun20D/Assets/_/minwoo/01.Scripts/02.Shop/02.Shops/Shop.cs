@@ -21,7 +21,7 @@ public abstract class Shop
 
     public GameObject ShopUI { get => shopUIGO; set => shopUIGO = value; }
 
-    public void InitShop(GameObject ui, Village village)
+    public virtual void InitShop(GameObject ui, Village village)
     {
         this.shopUIGO = ui;
         this.village = village;

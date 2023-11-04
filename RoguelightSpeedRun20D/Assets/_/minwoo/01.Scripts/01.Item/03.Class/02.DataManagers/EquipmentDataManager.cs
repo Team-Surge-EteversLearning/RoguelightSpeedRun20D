@@ -128,7 +128,6 @@ public class EquipmentDataManager : IProductMaker
     {
         Random random = new Random();
         List<string> values = unlocks.Keys.ToList(); //test
-        Debug.Log(unlocks.Count);
         // shffle List
         for (int i = values.Count - 1; i > 0; i--)
         {

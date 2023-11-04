@@ -11,6 +11,11 @@ public class EquipShop : Shop
 {
     private string range;
 
+    public override void InitShop(GameObject ui, Village village)
+    {
+        base.InitShop(ui, village);
+        factory = new EquipmentDataManager();
+    }
     public EquipShop(int minTier, int maxTier)
     {
         this.range = $"{minTier},{maxTier},";
@@ -21,8 +26,7 @@ public class EquipShop : Shop
         products.Clear();
         productSlots.Clear();
 
-        EquipmentDataManager equipFactory = new EquipmentDataManager();
-        products = equipFactory.Make($"{range}2");
+        products = factory.Make($"{range}2");
         SettingShopUI();
         OpenShop();
     }

@@ -21,16 +21,16 @@ public class Village : MonoBehaviour
         for (int i = 0; i < allProductSlots.Length; i++)
         {
             BtnShopUIPair.Add(allProductSlots[i], new ShopUI(allProductSlots[i]));
-            resetUI = () =>
-            {
-                for (int j = 0; j < allProductSlots.Length; j++)
-                {
-                    allProductSlots[j].image.sprite = TestDB.instance.iconSet.GetIcon("Default");
-                    allProductSlots[j].onClick.RemoveAllListeners();
-                }
-            };
-        }
 
+        }
+        resetUI = () =>
+        {
+            for (int i = 0; i < allProductSlots.Length; i++)
+            {
+                allProductSlots[i].image.sprite = TestDB.instance.iconSet.GetIcon("Default");
+                allProductSlots[i].onClick.RemoveAllListeners();
+            }
+        };
         EquipShop v_EquipShop = new EquipShop(0, 3);
         nameShopPair.Add("v_EquipShop", v_EquipShop);
         nameShopPair["v_EquipShop"].InitShop(targetUI, this);

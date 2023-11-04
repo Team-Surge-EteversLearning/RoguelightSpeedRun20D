@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[CreateAssetMenu(fileName = "New RoomData", menuName = "Room Data",order = 0)]
 public class DungeonBundleData : ScriptableObject
 {
     public List<NormalRoomData> flatRoomPresets;
@@ -16,5 +18,5 @@ public class DungeonBundleData : ScriptableObject
 
     public int maxRoomNum;
 
-    private DungeonBundle dungeonBundle;
+    public DungeonBundle dungeonBundle;
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class DungeonManager : MonoBehaviour
 {
-    public List<DungeonBundleData> DungeonBundlePresets = new List<DungeonBundleData>();
+    [SerializeField] private List<DungeonBundleData> DungeonBundlePresets = new List<DungeonBundleData>();
 }

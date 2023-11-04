@@ -12,9 +12,9 @@ public class NormalRoomData
     [SerializeField] private bool right;
     [SerializeField] private bool left;
 
-    private List<Vector3> boxLocationList = new List<Vector3>();
-    private List<Vector3> monsterLocationList = new List<Vector3>();
-    private List<Vector3> trapLocationList = new List<Vector3>();
-    private List<string> monsterSpawnPool = new List<string>();
-    private List<string> trapSpawnPool = new List<string>();
+    [SerializeField] private List<Vector3> boxLocationList = new List<Vector3>();
+    [SerializeField] private List<Vector3> monsterLocationList = new List<Vector3>();
+    [SerializeField] private List<Vector3> trapLocationList = new List<Vector3>();
+    [SerializeField] private List<string> monsterSpawnPool = new List<string>();
+    [SerializeField] private List<string> trapSpawnPool = new List<string>();
 }

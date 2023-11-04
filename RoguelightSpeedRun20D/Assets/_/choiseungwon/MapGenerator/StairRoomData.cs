@@ -7,6 +7,6 @@ public class StairRoomData
 {
     [SerializeField] private GameObject roomPrefab;
 
-    private Vector3Int movableRoomSquare;
-    private List<Vector3Int> refiningRoom;
+    [SerializeField] private Vector3Int movableRoomSquare;
+    [SerializeField] private List<Vector3Int> refiningRoom;
 }

@@ -8,6 +8,7 @@ public class InputHandler : MonoBehaviour
     public static PlayerInput playerInput { get; private set; }
     public static Vector2 move { get; private set; }
     public static bool running { get; private set; }
+    public static bool attack { get; private set; }
 
     [SerializeField]
     private InputActionAsset actionAsset;
@@ -21,6 +22,8 @@ public class InputHandler : MonoBehaviour
         actionAsset.FindActionMap("Fighting").FindAction("Move").canceled += OnMove;
         actionAsset.FindActionMap("Fighting").FindAction("Running").started += OnRunning;
         actionAsset.FindActionMap("Fighting").FindAction("Running").canceled += OnRunning;
+        actionAsset.FindActionMap("Fighting").FindAction("Attack").started += OnAttack;
+        actionAsset.FindActionMap("Fighting").FindAction("Attack").canceled += OnAttack;
     }
 
     // Start is called before the first frame update
@@ -42,9 +45,17 @@ public class InputHandler : MonoBehaviour
 
     public void OnRunning(InputAction.CallbackContext context)
     {
-        if(context.ReadValue<float>() > 0.5f)
+        if (context.ReadValue<float>() > 0.5f)
             running = true;
-        else 
+        else
             running = false;
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            attack = true;
+        else
+            attack = false;
     }
 }

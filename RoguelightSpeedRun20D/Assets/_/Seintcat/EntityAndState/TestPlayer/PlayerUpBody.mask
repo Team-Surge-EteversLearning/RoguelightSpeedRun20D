@@ -6,7 +6,7 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerAttack
+  m_Name: PlayerUpBody
   m_Mask: 00000000010000000100000000000000000000000100000001000000000000000000000000000000000000000000000000000000
   m_Elements:
   - m_Path: 
@@ -114,18 +114,18 @@ AvatarMask:
   - m_Path: root/pelvis/spine_01/spine_02/spine_03/neck_01/head/B_Jaw
     m_Weight: 1
   - m_Path: root/pelvis/thigh_l
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/pelvis/thigh_l/calf_l
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/pelvis/thigh_l/calf_l/foot_l
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/pelvis/thigh_l/calf_l/foot_l/ball_l
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/pelvis/thigh_r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/pelvis/thigh_r/calf_r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/pelvis/thigh_r/calf_r/foot_r
-    m_Weight: 1
+    m_Weight: 0
   - m_Path: root/pelvis/thigh_r/calf_r/foot_r/ball_r
-    m_Weight: 1
+    m_Weight: 0

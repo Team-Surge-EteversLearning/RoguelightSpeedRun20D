@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerSM : StateManager
 {
-    public static readonly float moveSpeed = 1f;
-    public static readonly float runSpeed = 1f;
+    public static readonly float moveSpeed = 0.2f;
+    public static readonly float runSpeed = 0.35f;
 
     [SerializeField]
     private GameObject weaponHanger;
@@ -16,24 +16,25 @@ public class PlayerSM : StateManager
     private List<GameObject> weaponInstance;
     private GameObject weaponModelNow;
 
-    private Weapon _weaponNow;
-    public Weapon weaponNow
+    private static Weapon _weaponNow;
+    public static Weapon weaponNow
     {
         set 
         { 
-            _weaponNow = value; 
+            _weaponNow = value;
+            
         }
     }
-    private Armor _armorNow;
-    public Armor armorNow
+    private static Armor _armorNow;
+    public static Armor armorNow
     {
         set
         {
             _armorNow = value;
         }
     }
-    private Shoes _shoesNow;
-    public Shoes shoesNow
+    private static Shoes _shoesNow;
+    public static Shoes shoesNow
     {
         set
         {
@@ -68,6 +69,11 @@ public class PlayerSM : StateManager
     void Update()
     {
         ManagerUpdate();
+
+        if (InputHandler.attack)
+        {
+            gameObject.GetComponent<Animator>().Play("Attack", 1);
+        }
     }
 
     public override void Interrupt(string stateName)

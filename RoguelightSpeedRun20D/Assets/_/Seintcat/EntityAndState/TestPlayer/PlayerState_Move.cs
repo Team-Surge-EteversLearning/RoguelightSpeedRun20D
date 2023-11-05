@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerState_Move : State
 {
     private Animator animator;
-    private Transform transform;
+    private Rigidbody rigidBody;
 
     private string runCheck => InputHandler.running? "Run" : "";
 
@@ -18,7 +18,7 @@ public class PlayerState_Move : State
     public override void Initialize(GameObject managerObject)
     {
         animator = managerObject.GetComponent<Animator>();
-        transform = managerObject.transform;
+        rigidBody = managerObject.GetComponent<Rigidbody>();
     }
 
     protected override string StateEnter_()
@@ -34,12 +34,13 @@ public class PlayerState_Move : State
             return "Idle";
         }
 
-        Vector3 normalMove = new Vector3(InputHandler.move.x, transform.position.y, InputHandler.move.y).normalized;
+        Vector3 normalMove = new Vector3(InputHandler.move.x, 0, InputHandler.move.y).normalized;
         animator.SetFloat("X", Mathf.Lerp(animator.GetFloat("X"), normalMove.x, Time.deltaTime * 2));
         animator.SetFloat("Z", Mathf.Lerp(animator.GetFloat("Z"), normalMove.z, Time.deltaTime * 2));
         animator.SetBool("Running", InputHandler.running);
 
-        transform.Translate(normalMove * Time.deltaTime);
+        rigidBody.AddForce(normalMove * (InputHandler.running ? PlayerSM.runSpeed : PlayerSM.moveSpeed), ForceMode.VelocityChange);
+        //transform.force(normalMove * Time.deltaTime * PlayerSM.moveSpeed);
 
         return "";
     }
@@ -51,6 +52,7 @@ public class PlayerState_Move : State
 
     protected override void StateEnd()
     {
+        rigidBody.velocity = Vector3.zero;
         animator.Play("Idle" + runCheck, 0);
     }
 }

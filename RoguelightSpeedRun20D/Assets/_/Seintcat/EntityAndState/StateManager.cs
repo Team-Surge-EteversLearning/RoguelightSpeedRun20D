@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class StateManager : MonoBehaviour
 {
-    protected State nowState;
+    protected State mainState;
     protected Dictionary<string, Collider> attackParts;
     protected Dictionary<string, State> allStates;
 
@@ -19,24 +19,24 @@ public abstract class StateManager : MonoBehaviour
     public virtual void ManagerUpdate()
     {
         string nextState = "";
-        if (nowState.started)
+        if (mainState.started)
         {
-            nextState = nowState.StateUpdate();
+            nextState = mainState.StateUpdate();
         }
         else
         {
             do
             {
-                nowState.StateEnd_();
-                nextState = nowState.StateEnter();
+                mainState.StateEnd_();
+                nextState = mainState.StateEnter();
             } while (nextState != "");
-            nextState = nowState.StateUpdate();
+            nextState = mainState.StateUpdate();
         }
 
         if (nextState != "")
         {
-            nowState.StateEnd_();
-            nowState = allStates[nextState];
+            mainState.StateEnd_();
+            mainState = allStates[nextState];
         }
     }
 

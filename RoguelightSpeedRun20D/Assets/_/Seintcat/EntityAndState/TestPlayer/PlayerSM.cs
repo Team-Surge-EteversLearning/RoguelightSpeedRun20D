@@ -5,6 +5,42 @@ using UnityEngine.InputSystem;
 
 public class PlayerSM : StateManager
 {
+    public static readonly float moveSpeed = 1f;
+    public static readonly float runSpeed = 1f;
+
+    [SerializeField]
+    private GameObject weaponHanger;
+    [SerializeField]
+    private List<GameObject> weaponModels;
+
+    private List<GameObject> weaponInstance;
+    private GameObject weaponModelNow;
+
+    private Weapon _weaponNow;
+    public Weapon weaponNow
+    {
+        set 
+        { 
+            _weaponNow = value; 
+        }
+    }
+    private Armor _armorNow;
+    public Armor armorNow
+    {
+        set
+        {
+            _armorNow = value;
+        }
+    }
+    private Shoes _shoesNow;
+    public Shoes shoesNow
+    {
+        set
+        {
+            _shoesNow = value;
+        }
+    }
+
     private void Awake()
     {
         ManagerStart();
@@ -19,7 +55,7 @@ public class PlayerSM : StateManager
         state = new PlayerState_Move();
         allStates.Add(state.stateName, state);
 
-        nowState = allStates["Idle"];
+        mainState = allStates["Idle"];
     }
 
     // Start is called before the first frame update

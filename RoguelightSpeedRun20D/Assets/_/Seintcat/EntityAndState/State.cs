@@ -29,6 +29,7 @@ public abstract class State
     protected abstract void StateEnd();
     public virtual void StateEnd_()
     {
+        StateEnd();
         started = false;
     }
     public abstract void Interrupt(GameObject managerObject);

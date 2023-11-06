@@ -124,7 +124,13 @@ public class Dungeon : IEnumerable<DungeonNode>
         // Set the End node to the one with the maximum DistanceFromStart, and the most recently added if there are multiple
         End = nodes.OrderByDescending(n => n.DistanceFromStart).First();
     }
-
+    public void AddUntil(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            this.Add();
+        }
+    }
 
 
     public void SetShopNode()
@@ -139,6 +145,33 @@ public class Dungeon : IEnumerable<DungeonNode>
         else
         {
             Debug.Log("상점을 설정할 수 있는 노드가 없습니다.");
+        }
+    }
+
+    public static void ConnectFloor(Dungeon startFloor, Dungeon arriveFloor)
+    {
+        if (startFloor == arriveFloor)
+        {
+            Debug.Log("You try Connect same floor");
+            return;
+        }
+
+        // Connect startFloor's end to arriveFloor's start
+        if (startFloor.End.Front == null)
+        {
+            startFloor.End.Front = arriveFloor.Start;
+        }
+        else if (startFloor.End.Back == null)
+        {
+            startFloor.End.Back = arriveFloor.Start;
+        }
+        else if (startFloor.End.Left == null)
+        {
+            startFloor.End.Left = arriveFloor.Start;
+        }
+        else if (startFloor.End.Right == null)
+        {
+            startFloor.End.Right = arriveFloor.Start;
         }
     }
 

@@ -20,5 +20,8 @@ public abstract class Equipment : IProduct
         Button prvBtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         prvBtn.onClick.RemoveAllListeners();
         prvBtn.image.sprite = TestDB.instance.iconSet.GetIcon("Default");
+        Equip();
     }
+
+    public abstract void Equip();
 }

@@ -20,4 +20,9 @@ public class Shoes : Equipment
     public float Speed { get => speed; set => speed = value; }
     public int MaxStamina { get => maxStamina; set => maxStamina = value; }
     public float StaminaRegen { get => staminaRegen; set => staminaRegen = value; }
+
+    public override void Equip()
+    {
+        PlayerSM.shoesNow = this;
+    }
 }

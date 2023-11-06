@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-11-06T01:15:06.856Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="PeLQSfOd9fBiZCJ4oZ_4" version="21.6.5" type="device">
+<mxfile host="Electron" modified="2023-11-06T07:12:29.962Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="992EVlx3yFd8E78kX95d" version="21.6.5" type="device">
   <diagram name="페이지-1" id="jrO1e414muNWcl9nCNZX">
-    <mxGraphModel dx="1434" dy="844" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
+    <mxGraphModel dx="1304" dy="767" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -14,7 +14,7 @@
           <mxGeometry x="1820" y="655" width="240" height="310" as="geometry" />
         </mxCell>
         <mxCell id="7JnoTJpk7oa8gjy23Xpb-14" value="&lt;span style=&quot;color: rgb(240, 240, 240); font-family: Helvetica; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(42, 37, 47); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;- 스컬식으로 얻은 템 관련 도감 혹은 체크기능&lt;/span&gt;&lt;br&gt;bool 해금여부" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1920" y="550" width="280" height="40" as="geometry" />
+          <mxGeometry x="1770" y="520" width="280" height="40" as="geometry" />
         </mxCell>
         <mxCell id="7JnoTJpk7oa8gjy23Xpb-24" value="김민우님" style="swimlane;fontSize=60;startSize=80;" parent="1" vertex="1">
           <mxGeometry x="4950" y="130" width="5020" height="4190" as="geometry" />

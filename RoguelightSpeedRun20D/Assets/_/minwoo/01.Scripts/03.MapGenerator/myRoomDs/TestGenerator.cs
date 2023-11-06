@@ -4,6 +4,8 @@ using System.Linq;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEditor.Progress;
+
 public class TestGenerator : MonoBehaviour
 {
     private Quaternion zRot = Quaternion.Euler(0f, 90, 00);
@@ -18,15 +20,18 @@ public class TestGenerator : MonoBehaviour
     public GameObject shopRoomPrefab;
     public GameObject doorPrefab;
     public GameObject closedWall;
-
-    public GameObject indicator;
     public int roomCount = 10;
     private Dungeon _dungeon = new Dungeon();
-
     private DungeonNode currentNode;
+    private float testFloornob = 10;
 
     private float roomSize = 20;
     [SerializeField] float roomDistance = 30;
+
+    Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
+    [SerializeField] private GameObject indicator;
+    [SerializeField] private GameObject startIndicator;
+    [SerializeField] int roomInFloor;
 
     private void Awake()
     {
@@ -34,10 +39,16 @@ public class TestGenerator : MonoBehaviour
     }
     void Start()
     {
-        Generate();
-        StartCoroutine(GenerateCubes());
+        Generate(_dungeon);
+
+
+        StartCoroutine(GenerateCubes(_dungeon, testFloornob));
+        testFloornob += 10;
         currentNode = _dungeon.Start;
+
     }
+
+
     public void MoveNode(DoorDir dir, GameObject player)
     {
         switch (dir)
@@ -81,29 +92,27 @@ public class TestGenerator : MonoBehaviour
         }
         CharacterController controller = player.GetComponent<CharacterController>();
         controller.enabled = false;
-        player.transform.position = new Vector3(currentNode.Position.x * roomDistance, 0, currentNode.Position.y * roomDistance);
+        Debug.Log(roomNodeTransformPair[currentNode].position);
+        player.transform.position = roomNodeTransformPair[currentNode].position;
         controller.enabled = true;
     }
-    private void Generate()
+    private void Generate(Dungeon target)
     {
-        for (int i = 0; i < roomCount; i++)
-        {
-            _dungeon.Add();
-        }
-        _dungeon.SetShopNode();
+        target.AddUntil(roomCount, roomInFloor);
+        target.SetShopNode();
     }
 
-    private IEnumerator GenerateCubes()
+    private IEnumerator GenerateCubes(Dungeon target, float height)
     {
         GameObject room;
-        foreach (var node in _dungeon)
+        foreach (var node in target)
         {
-            Vector3 posi = new Vector3(node.Position.x * roomDistance, 0, node.Position.y * roomDistance);
-            if (node == _dungeon.Start)
+            Vector3 posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
+            if (node == target.Start)
             {
                 room = Instantiate(startRoomPrefab, posi, Quaternion.identity);
             }
-            else if (node == _dungeon.End)
+            else if (node == target.End)
             {
                 room = Instantiate(bossRoomPrefab, posi, Quaternion.identity);
             }
@@ -115,9 +124,18 @@ public class TestGenerator : MonoBehaviour
             {
                 room = Instantiate(cubePrefab, posi, Quaternion.identity);
             }
-            DoorGenerate(node, room.transform);
+            roomNodeTransformPair.Add(node, room.transform);
+            //DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             yield return new WaitForSeconds(0.1f);
+        }
+        foreach (var item in target.Ends)
+        {
+            GameObject instance = Instantiate(indicator, roomNodeTransformPair[item]);
+        }
+        foreach (var item in target.Starts)
+        {
+            GameObject instance = Instantiate(startIndicator, roomNodeTransformPair[item]);
         }
     }
 
@@ -167,7 +185,7 @@ public class TestGenerator : MonoBehaviour
         else
         {
             instance = Instantiate(closedWall, xPosi, xRot);
-            instance.transform.position += new Vector3(0,2,0);
+            instance.transform.position += new Vector3(0, 2, 0);
             instance.name = "right_w";
         }
         if (node.Left != null)

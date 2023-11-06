@@ -1,3 +1,7 @@
+
+
+using UnityEngine;
+
 public class Weapon : Equipment
 {
     int damage;
@@ -20,4 +24,9 @@ public class Weapon : Equipment
     public bool IsRangeAttack { get => isRangeAttack; set => isRangeAttack = value; }
     public int Size { get => size; set => size = value; }
     public float Cooltime { get => cooltime; set => cooltime = value; }
+
+    public override void Equip()
+    {
+        PlayerSM.weaponNow = this;
+    }
 }

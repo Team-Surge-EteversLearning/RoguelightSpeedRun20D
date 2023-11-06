@@ -22,7 +22,6 @@ public class PlayerSM : StateManager
         set 
         { 
             _weaponNow = value;
-            
         }
     }
     private static Armor _armorNow;

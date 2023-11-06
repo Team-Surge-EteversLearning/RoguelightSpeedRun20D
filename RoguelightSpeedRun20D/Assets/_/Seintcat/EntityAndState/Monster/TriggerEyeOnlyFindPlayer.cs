@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerEye : MonoBehaviour
+public class TriggerEyeOnlyFindPlayer : MonoBehaviour
 {
     [SerializeField]
     private StateManager stateManager;
@@ -10,12 +10,12 @@ public class TriggerEye : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PlayerBody")
-            stateManager.Interrupt("EyeEnter");
+            ((ITargetCatch)stateManager).TargetChanged(new List<GameObject> { PlayerSM.playerObj });
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "PlayerBody")
-            stateManager.Interrupt("EyeExit");
+            ((ITargetCatch)stateManager).TargetChanged(new List<GameObject> { PlayerSM.playerObj });
     }
 }

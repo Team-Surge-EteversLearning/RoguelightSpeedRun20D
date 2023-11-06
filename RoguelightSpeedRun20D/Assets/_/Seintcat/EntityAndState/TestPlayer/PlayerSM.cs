@@ -8,6 +8,8 @@ public class PlayerSM : StateManager
     public static readonly float moveSpeed = 0.2f;
     public static readonly float runSpeed = 0.35f;
 
+    public static GameObject playerObj;
+
     [SerializeField]
     private GameObject weaponHanger;
     [SerializeField]
@@ -44,6 +46,7 @@ public class PlayerSM : StateManager
     private void Awake()
     {
         ManagerStart();
+        playerObj = gameObject;
     }
     public override void MakeState()
     {

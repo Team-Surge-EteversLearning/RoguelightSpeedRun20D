@@ -7,21 +7,13 @@ using Random = System.Random;
 
 public class DungeonNode
 {
-    public DungeonNode Left;
-    public DungeonNode Right;
-    public DungeonNode Front;
-    public DungeonNode Back;
+    public DungeonNode Left { get; set; }
+    public DungeonNode Right { get; set; }
+    public DungeonNode Front { get; set; }
+    public DungeonNode Back { get; set; }
     public bool IsShop { get; set; }
-    public int DistanceFromStart;
+    public int DistanceFromStart { get; set; }
     public Vector2Int Position { get; set; }
-
-
-    public GameObject[] walls { get; }
-
-    //public void LinkNodeRoom(GameObject room)
-    //{
-    //    room.GetComponentInChildren
-    //}
 
     public DungeonNode(int distance)
     {
@@ -31,8 +23,8 @@ public class DungeonNode
 
 public class Dungeon : IEnumerable<DungeonNode>
 {
-    public DungeonNode Start;
-    public DungeonNode End;
+    public DungeonNode Start { get; private set; }
+    public DungeonNode End { get; private set; }
     private List<DungeonNode> nodes = new List<DungeonNode>();
 
     public Dungeon()

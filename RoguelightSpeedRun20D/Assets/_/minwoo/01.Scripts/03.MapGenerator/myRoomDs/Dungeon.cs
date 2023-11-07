@@ -1,4 +1,4 @@
-//전체 코드
+//占쏙옙체 占쌘듸옙
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ public class DungeonNode
     public DungeonNode Back;
     public bool IsShop { get; set; }
     public int DistanceFromStart;
-    public Vector3Int Position { get; set; }
+    public Vector3Int Position { get; set;}
 
     public int Floor { get; set; }
 
@@ -30,7 +30,20 @@ public class Dungeon : IEnumerable<DungeonNode>
     private List<DungeonNode> nodes = new List<DungeonNode>();
     public DungeonNode End { get; private set; }
     public List<DungeonNode> Ends = new List<DungeonNode>();
+
     public List<DungeonNode> Starts = new List<DungeonNode>();
+    private HashSet<KeyValuePair<DungeonNode, DungeonNode>> paths = new HashSet<KeyValuePair<DungeonNode, DungeonNode>>();
+    public HashSet<KeyValuePair<DungeonNode, DungeonNode>> Paths { get => paths; set => paths = value; }
+    public bool IsAlreadyHaveDoor(DungeonNode key, DungeonNode value)
+    {
+        if (this.Paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(key, value)) || this.Paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(value, key)))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
 
     public int floor = 0;
 
@@ -44,7 +57,6 @@ public class Dungeon : IEnumerable<DungeonNode>
 
     public void Add(int blockPerFloor)
     {
-
         if (nodes.Count % blockPerFloor == 0)
         {
             floor++;
@@ -57,19 +69,21 @@ public class Dungeon : IEnumerable<DungeonNode>
             End = null;
             return;
         }
+
         var node = new DungeonNode(0);  // Initialize with 0 DistanceFromStart
         nodes.Add(node);
 
         if (nodes.Count == 1)
         {
-            node.Position = Vector3Int.zero;  // 첫 노드의 위치를 (0,0)으로 초기화
+            node.Position = Vector3Int.zero;
             node.DistanceFromStart = 0;
             Starts.Add(node);
         }
         else
         {
             var random = new Random();
-            var availableNodes = nodes.Where(n => (n.Left == null || n.Right == null || n.Front == null || n.Back == null) && n.Position.y == floor).ToList(); DungeonNode selectedNode = null;
+            var availableNodes = nodes.Where(n => (n.Left == null || n.Right == null || n.Front == null || n.Back == null) && n.Position.y == floor).ToList();
+            DungeonNode selectedNode = null;
 
             // Keep trying until we find a node with an available direction
             while (availableNodes.Count > 0)
@@ -79,10 +93,22 @@ public class Dungeon : IEnumerable<DungeonNode>
                 // Define all possible directions
                 var directions = new List<Tuple<Action, Func<Vector3Int>>>
             {
-                new Tuple<Action, Func<Vector3Int>>(() => selectedNode.Left = node, () => selectedNode.Position + Vector3Int.left),
-                new Tuple<Action, Func<Vector3Int>>(() => selectedNode.Right = node, () => selectedNode.Position + Vector3Int.right),
-                new Tuple<Action, Func<Vector3Int>>(() => selectedNode.Front = node, () => selectedNode.Position + new Vector3Int(0, 0, 1)),
-                new Tuple<Action, Func<Vector3Int>>(() => selectedNode.Back = node, () => selectedNode.Position + new Vector3Int(0, 0, -1))
+                new Tuple<Action, Func<Vector3Int>>(() => {
+                    if (selectedNode.Left == null)
+                        selectedNode.Left = node;
+                }, () => selectedNode.Position + Vector3Int.left),
+                new Tuple<Action, Func<Vector3Int>>(() => {
+                    if (selectedNode.Right == null)
+                        selectedNode.Right = node;
+                }, () => selectedNode.Position + Vector3Int.right),
+                new Tuple<Action, Func<Vector3Int>>(() => {
+                    if (selectedNode.Front == null)
+                        selectedNode.Front = node;
+                }, () => selectedNode.Position + new Vector3Int(0, 0, 1)),
+                new Tuple<Action, Func<Vector3Int>>(() => {
+                    if (selectedNode.Back == null)
+                        selectedNode.Back = node;
+                }, () => selectedNode.Position + new Vector3Int(0, 0, -1))
             };
 
                 // Shuffle the list
@@ -100,31 +126,41 @@ public class Dungeon : IEnumerable<DungeonNode>
 
                         // Check the surrounding nodes
                         var surroundingPositions = new List<Tuple<Action, Vector3Int>>
-                        {
-                            new Tuple<Action, Vector3Int>(() => node.Left = nodes.First(n => n.Position == newPosition + Vector3Int.left), newPosition + Vector3Int.left),
-                            new Tuple<Action, Vector3Int>(() => node.Right = nodes.First(n => n.Position == newPosition + Vector3Int.right), newPosition + Vector3Int.right),
-                            new Tuple<Action, Vector3Int>(() => node.Front = nodes.First(n => n.Position == newPosition + Vector3Int.forward), newPosition + new Vector3Int(0, 0, 1)),
-                            new Tuple<Action, Vector3Int>(() => node.Back = nodes.First(n => n.Position == newPosition + Vector3Int.back), newPosition + new Vector3Int(0, 0, -1))
-                        };
-
+                    {
+                        new Tuple<Action, Vector3Int>(() => {
+                            if (node.Left == null)
+                                node.Left = nodes.FirstOrDefault(n => n.Position == newPosition + Vector3Int.left && n.Position.y == floor);
+                        }, newPosition + Vector3Int.left),
+                        new Tuple<Action, Vector3Int>(() => {
+                            if (node.Right == null)
+                                node.Right = nodes.FirstOrDefault(n => n.Position == newPosition + Vector3Int.right && n.Position.y == floor);
+                        }, newPosition + Vector3Int.right),
+                        new Tuple<Action, Vector3Int>(() => {
+                            if (node.Front == null)
+                                node.Front = nodes.FirstOrDefault(n => n.Position == newPosition + Vector3Int.forward && n.Position.y == floor);
+                        }, newPosition + new Vector3Int(0, 0, 1)),
+                        new Tuple<Action, Vector3Int>(() => {
+                            if (node.Back == null)
+                                node.Back = nodes.FirstOrDefault(n => n.Position == newPosition + Vector3Int.back && n.Position.y == floor);
+                        }, newPosition + new Vector3Int(0, 0, -1))
+                    };
 
                         foreach (var pos in surroundingPositions)
                         {
-                            if (nodes.Any(n => n.Position == pos.Item2))
+                            if (nodes.Any(n => n.Position == pos.Item2 && n.Position.y == floor))
                             {
                                 pos.Item1();
                                 // Add reciprocal references
-                                if (node.Left == nodes.First(n => n.Position == pos.Item2)) nodes.First(n => n.Position == pos.Item2).Right = node;
-                                else if (node.Right == nodes.First(n => n.Position == pos.Item2)) nodes.First(n => n.Position == pos.Item2).Left = node;
-                                else if (node.Front == nodes.First(n => n.Position == pos.Item2)) nodes.First(n => n.Position == pos.Item2).Back = node;
-                                else if (node.Back == nodes.First(n => n.Position == pos.Item2)) nodes.First(n => n.Position == pos.Item2).Front = node;
+                                var otherNode = nodes.First(n => n.Position == pos.Item2 && n.Position.y == floor);
+                                if (node.Left == otherNode) otherNode.Right = node;
+                                else if (node.Right == otherNode) otherNode.Left = node;
+                                else if (node.Front == otherNode) otherNode.Back = node;
+                                else if (node.Back == otherNode) otherNode.Front = node;
                             }
                         }
-
                         break;
                     }
                 }
-
                 if (node.Position != Vector3Int.zero)
                 {
                     break;
@@ -141,6 +177,7 @@ public class Dungeon : IEnumerable<DungeonNode>
 
 
 
+
     public void AddUntil(int amount, int blockPerFloor)
     {
         for (int i = 0; i < amount; i++)
@@ -153,18 +190,21 @@ public class Dungeon : IEnumerable<DungeonNode>
     public void SetShopNode()
     {
         var random = new Random();
-        var availableNodes = nodes.Where(n => n != Start && n != End).ToList();  // Start와 End 노드를 제외
-        if (availableNodes.Count > 0)
+        for (int i = 0; i < floor; i++)
         {
-            var shopNode = availableNodes[random.Next(availableNodes.Count)];
-            shopNode.IsShop = true;
-        }
-        else
-        {
-            Debug.Log("상점을 설정할 수 있는 노드가 없습니다.");
+            var availableNodes = nodes.Where(n => n != Start && n != End && !Starts.Contains(n) && !Ends.Contains(n) && n.Position.y == i).ToList();
+
+            if (availableNodes.Count > 0)
+            {
+                var shopNode = availableNodes[random.Next(availableNodes.Count)];
+                shopNode.IsShop = true;
+            }
+            else
+            {
+                Debug.Log("상점을 설정할 수 있는 노드가 없습니다.");
+            }
         }
     }
-
 
     public IEnumerator<DungeonNode> GetEnumerator()
     {
@@ -180,6 +220,8 @@ public class Dungeon : IEnumerable<DungeonNode>
     {
         get => nodes.Count;
     }
+
+
     public void Clear()
     {
         nodes.Clear();

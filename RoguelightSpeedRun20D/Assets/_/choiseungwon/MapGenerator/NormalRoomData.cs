@@ -5,13 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class NormalRoomData
 {
-    [SerializeField] private GameObject roomPrefab;
-
-    [SerializeField] private bool front;
-    [SerializeField] private bool back;
-    [SerializeField] private bool right;
-    [SerializeField] private bool left;
-
+    [SerializeField] public GameObject roomPrefab;
+    
     [SerializeField] private List<Vector3> boxLocationList = new List<Vector3>();
     [SerializeField] private List<Vector3> monsterLocationList = new List<Vector3>();
     [SerializeField] private List<Vector3> trapLocationList = new List<Vector3>();

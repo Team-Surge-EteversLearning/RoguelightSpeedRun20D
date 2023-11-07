@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,17 @@ public class TestGenerator : MonoBehaviour
     //const int xRot = 180;
 
     public static TestGenerator Instance { get; set; }
+    public DungeonNode CurrentNode
+    {
+        get => currentNode;
+        set
+        {
+            DungeonNode prevNode = currentNode;
+            currentNode = value;
+            ChangeMinimapNode(currentNode, prevNode);
+        }
+    }
+
     public GameObject cubePrefab;
     public GameObject bossRoomPrefab;
     public GameObject startRoomPrefab;
@@ -24,17 +36,30 @@ public class TestGenerator : MonoBehaviour
     public int roomCount = 10;
     private Dungeon _dungeon = new Dungeon();
     private DungeonNode currentNode;
-    private float testFloornob = 10;
 
+    [SerializeField] private float testFloornob = 10;
     private float roomSize = 20;
     [SerializeField] float roomDistance = 30;
 
-    Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
+
     [SerializeField] private GameObject indicator;
     [SerializeField] private GameObject startIndicator;
     [SerializeField] int roomInFloor;
+    [SerializeField] GameObject miniMapCube;
+    Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
+    private Dictionary<DungeonNode, GameObject> miniMapDict = new Dictionary<DungeonNode, GameObject>();
 
-    HashSet<KeyValuePair<DungeonNode, DungeonNode>> _paths = new HashSet<KeyValuePair<DungeonNode, DungeonNode>>();
+    public delegate void DoorToggleDelegate(bool flag);
+    public static event DoorToggleDelegate OnDoorToggle;
+
+    public bool testFlag;
+    public int testFloor = 0;
+    [ContextMenu("testClear")]
+    private void TestClear()
+    {
+        OnDoorToggle?.Invoke(testFlag);
+        testFlag = !testFlag;
+    }
     private void Awake()
     {
         Instance = this;
@@ -43,68 +68,68 @@ public class TestGenerator : MonoBehaviour
     {
         Generate(_dungeon);
 
-
-        StartCoroutine(GenerateCubes(_dungeon, testFloornob));
-        testFloornob += 10;
-        currentNode = _dungeon.Start;
-
+        StartCoroutine(GenerateRooms(_dungeon, testFloornob));
     }
 
-    private bool IsAlreadyHaveDoor(DungeonNode key, DungeonNode value)
+
+    private void Update()
     {
-        if (_paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(key, value)) || _paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(value, key)))
-        {
-            return true;
-        }
-        else
-            return false;
+
     }
+    public void MoveNode(int floor, GameObject player)
+    {
+        CurrentNode = _dungeon.Starts[floor];
+        player.transform.position = roomNodeTransformPair[_dungeon.Starts[floor]].position;
+        ChangeFloor(floor);
+    }
+
     public void MoveNode(DoorDir dir, GameObject player)
     {
         switch (dir)
         {
             case DoorDir.Front:
-                if (currentNode.Front == null)
+                if (CurrentNode.Front == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
+                    CurrentNode = CurrentNode;
                     break;
                 }
-                currentNode = currentNode.Front;
+                CurrentNode = CurrentNode.Front;
                 break;
             case DoorDir.Back:
-                if (currentNode.Back == null)
+                if (CurrentNode.Back == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
+                    CurrentNode = CurrentNode;
+
                     break;
                 }
-                currentNode = currentNode.Back;
+                CurrentNode = CurrentNode.Back;
                 break;
             case DoorDir.Right:
-                if (currentNode.Right == null)
+                if (CurrentNode.Right == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
+                    CurrentNode = CurrentNode;
                     break;
                 }
-                currentNode = currentNode.Right;
+                CurrentNode = CurrentNode.Right;
                 break;
             case DoorDir.Left:
-                if (currentNode.Left == null)
+                if (CurrentNode.Left == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
+                    CurrentNode = CurrentNode;
                     break;
                 }
-                currentNode = currentNode.Left;
+                CurrentNode = CurrentNode.Left;
                 break;
             default:
-                print("ÀÌµ¿¸í·ÉÀÌ ¾Æ´Õ´Ï´Ù");
+                print("ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Õ´Ï´ï¿½");
                 break;
 
         }
-        CharacterController controller = player.GetComponent<CharacterController>();
-        controller.enabled = false;
-        Debug.Log(roomNodeTransformPair[currentNode].position);
-        player.transform.position = roomNodeTransformPair[currentNode].position;
-        controller.enabled = true;
+        player.transform.position = roomNodeTransformPair[CurrentNode].position;
     }
     private void Generate(Dungeon target)
     {
@@ -112,7 +137,7 @@ public class TestGenerator : MonoBehaviour
         target.SetShopNode();
     }
 
-    private IEnumerator GenerateCubes(Dungeon target, float height)
+    private IEnumerator GenerateRooms(Dungeon target, float height)
     {
         GameObject room;
         foreach (var node in target)
@@ -134,6 +159,7 @@ public class TestGenerator : MonoBehaviour
             {
                 room = Instantiate(cubePrefab, posi, Quaternion.identity);
             }
+            MiniMapCreate(node);
             roomNodeTransformPair.Add(node, room.transform);
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
@@ -147,6 +173,7 @@ public class TestGenerator : MonoBehaviour
         {
             GameObject instance = Instantiate(startIndicator, roomNodeTransformPair[item]);
         }
+        CurrentNode = _dungeon.Starts[0];
     }
 
     private void DoorGenerate(DungeonNode node, Transform room)
@@ -156,13 +183,13 @@ public class TestGenerator : MonoBehaviour
         Vector3 xPosi = room.position + new Vector3(roomSize / 2, 0, 0);
         Vector3 xNegPosi = room.position - new Vector3(roomSize / 2, 0, 0);
         GameObject instance;
-        if (node.Front != null && !IsAlreadyHaveDoor(node, node.Front)) // path and door
+        if (node.Front != null && !_dungeon.IsAlreadyHaveDoor(node, node.Front)) // path and door
         {
             instance = Instantiate(doorPrefab, zPosi, zRot);
             instance.name = "front_d";
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Front;
 
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Front));
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Front));
         }
         else if (node.Front == null)
         {
@@ -171,14 +198,12 @@ public class TestGenerator : MonoBehaviour
             instance.transform.position += new Vector3(0, 2, 0);
 
         }
-        if (node.Back != null && !IsAlreadyHaveDoor(node, node.Back))
+        if (node.Back != null && !_dungeon.IsAlreadyHaveDoor(node, node.Back))
         {
             instance = Instantiate(doorPrefab, zNegPosi, zRot);
             instance.name = "back_d";
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Back;
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Back));
-
-
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Back));
         }
         else if (node.Back == null)
         {
@@ -187,13 +212,13 @@ public class TestGenerator : MonoBehaviour
             instance.transform.position += new Vector3(0, 2, 0);
 
         }
-        if (node.Right != null && !IsAlreadyHaveDoor(node, node.Right))
+        if (node.Right != null && !_dungeon.IsAlreadyHaveDoor(node, node.Right))
         {
             instance = Instantiate(doorPrefab, xPosi, xRot);
             instance.name = "right_d";
             instance.transform.localPosition += new Vector3(0, 0, -0.9F);
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Right;
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Right));
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Right));
 
         }
         else if (node.Right == null)
@@ -202,21 +227,54 @@ public class TestGenerator : MonoBehaviour
             instance.transform.position += new Vector3(0, 2, 0);
             instance.name = "right_w";
         }
-        if (node.Left != null && !IsAlreadyHaveDoor(node, node.Left))
+        if (node.Left != null && !_dungeon.IsAlreadyHaveDoor(node, node.Left))
         {
             instance = Instantiate(doorPrefab, xNegPosi, xRot);
             instance.name = "Left_d";
             instance.transform.localPosition += new Vector3(0, 0, -0.9F);
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Left;
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Left));
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Left));
         }
         else if (node.Left == null)
         {
             instance = Instantiate(closedWall, xNegPosi, xRot);
             instance.name = "Left_w";
             instance.transform.position += new Vector3(0, 2, 0);
-
         }
+    }
 
+    private void MiniMapCreate(DungeonNode node)
+    {
+        GameObject miniNode = Instantiate(miniMapCube);
+        miniNode.name = "mini" + node.Position.ToString();
+        miniNode.transform.position = new Vector3(node.Position.x, node.Position.y, node.Position.z);
+        miniMapDict.Add(node, miniNode);
+        if (node.Position.y != 0)
+        {
+            miniNode.SetActive(false);
+        }
+    }
+
+    private void ChangeMinimapNode(DungeonNode current, DungeonNode prv = null)
+    {
+        if (prv != null)
+            miniMapDict[prv].GetComponent<SpriteRenderer>().color = Color.white;
+        if (miniMapDict.ContainsKey(current))
+            miniMapDict[current].GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
+    private void ChangeFloor(int next)
+    {
+        foreach(var item in miniMapDict)
+        {
+            if(item.Key.Position.y == next)
+            {
+                item.Value.SetActive(true);
+            }
+            else
+            {
+                item.Value.SetActive(false);
+            }
+        }
     }
 }

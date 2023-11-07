@@ -23,11 +23,11 @@ public class PlayerWeaponAttacks : AttackAble
 
     protected override void _AttackStart()
     {
-        GameObject _projectile = Instantiate(projectile);
-        _projectile.transform.position = projectileSpawnPoint.position;
-
         if (projectile != null)
         {
+            GameObject _projectile = Instantiate(projectile);
+            _projectile.transform.position = projectileSpawnPoint.position;
+
             AttackAble attackAble = _projectile.GetComponent<AttackAble>();
             if(attackAble != null)
             {

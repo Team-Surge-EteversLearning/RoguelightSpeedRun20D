@@ -11,12 +11,23 @@ public class MonsterData : ScriptableObject
     public string monsterName;
     public int cashDrop;
     public int hpMax;
+    [Header("Attack")]
     public int attackPower;
-    public float attackSpeed;
+    public float attackCoolTime;
+    public float attackRange;
+    [Header("Patrol")]
     public float moveSpeed;
-    [Header("Behaviour")]
     public float idleTime;
+    public bool isFly;
+    public PatrolMode patrolMode;
     [Header("Damage")]
     public float damagedStaggerTime;
     public float deadTime;
+}
+
+public enum PatrolMode
+{
+    Line,
+    Circle,
+    Random
 }

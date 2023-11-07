@@ -10,12 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
-  m_Name: New Monster Data
+  m_Name: GhoulData
   m_EditorClassIdentifier: 
-  monsterName: 
-  cashDrop: 0
-  hpMax: 0
-  attackPower: 0
-  attackSpeed: 0
-  moveSpeed: 0
   prefab: {fileID: 0}
+  monsterName: Ghoul
+  cashDrop: 100
+  hpMax: 100
+  attackPower: 1
+  attackCoolTime: 1
+  attackRange: 1.7
+  moveSpeed: 0.5
+  idleTime: 5
+  isFly: 1
+  patrolMode: 1
+  damagedStaggerTime: 1
+  deadTime: 1

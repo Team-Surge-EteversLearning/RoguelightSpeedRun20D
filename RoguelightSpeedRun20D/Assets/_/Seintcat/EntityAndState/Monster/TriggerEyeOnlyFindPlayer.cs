@@ -16,6 +16,6 @@ public class TriggerEyeOnlyFindPlayer : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "PlayerBody")
-            ((ITargetCatch)stateManager).TargetChanged(new List<GameObject> { PlayerSM.playerObj });
+            ((ITargetCatch)stateManager).TargetChanged(new List<GameObject> ());
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class MonsterSM : StateManager, ITargetCatch
@@ -12,30 +13,100 @@ public abstract class MonsterSM : StateManager, ITargetCatch
     private MonsterData data;
     public MonsterData basicData => data;
 
-    private int hpNow;
+    [SerializeField]
+    protected Rigidbody _rigidbody;
+    [SerializeField]
+    private GameObject eye;
 
-    protected abstract MonsterIdleState monsterIdleState { get; }
-    protected abstract MonsterAttackState[] monsterAttackStates { get; }
-    protected abstract MonsterProjectileState[] monsterProjectileStates { get; }
+    public Vector3 targetPos
+    {
+        get
+        {
+            if (!patrolForward)
+                patrolIndex--;
+            else
+                patrolIndex++;
+
+            switch (data.patrolMode)
+            {
+                case PatrolMode.Line:
+                    if (patrolIndex < 0)
+                    {
+                        patrolIndex = 1;
+                        patrolForward = true;
+                    }
+                    else if (patrolIndex >= movePoints.Count)
+                    {
+                        patrolIndex = movePoints.Count - 2;
+                        patrolForward = false;
+                    }
+                    break;
+
+                case PatrolMode.Circle:
+                    if (patrolIndex >= movePoints.Count)
+                        patrolIndex = 0;
+                    break;
+
+                case PatrolMode.Random:
+                    patrolIndex = Random.Range(0, movePoints.Count);
+                    break;
+
+                default:
+                    break;
+            }
+            return movePoints[patrolIndex++].position;
+        }
+    }
+
+    public Collider mainBody;
+    public List<Collider> subBody;
+    public List<AttackAble> attackAbles;
+    public List<Transform> movePoints;
+
+    private int hpNow;
+    private int patrolIndex = 0;
+    private bool patrolForward = true;
+
+    protected MonsterIdleState monsterIdleState => new MonsterIdleState();
     protected MonsterDamageState monsterDamageState => new MonsterDamageState();
     protected MonsterDeathState monsterDeathState => new MonsterDeathState();
+    protected MonsterPatrolState monsterPatrolState => new MonsterPatrolState();
+    protected abstract List<State> monsterBattleStates { get; }
+
+    public GameObject attackTarget { get; protected set; }
 
     public override void MakeState()
     {
-        allStates = new Dictionary<string, State> { { monsterIdleState.stateName, monsterIdleState } };
+        allStates = new Dictionary<string, State> 
+        { 
+            { monsterIdleState.stateName, monsterIdleState },
+            { monsterDamageState.stateName, monsterDamageState },
+            { monsterDeathState.stateName, monsterDeathState },
+            { monsterPatrolState.stateName, monsterPatrolState },
+        };
 
-        foreach (MonsterAttackState monsterAttackState in monsterAttackStates)
-            allStates.Add(monsterAttackState.stateName, monsterAttackState);
+        if(monsterBattleStates != null)
+            foreach (State monsterBattleState in monsterBattleStates)
+                allStates.Add(monsterBattleState.stateName, monsterBattleState);
 
-        foreach (MonsterProjectileState monsterProjectileState in monsterProjectileStates)
-            allStates.Add(monsterProjectileState.stateName, monsterProjectileState);
-
-        allStates.Add(monsterDamageState.stateName, monsterDamageState);
-        allStates.Add(monsterDeathState.stateName, monsterDeathState);
-
-        mainState = allStates["Idle"];
+        mainState = allStates[monsterIdleState.stateName];
         hpNow = data.hpMax;
+
+        if (eye != null)
+            eye.SetActive(true);
     }
+
+    private void FixedUpdate()
+    {
+        if (mainState.stateName == monsterPatrolState.stateName ||
+            mainState.stateName == "Chace")
+        {
+            _rigidbody.velocity *= (1 - Time.fixedDeltaTime);
+            _rigidbody.AddForce(transform.forward * Time.fixedDeltaTime * data.moveSpeed, ForceMode.VelocityChange);
+            _FixedUpdate();
+        }
+    }
+    protected abstract void _FixedUpdate();
 
     public override void Interrupt(string stateName)
     {
@@ -50,10 +121,21 @@ public abstract class MonsterSM : StateManager, ITargetCatch
 
         if (hpNow < 0)
         {
-            hpNow = 0; 
+            hpNow = 0;
+            
+            if (eye != null)
+                eye.SetActive(false);
+
+            _rigidbody.isKinematic = true;
+            mainBody.enabled = false;
+            ChangeState(monsterDeathState.stateName);
         }
         else
         {
+            mainBody.enabled = false;
+            foreach(Collider collider in subBody)
+                collider.enabled = false;
+
             if (data.damagedStaggerTime > 0)
                 ChangeState(monsterDamageState.stateName);
 
@@ -67,10 +149,52 @@ public abstract class MonsterSM : StateManager, ITargetCatch
         mainState.StateEnd_();
         ResetStateMachine();
         hpNow = data.hpMax;
-        mainState = allStates["Idle"];
+        mainBody.enabled = true;
+        _rigidbody.isKinematic = false;
+        patrolIndex = 0;
+        patrolForward = true;
+        mainState = allStates[monsterIdleState.stateName]; 
         enabled = false;
     }
     protected abstract void ResetStateMachine();
 
     public abstract void TargetChanged(List<GameObject> target);
+
+    public Transform NextPatrol()
+    {
+        if (!patrolForward)
+            patrolIndex--;
+        else
+            patrolIndex++;
+
+        switch (data.patrolMode)
+        {
+            case PatrolMode.Line:
+                if (patrolIndex < 0)
+                {
+                    patrolIndex = 1;
+                    patrolForward = true;
+                }
+                else if (patrolIndex >= movePoints.Count)
+                {
+                    patrolIndex = movePoints.Count - 2;
+                    patrolForward = false;
+                }
+                break;
+
+            case PatrolMode.Circle:
+                if (patrolIndex >= movePoints.Count)
+                    patrolIndex = 0;
+                break;
+
+            case PatrolMode.Random:
+                patrolIndex = Random.Range(0, movePoints.Count);
+                break;
+
+            default:
+                break;
+        }
+
+        return movePoints[patrolIndex];
+    }
 }

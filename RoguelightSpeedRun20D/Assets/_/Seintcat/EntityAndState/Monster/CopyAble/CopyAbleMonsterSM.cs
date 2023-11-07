@@ -5,14 +5,7 @@ using UnityEngine;
 // Don't edit this, Copy this!
 public class CopyAbleMonsterSM : MonsterSM
 {
-    private MonsterIdleState _monsterIdleState;
-    private MonsterAttackState[] _monsterAttackStates;
-    private MonsterProjectileState[] _monsterProjectileStates;
-    private MonsterDeathState _MonsterDeathState;
-
-    protected override MonsterIdleState monsterIdleState => throw new System.NotImplementedException();
-    protected override MonsterAttackState[] monsterAttackStates => throw new System.NotImplementedException();
-    protected override MonsterProjectileState[] monsterProjectileStates => throw new System.NotImplementedException();
+    protected override List<State> monsterBattleStates => new List<State>();
 
     private void Awake()
     {
@@ -21,6 +14,8 @@ public class CopyAbleMonsterSM : MonsterSM
 
     public override void MakeState()
     {
+        // make custom states
+
         // make basic states
         base.MakeState();
     }
@@ -37,14 +32,19 @@ public class CopyAbleMonsterSM : MonsterSM
         ManagerUpdate();
     }
 
+    protected override void _FixedUpdate()
+    {
+
+    }
+
     public override void TargetChanged(List<GameObject> target)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void Interrupt(string stateName)
     {
-
+        // not using
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -58,11 +58,20 @@ public class CopyAbleMonsterSM : MonsterSM
 
     protected override void ReactDamage(Animator animator)
     {
-        throw new System.NotImplementedException();
+        
     }
 
     protected override void ResetStateMachine()
     {
-        throw new System.NotImplementedException();
+        
     }
 }
+
+/*
+ * other code
+ * ChangeState("name");
+ * monsterIdleState.stateName
+ * monsterDamageState.stateName
+ * monsterDeathState.stateName
+ * monsterPatrolState.stateName
+ */

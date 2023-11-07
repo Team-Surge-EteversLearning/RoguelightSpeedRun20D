@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-
 public enum DoorDir
 {
     Front,
@@ -8,11 +8,20 @@ public enum DoorDir
 public class MyDoor : MonoBehaviour
 {
     public DoorDir nextDoor;
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] Animator animator;
+
+    private void Awake()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            TestGenerator.Instance.MoveNode(nextDoor, other.gameObject);
-        }
+        animator = GetComponent<Animator>();
+        TestGenerator.OnDoorToggle += ToggleDoor;
+    }
+
+
+    public void ToggleDoor(bool flag)
+    {
+        if (flag)
+            animator.SetTrigger("Open");
+        else
+            animator.SetTrigger("Close");
     }
 }

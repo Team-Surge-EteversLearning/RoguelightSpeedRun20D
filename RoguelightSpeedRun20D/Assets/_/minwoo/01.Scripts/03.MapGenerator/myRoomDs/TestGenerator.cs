@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,15 @@ public class TestGenerator : MonoBehaviour
     public int roomCount = 10;
     private Dungeon _dungeon = new Dungeon();
     private DungeonNode currentNode;
+<<<<<<< Updated upstream
     [SerializeField] private float testFloornob = 10;
+=======
+<<<<<<< HEAD
+    [SerializeField]private float testFloornob = 10;
+=======
+    [SerializeField] private float testFloornob = 10;
+>>>>>>> 96d6361a9db9f0f41c96f2f614c8a94fbc017ff5
+>>>>>>> Stashed changes
 
     private float roomSize = 20;
     [SerializeField] float roomDistance = 30;
@@ -34,7 +43,16 @@ public class TestGenerator : MonoBehaviour
     [SerializeField] private GameObject startIndicator;
     [SerializeField] int roomInFloor;
 
-    HashSet<KeyValuePair<DungeonNode, DungeonNode>> _paths = new HashSet<KeyValuePair<DungeonNode, DungeonNode>>();
+    public delegate void DoorToggleDelegate(bool flag);
+    public static event DoorToggleDelegate OnDoorToggle;
+
+    public bool testFlag;
+    [ContextMenu("testClear")]
+    private void TestClear()
+    {
+        OnDoorToggle?.Invoke(testFlag);
+        testFlag = !testFlag;
+    }
     private void Awake()
     {
         Instance = this;
@@ -50,15 +68,7 @@ public class TestGenerator : MonoBehaviour
 
     }
 
-    private bool IsAlreadyHaveDoor(DungeonNode key, DungeonNode value)
-    {
-        if (_paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(key, value)) || _paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(value, key)))
-        {
-            return true;
-        }
-        else
-            return false;
-    }
+ 
     public void MoveNode(DoorDir dir, GameObject player)
     {
         switch (dir)
@@ -156,13 +166,13 @@ public class TestGenerator : MonoBehaviour
         Vector3 xPosi = room.position + new Vector3(roomSize / 2, 0, 0);
         Vector3 xNegPosi = room.position - new Vector3(roomSize / 2, 0, 0);
         GameObject instance;
-        if (node.Front != null && !IsAlreadyHaveDoor(node, node.Front)) // path and door
+        if (node.Front != null && ! _dungeon.IsAlreadyHaveDoor(node, node.Front)) // path and door
         {
             instance = Instantiate(doorPrefab, zPosi, zRot);
             instance.name = "front_d";
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Front;
 
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Front));
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Front));
         }
         else if (node.Front == null)
         {
@@ -171,12 +181,12 @@ public class TestGenerator : MonoBehaviour
             instance.transform.position += new Vector3(0, 2, 0);
 
         }
-        if (node.Back != null && !IsAlreadyHaveDoor(node, node.Back))
+        if (node.Back != null && !_dungeon.IsAlreadyHaveDoor(node, node.Back))
         {
             instance = Instantiate(doorPrefab, zNegPosi, zRot);
             instance.name = "back_d";
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Back;
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Back));
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Back));
 
 
         }
@@ -187,13 +197,13 @@ public class TestGenerator : MonoBehaviour
             instance.transform.position += new Vector3(0, 2, 0);
 
         }
-        if (node.Right != null && !IsAlreadyHaveDoor(node, node.Right))
+        if (node.Right != null && !_dungeon.IsAlreadyHaveDoor(node, node.Right))
         {
             instance = Instantiate(doorPrefab, xPosi, xRot);
             instance.name = "right_d";
             instance.transform.localPosition += new Vector3(0, 0, -0.9F);
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Right;
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Right));
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Right));
 
         }
         else if (node.Right == null)
@@ -202,13 +212,13 @@ public class TestGenerator : MonoBehaviour
             instance.transform.position += new Vector3(0, 2, 0);
             instance.name = "right_w";
         }
-        if (node.Left != null && !IsAlreadyHaveDoor(node, node.Left))
+        if (node.Left != null && !_dungeon.IsAlreadyHaveDoor(node, node.Left))
         {
             instance = Instantiate(doorPrefab, xNegPosi, xRot);
             instance.name = "Left_d";
             instance.transform.localPosition += new Vector3(0, 0, -0.9F);
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Left;
-            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Left));
+            _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Left));
         }
         else if (node.Left == null)
         {

@@ -43,4 +43,10 @@ public abstract class StateManager : MonoBehaviour
     public abstract void MakeState();
 
     public abstract void Interrupt(string stateName);
+
+    protected void ChangeState(string nextState)
+    {
+        mainState.StateEnd_();
+        mainState = allStates[nextState];
+    }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "", fileName = "")]
 public class MonsterData : ScriptableObject
 {
+    [Header("Model")]
+    public GameObject prefab;
     [Header("Stats")]
     public string monsterName;
     public int cashDrop;
@@ -12,6 +14,9 @@ public class MonsterData : ScriptableObject
     public int attackPower;
     public float attackSpeed;
     public float moveSpeed;
-    [Header("Model")]
-    public GameObject prefab; 
+    [Header("Behaviour")]
+    public float idleTime;
+    [Header("Damage")]
+    public float damagedStaggerTime;
+    public float deadTime;
 }

@@ -8,13 +8,11 @@ public class CopyAbleMonsterSM : MonsterSM
     private MonsterIdleState _monsterIdleState;
     private MonsterAttackState[] _monsterAttackStates;
     private MonsterProjectileState[] _monsterProjectileStates;
-    private MonsterDamageState _monsterDamageState;
     private MonsterDeathState _MonsterDeathState;
 
     protected override MonsterIdleState monsterIdleState => throw new System.NotImplementedException();
     protected override MonsterAttackState[] monsterAttackStates => throw new System.NotImplementedException();
     protected override MonsterProjectileState[] monsterProjectileStates => throw new System.NotImplementedException();
-    protected override MonsterDeathState MonsterDeathState => throw new System.NotImplementedException();
 
     private void Awake()
     {
@@ -39,10 +37,14 @@ public class CopyAbleMonsterSM : MonsterSM
         ManagerUpdate();
     }
 
+    public override void TargetChanged(List<GameObject> target)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void Interrupt(string stateName)
     {
-        // Monster Eye 
-        base.Interrupt(stateName);
+
     }
 
     protected override void OnTriggerEnter(Collider other)
@@ -52,5 +54,15 @@ public class CopyAbleMonsterSM : MonsterSM
         {
             GetDamage(otherAttack.GetDamage(gameObject));
         }
+    }
+
+    protected override void ReactDamage(Animator animator)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void ResetStateMachine()
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -6,35 +6,30 @@ using UnityEngine;
 public class MonsterDamageState : State
 {
     private MonsterSM stateManager;
-    private int hpNow;
-    public int damage = 0;
 
     public MonsterDamageState()
     {
         stateName = "Damage";
+        cooltime = -1f;
     }
 
     public override void Initialize(GameObject managerObject)
     {
         stateManager = managerObject.GetComponent<MonsterSM>();
-        hpNow = stateManager.basicData.hpMax;
     }
 
     protected override string StateEnter_()
     {
-        if (damage > 0)
-            hpNow -= damage;
-
-        if (hpNow < 0)
-            hpNow = 0;
-        else
-            return "Death";
-
+        cooltime = stateManager.basicData.damagedStaggerTime;
         return "";
     }
 
     public override string StateUpdate()
     {
+        cooltime -= Time.deltaTime;
+        if(cooltime < 0f)
+            return "Idle";
+
         return "";
     }
 

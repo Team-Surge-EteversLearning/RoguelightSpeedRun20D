@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -33,6 +34,7 @@ public class TestGenerator : MonoBehaviour
     [SerializeField] private GameObject startIndicator;
     [SerializeField] int roomInFloor;
 
+    HashSet<KeyValuePair<DungeonNode, DungeonNode>> _paths = new HashSet<KeyValuePair<DungeonNode, DungeonNode>>();
     private void Awake()
     {
         Instance = this;
@@ -48,7 +50,15 @@ public class TestGenerator : MonoBehaviour
 
     }
 
-
+    private bool IsAlreadyHaveDoor(DungeonNode key, DungeonNode value)
+    {
+        if (_paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(key, value)) || _paths.Contains(new KeyValuePair<DungeonNode, DungeonNode>(value, key)))
+        {
+            return true;
+        }
+        else
+            return false;
+    }
     public void MoveNode(DoorDir dir, GameObject player)
     {
         switch (dir)
@@ -125,7 +135,7 @@ public class TestGenerator : MonoBehaviour
                 room = Instantiate(cubePrefab, posi, Quaternion.identity);
             }
             roomNodeTransformPair.Add(node, room.transform);
-            //DoorGenerate(node, room.transform);
+            DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             yield return new WaitForSeconds(0.1f);
         }
@@ -146,58 +156,61 @@ public class TestGenerator : MonoBehaviour
         Vector3 xPosi = room.position + new Vector3(roomSize / 2, 0, 0);
         Vector3 xNegPosi = room.position - new Vector3(roomSize / 2, 0, 0);
         GameObject instance;
-        if (node.Front != null)
+        if (node.Front != null && !IsAlreadyHaveDoor(node, node.Front)) // path and door
         {
             instance = Instantiate(doorPrefab, zPosi, zRot);
             instance.name = "front_d";
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Front;
+
+            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Front));
         }
-        else
+        else if (node.Front == null)
         {
             instance = Instantiate(closedWall, zPosi, zRot);
             instance.name = "front_w";
             instance.transform.position += new Vector3(0, 2, 0);
 
         }
-        if (node.Back != null)
+        if (node.Back != null && !IsAlreadyHaveDoor(node, node.Back))
         {
             instance = Instantiate(doorPrefab, zNegPosi, zRot);
             instance.name = "back_d";
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Back;
+            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Back));
+
 
         }
-        else
+        else if (node.Back == null)
         {
             instance = Instantiate(closedWall, zNegPosi, zRot);
             instance.name = "back_w";
             instance.transform.position += new Vector3(0, 2, 0);
 
         }
-        if (node.Right != null)
+        if (node.Right != null && !IsAlreadyHaveDoor(node, node.Right))
         {
             instance = Instantiate(doorPrefab, xPosi, xRot);
             instance.name = "right_d";
             instance.transform.localPosition += new Vector3(0, 0, -0.9F);
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Right;
-
+            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Right));
 
         }
-        else
+        else if (node.Right == null)
         {
             instance = Instantiate(closedWall, xPosi, xRot);
             instance.transform.position += new Vector3(0, 2, 0);
             instance.name = "right_w";
         }
-        if (node.Left != null)
+        if (node.Left != null && !IsAlreadyHaveDoor(node, node.Left))
         {
             instance = Instantiate(doorPrefab, xNegPosi, xRot);
             instance.name = "Left_d";
             instance.transform.localPosition += new Vector3(0, 0, -0.9F);
             instance.GetComponentInChildren<MyDoor>().nextDoor = DoorDir.Left;
-
-
+            _paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Left));
         }
-        else
+        else if (node.Left == null)
         {
             instance = Instantiate(closedWall, xNegPosi, xRot);
             instance.name = "Left_w";

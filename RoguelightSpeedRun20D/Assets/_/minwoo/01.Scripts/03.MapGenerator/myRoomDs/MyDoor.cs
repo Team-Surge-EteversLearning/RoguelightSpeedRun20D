@@ -12,7 +12,7 @@ public class MyDoor : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         TestGenerator.OnDoorToggle += ToggleDoor;
     }
 
@@ -23,5 +23,13 @@ public class MyDoor : MonoBehaviour
             animator.SetTrigger("Open");
         else
             animator.SetTrigger("Close");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            TestGenerator.Instance.MoveNode(nextDoor, other.gameObject);
+        }
     }
 }

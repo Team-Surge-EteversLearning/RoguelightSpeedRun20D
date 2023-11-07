@@ -25,16 +25,8 @@ public class TestGenerator : MonoBehaviour
     public int roomCount = 10;
     private Dungeon _dungeon = new Dungeon();
     private DungeonNode currentNode;
-<<<<<<< Updated upstream
-    [SerializeField] private float testFloornob = 10;
-=======
-<<<<<<< HEAD
-    [SerializeField]private float testFloornob = 10;
-=======
-    [SerializeField] private float testFloornob = 10;
->>>>>>> 96d6361a9db9f0f41c96f2f614c8a94fbc017ff5
->>>>>>> Stashed changes
 
+    [SerializeField] private float testFloornob = 10;
     private float roomSize = 20;
     [SerializeField] float roomDistance = 30;
 

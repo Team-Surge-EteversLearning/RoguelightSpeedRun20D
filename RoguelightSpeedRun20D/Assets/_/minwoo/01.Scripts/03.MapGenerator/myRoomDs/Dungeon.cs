@@ -30,11 +30,8 @@ public class Dungeon : IEnumerable<DungeonNode>
     private List<DungeonNode> nodes = new List<DungeonNode>();
     public DungeonNode End { get; private set; }
     public List<DungeonNode> Ends = new List<DungeonNode>();
-<<<<<<< Updated upstream
-    public List<DungeonNode> Starts = new List<DungeonNode>(); // ìŠ¤íƒ€ì¸  0
-=======
-<<<<<<< HEAD
-    public List<DungeonNode> Starts = new List<DungeonNode>();
+
+    public List<DungeonNode> Starts = new List<DungeonNode>(); 
     private HashSet<KeyValuePair<DungeonNode, DungeonNode>> paths = new HashSet<KeyValuePair<DungeonNode, DungeonNode>>();
     public HashSet<KeyValuePair<DungeonNode, DungeonNode>> Paths { get => paths; set => paths = value; }
     public bool IsAlreadyHaveDoor(DungeonNode key, DungeonNode value)
@@ -47,10 +44,6 @@ public class Dungeon : IEnumerable<DungeonNode>
             return false;
     }
 
-=======
-    public List<DungeonNode> Starts = new List<DungeonNode>(); // ?¤í?ì¸?0
->>>>>>> 96d6361a9db9f0f41c96f2f614c8a94fbc017ff5
->>>>>>> Stashed changes
 
     public int floor = 0;
 
@@ -82,11 +75,9 @@ public class Dungeon : IEnumerable<DungeonNode>
 
         if (nodes.Count == 1)
         {
-<<<<<<< Updated upstream
-            node.Position = Vector3Int.zero;  // Ã¹ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ (0,0)ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
-=======
-            node.Position = Vector3Int.zero;  // Ã¹ ï¿½ï¿½ï¿½ï¿½ï¿?ï¿½ï¿½Ä¡ï¿½ï¿½ (0,0)ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
->>>>>>> Stashed changes
+
+            node.Position = Vector3Int.zero;  
+
             node.DistanceFromStart = 0;
             Starts.Add(node);
         }
@@ -177,11 +168,7 @@ public class Dungeon : IEnumerable<DungeonNode>
     public void SetShopNode()
     {
         var random = new Random();
-<<<<<<< Updated upstream
-        var availableNodes = nodes.Where(n => n != Start && n != End).ToList();  // Startï¿½ï¿½ End ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½
-=======
-<<<<<<< HEAD
-        for(int i = 0; i < floor; i++)
+        for (int i = 0; i < floor; i++)
         {
             var availableNodes = nodes.Where(n => n != Start && n != End && !Starts.Contains(n) && !Ends.Contains(n) && n.Position.y == i).ToList();
 
@@ -195,25 +182,8 @@ public class Dungeon : IEnumerable<DungeonNode>
             {
                 Debug.Log("»óÁ¡À» ¼³Á¤ÇÒ ¼ö ÀÖ´Â ³ëµå°¡ ¾ø½À´Ï´Ù.");
             }
-=======
-        var availableNodes = nodes.Where(n => n != Start && n != End).ToList();  // Startï¿½ï¿½ End ï¿½ï¿½å¸?ï¿½ï¿½ï¿½ï¿½
->>>>>>> Stashed changes
-        if (availableNodes.Count > 0)
-        {
-            var shopNode = availableNodes[random.Next(availableNodes.Count)];
-            shopNode.IsShop = true;
-        }
-        else
-        {
-<<<<<<< Updated upstream
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
-=======
-            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½å°?ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
->>>>>>> 96d6361a9db9f0f41c96f2f614c8a94fbc017ff5
->>>>>>> Stashed changes
         }
     }
-
 
     public IEnumerator<DungeonNode> GetEnumerator()
     {

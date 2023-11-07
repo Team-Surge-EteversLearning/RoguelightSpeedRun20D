@@ -1,4 +1,4 @@
-//ÀüÃ¼ ÄÚµå
+//ï¿½ï¿½Ã¼ ï¿½Úµï¿½
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ public class Dungeon : IEnumerable<DungeonNode>
     private List<DungeonNode> nodes = new List<DungeonNode>();
     public DungeonNode End { get; private set; }
     public List<DungeonNode> Ends = new List<DungeonNode>();
-    public List<DungeonNode> Starts = new List<DungeonNode>();
+    public List<DungeonNode> Starts = new List<DungeonNode>(); // ìŠ¤íƒ€ì¸  0
 
     public int floor = 0;
 
@@ -62,7 +62,7 @@ public class Dungeon : IEnumerable<DungeonNode>
 
         if (nodes.Count == 1)
         {
-            node.Position = Vector3Int.zero;  // Ã¹ ³ëµåÀÇ À§Ä¡¸¦ (0,0)À¸·Î ÃÊ±âÈ­
+            node.Position = Vector3Int.zero;  // Ã¹ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ (0,0)ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
             node.DistanceFromStart = 0;
             Starts.Add(node);
         }
@@ -153,7 +153,7 @@ public class Dungeon : IEnumerable<DungeonNode>
     public void SetShopNode()
     {
         var random = new Random();
-        var availableNodes = nodes.Where(n => n != Start && n != End).ToList();  // Start¿Í End ³ëµå¸¦ Á¦¿Ü
+        var availableNodes = nodes.Where(n => n != Start && n != End).ToList();  // Startï¿½ï¿½ End ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½
         if (availableNodes.Count > 0)
         {
             var shopNode = availableNodes[random.Next(availableNodes.Count)];
@@ -161,7 +161,7 @@ public class Dungeon : IEnumerable<DungeonNode>
         }
         else
         {
-            Debug.Log("»óÁ¡À» ¼³Á¤ÇÒ ¼ö ÀÖ´Â ³ëµå°¡ ¾ø½À´Ï´Ù.");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
         }
     }
 

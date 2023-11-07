@@ -23,7 +23,7 @@ public class TestGenerator : MonoBehaviour
     public int roomCount = 10;
     private Dungeon _dungeon = new Dungeon();
     private DungeonNode currentNode;
-    private float testFloornob = 10;
+    [SerializeField] private float testFloornob = 10;
 
     private float roomSize = 20;
     [SerializeField] float roomDistance = 30;
@@ -56,7 +56,7 @@ public class TestGenerator : MonoBehaviour
             case DoorDir.Front:
                 if (currentNode.Front == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
                     break;
                 }
                 currentNode = currentNode.Front;
@@ -64,7 +64,7 @@ public class TestGenerator : MonoBehaviour
             case DoorDir.Back:
                 if (currentNode.Back == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
                     break;
                 }
                 currentNode = currentNode.Back;
@@ -72,7 +72,7 @@ public class TestGenerator : MonoBehaviour
             case DoorDir.Right:
                 if (currentNode.Right == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
                     break;
                 }
                 currentNode = currentNode.Right;
@@ -80,13 +80,13 @@ public class TestGenerator : MonoBehaviour
             case DoorDir.Left:
                 if (currentNode.Left == null)
                 {
-                    print("¸·´Ù¸¥ ±æÀÔ´Ï´Ù");
+                    print("ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
                     break;
                 }
                 currentNode = currentNode.Left;
                 break;
             default:
-                print("ÀÌµ¿¸í·ÉÀÌ ¾Æ´Õ´Ï´Ù");
+                print("ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Õ´Ï´ï¿½");
                 break;
 
         }

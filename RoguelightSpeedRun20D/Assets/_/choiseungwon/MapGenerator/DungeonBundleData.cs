@@ -12,12 +12,11 @@ public class DungeonBundleData : ScriptableObject
     public List<ShopRoomData> shopRoomPresets;
     public List<BossRoomData> bossRoomPresets;
     
-    public List<GameObject> doorPresets;
-
+    public GameObject doorPresets;
+    public GameObject wall;
+    
     public Vector3 bundleScale;
     public Vector3 dungeonPresetScale;
-
     public int maxRoomNum;
 
-    public DungeonBundle dungeonBundle;
 }

@@ -12,9 +12,4 @@ public class NormalRoomData
     [SerializeField] private List<Vector3> trapLocationList = new List<Vector3>();
     [SerializeField] private List<string> monsterSpawnPool = new List<string>();
     [SerializeField] private List<string> trapSpawnPool = new List<string>();
-
-    void GenerateNormalRoom()
-    {
-        
-    }
 }

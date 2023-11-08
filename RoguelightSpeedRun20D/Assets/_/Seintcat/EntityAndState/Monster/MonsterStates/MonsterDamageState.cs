@@ -21,6 +21,8 @@ public class MonsterDamageState : State
     protected override string StateEnter_()
     {
         cooltime = stateManager.basicData.damagedStaggerTime;
+        stateManager.animator.Play(stateName);
+        stateManager.transform.LookAt(PlayerSM.playerObj.transform.position);
         return "";
     }
 
@@ -28,7 +30,16 @@ public class MonsterDamageState : State
     {
         cooltime -= Time.deltaTime;
         if(cooltime < 0f)
-            return "Idle";
+            return stateManager.attackTarget != null ? "Chase" : "Idle";
+
+        if (stateManager.attackTarget != null)
+        {
+            Vector3 targetPoint = stateManager.attackTarget.transform.position;
+            if (!stateManager.basicData.isFly)
+                targetPoint.y = stateManager.transform.position.y;
+
+            stateManager.transform.LookAt(targetPoint);
+        }
 
         return "";
     }

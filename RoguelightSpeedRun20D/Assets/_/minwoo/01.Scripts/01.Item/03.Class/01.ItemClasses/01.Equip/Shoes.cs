@@ -14,6 +14,8 @@ public class Shoes : Equipment
         this.Speed = data.Speed;
         this.MaxStamina = data.MaxStamina;
         this.StaminaRegen = data.StaminaRegen;
+        this.ModelIndex = basicData.ModelIndex;
+
     }
 
     public int MaxHp { get => maxHp; set => maxHp = value; }

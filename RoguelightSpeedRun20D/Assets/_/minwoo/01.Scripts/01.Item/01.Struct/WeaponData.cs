@@ -3,7 +3,7 @@ public struct WeaponData
 {
     int damage;
     bool isRangeAttack;
-    int size;
+    float size;
     float cooltime;
 
     public WeaponData(int damage, bool isRangeAttack, int size, float cooltime)
@@ -16,6 +16,6 @@ public struct WeaponData
 
     public int Damage { get => damage; set => damage = value; }
     public bool IsRangeAttack { get => isRangeAttack; set => isRangeAttack = value; }
-    public int Size { get => size; set => size = value; }
+    public float Size { get => size; set => size = value; }
     public float Cooltime { get => cooltime; set => cooltime = value; }
 }

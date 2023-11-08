@@ -28,6 +28,5 @@ public class EquipShop : Shop
 
         products = factory.Make($"{range}2");
         SettingShopUI();
-        OpenShop();
     }
 }

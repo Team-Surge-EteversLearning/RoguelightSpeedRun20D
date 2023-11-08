@@ -20,6 +20,6 @@ public class SkillShop : Shop
         products = factory.Make();
 
         SettingShopUI();
-        OpenShop();
+        
     }
 }

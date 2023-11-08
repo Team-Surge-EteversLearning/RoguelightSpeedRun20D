@@ -27,7 +27,7 @@ public class Village : MonoBehaviour
         {
             for (int i = 0; i < allProductSlots.Length; i++)
             {
-                allProductSlots[i].image.sprite = TestDB.instance.iconSet.GetIcon("Default");
+                allProductSlots[i].GetComponentsInChildren<Image>()[1].sprite = TestDB.instance.iconSet.GetIcon("Default");
                 allProductSlots[i].onClick.RemoveAllListeners();
             }
         };

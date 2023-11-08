@@ -16,7 +16,8 @@ public class GhoulSM : MonsterSM
     public override void MakeState()
     {
         // make custom states
-        _monsterBattleStates.Add(new Basic_Chase());
+        _monsterBattleStates.Add(new MonsterBasic_Chase());
+        _monsterBattleStates.Add(new MonsterBasic_Melee());
 
         // make basic states
         base.MakeState();
@@ -54,7 +55,8 @@ public class GhoulSM : MonsterSM
 
     public override void TargetChanged(List<GameObject> target)
     {
-        if (target != null && 
+        if (target != null &&
+            target.Count > 0 &&
            (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName))
         {
             attackTarget = target[0];
@@ -74,7 +76,7 @@ public class GhoulSM : MonsterSM
     protected override void OnTriggerEnter(Collider other)
     {
         AttackAble otherAttack = other.GetComponent<AttackAble>();
-        if (otherAttack != null)
+        if (otherAttack != null && otherAttack.gameObject.tag == "PlayerAttack")
         {
             GetDamage(otherAttack.GetDamage(gameObject));
         }

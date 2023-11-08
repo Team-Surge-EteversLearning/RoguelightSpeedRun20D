@@ -1,27 +1,36 @@
 using System;
 using UnityEngine;
-public enum DoorDirection
-{
-    Front,
-    Back, Left, Right
-}
+
 public class Door : MonoBehaviour
 {
     public DoorDir nextDoor;
-    [SerializeField] Animator animator;
+    private Animator animator;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        TestGenerator.OnDoorToggle += ToggleDoor;
+        animator = GetComponentInChildren<Animator>();
+        DungeonManager.OnDoorToggle += OnToggleDoor;
     }
-
-
-    public void ToggleDoor(bool flag)
+    
+    private void Update()
     {
-        if (flag)
-            animator.SetTrigger("Open");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.Play("Open");
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            animator.Play("Close");
+        }
+
+    }
+    
+    public void OnToggleDoor(bool clear)
+    {
+        if (clear)
+            animator.Play("OpenAnime");
         else
-            animator.SetTrigger("Close");
+            animator.Play("CloseAnime");
     }
 }

@@ -28,11 +28,7 @@ public abstract class Shop
         BtnUIPair = village.BtnShopUIPair;
     }
 
-    abstract public void ResetShop();
-
-    //- 초기화, 리셋 기능
-    //- ShopUI 생성 혹은 이미 존재하는거 끌어다 UI 초기화시킴
-
+    abstract public void ResetShop(); //now setui afterReset, but Ingame, reset just one time.
     protected void OpenShop()
     {
         shopUIGO.SetActive(shopUIGO.activeInHierarchy);
@@ -48,5 +44,6 @@ public abstract class Shop
             productSlots[i].gameObject.SetActive(true);
             BtnUIPair[productSlots[i]].SProduct = products[i];
         }
+        OpenShop();
     }
 }

@@ -15,8 +15,7 @@ public class MyDoor : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         TestGenerator.OnDoorToggle += ToggleDoor;
     }
-
-
+    
     public void ToggleDoor(bool flag)
     {
         if (flag)

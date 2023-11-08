@@ -27,13 +27,14 @@ public class DungeonNode
 public class Dungeon : IEnumerable<DungeonNode>
 {
     public DungeonNode Prev {get; set;}
+    private DungeonNode _current;
     public DungeonNode Current 
     {
-        get => Current;
+        get => _current;
         set
         {
-            Prev = Current;
-            Current = value;
+            Prev = _current;
+            _current = value;
         }
     }
     public DungeonNode Start;

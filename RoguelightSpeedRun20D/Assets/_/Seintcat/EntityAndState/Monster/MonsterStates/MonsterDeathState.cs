@@ -26,12 +26,15 @@ public class MonsterDeathState : State
 
     public override string StateUpdate()
     {
+        cooltime -= Time.deltaTime;
+        if(cooltime < 0)
+            stateManager.gameObject.SetActive(false);
+
         return "";
     }
 
     protected override void StateEnd()
     {
-
     }
 
     public override void Interrupt(GameObject managerObject)

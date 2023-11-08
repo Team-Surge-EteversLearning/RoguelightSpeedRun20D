@@ -21,6 +21,9 @@ public class MonsterPatrolState : State
 
     protected override string StateEnter_()
     {
+        if(stateManager.movePoints.Count < 1)
+            return "Idle";
+
         moveTarget = stateManager.NextPatrol();
 
         stateManager.animator.Play(stateName);

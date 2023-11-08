@@ -55,17 +55,16 @@ public class GhoulSM : MonsterSM
 
     public override void TargetChanged(List<GameObject> target)
     {
-        if (target != null &&
-            target.Count > 0 &&
-           (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName))
+        if(target.Count > 0)
         {
             attackTarget = target[0];
-            ChangeState("Chase");
+            if (target != null &&
+               (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName))
+            {
+                ChangeState("Chase");
+            }
         }
-        else
-        {
-            attackTarget = null;
-        }
+
     }
 
     public override void Interrupt(string stateName)
@@ -78,11 +77,11 @@ public class GhoulSM : MonsterSM
         AttackAble otherAttack = other.GetComponent<AttackAble>();
         if (otherAttack != null && otherAttack.gameObject.tag == "PlayerAttack")
         {
-            GetDamage(otherAttack.GetDamage(gameObject));
+            GetDamage(otherAttack.GetDamage(gameObject), other);
         }
     }
 
-    protected override void ReactDamage(Animator animator)
+    protected override void ReactDamage()
     {
 
     }

@@ -52,11 +52,11 @@ public class CopyAbleMonsterSM : MonsterSM
         AttackAble otherAttack = other.GetComponent<AttackAble>();
         if (otherAttack != null)
         {
-            GetDamage(otherAttack.GetDamage(gameObject));
+            GetDamage(otherAttack.GetDamage(gameObject), other);
         }
     }
 
-    protected override void ReactDamage(Animator animator)
+    protected override void ReactDamage()
     {
         
     }
@@ -70,8 +70,8 @@ public class CopyAbleMonsterSM : MonsterSM
 /*
  * other code
  * ChangeState("name");
- * monsterIdleState.stateName
- * monsterDamageState.stateName
- * monsterDeathState.stateName
- * monsterPatrolState.stateName
+ * monsterIdleState.stateName = "Idle"
+ * monsterDamageState.stateName = "Damage"
+ * monsterDeathState.stateName = "Death"
+ * monsterPatrolState.stateName = "Patrol"
  */

@@ -16,7 +16,7 @@ public abstract class MonsterSM : StateManager, ITargetCatch
     [SerializeField]
     protected Rigidbody _rigidbody;
     [SerializeField]
-    private GameObject eye;
+    protected GameObject eye;
 
     public Vector3 targetPos
     {
@@ -130,10 +130,16 @@ public abstract class MonsterSM : StateManager, ITargetCatch
 
     protected abstract void OnTriggerEnter(Collider other);
 
-    protected void GetDamage(int damage)
+    protected void GetDamage(int damage, Collider other)
     {
         //Debug.LogWarning(damage);
         hpNow -= damage;
+        if(mainBody.Raycast(new Ray(other.transform.position, other.transform.forward), out RaycastHit hit, 0.1f))
+        {
+            StateManager stateManager = hit.collider.gameObject.GetComponent<StateManager>();
+            if (stateManager != null)
+                attackTarget = stateManager.gameObject;
+        }
 
         if (hpNow < 0)
         {
@@ -142,9 +148,6 @@ public abstract class MonsterSM : StateManager, ITargetCatch
 
             hpNow = 0;
             
-            if (eye != null)
-                eye.SetActive(false);
-
             _rigidbody.isKinematic = true;
             mainBody.enabled = false;
             ChangeState(monsterDeathState.stateName);
@@ -157,10 +160,10 @@ public abstract class MonsterSM : StateManager, ITargetCatch
             if (data.damagedStaggerTime > 0)
                 ChangeState(monsterDamageState.stateName);
 
-            ReactDamage(_animator);
+            ReactDamage();
         }
     }
-    protected abstract void ReactDamage(Animator animator);
+    protected abstract void ReactDamage();
 
     public void _ResetStateMachine()
     {

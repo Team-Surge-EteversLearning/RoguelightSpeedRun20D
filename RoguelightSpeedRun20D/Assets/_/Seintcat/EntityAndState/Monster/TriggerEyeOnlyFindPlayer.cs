@@ -5,7 +5,7 @@ using UnityEngine;
 public class TriggerEyeOnlyFindPlayer : MonoBehaviour
 {
     [SerializeField]
-    private StateManager stateManager;
+    private MonsterSM stateManager;
 
     private void Update()
     {

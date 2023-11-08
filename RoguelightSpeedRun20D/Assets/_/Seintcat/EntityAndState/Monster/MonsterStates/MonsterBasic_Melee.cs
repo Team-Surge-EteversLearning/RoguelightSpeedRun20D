@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MonsterBasic_Melee : State
 {
-    [SerializeField]
     private MonsterSM stateManager;
-    private float motionStop;
 
     public MonsterBasic_Melee()
     {
@@ -32,7 +30,6 @@ public class MonsterBasic_Melee : State
         }
 
         cooltime = stateManager.basicData.attackCoolTime;
-        motionStop = stateManager.basicData.motionTime;
         stateManager.animator.Play(stateName);
         foreach(AttackAble attackAble in stateManager.attackAbles)
             attackAble.AttackStart();
@@ -42,11 +39,6 @@ public class MonsterBasic_Melee : State
     public override string StateUpdate()
     {
         cooltime -= Time.deltaTime;
-        motionStop -= Time.deltaTime;
-
-        if (motionStop < 0f)
-            foreach (AttackAble attackAble in stateManager.attackAbles)
-                attackAble.AttackStop();
 
         if (cooltime < 0f)
             return "Chase";

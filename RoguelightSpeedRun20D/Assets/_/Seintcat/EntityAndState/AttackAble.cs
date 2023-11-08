@@ -7,6 +7,8 @@ public abstract class AttackAble : MonoBehaviour
 {
     [SerializeField]
     protected Collider attackTrigger;
+    [SerializeField]
+    protected float attackTime = 1f;
 
     protected Dictionary<GameObject, int> attackedObject = new Dictionary<GameObject, int>();
 
@@ -15,6 +17,7 @@ public abstract class AttackAble : MonoBehaviour
     {
         attackTrigger.enabled = true;
         _AttackStart();
+        Invoke("AttackStop", attackTime);
     }
     
     protected abstract void _AttackStop();

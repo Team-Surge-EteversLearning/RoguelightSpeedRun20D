@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Don't edit this, Copy this!
 public class CopyAbleState : State
 {
     public CopyAbleState()

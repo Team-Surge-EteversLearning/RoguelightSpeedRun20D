@@ -26,6 +26,9 @@ public class MonsterIdleState : State
 
     public override string StateUpdate()
     {
+        if(stateManager.movePoints.Count < 1)
+            return "";
+
         cooltime -= Time.deltaTime;
         if (stateManager.basicData.idleTime > 0f && cooltime < 0f)
             return "Patrol";

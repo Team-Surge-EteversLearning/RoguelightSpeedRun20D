@@ -100,9 +100,9 @@ public class PlayerSM : StateManager
     {
         if(basicWeapon == null || basicArmor == null || basicShoes == null)
         {
-            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon), new WeaponData(10, false, 1, 1.5f));
-            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor), new ArmorData(0, false, 0, 0));
-            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes), new ShoesData(0, 0, 0, 0));
+            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(1, false, 1, 1.5f));
+            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(0, false, 0, 0));
+            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0));
         }
 
         hpNow = PlayerStatsManager.HpMax;

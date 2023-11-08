@@ -22,14 +22,14 @@ public class MonsterBasic_Melee : State
 
     protected override string StateEnter_()
     {
-        //if (stateManager.attackTarget != null)
-        //{
-        //    Vector3 targetPoint = stateManager.attackTarget.transform.position;
-        //    if (!stateManager.basicData.isFly)
-        //        targetPoint.y = stateManager.transform.position.y;
+        if (stateManager.attackTarget != null)
+        {
+            Vector3 targetPoint = stateManager.attackTarget.transform.position;
+            if (!stateManager.basicData.isFly)
+                targetPoint.y = stateManager.transform.position.y;
 
-        //    stateManager.transform.LookAt(targetPoint);
-        //}
+            stateManager.transform.LookAt(targetPoint);
+        }
 
         cooltime = stateManager.basicData.attackCoolTime;
         motionStop = stateManager.basicData.motionTime;
@@ -53,7 +53,7 @@ public class MonsterBasic_Melee : State
 
         if (stateManager.attackTarget != null)
         {
-            Vector3 targetPoint = stateManager.targetPos;
+            Vector3 targetPoint = stateManager.attackTarget.transform.position;
             if (!stateManager.basicData.isFly)
                 targetPoint.y = stateManager.transform.position.y;
 

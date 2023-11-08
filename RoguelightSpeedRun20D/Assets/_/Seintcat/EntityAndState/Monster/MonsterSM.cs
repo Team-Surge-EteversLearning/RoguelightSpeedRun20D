@@ -132,10 +132,14 @@ public abstract class MonsterSM : StateManager, ITargetCatch
 
     protected void GetDamage(int damage)
     {
+        //Debug.LogWarning(damage);
         hpNow -= damage;
 
         if (hpNow < 0)
         {
+            foreach (Collider collider in subBody)
+                collider.enabled = false;
+
             hpNow = 0;
             
             if (eye != null)
@@ -147,7 +151,7 @@ public abstract class MonsterSM : StateManager, ITargetCatch
         }
         else
         {
-            foreach(Collider collider in subBody)
+            foreach (Collider collider in subBody)
                 collider.enabled = false;
 
             if (data.damagedStaggerTime > 0)

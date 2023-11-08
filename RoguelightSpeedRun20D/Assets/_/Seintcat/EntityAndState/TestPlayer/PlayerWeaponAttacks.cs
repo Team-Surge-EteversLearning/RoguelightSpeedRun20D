@@ -43,6 +43,7 @@ public class PlayerWeaponAttacks : AttackAble
 
     protected override int _GetDamage(GameObject obj)
     {
+        //Debug.LogWarning(PlayerStatsManager.PowerWeight);
         return (int)(PlayerStatsManager.PowerWeight * PlayerSM.weaponNow.Damage);
     }
 }

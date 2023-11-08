@@ -26,10 +26,6 @@ public class MonsterDeathState : State
 
     public override string StateUpdate()
     {
-        cooltime -= Time.deltaTime;
-        if (cooltime < 0f)
-            stateManager._ResetStateMachine();
-
         return "";
     }
 

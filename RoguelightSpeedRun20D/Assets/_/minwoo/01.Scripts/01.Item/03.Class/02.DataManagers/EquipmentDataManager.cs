@@ -26,13 +26,14 @@ public class EquipmentDataManager : IProductMaker
     {
         sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
         sql.Open();
-        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, Weapon.damage, Weapon.isRangeAttack, Weapon.size, Weapon.coolTime FROM item JOIN Weapon ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
+        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, EquipmentBasic.modelIndex, Weapon.damage, Weapon.isRangeAttack, Weapon.size, Weapon.coolTime FROM item JOIN Weapon ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
 
         while (sql.read && sql.dataReader.Read())
         {
             string currentName = sql.dataReader.GetValue(0).ToString();
-            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon);
-            WeaponData weaponData = new WeaponData(sql.dataReader.GetInt32(4), Convert.ToBoolean(sql.dataReader.GetInt32(5)), sql.dataReader.GetInt32(6), sql.dataReader.GetFloat(7));
+
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon, sql.dataReader.GetInt32(4));
+            WeaponData weaponData = new WeaponData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
             unlocks.Add(currentName, basicEquipments);
             weaponBasicTable.Add(currentName, weaponData);
@@ -44,13 +45,13 @@ public class EquipmentDataManager : IProductMaker
     {
         sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
         sql.Open();
-        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, Armor.maxHp, Armor.trapAvoid, Armor.maxMana, Armor.manaRegen FROM item JOIN Armor ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
+        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, EquipmentBasic.modelIndex, Armor.maxHp, Armor.trapAvoid, Armor.maxMana, Armor.manaRegen FROM item JOIN Armor ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
 
         while (sql.read && sql.dataReader.Read())
         {
             string currentName = sql.dataReader.GetValue(0).ToString();
-            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon);
-            ArmorData armorData = new ArmorData(sql.dataReader.GetInt32(4), Convert.ToBoolean(sql.dataReader.GetInt32(5)), sql.dataReader.GetInt32(6), sql.dataReader.GetFloat(7));
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon, sql.dataReader.GetInt32(4));
+            ArmorData armorData = new ArmorData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
             locks.Add(currentName, basicEquipments); 
             armorBasicTable.Add(currentName, armorData);
@@ -62,13 +63,13 @@ public class EquipmentDataManager : IProductMaker
     {
         sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
         sql.Open();
-        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, Shoes.maxHp, Shoes.speed, Shoes.maxStamina, Shoes.staminaRegen FROM item JOIN Weapon ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
+        sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, EquipmentBasic.modelIndex, Shoes.maxHp, Shoes.speed, Shoes.maxStamina, Shoes.staminaRegen FROM item JOIN Weapon ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
 
         while (sql.read && sql.dataReader.Read())
         {
             string currentName = sql.dataReader.GetValue(0).ToString();
-            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon);
-            ShoesData shoesData = new ShoesData(sql.dataReader.GetInt32(4), sql.dataReader.GetFloat(5), sql.dataReader.GetInt32(6), sql.dataReader.GetFloat(7));
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon, sql.dataReader.GetInt32(4));
+            ShoesData shoesData = new ShoesData(sql.dataReader.GetInt32(5), sql.dataReader.GetFloat(6), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
             locks.Add(currentName, basicEquipments);
             shoesBasicTable.Add(currentName, shoesData);

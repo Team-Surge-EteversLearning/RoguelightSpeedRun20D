@@ -7,16 +7,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New RoomData", menuName = "Room Data",order = int.MinValue)]
 public class DungeonBundleData : ScriptableObject
 {
-    public List<StartRoomData> startRoomDatas;
-    public List<NormalRoomData> normalRoomDatas;
+    public static DungeonBundleData dungeonBundleData;
+    
+    public List<StartRoomData> startRoomPresets;
+    public List<NormalRoomData> normalRoomPresets;
     public List<ShopRoomData> shopRoomPresets;
     public List<BossRoomData> bossRoomPresets;
     
     public GameObject doorPresets;
     public GameObject wall;
+    public GameObject stair;
     
-    public Vector3 bundleScale;
-    public Vector3 dungeonPresetScale;
-    public int maxRoomNum;
-
+    public int roomCount = 10;
+    public int roomInFloor;
+    public float floorHeight = 10;
+    public float roomDistance = 30;
 }

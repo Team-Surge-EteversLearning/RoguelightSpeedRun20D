@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102740e853cdb42c787605741dc1438b, type: 3}
   m_Name: Room Datas
   m_EditorClassIdentifier: 
-  startRoomDatas:
+  startRoomPresets:
   - roomPrefab: {fileID: 5490829892222806828, guid: 0b4608fb679e54663b50d47a5fc6c1dc, type: 3}
     boxLocationList: []
     monsterLocationList: []
@@ -25,7 +25,7 @@ MonoBehaviour:
     trapLocationList: []
     monsterSpawnPool: []
     trapSpawnPool: []
-  normalRoomDatas:
+  normalRoomPresets:
   - roomPrefab: {fileID: 3492190888458431744, guid: a991a44b442984b7c8cd80b895ae693c, type: 3}
     boxLocationList: []
     monsterLocationList: []
@@ -100,8 +100,10 @@ MonoBehaviour:
     trapLocationList: []
     monsterSpawnPool: []
     trapSpawnPool: []
-  doorPresets: {fileID: 100000, guid: 4aa5a7ef56dd26f4d8cdad18e6dd51d2, type: 3}
+  doorPresets: {fileID: 7561981834410391685, guid: 3c52630cab5074c41b03293412a6bfd3, type: 3}
   wall: {fileID: 7574105056553344709, guid: 9e2ef0d5cdc8d4006a4455d10acef99e, type: 3}
-  bundleScale: {x: 205, y: 0, z: 205}
-  dungeonPresetScale: {x: 20.5, y: 0, z: 20.5}
-  maxRoomNum: 10
+  stair: {fileID: 3944323598870722307, guid: f28786878df5f49938a57886084cb469, type: 3}
+  roomCount: 14
+  roomInFloor: 5
+  floorHeight: 4.5
+  roomDistance: 20.58

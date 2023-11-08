@@ -22,39 +22,44 @@ public abstract class MonsterSM : StateManager, ITargetCatch
     {
         get
         {
-            if (!patrolForward)
-                patrolIndex--;
-            else
-                patrolIndex++;
-
-            switch (data.patrolMode)
+            if (patrolMoved)
             {
-                case PatrolMode.Line:
-                    if (patrolIndex < 0)
-                    {
-                        patrolIndex = 1;
-                        patrolForward = true;
-                    }
-                    else if (patrolIndex >= movePoints.Count)
-                    {
-                        patrolIndex = movePoints.Count - 2;
-                        patrolForward = false;
-                    }
-                    break;
+                patrolMoved = false;
 
-                case PatrolMode.Circle:
-                    if (patrolIndex >= movePoints.Count)
-                        patrolIndex = 0;
-                    break;
+                if (!patrolForward)
+                    patrolIndex--;
+                else
+                    patrolIndex++;
 
-                case PatrolMode.Random:
-                    patrolIndex = Random.Range(0, movePoints.Count);
-                    break;
+                switch (data.patrolMode)
+                {
+                    case PatrolMode.Line:
+                        if (patrolIndex < 0)
+                        {
+                            patrolIndex = 1;
+                            patrolForward = true;
+                        }
+                        else if (patrolIndex >= movePoints.Count)
+                        {
+                            patrolIndex = movePoints.Count - 2;
+                            patrolForward = false;
+                        }
+                        break;
 
-                default:
-                    break;
+                    case PatrolMode.Circle:
+                        if (patrolIndex >= movePoints.Count)
+                            patrolIndex = 0;
+                        break;
+
+                    case PatrolMode.Random:
+                        patrolIndex = Random.Range(0, movePoints.Count);
+                        break;
+
+                    default:
+                        break;
+                }
             }
-            return movePoints[patrolIndex++].position;
+            return movePoints[patrolIndex].position;
         }
     }
 
@@ -66,6 +71,7 @@ public abstract class MonsterSM : StateManager, ITargetCatch
     private int hpNow;
     private int patrolIndex = 0;
     private bool patrolForward = true;
+    private bool patrolMoved = false;
 
     protected MonsterIdleState monsterIdleState => new MonsterIdleState();
     protected MonsterDamageState monsterDamageState => new MonsterDamageState();
@@ -96,13 +102,22 @@ public abstract class MonsterSM : StateManager, ITargetCatch
             eye.SetActive(true);
     }
 
+    private void Update()
+    {
+        ManagerUpdate();
+    }
+
     private void FixedUpdate()
     {
+        if (_rigidbody.isKinematic)
+            return;
+
+        _rigidbody.velocity *= (1 - Time.fixedDeltaTime);
+
         if (mainState.stateName == monsterPatrolState.stateName ||
-            mainState.stateName == "Chace")
+            mainState.stateName == "Chase")
         {
-            _rigidbody.velocity *= (1 - Time.fixedDeltaTime);
-            _rigidbody.AddForce(transform.forward * Time.fixedDeltaTime * data.moveSpeed, ForceMode.VelocityChange);
+            _rigidbody.AddForce(transform.forward * Time.fixedDeltaTime * (mainState.stateName == "Chase" ? data.chaseSpeed : data.moveSpeed), ForceMode.VelocityChange);
             _FixedUpdate();
         }
     }
@@ -132,7 +147,6 @@ public abstract class MonsterSM : StateManager, ITargetCatch
         }
         else
         {
-            mainBody.enabled = false;
             foreach(Collider collider in subBody)
                 collider.enabled = false;
 
@@ -162,39 +176,7 @@ public abstract class MonsterSM : StateManager, ITargetCatch
 
     public Transform NextPatrol()
     {
-        if (!patrolForward)
-            patrolIndex--;
-        else
-            patrolIndex++;
-
-        switch (data.patrolMode)
-        {
-            case PatrolMode.Line:
-                if (patrolIndex < 0)
-                {
-                    patrolIndex = 1;
-                    patrolForward = true;
-                }
-                else if (patrolIndex >= movePoints.Count)
-                {
-                    patrolIndex = movePoints.Count - 2;
-                    patrolForward = false;
-                }
-                break;
-
-            case PatrolMode.Circle:
-                if (patrolIndex >= movePoints.Count)
-                    patrolIndex = 0;
-                break;
-
-            case PatrolMode.Random:
-                patrolIndex = Random.Range(0, movePoints.Count);
-                break;
-
-            default:
-                break;
-        }
-
+        patrolMoved = true;
         return movePoints[patrolIndex];
     }
 }

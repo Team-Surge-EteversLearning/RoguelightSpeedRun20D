@@ -13,11 +13,13 @@ public class MonsterData : ScriptableObject
     public int hpMax;
     [Header("Attack")]
     public int attackPower;
+    public float motionTime;
     public float attackCoolTime;
     public float attackRange;
     [Header("Patrol")]
-    public float moveSpeed;
     public float idleTime;
+    public float moveSpeed;
+    public float chaseSpeed;
     public bool isFly;
     public PatrolMode patrolMode;
     [Header("Damage")]

@@ -30,6 +30,15 @@ public class MonsterDamageState : State
         if(cooltime < 0f)
             return "Idle";
 
+        if (stateManager.attackTarget != null)
+        {
+            Vector3 targetPoint = stateManager.attackTarget.transform.position;
+            if (!stateManager.basicData.isFly)
+                targetPoint.y = stateManager.transform.position.y;
+
+            stateManager.transform.LookAt(targetPoint);
+        }
+
         return "";
     }
 

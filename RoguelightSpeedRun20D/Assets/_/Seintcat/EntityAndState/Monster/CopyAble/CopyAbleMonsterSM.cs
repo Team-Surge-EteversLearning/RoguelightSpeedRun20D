@@ -29,7 +29,7 @@ public class CopyAbleMonsterSM : MonsterSM
     // Update is called once per frame
     void Update()
     {
-        ManagerUpdate();
+
     }
 
     protected override void _FixedUpdate()

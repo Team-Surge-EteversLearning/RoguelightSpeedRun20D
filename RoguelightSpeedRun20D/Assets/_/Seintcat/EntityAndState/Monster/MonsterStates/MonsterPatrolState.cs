@@ -21,15 +21,14 @@ public class MonsterPatrolState : State
 
     protected override string StateEnter_()
     {
+        moveTarget = stateManager.NextPatrol();
+
         stateManager.animator.Play(stateName);
         return "";  
     }
 
     public override string StateUpdate()
     {
-        if (moveTarget == null)
-            moveTarget = stateManager.NextPatrol();
-
         Vector3 targetPoint = moveTarget.position;
         if (!stateManager.basicData.isFly)
             targetPoint.y = stateManager.transform.position.y;

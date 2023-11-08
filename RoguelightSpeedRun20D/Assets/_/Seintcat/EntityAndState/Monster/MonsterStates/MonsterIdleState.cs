@@ -30,7 +30,6 @@ public class MonsterIdleState : State
         if (stateManager.basicData.idleTime > 0f && cooltime < 0f)
             return "Patrol";
 
-
         Vector3 targetPoint = stateManager.targetPos;
         if (!stateManager.basicData.isFly)
             targetPoint.y = stateManager.transform.position.y;

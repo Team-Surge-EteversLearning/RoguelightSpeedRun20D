@@ -7,6 +7,12 @@ public class TriggerEyeOnlyFindPlayer : MonoBehaviour
     [SerializeField]
     private StateManager stateManager;
 
+    private void Update()
+    {
+        //transform.position = stateManager.transform.position;
+        //transform.rotation = stateManager.transform.rotation;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "PlayerBody")

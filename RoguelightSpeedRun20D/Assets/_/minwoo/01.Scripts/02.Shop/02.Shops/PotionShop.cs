@@ -31,6 +31,5 @@ public class PotionShop : Shop
         //products.Add(new ShopProduct(new Weapon("test", new BasicEquipments(0,0,0,EquipmentType.Weapon), new WeaponData(0,true,0,0))));
          
         SettingShopUI();
-        OpenShop();
     }
 }

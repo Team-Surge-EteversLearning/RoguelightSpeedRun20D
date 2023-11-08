@@ -26,6 +26,16 @@ public class DungeonNode
 
 public class Dungeon : IEnumerable<DungeonNode>
 {
+    public DungeonNode Prev {get; set;}
+    public DungeonNode Current 
+    {
+        get => Current;
+        set
+        {
+            Prev = Current;
+            Current = value;
+        }
+    }
     public DungeonNode Start;
     private List<DungeonNode> nodes = new List<DungeonNode>();
     public DungeonNode End { get; private set; }
@@ -110,10 +120,8 @@ public class Dungeon : IEnumerable<DungeonNode>
                         selectedNode.Back = node;
                 }, () => selectedNode.Position + new Vector3Int(0, 0, -1))
             };
-
                 // Shuffle the list
                 directions = directions.OrderBy(x => random.Next()).ToList();
-
                 // Try to add the node in a random direction
                 foreach (var direction in directions)
                 {
@@ -173,6 +181,7 @@ public class Dungeon : IEnumerable<DungeonNode>
         }
         // Set the End node to the one with the maximum DistanceFromStart, and the most recently added if there are multiple
         End = nodes.Where(n => n.Position.y == floor).OrderByDescending(n => n.DistanceFromStart).FirstOrDefault();
+        Current = Starts[0];
     }
 
 

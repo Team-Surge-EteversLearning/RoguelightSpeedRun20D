@@ -31,15 +31,6 @@ public class EquipmentDataManager : IProductMaker
         while (sql.read && sql.dataReader.Read())
         {
             string currentName = sql.dataReader.GetValue(0).ToString();
-            int value1 = sql.dataReader.GetInt32(1);
-            int value2 = sql.dataReader.GetInt32(2);
-            int value3 = sql.dataReader.GetInt32(3);
-            int value4 = sql.dataReader.GetInt32(4);
-
-            Debug.Log("Value 1: " + value1);
-            Debug.Log("Value 2: " + value2);
-            Debug.Log("Value 3: " + value3);
-            Debug.Log("Value 4: " + value4);
 
             BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon, sql.dataReader.GetInt32(4));
             WeaponData weaponData = new WeaponData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));

@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 using static UnityEditor.Progress;
 
 [Serializable]
@@ -68,8 +69,8 @@ public class ShopUI
         else if (product.GetType() == typeof(Useable))
         {
             Useable useable = (Useable)product;
-            productButton.GetComponentInChildren<Text>().text = useable.Quantity.ToString();
-            productButton.onClick.AddListener(() => productButton.GetComponentInChildren<Text>().text = useable.Quantity.ToString());
+            productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString();
+            productButton.onClick.AddListener(() => productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString());
             Debug.Log(useable.ItemCode.ToString());
             return useable.ItemCode.ToString();
         }

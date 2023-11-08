@@ -38,4 +38,4 @@ MonoBehaviour:
   - name: RandomSkillBook
     icon: {fileID: 21300000, guid: 8a0d6cc1670564442ae8718c2fa9016a, type: 3}
   - name: Default
-    icon: {fileID: 21300000, guid: 7ec7cbffb58f0104baf76f718e07cd9a, type: 3}
+    icon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}

@@ -18,6 +18,8 @@ public class Weapon : Equipment
         this.isRangeAttack = data.IsRangeAttack;
         this.size = data.Size;
         this.cooltime = data.Cooltime;
+        this.ModelIndex = basicData.ModelIndex;
+
     }
 
     public int Damage { get => damage; set => damage = value; }

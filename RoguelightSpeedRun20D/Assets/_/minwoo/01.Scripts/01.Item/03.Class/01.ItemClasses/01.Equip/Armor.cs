@@ -15,6 +15,7 @@ public class Armor : Equipment
         this.TrapAvoid = data.TrapAvoid;
         this.MaxMana = data.MaxMana;
         this.ManaRegen = data.ManaRegen;
+        this.ModelIndex = basicData.ModelIndex;
     }
 
     public int MaxHp { get => maxHp; set => maxHp = value; }

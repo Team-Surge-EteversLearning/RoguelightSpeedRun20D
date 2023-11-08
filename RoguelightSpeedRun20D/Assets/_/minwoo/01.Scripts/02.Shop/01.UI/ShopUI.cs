@@ -37,7 +37,7 @@ public class ShopUI
     public ShopUI(Button productButton)
     {
         this.ProductButton = productButton;
-        this.ProductImage = productButton.GetComponent<Image>();
+        this.ProductImage = productButton.GetComponentsInChildren<Image>()[1];
     }
 
     private void CashCheckAndBuy()
@@ -62,6 +62,7 @@ public class ShopUI
         if (equipTypes.Contains(product.GetType()))
         {
             Equipment equipment = (Equipment)product;
+            Debug.Log(equipment.Name);
             return equipment.Name;
         }
         else if (product.GetType() == typeof(Useable))
@@ -69,11 +70,13 @@ public class ShopUI
             Useable useable = (Useable)product;
             productButton.GetComponentInChildren<Text>().text = useable.Quantity.ToString();
             productButton.onClick.AddListener(() => productButton.GetComponentInChildren<Text>().text = useable.Quantity.ToString());
+            Debug.Log(useable.ItemCode.ToString());
             return useable.ItemCode.ToString();
         }
         else if (statTypes.Contains(product.GetType()))
         {
             Stat stat = (Stat)product;
+            Debug.Log(stat.Name);
             return stat.Name;
         }
         else

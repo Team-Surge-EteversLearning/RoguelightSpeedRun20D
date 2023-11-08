@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -9,28 +10,38 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        DungeonManager.OnDoorToggle += OnToggleDoor;
+        DungeonManager.OnDoorToggle += ToggleDoor;
+
     }
-    
-    private void Update()
+
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        animator.Play("Open");
+    }
+
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.A))
+    //     {
+    //         animator.Play("Open");
+    //     }
+    //
+    //     if (Input.GetKeyDown(KeyCode.D))
+    //     {
+    //         animator.Play("Close");
+    //
+    //     }
+    // }
+
+    public void ToggleDoor(bool clear)
+    {
+        if (clear)
         {
             animator.Play("Open");
         }
-
-        if (Input.GetKeyDown(KeyCode.A))
+        else
         {
             animator.Play("Close");
         }
-
-    }
-    
-    public void OnToggleDoor(bool clear)
-    {
-        if (clear)
-            animator.Play("OpenAnime");
-        else
-            animator.Play("CloseAnime");
     }
 }

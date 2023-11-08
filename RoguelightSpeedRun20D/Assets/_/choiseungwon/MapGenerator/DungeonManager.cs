@@ -29,15 +29,17 @@ public class DungeonManager : MonoBehaviour
     
     public delegate void DoorToggleDelegate(bool clear);
     public static event DoorToggleDelegate OnDoorToggle;
-    
+
+
     [FormerlySerializedAs("testFlag")] public bool bossRoomClear;
     [ContextMenu("testClear")]
     
-    private void DoorOpen()
-    {   
-        OnDoorToggle?.Invoke(bossRoomClear);
-        bossRoomClear = !bossRoomClear;
+
+    public static void ToggleDoor(bool isClear)
+    {
+        OnDoorToggle?.Invoke(isClear);
     }
+
     
     private void Awake()
     {

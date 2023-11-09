@@ -104,7 +104,7 @@ public class PlayerSM : StateManager
     {
         if(basicWeapon == null || basicArmor == null || basicShoes == null)
         {
-            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(1, false, 1, 1.5f));
+            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(10, false, 1, 1.5f));
             basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(0, false, 0, 0));
             basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0));
         }
@@ -113,8 +113,8 @@ public class PlayerSM : StateManager
         armorNow = basicArmor;
         shoesNow = basicShoes;
 
-        hpNow = PlayerStatsManager.HpMax;
-        staminaNow = PlayerStatsManager.StaminaMax;
-        manaNow = PlayerStatsManager.ManaMax;
+        hpNow = PlayerStatsManager.HpMax + armorNow.MaxHp + shoesNow.MaxHp;
+        staminaNow = PlayerStatsManager.StaminaMax + shoesNow.MaxStamina;
+        manaNow = PlayerStatsManager.ManaMax + armorNow.MaxMana;
     }
 }

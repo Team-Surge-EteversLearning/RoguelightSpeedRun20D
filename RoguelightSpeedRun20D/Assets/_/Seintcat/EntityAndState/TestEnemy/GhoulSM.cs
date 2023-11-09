@@ -62,8 +62,9 @@ public class GhoulSM : MonsterSM
             {
                 ChangeState("Chase");
             }
+            return;
         }
-
+        attackTarget = null;
     }
 
     public override void Interrupt(string stateName)

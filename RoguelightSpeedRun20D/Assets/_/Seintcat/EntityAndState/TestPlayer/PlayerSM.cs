@@ -91,7 +91,8 @@ public class PlayerSM : StateManager
             hpNow -= damage;
             if (hpNow < 0)
             {
-                animator.Play("Death");
+                animator.Play("Death", 0);
+                animator.Play("Death", 1);
                 enabled = false;
             }
             else
@@ -108,12 +109,12 @@ public class PlayerSM : StateManager
             basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0));
         }
 
-        hpNow = PlayerStatsManager.HpMax;
-        staminaNow = PlayerStatsManager.StaminaMax;
-        manaNow = PlayerStatsManager.ManaMax;
-
         weaponNow = basicWeapon;
         armorNow = basicArmor;
         shoesNow = basicShoes;
+
+        hpNow = PlayerStatsManager.HpMax;
+        staminaNow = PlayerStatsManager.StaminaMax;
+        manaNow = PlayerStatsManager.ManaMax;
     }
 }

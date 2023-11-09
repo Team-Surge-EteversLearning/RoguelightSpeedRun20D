@@ -78,6 +78,12 @@ public class GhoulSM : MonsterSM
         if (otherAttack != null && otherAttack.gameObject.tag == "PlayerAttack")
         {
             GetDamage(otherAttack.GetDamage(gameObject), other);
+            if (mainBody.Raycast(new Ray(other.transform.position, other.transform.forward), out RaycastHit hit, 0.1f))
+            {
+                StateManager stateManager = hit.collider.gameObject.GetComponent<StateManager>();
+                if (stateManager != null)
+                    attackTarget = stateManager.gameObject;
+            }
         }
     }
 

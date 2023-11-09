@@ -134,12 +134,6 @@ public abstract class MonsterSM : StateManager, ITargetCatch
     {
         //Debug.LogWarning(damage);
         hpNow -= damage;
-        if(mainBody.Raycast(new Ray(other.transform.position, other.transform.forward), out RaycastHit hit, 0.1f))
-        {
-            StateManager stateManager = hit.collider.gameObject.GetComponent<StateManager>();
-            if (stateManager != null)
-                attackTarget = stateManager.gameObject;
-        }
 
         if (hpNow < 0)
         {

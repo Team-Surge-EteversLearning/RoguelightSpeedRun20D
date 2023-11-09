@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterIdleState : State
 {
     private MonsterSM stateManager;
+    private Quaternion startRotation;
 
     public MonsterIdleState()
     {
@@ -15,6 +16,7 @@ public class MonsterIdleState : State
     public override void Initialize(GameObject managerObject)
     {
         stateManager = managerObject.GetComponent<MonsterSM>();
+        startRotation = stateManager.transform.rotation;
     }
 
     protected override string StateEnter_()
@@ -38,7 +40,7 @@ public class MonsterIdleState : State
             targetPoint.y = stateManager.transform.position.y;
 
         stateManager.transform.rotation = Quaternion.Lerp
-            (stateManager.transform.rotation,
+            (startRotation,
             Quaternion.LookRotation(targetPoint - stateManager.transform.position, Vector3.up),
             (stateManager.basicData.idleTime - cooltime) / stateManager.basicData.idleTime);
 

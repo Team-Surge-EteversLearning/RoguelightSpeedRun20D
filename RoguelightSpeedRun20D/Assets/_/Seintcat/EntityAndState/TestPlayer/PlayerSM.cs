@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerSM : StateManager
@@ -36,6 +37,8 @@ public class PlayerSM : StateManager
     public static int hpNow { get; private set; }
     public static float staminaNow { get; private set; }
     public static int manaNow { get; private set; }
+
+    
 
     private void Awake()
     {

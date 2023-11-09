@@ -689,7 +689,7 @@ MonoBehaviour:
   mainBody: {fileID: 5362527560998955399}
   subBody: []
   attackAbles:
-  - {fileID: 3067525207951013151}
+  - {fileID: 0}
   - {fileID: 8777506356544088512}
   movePoints:
   - {fileID: 9028026749179079051}
@@ -3175,6 +3175,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6442066284331494604}
     m_Modifications:
+    - target: {fileID: 409331110966770340, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
+      propertyPath: maxHitCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 409331110966770340, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
+      propertyPath: stateManager
+      value: 
+      objectReference: {fileID: -1845829830012892816}
+    - target: {fileID: 409331110966770340, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
+      propertyPath: projectileSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2741558653751505459, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
       propertyPath: m_Name
       value: Bullet
@@ -3225,13 +3237,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2741558653751505459, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3067525207951013151}
-    - targetCorrespondingSourceObject: {fileID: 2741558653751505459, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8526575831476800449}
-    - targetCorrespondingSourceObject: {fileID: 2741558653751505459, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1728962441785473463}
+      addedObject: {fileID: 7358698158643197129}
   m_SourcePrefab: {fileID: 100100000, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
 --- !u!4 &2597763790716835597 stripped
 Transform:
@@ -3243,45 +3249,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2741558653751505459, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
   m_PrefabInstance: {fileID: 1531818749568681189}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3067525207951013151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3695735763574634198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6023d31818fb3b04ea399f678a9cdac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackTrigger: {fileID: 8526575831476800449}
-  attackTime: 1
-  stateManager: {fileID: -1845829830012892816}
-  maxHitCount: 1
-  projectileSpeed: 10
---- !u!65 &8526575831476800449
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3695735763574634198}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1728962441785473463
+--- !u!54 &7358698158643197129
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -22,8 +22,8 @@ public class MonsterDamageState : State
     {
         cooltime = stateManager.basicData.damagedStaggerTime;
         stateManager.animator.Play(stateName);
-        if(stateManager.attackTarget != null)
-            stateManager.transform.LookAt(stateManager.attackTarget.transform.position);
+        if(PlayerSM.playerObj != null)
+            stateManager.transform.LookAt(PlayerSM.playerObj.transform.position);
         return "";
     }
 

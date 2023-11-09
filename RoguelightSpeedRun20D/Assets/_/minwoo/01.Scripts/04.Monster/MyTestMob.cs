@@ -17,8 +17,8 @@ public class MyTestMob : MonsterSM
         // make custom states
         // make basic states
         _monsterBattleStates.Add(new MonsterBasic_Chase());
-        //_monsterBattleStates.Add(new MonsterBasic_Range());
-        _monsterBattleStates.Add(new MonsterBasic_Melee());
+        _monsterBattleStates.Add(new MonsterBasic_Range());
+        //_monsterBattleStates.Add(new MonsterBasic_Melee());
         base.MakeState();
     }
 
@@ -45,7 +45,9 @@ public class MyTestMob : MonsterSM
             {
                 ChangeState("Chase");
             }
+            return;
         }
+        attackTarget = null;
     }
 
     public override void Interrupt(string stateName)
@@ -76,5 +78,10 @@ public class MyTestMob : MonsterSM
     protected override void ResetStateMachine()
     {
 
+    }
+    private void OnFire()
+    {
+        attackAbles[0].gameObject.SetActive(true);
+        attackAbles[0].gameObject.GetComponent<AttackAble>().AttackStart();
     }
 }

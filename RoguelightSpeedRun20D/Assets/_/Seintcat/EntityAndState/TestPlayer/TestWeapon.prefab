@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4315461222553232}
   - component: {fileID: 4208549656634821306}
   - component: {fileID: 7177586369696253292}
-  - component: {fileID: 443695171286449525}
+  - component: {fileID: 6177852609674527143}
   m_Layer: 0
   m_Name: TestWeapon
   m_TagString: PlayerAttack
@@ -69,9 +69,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 4208549656634821306}
+  attackTime: 1
   projectile: {fileID: 0}
   projectileSpawnPoint: {fileID: 0}
---- !u!114 &443695171286449525
+--- !u!114 &6177852609674527143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,7 +81,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1347993628005170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75b5214f519c704da24db9d97be0fd4, type: 3}
+  m_Script: {fileID: 11500000, guid: baa60fa8bd3f240929acd88f61ebcbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materials:

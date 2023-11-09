@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9c90dafe5a2310c40b7102fbcc05f67b
+guid: d1b2a85e71b56e548bda97f53cb9ff45
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -242,7 +242,7 @@ ModelImporter:
     second: Wolf
   - first:
       74: 7400000
-    second: attack2
+    second: run
   - first:
       95: 9500000
     second: //RootNode
@@ -283,11 +283,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: attack2
+      name: run
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -449,403 +449,203 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human:
-    - boneName: WolfHub003
-      humanName: Hips
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLeg1
-      humanName: LeftUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLeg1
-      humanName: RightUpperLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLeg2
-      humanName: LeftLowerLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLeg2
-      humanName: RightLowerLeg
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLeg3
-      humanName: LeftFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLeg3
-      humanName: RightFoot
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfSpine2
-      humanName: Spine
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfSpine3
-      humanName: Chest
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfSpine2 1
-      humanName: Neck
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfHub005
-      humanName: Head
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLeg1 1
-      humanName: LeftShoulder
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLeg1 1
-      humanName: RightShoulder
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLeg2 1
-      humanName: LeftUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLeg2 1
-      humanName: RightUpperArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLeg3 1
-      humanName: LeftLowerArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLeg3 1
-      humanName: RightLowerArm
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLegAnkle 1
-      humanName: LeftHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLegAnkle 1
-      humanName: RightHand
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfLLegAnkle
-      humanName: LeftToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfRLegAnkle
-      humanName: RightToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfHub005Bone001
-      humanName: LeftEye
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfHub005Bone002
-      humanName: RightEye
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfHub005Bone003
-      humanName: Jaw
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: WolfHub004
-      humanName: UpperChest
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
+    human: []
     skeleton:
-    - name: Wolf_attack2(Clone)
+    - name: Wolf_run(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Wolf
-      parentName: Wolf_attack2(Clone)
+      parentName: Wolf_run(Clone)
       position: {x: 0.000000007482031, y: 0.02546679, z: -0.003076944}
       rotation: {x: 0.5010109, y: -0.49898714, z: -0.50101084, w: 0.49898708}
       scale: {x: 2.54, y: 2.54, z: 2.54}
     - name: WolfLLegPlatform
-      parentName: Wolf_attack2(Clone)
-      position: {x: -0.2865434, y: -0.0000001492148, z: -1.268501}
-      rotation: {x: 0.49999994, y: -0.49999994, z: -0.50000006, w: 0.50000006}
-      scale: {x: 2.54, y: 2.54, z: 2.54}
+      parentName: Wolf_run(Clone)
+      position: {x: -0.31104422, y: 0.18905212, z: -1.9152501}
+      rotation: {x: 0.5685226, y: -0.4204546, z: -0.5685225, w: 0.42045468}
+      scale: {x: 2.5399997, y: 2.5399997, z: 2.54}
     - name: WolfRLegPlatform
-      parentName: Wolf_attack2(Clone)
-      position: {x: 0.2865438, y: -0.00000014921483, z: -1.268501}
-      rotation: {x: 0.49999994, y: -0.49999994, z: -0.50000006, w: 0.50000006}
+      parentName: Wolf_run(Clone)
+      position: {x: 0.3306535, y: 0.2511611, z: -1.2706743}
+      rotation: {x: -0.5223724, y: 0.47657818, z: 0.52237284, w: -0.47657844}
       scale: {x: 2.54, y: 2.54, z: 2.54}
     - name: WolfLLegPlatform 1
-      parentName: Wolf_attack2(Clone)
-      position: {x: -0.31855983, y: 0.000000028060064, z: 0.36389697}
-      rotation: {x: 0.49999994, y: -0.49999994, z: -0.50000006, w: 0.50000006}
-      scale: {x: 2.54, y: 2.54, z: 2.54}
+      parentName: Wolf_run(Clone)
+      position: {x: -0.2563443, y: 0.20834279, z: 0.74715483}
+      rotation: {x: 0.4953243, y: -0.50463235, z: -0.4953243, w: 0.50463235}
+      scale: {x: 2.5399997, y: 2.5399997, z: 2.54}
     - name: WolfRLegPlatform 1
-      parentName: Wolf_attack2(Clone)
-      position: {x: 0.31855965, y: 0.000000028060047, z: 0.36389706}
-      rotation: {x: 0.49999994, y: -0.49999994, z: -0.50000006, w: 0.50000006}
-      scale: {x: 2.54, y: 2.54, z: 2.54}
+      parentName: Wolf_run(Clone)
+      position: {x: 0.2193125, y: 0.021113094, z: 1.1902635}
+      rotation: {x: -0.5004401, y: 0.4994963, z: 0.50050324, w: -0.49955943}
+      scale: {x: 2.5400002, y: 2.5400007, z: 2.5400002}
     - name: Wolf 1
-      parentName: Wolf_attack2(Clone)
+      parentName: Wolf_run(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
       scale: {x: 2.54, y: 2.54, z: 2.54}
     - name: WolfHub003
-      parentName: Wolf_attack2(Clone)
-      position: {x: 1.270564e-13, y: 1.4399683, z: 0.013493121}
-      rotation: {x: -0.7070936, y: 0.004321684, z: 0.70709366, w: -0.004321778}
-      scale: {x: 2.54, y: 2.54, z: 2.54}
+      parentName: Wolf_run(Clone)
+      position: {x: 0.000000019048704, y: 1.4403942, z: 0.013331234}
+      rotation: {x: 0.7071009, y: -0.0028907997, z: -0.7071009, w: 0.002890695}
+      scale: {x: 2.5399997, y: 2.5400002, z: 2.5399997}
     - name: WolfSpine1
       parentName: WolfHub003
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.000000024913827, y: -0.000000010035731, z: -0.016489021, w: 0.99986404}
-      scale: {x: 1.0000001, y: 1.0000001, z: 1}
+      rotation: {x: 0.0000000041909516, y: 0.000000058367732, z: -0.016498517, w: 0.999864}
+      scale: {x: 0.9999997, y: 0.9999998, z: 1.0000002}
     - name: WolfSpine2
       parentName: WolfSpine1
-      position: {x: -0.16126825, y: 0, z: 0}
-      rotation: {x: 0.000000055858905, y: 0.00000002059848, z: 0.539958, w: 0.841692}
-      scale: {x: 0.99999994, y: 1.0000002, z: 1}
+      position: {x: -0.16126831, y: 0, z: 0}
+      rotation: {x: -0.00000009559788, y: 0.00000005070933, z: 0.54175425, w: 0.840537}
+      scale: {x: 1.0000001, y: 0.9999999, z: 0.99999994}
     - name: WolfSpine3
       parentName: WolfSpine2
-      position: {x: -0.16126826, y: -0.000000038146972, z: 0}
-      rotation: {x: -0.0000000065189583, y: -0.000000036684607, z: 0.124058135, w: 0.992275}
-      scale: {x: 0.99999994, y: 1.0000004, z: 1.0000001}
+      position: {x: -0.16126826, y: 0, z: 0}
+      rotation: {x: 0.00000012665988, y: -4.6566134e-10, z: 0.12406627, w: 0.992274}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000004}
     - name: WolfHub004
       parentName: WolfSpine3
-      position: {x: -0.16126826, y: -0.000000038146972, z: -9.094947e-15}
-      rotation: {x: 0.000000038895763, y: -0.00000003646362, z: 0.049890615, w: 0.9987547}
-      scale: {x: 1, y: 1, z: 0.9999999}
+      position: {x: -0.16126826, y: 0, z: -1.4901161e-10}
+      rotation: {x: -0.00000008940697, y: 0.00000008568168, z: 0.049900196, w: 0.99875426}
+      scale: {x: 1, y: 1.0000001, z: 0.9999996}
     - name: WolfSpine1 1
       parentName: WolfHub004
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.00000017875914, y: -0.0000023877199, z: -0.035682786, w: 0.9993632}
-      scale: {x: 0.99999994, y: 1, z: 1}
+      rotation: {x: 0.000000037252903, y: -0.000000074505806, z: -0.035611786, w: 0.99936575}
+      scale: {x: 1.0000005, y: 1.0000006, z: 1.0000006}
     - name: WolfSpine2 1
       parentName: WolfSpine1 1
-      position: {x: -0.2176883, y: 0, z: 0}
-      rotation: {x: 0.00000006841475, y: -0.00000014374173, z: 0.31659508, w: 0.94856083}
-      scale: {x: 1.0000001, y: 1.0000006, z: 1.0000001}
+      position: {x: -0.2176883, y: 0.000000038146972, z: 0}
+      rotation: {x: 0.000000059604645, y: 0.000000007450581, z: -0.31659517, w: -0.94856083}
+      scale: {x: 0.9999998, y: 0.9999996, z: 0.9999997}
     - name: WolfHub005
       parentName: WolfSpine2 1
-      position: {x: -0.21768837, y: 0.000000019073486, z: -1.4551915e-13}
-      rotation: {x: 0.0000018847319, y: 0.0000015232565, z: 0.18125306, w: 0.9834365}
-      scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
+      position: {x: -0.21768837, y: 0, z: -5.9604643e-10}
+      rotation: {x: -0.000000029802319, y: -0.0000001490116, z: -0.18118314, w: -0.98344934}
+      scale: {x: 0.9999999, y: 1, z: 1.0000004}
     - name: WolfHub005Bone003
       parentName: WolfHub005
-      position: {x: 0.109441906, y: 0.09686848, z: -0.000000002044544}
-      rotation: {x: -0.000000028423589, y: 0.0000000127177415, z: -0.73008424, w: 0.6833572}
-      scale: {x: 0.999999, y: 1, z: 1}
+      position: {x: 0.10944198, y: 0.09686836, z: -0.000000021457671}
+      rotation: {x: 0.000000017474939, y: -0.000000043656023, z: -0.7300842, w: 0.68335724}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999998}
     - name: WolfHub005Bone001
       parentName: WolfHub005
-      position: {x: -0.055555955, y: 0.009262238, z: 0.06252611}
-      rotation: {x: -0.0000000013233914, y: 0.16349126, z: 2.1931386e-10, w: 0.9865448}
-      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
+      position: {x: -0.055555496, y: 0.009262161, z: 0.06252609}
+      rotation: {x: 0.000000023239327, y: 0.1634911, z: 0.000000010109377, w: 0.9865448}
+      scale: {x: 0.9999998, y: 0.99999976, z: 0.9999997}
     - name: WolfHub005Bone002
       parentName: WolfHub005
-      position: {x: -0.0555558, y: 0.009262027, z: -0.06252607}
-      rotation: {x: 0.008125046, y: -0.16328926, z: -0.04902846, w: 0.98532575}
-      scale: {x: 0.9999999, y: 0.9999998, z: 1.0000005}
+      position: {x: -0.05555565, y: 0.009262142, z: -0.06252609}
+      rotation: {x: -0.00000005117899, y: 0.16349123, z: -0.00000004949523, w: -0.9865448}
+      scale: {x: 1, y: 0.99999976, z: 0.9999998}
     - name: WolfLLeg1 1
       parentName: WolfHub004
-      position: {x: -0.18203315, y: 0.14917819, z: 0.12477945}
-      rotation: {x: -0.034658186, y: 0.7953855, z: -0.027710158, w: -0.60447735}
-      scale: {x: 0.9999998, y: 1.0000004, z: 1}
+      position: {x: -0.18203303, y: 0.1491777, z: 0.12477943}
+      rotation: {x: -0.062407926, y: 0.7937072, z: -0.04888716, w: -0.6031121}
+      scale: {x: 0.9999995, y: 1.0000005, z: 0.9999998}
     - name: WolfLLeg2 1
       parentName: WolfLLeg1 1
-      position: {x: -0.22363394, y: 0.000000019073486, z: 0.000000009536743}
-      rotation: {x: 0.07386391, y: 0.12960698, z: -0.029357223, w: 0.9883746}
-      scale: {x: 0.999999, y: 1.0000004, z: 1.0000004}
+      position: {x: -0.22363399, y: 0, z: -0.000000009536743}
+      rotation: {x: 0.0876229, y: 0.1309812, z: -0.02798154, w: 0.98710847}
+      scale: {x: 0.9999992, y: 1.0000014, z: 1.0000004}
     - name: WolfLLeg3 1
       parentName: WolfLLeg2 1
-      position: {x: -0.31711903, y: -0.000008649826, z: -0.000000095367426}
-      rotation: {x: -0.014060247, y: 0.0054751765, z: -0.016378993, w: 0.999752}
-      scale: {x: 1.0000014, y: 0.9999982, z: 1.0000002}
+      position: {x: -0.31711903, y: -0.000008583069, z: -0.00000009059906}
+      rotation: {x: -0.014337604, y: 0.00432184, z: -0.018509232, w: 0.9997165}
+      scale: {x: 0.9999974, y: 1.0000024, z: 1}
     - name: WolfLLegAnkle 1
       parentName: WolfLLeg3 1
-      position: {x: -0.083559416, y: 0.000000009536743, z: 0}
-      rotation: {x: -0.005332788, y: -0.013650586, z: -0.5590829, w: 0.82898223}
-      scale: {x: 1.0000031, y: 0.999998, z: 1.0000005}
+      position: {x: -0.083559394, y: 0.000000019073486, z: 0}
+      rotation: {x: -0.0022181144, y: -0.016169185, z: -0.44280988, w: 0.89646703}
+      scale: {x: 0.99999636, y: 1.0000044, z: 1.0000004}
     - name: WolfRLeg1 1
       parentName: WolfHub004
-      position: {x: -0.18203315, y: 0.14917824, z: -0.12477953}
-      rotation: {x: -0.034656353, y: 0.7953854, z: 0.027708568, w: 0.60447764}
-      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+      position: {x: -0.18203303, y: 0.14917774, z: -0.1247795}
+      rotation: {x: -0.062409006, y: 0.7937071, z: 0.048887603, w: 0.6031122}
+      scale: {x: 1, y: 1.0000007, z: 1.0000005}
     - name: WolfRLeg2 1
       parentName: WolfRLeg1 1
-      position: {x: -0.22363403, y: 0, z: 0}
-      rotation: {x: -0.07386881, y: -0.1296067, z: -0.029357707, w: 0.98837423}
-      scale: {x: 1, y: 1.0000007, z: 1.0000004}
+      position: {x: -0.22363403, y: 0.000000009536743, z: -0.000000009536743}
+      rotation: {x: -0.08762243, y: -0.13098122, z: -0.027981775, w: 0.9871086}
+      scale: {x: 0.9999993, y: 1.0000005, z: 0.9999998}
     - name: WolfRLeg3 1
       parentName: WolfRLeg2 1
-      position: {x: -0.31711906, y: -0.000008659363, z: 0.000000104904174}
-      rotation: {x: 0.014045918, y: -0.005481347, z: -0.016392622, w: 0.9997519}
-      scale: {x: 0.9999997, y: 1.0000007, z: 1.0000002}
+      position: {x: -0.317119, y: -0.000008583069, z: 0.00000012397766}
+      rotation: {x: 0.014337179, y: -0.0043217507, z: -0.01850651, w: 0.99971664}
+      scale: {x: 1.0000036, y: 0.99999803, z: 1.0000006}
     - name: WolfRLegAnkle 1
       parentName: WolfRLeg3 1
-      position: {x: -0.083559416, y: -0.000000009536743, z: 0}
-      rotation: {x: 0.005241072, y: 0.013571858, z: -0.55914676, w: 0.82894105}
-      scale: {x: 0.9999989, y: 1.0000012, z: 1.0000002}
+      position: {x: -0.083559416, y: 0, z: 0}
+      rotation: {x: 0.002217557, y: 0.01617012, z: -0.44275686, w: 0.89649314}
+      scale: {x: 1.0000031, y: 0.99999654, z: 1.0000004}
     - name: WolfLLeg1
       parentName: WolfHub003
-      position: {x: 0.005118866, y: -0.015832406, z: 0.10550794}
-      rotation: {x: 0.76735234, y: -0.6410009, z: -0.015454342, w: -0.007033532}
-      scale: {x: 1.0000001, y: 1.0000007, z: 1.0000001}
+      position: {x: 0.005119209, y: -0.01583233, z: 0.10550799}
+      rotation: {x: -0.7673558, y: 0.64099854, z: 0.015416948, w: 0.0069432575}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000006}
     - name: WolfLLeg2
       parentName: WolfLLeg1
-      position: {x: -0.15913448, y: 0.000000038146972, z: 0}
-      rotation: {x: 0.012017751, y: -0.00046871265, z: 0.3227763, w: 0.94639885}
-      scale: {x: 0.99999917, y: 1.0000007, z: 0.9999999}
+      position: {x: -0.15913448, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.012090192, y: -0.00062746694, z: 0.32076737, w: 0.94708073}
+      scale: {x: 1.0000005, y: 0.9999992, z: 0.9999992}
     - name: WolfLLeg3
       parentName: WolfLLeg2
-      position: {x: -0.27394906, y: -0.0000015640259, z: -0.00000027656554}
-      rotation: {x: 0.0029032633, y: 0.012622748, z: -0.26482326, w: 0.96421003}
-      scale: {x: 0.99999976, y: 1.0000011, z: 0.9999994}
+      position: {x: -0.27394927, y: -0.0000016784668, z: -0.00000030517577}
+      rotation: {x: 0.0028765767, y: 0.013054029, z: -0.26316738, w: 0.9646576}
+      scale: {x: 1.0000039, y: 0.99999887, z: 0.9999989}
     - name: WolfLLegAnkle
       parentName: WolfLLeg3
-      position: {x: -0.16539712, y: 0, z: 0}
-      rotation: {x: -0.003733079, y: -0.0023828177, z: -0.6791032, w: 0.7340295}
-      scale: {x: 0.99999857, y: 1.0000015, z: 1.0000005}
+      position: {x: -0.16539712, y: -0.000000076293944, z: 0}
+      rotation: {x: -0.00379946, y: -0.0029545175, z: -0.67881024, w: 0.734298}
+      scale: {x: 1.0000051, y: 0.99999493, z: 0.9999999}
     - name: Wolf_tail
       parentName: WolfHub003
-      position: {x: 0.08047955, y: -0.055779263, z: -0.000000030511817}
-      rotation: {x: 0.000000021915977, y: 0.000000024281702, z: 0.9835289, w: -0.18075098}
-      scale: {x: 1.0000001, y: 1, z: 1}
+      position: {x: 0.08047939, y: -0.055779226, z: 0.000000014305114}
+      rotation: {x: -0.000000029802319, y: 0.000000013271345, z: 0.98352885, w: -0.18075113}
+      scale: {x: 1.0000001, y: 1.0000002, z: 0.9999999}
     - name: Wolf2
       parentName: Wolf_tail
-      position: {x: -0.048190992, y: 0, z: 0}
-      rotation: {x: 0.000000007521677, y: -0.000000040798266, z: 0.23545215, w: 0.9718859}
-      scale: {x: 1.0000001, y: 0.9999999, z: 0.9999999}
+      position: {x: -0.04819101, y: 0.000000076293944, z: 5.9604643e-10}
+      rotation: {x: -0.00000004201575, y: -0.000000079153686, z: 0.23545197, w: 0.971886}
+      scale: {x: 1, y: 1.0000004, z: 0.99999994}
     - name: Wolf3
       parentName: Wolf2
-      position: {x: -0.14065483, y: 0, z: 0}
-      rotation: {x: 0.000000025686518, y: -0.00000006334306, z: 0.18997496, w: 0.98178893}
-      scale: {x: 1.0000002, y: 1.0000001, z: 0.99999994}
+      position: {x: -0.14065486, y: 0, z: 2.9802322e-10}
+      rotation: {x: -0.000000007917531, y: -0.00000006439674, z: 0.18997508, w: 0.98178893}
+      scale: {x: 1.0000006, y: 1.0000013, z: 1}
     - name: Wolf4
       parentName: Wolf3
-      position: {x: -0.12903379, y: 0, z: 0}
-      rotation: {x: 0.000000009941437, y: -0.000000030067547, z: 0.07103514, w: 0.99747384}
-      scale: {x: 1.0000004, y: 1.0000001, z: 1}
+      position: {x: -0.12903379, y: -0.000000076293944, z: -7.45058e-10}
+      rotation: {x: 0.0000000040291943, y: -0.0000000031265013, z: 0.07103493, w: 0.99747384}
+      scale: {x: 1.0000012, y: 1.0000017, z: 0.9999999}
     - name: WolfTail5
       parentName: Wolf4
-      position: {x: -0.12148732, y: 0, z: 1.8189894e-14}
-      rotation: {x: 0.0000000474524, y: -0.000000014697495, z: -0.12212613, w: 0.9925146}
-      scale: {x: 0.9999998, y: 1.0000002, z: 1}
+      position: {x: -0.12148735, y: 0.000000038146972, z: -2.9802322e-10}
+      rotation: {x: 0.00000011005642, y: 0.000000101865595, z: -0.12212601, w: 0.99251467}
+      scale: {x: 1.0000033, y: 1.000004, z: 0.9999999}
     - name: WolfRLeg1
       parentName: WolfHub003
-      position: {x: 0.0051192855, y: -0.015832366, z: -0.10550796}
-      rotation: {x: 0.767355, y: -0.6409981, z: 0.015444166, w: 0.0070091602}
-      scale: {x: 1.0000002, y: 1, z: 0.9999998}
+      position: {x: 0.005119209, y: -0.01583233, z: -0.105507955}
+      rotation: {x: -0.7673559, y: 0.6409985, z: -0.0154162645, w: -0.0069469092}
+      scale: {x: 0.9999994, y: 0.99999976, z: 1}
     - name: WolfRLeg2
       parentName: WolfRLeg1
-      position: {x: -0.15913448, y: -0.000000019073486, z: 0}
-      rotation: {x: -0.011950454, y: 0.00034048312, z: 0.32277077, w: 0.94640166}
-      scale: {x: 1.0000008, y: 0.9999998, z: 1.0000002}
+      position: {x: -0.15913455, y: 0, z: 0}
+      rotation: {x: -0.01208632, y: 0.00062513613, z: 0.32076776, w: 0.94708055}
+      scale: {x: 0.99999964, y: 1.0000012, z: 0.9999998}
     - name: WolfRLeg3
       parentName: WolfRLeg2
-      position: {x: -0.2739492, y: -0.0000017929077, z: 0.00000027656554}
-      rotation: {x: -0.0031338953, y: -0.013107665, z: -0.2651005, w: 0.96412665}
-      scale: {x: 1.0000023, y: 0.9999996, z: 0.999999}
+      position: {x: -0.27394924, y: -0.0000015258788, z: 0.0000002670288}
+      rotation: {x: -0.0028968283, y: -0.013025006, z: -0.26304337, w: 0.96469176}
+      scale: {x: 0.99999934, y: 1.0000013, z: 0.9999999}
     - name: WolfRLegAnkle
       parentName: WolfRLeg3
-      position: {x: -0.16539712, y: 0.000000038146972, z: 0}
-      rotation: {x: 0.004003019, y: 0.0033062522, z: -0.67876756, w: 0.7343348}
-      scale: {x: 1.0000025, y: 0.9999975, z: 0.9999999}
+      position: {x: -0.16539714, y: -0.000000038146972, z: 0}
+      rotation: {x: 0.0038333102, y: 0.0029530588, z: -0.6789049, w: 0.7342104}
+      scale: {x: 0.99999774, y: 1.0000025, z: 1.0000002}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -860,7 +660,7 @@ ModelImporter:
     skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 3
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0

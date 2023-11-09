@@ -19,20 +19,6 @@ public class Door : MonoBehaviour
         animator.Play("Open");
     }
 
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.A))
-    //     {
-    //         animator.Play("Open");
-    //     }
-    //
-    //     if (Input.GetKeyDown(KeyCode.D))
-    //     {
-    //         animator.Play("Close");
-    //
-    //     }
-    // }
-
     public void ToggleDoor(bool clear)
     {
         if (clear)

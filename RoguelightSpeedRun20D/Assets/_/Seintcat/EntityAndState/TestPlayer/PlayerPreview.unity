@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 25494107}
+  attackTime: 1
   stateManager: {fileID: 723081393}
   maxHitCount: 1
 --- !u!1 &103221027
@@ -2406,6 +2407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 1396394072}
+  attackTime: 1
   stateManager: {fileID: 723081393}
   maxHitCount: 1
 --- !u!65 &1396394072
@@ -4864,6 +4866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 4038571426480792}
+  attackTime: 1
   stateManager: {fileID: 8816209093926902533}
   maxHitCount: 1
 --- !u!4 &4040132919171183
@@ -5605,6 +5608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 4624746923768112}
+  attackTime: 1
   stateManager: {fileID: 8816209093926902533}
   maxHitCount: 1
 --- !u!4 &4637244310901877
@@ -8457,7 +8461,7 @@ Transform:
   m_GameObject: {fileID: 8834052911654265617}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.57, y: 0, z: -2.77}
+  m_LocalPosition: {x: -0.52, y: 0, z: -9.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

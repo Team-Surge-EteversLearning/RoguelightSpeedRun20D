@@ -9,6 +9,7 @@ public class PlayerSM : StateManager
 {
     public static readonly float moveSpeed = 0.2f;
     public static readonly float runSpeed = 0.35f;
+    public static readonly float speedMaxGap = 0.5f;
 
     public static GameObject playerObj;
 

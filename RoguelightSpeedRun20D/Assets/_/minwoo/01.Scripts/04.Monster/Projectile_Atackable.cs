@@ -14,6 +14,8 @@ public class Projectile_Atackable : AttackAble
     private float projectileSpeed;
     private Rigidbody rb;
 
+    [SerializeField]
+    Transform lunchPoint;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,6 +32,12 @@ public class Projectile_Atackable : AttackAble
     {
 
     }
+    private void OnEnable()
+    {
+        transform.position = lunchPoint.position;
+        transform.LookAt(stateManager.attackTarget.transform.position);
+        rb.velocity = Vector3.zero;
+    }
 
     protected override void _AttackStart()
     {
@@ -44,9 +52,17 @@ public class Projectile_Atackable : AttackAble
     protected override int _GetDamage(GameObject obj)
     {
         if (obj.tag == "PlayerBody" && (!attackedObject.ContainsKey(obj) || attackedObject[obj] < maxHitCount))
+        {
+            gameObject.SetActive(false);
+            Debug.Log(stateManager.basicData.attackPower);
             return stateManager.basicData.attackPower;
-
+        }
         return 0;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        gameObject.SetActive(false);
     }
 }
 

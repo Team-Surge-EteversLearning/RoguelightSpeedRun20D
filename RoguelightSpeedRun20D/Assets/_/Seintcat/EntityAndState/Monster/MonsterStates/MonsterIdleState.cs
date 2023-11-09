@@ -16,11 +16,11 @@ public class MonsterIdleState : State
     public override void Initialize(GameObject managerObject)
     {
         stateManager = managerObject.GetComponent<MonsterSM>();
-        startRotation = stateManager.transform.rotation;
     }
 
     protected override string StateEnter_()
     {
+        startRotation = stateManager.transform.rotation;
         stateManager.animator.Play(stateName);
         cooltime = stateManager.basicData.idleTime;
         return "";

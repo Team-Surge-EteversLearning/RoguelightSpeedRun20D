@@ -73,10 +73,10 @@ public abstract class MonsterSM : StateManager, ITargetCatch
     private bool patrolForward = true;
     private bool patrolMoved = false;
 
-    protected MonsterIdleState monsterIdleState = new MonsterIdleState();
-    protected MonsterDamageState monsterDamageState = new MonsterDamageState();
-    protected MonsterDeathState monsterDeathState = new MonsterDeathState();
-    protected MonsterPatrolState monsterPatrolState = new MonsterPatrolState();
+    protected State monsterIdleState = new MonsterIdleState();
+    protected State monsterDamageState = new MonsterDamageState();
+    protected State monsterDeathState = new MonsterDeathState();
+    protected State monsterPatrolState = new MonsterPatrolState();
     protected abstract List<State> monsterBattleStates { get; }
 
     public GameObject attackTarget { get; protected set; }

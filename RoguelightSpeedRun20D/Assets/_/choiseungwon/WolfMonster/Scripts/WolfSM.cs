@@ -7,7 +7,7 @@ public class WolfSM : MonsterSM
 {
     private List<State> _monsterBattleStates = new List<State>();
 
-    protected override List<State> monsterBattleStates => new List<State>();
+    protected override List<State> monsterBattleStates => _monsterBattleStates;
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class WolfSM : MonsterSM
     {
         // make custom states
         _monsterBattleStates.Add(new MonsterBasic_Chase());
-        _monsterBattleStates.Add(new MonsterBasic_Attack());
+        _monsterBattleStates.Add(new MonsterBasic_Melee());
         
         // make basic states
         base.MakeState();
@@ -33,7 +33,7 @@ public class WolfSM : MonsterSM
     // Update is called once per frame
     void Update()
     {
-
+        ManagerUpdate();
     }
 
     protected override void _FixedUpdate()
@@ -43,7 +43,14 @@ public class WolfSM : MonsterSM
 
     public override void TargetChanged(List<GameObject> target)
     {
-        
+        if(target != null && target.Count > 0)
+        {
+            attackTarget = target[0];
+            if (attackTarget != null && (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName))
+            {
+                ChangeState("Chase");
+            }
+        }
     }
 
     public override void Interrupt(string stateName)

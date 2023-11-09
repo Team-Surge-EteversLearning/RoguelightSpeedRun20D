@@ -38,7 +38,9 @@ public class MonsterBasic_Chase : State
     public override string StateUpdate()
     {
         if(stateManager.attackTarget == null)
+        {
             return "Idle";
+        }
 
         Vector3 targetPoint = stateManager.attackTarget.transform.position;
         if (!stateManager.basicData.isFly)

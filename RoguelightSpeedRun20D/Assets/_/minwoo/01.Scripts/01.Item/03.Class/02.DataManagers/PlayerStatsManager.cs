@@ -7,20 +7,20 @@ using UnityEngine;
 
 public class PlayerStatsManager : IProductMaker
 {
-    static string name;
-    static int cashNow = 1000;
+    private static string name;
+    private static int cashNow = 1000;
 
-    static int hpMax = 10;
-    static int staminaMax = 10;
-    static int manaMax = 10;
-    public static int speed = 0;
-    static float powerWeight = 10;
+    private static int hpMax = 10;
+    private static int staminaMax = 10;
+    private static int manaMax = 10;
+    private static int speed = 0;
+    private static int powerWeight = 10;
 
-    static int hpMaxPrice = 2;
-    static int staminaMaxPrice = 2;
-    static int manaMaxPrice = 2;
-    static int speedPrice = 2;
-    static int powerWeightPrice = 2;
+    private static int hpMaxPrice = 2;
+    private static int staminaMaxPrice = 2;
+    private static int manaMaxPrice = 2;
+    private static int speedPrice = 2;
+    private static int powerWeightPrice = 2;
     //if buy() stat, Price is added
 
     static List<IProduct> stats;
@@ -33,7 +33,7 @@ public class PlayerStatsManager : IProductMaker
     public static int StaminaMax { get => staminaMax; set => staminaMax = value; }
     public static int ManaMax { get => manaMax; set => manaMax = value; }
     public static int Speed { get => speed; set => speed = value; }
-    public static float PowerWeight { get => powerWeight; set => powerWeight = value; }
+    public static int PowerWeight { get => powerWeight; set => powerWeight = value; }
     public static int HpMaxPrice { get => hpMaxPrice; set => hpMaxPrice = value; }
     public static int StaminaMaxPrice { get => staminaMaxPrice; set => staminaMaxPrice = value; }
     public static int ManaMaxPrice { get => manaMaxPrice; set => manaMaxPrice = value; }

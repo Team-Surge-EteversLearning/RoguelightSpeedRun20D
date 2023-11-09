@@ -10,6 +10,8 @@ public class PlayerSM : StateManager
     public static readonly float moveSpeed = 0.2f;
     public static readonly float runSpeed = 0.35f;
     public static readonly float speedMaxGap = 0.5f;
+    public static readonly float powerWeight = 0.5f;
+    public static readonly float powerWeightGap = 1f;
 
     public static GameObject playerObj;
 

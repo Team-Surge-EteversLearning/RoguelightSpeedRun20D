@@ -40,7 +40,7 @@ public class PlayerState_Move : State
         animator.SetBool("Running", InputHandler.running);
 
         float speed = (InputHandler.running ? PlayerSM.runSpeed : PlayerSM.moveSpeed);
-        speed += ((float)PlayerStatsManager.speed / (PlayerStatsManager.speed + 10)) * PlayerSM.speedMaxGap;
+        speed += ((float)PlayerStatsManager.Speed / (PlayerStatsManager.Speed + 10)) * PlayerSM.speedMaxGap;
         rigidBody.AddForce(normalMove * speed, ForceMode.VelocityChange);
 
         return "";

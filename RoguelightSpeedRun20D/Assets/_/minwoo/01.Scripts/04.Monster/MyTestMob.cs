@@ -2,49 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Don't edit this, Copy this!
-public class GhoulSM : MonsterSM
+public class MyTestMob : MonsterSM
 {
     private List<State> _monsterBattleStates = new List<State>();
     protected override List<State> monsterBattleStates => _monsterBattleStates;
 
     private void Awake()
-    {
+    { 
         ManagerStart();
     }
 
     public override void MakeState()
     {
         // make custom states
-        _monsterBattleStates.Add(new MonsterBasic_Chase());
-        _monsterBattleStates.Add(new MonsterBasic_Melee());
-
         // make basic states
+        _monsterBattleStates.Add(new MonsterBasic_Chase());
+        //_monsterBattleStates.Add(new MonsterBasic_Range());
+        _monsterBattleStates.Add(new MonsterBasic_Melee());
         base.MakeState();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
 
     }
-
-    // Update is called once per frame
     void Update()
     {
-        if (!mainState.started)
-        {
-            if (mainState.stateName == monsterPatrolState.stateName)
-            {
-                subBody[0].enabled = false;
-                subBody[1].enabled = true;
-            }
-            if (mainState.stateName == monsterIdleState.stateName)
-            {
-                subBody[0].enabled = true;
-                subBody[1].enabled = false;
-            }
-        }
         ManagerUpdate();
     }
 
@@ -55,7 +38,7 @@ public class GhoulSM : MonsterSM
 
     public override void TargetChanged(List<GameObject> target)
     {
-        if(target != null && target.Count > 0)
+        if (target != null && target.Count > 0)
         {
             attackTarget = target[0];
             if (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName)
@@ -63,12 +46,11 @@ public class GhoulSM : MonsterSM
                 ChangeState("Chase");
             }
         }
-
     }
 
     public override void Interrupt(string stateName)
     {
-
+        // not using
     }
 
     protected override void OnTriggerEnter(Collider other)

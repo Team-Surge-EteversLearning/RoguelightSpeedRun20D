@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MyTestMob : MonsterSM
+public class RangeMonsterSM : MonsterSM
 {
     private List<State> _monsterBattleStates = new List<State>();
     protected override List<State> monsterBattleStates => _monsterBattleStates;
 
+    public GameObject projectileOrigin;
+    public int projectileCount;
+    [HideInInspector]
+    public List<GameObject> projectiles = new List<GameObject>();
+
     private void Awake()
     { 
+        for(int i = 0; i < projectileCount; i++)
+        {
+            projectiles.Add(Instantiate(projectileOrigin));
+        }
         ManagerStart();
     }
 
@@ -81,7 +90,9 @@ public class MyTestMob : MonsterSM
     }
     private void OnFire()
     {
-        attackAbles[0].gameObject.SetActive(true);
-        attackAbles[0].gameObject.GetComponent<AttackAble>().AttackStart();
+        Debug.Log(projectiles.Count);
+        projectiles[0].gameObject.SetActive(true);
+        projectiles[0].gameObject.GetComponent<AttackAble>().AttackStart();
+        projectiles.RemoveAt(0);
     }
 }

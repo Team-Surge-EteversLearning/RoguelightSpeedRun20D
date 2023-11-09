@@ -18,7 +18,7 @@ public class Projectile_Atackable : AttackAble
     Transform lunchPoint;
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        
     }
 
     // Start is called before the first frame update
@@ -34,6 +34,7 @@ public class Projectile_Atackable : AttackAble
     }
     private void OnEnable()
     {
+        rb = GetComponent<Rigidbody>();
         transform.position = lunchPoint.position;
         transform.LookAt(stateManager.attackTarget.transform.position);
         rb.velocity = Vector3.zero;
@@ -41,7 +42,7 @@ public class Projectile_Atackable : AttackAble
 
     protected override void _AttackStart()
     {
-        rb.AddForce(transform.forward * projectileSpeed, ForceMode.VelocityChange);
+        rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
     }
 
     protected override void _AttackStop()
@@ -63,6 +64,12 @@ public class Projectile_Atackable : AttackAble
     private void OnTriggerEnter(Collider other)
     {
         gameObject.SetActive(false);
+
+    }
+    private void OnDisable()
+    {
+        RangeMonsterSM manager = (RangeMonsterSM)stateManager;
+        manager.projectiles.Add(gameObject);
     }
 }
 

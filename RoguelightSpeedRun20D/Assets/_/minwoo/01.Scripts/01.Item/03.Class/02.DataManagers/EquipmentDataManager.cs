@@ -69,7 +69,7 @@ public class EquipmentDataManager : IProductMaker
         {
             string currentName = sql.dataReader.GetValue(0).ToString();
             BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon, sql.dataReader.GetInt32(4));
-            ShoesData shoesData = new ShoesData(sql.dataReader.GetInt32(5), sql.dataReader.GetFloat(6), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
+            ShoesData shoesData = new ShoesData(sql.dataReader.GetInt32(5), sql.dataReader.GetInt32(6), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
             locks.Add(currentName, basicEquipments);
             shoesBasicTable.Add(currentName, shoesData);

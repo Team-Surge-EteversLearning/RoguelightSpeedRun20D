@@ -3849,8 +3849,9 @@ GameObject:
   - component: {fileID: 4414871117303439920}
   - component: {fileID: 8163537579052726446}
   - component: {fileID: 40273101357415800}
+  - component: {fileID: 3174114232405812123}
   m_Layer: 0
-  m_Name: minotaur1
+  m_Name: minotaur
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3872,6 +3873,7 @@ Transform:
   - {fileID: 4414871117353324496}
   - {fileID: 4414871117568350222}
   - {fileID: 4414871116264575565}
+  - {fileID: 4116722182544565767}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4414871117303439920
@@ -3884,7 +3886,7 @@ Animator:
   m_GameObject: {fileID: 4414871117303439921}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 63e974d9ec82619419e69ae2287be94e, type: 3}
-  m_Controller: {fileID: 9100000, guid: 1ec31ee6b4e699b4c919f9ddd24f6f73, type: 2}
+  m_Controller: {fileID: 9100000, guid: aeeb1f7406b1c4c05bbf7e99000a2172, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3945,6 +3947,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3174114232405812123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414871117303439921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338b94cd3bb484bf48be1f67efdd0a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 4414871117303439920}
+  data: {fileID: 11400000, guid: a7749d29b4abf4953a3c5757b8326e84, type: 2}
+  _rigidbody: {fileID: 40273101357415800}
+  eye: {fileID: 4540369679644130100}
+  mainBody: {fileID: 8163537579052726446}
+  subBody: []
+  attackAbles:
+  - {fileID: 735850920716608509}
+  movePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4414871117353324497
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,6 +3983,7 @@ GameObject:
   - component: {fileID: 4414871117353324496}
   - component: {fileID: 4414871117353324499}
   - component: {fileID: 4002160225521909375}
+  - component: {fileID: 735850920716608509}
   m_Layer: 0
   m_Name: mino_axe
   m_TagString: Untagged
@@ -4106,8 +4134,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 1, z: 1}
-  m_Center: {x: 0.47867012, y: 1.1231751, z: 0.32991523}
+  m_Size: {x: 0.2, y: 0.7, z: 0.65}
+  m_Center: {x: 0.5, y: 1.1231751, z: 0.65}
+--- !u!114 &735850920716608509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414871117353324497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f9306313181f649b1bf9ed79e01619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 4002160225521909375}
+  attackTime: 1
+  stateManager: {fileID: 3174114232405812123}
+  maxHitCount: 0
 --- !u!1 &4414871117359810836
 GameObject:
   m_ObjectHideFlags: 0
@@ -4621,3 +4665,70 @@ Transform:
   - {fileID: 4414871117266451937}
   m_Father: {fileID: 4414871116260526974}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4540369679644130100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4116722182544565767}
+  - component: {fileID: 3113069188808045671}
+  - component: {fileID: 6341358755000836604}
+  m_Layer: 7
+  m_Name: MinotaurEye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4116722182544565767
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540369679644130100}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4414871117303439923}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3113069188808045671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540369679644130100}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 0, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6341358755000836604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540369679644130100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04d08314392e7c49bebd7500b7fb359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 3174114232405812123}

@@ -32,7 +32,7 @@ public class PlayerStatsManager : IProductMaker
     public static int HpMax { get => hpMax; set => hpMax = value; }
     public static int StaminaMax { get => staminaMax; set => staminaMax = value; }
     public static int ManaMax { get => manaMax; set => manaMax = value; }
-    public static float Speed { get => (float)speed / (speed + 10); }
+    public static int Speed { get => speed; set => speed = value; }
     public static float PowerWeight { get => powerWeight; set => powerWeight = value; }
     public static int HpMaxPrice { get => hpMaxPrice; set => hpMaxPrice = value; }
     public static int StaminaMaxPrice { get => staminaMaxPrice; set => staminaMaxPrice = value; }

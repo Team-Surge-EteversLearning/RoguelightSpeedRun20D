@@ -39,8 +39,9 @@ public class PlayerState_Move : State
         animator.SetFloat("Z", Mathf.Lerp(animator.GetFloat("Z"), normalMove.z, Time.deltaTime * 2));
         animator.SetBool("Running", InputHandler.running);
 
-        rigidBody.AddForce(normalMove * (InputHandler.running ? PlayerSM.runSpeed : PlayerSM.moveSpeed), ForceMode.VelocityChange);
-        //transform.force(normalMove * Time.deltaTime * PlayerSM.moveSpeed);
+        float speed = (InputHandler.running ? PlayerSM.runSpeed : PlayerSM.moveSpeed);
+        speed += ((float)PlayerStatsManager.speed / (PlayerStatsManager.speed + 10)) * PlayerSM.speedMaxGap;
+        rigidBody.AddForce(normalMove * speed, ForceMode.VelocityChange);
 
         return "";
     }

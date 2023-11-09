@@ -6,11 +6,6 @@ using UnityEngine;
 public class MonsterBasic_Range : State
 {
     private MonsterSM stateManager;
-
-
-    private AttackAble projectile; // stateManager에 정의
-    private Transform launchPosition; // stateManager에 정의
-    private float projectileSpeed; //projectile에 붙은 Projectile_Attackable에 정의
     public MonsterBasic_Range()
     {
         stateName = "Attack";
@@ -21,8 +16,6 @@ public class MonsterBasic_Range : State
     public override void Initialize(GameObject managerObject)
     {
         stateManager = managerObject.GetComponent<MonsterSM>();
-        projectile = stateManager.attackAbles[0];
-        //launchPosition = stateManager.attackAbles[1].transform;
     }
 
     protected override string StateEnter_()
@@ -37,10 +30,9 @@ public class MonsterBasic_Range : State
         }
         cooltime = stateManager.basicData.attackCoolTime;
         stateManager.animator.Play(stateName);
-        GameObject instance  = GameObject.Instantiate(projectile.gameObject, launchPosition);
-        instance.GetComponent<AttackAble>().AttackStart();
         return "";
     }
+
 
     public override string StateUpdate()
     {

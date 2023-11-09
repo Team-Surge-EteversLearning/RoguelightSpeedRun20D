@@ -58,7 +58,7 @@ public class GhoulSM : MonsterSM
         if(target != null && target.Count > 0)
         {
             attackTarget = target[0];
-            if (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName)
+            if (attackTarget != null && (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName))
             {
                 ChangeState("Chase");
             }

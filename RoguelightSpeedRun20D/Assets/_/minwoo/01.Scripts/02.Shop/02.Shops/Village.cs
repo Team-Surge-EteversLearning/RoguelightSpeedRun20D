@@ -73,7 +73,8 @@ public class Village : MonoBehaviour
                 if (allProductSlots[i].name == "Exit")
                     continue;
                 allProductSlots[i].GetComponentsInChildren<Image>()[1].sprite = TestDB.instance.iconSet.GetIcon("Default");
-                allProductSlots[i].onClick.RemoveAllListeners();            }
+                allProductSlots[i].onClick.RemoveAllListeners();            
+            }
         };
     }
 

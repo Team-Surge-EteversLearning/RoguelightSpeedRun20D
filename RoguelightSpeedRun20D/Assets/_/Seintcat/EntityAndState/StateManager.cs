@@ -25,7 +25,6 @@ public abstract class StateManager : MonoBehaviour
         }
         else
         {
-            mainState.StateEnd_();
             nextState = mainState.StateEnter();
         }
 

@@ -135,6 +135,9 @@ public abstract class MonsterSM : StateManager, ITargetCatch
         //Debug.LogWarning(damage);
         hpNow -= damage;
 
+        foreach (AttackAble attackAble in attackAbles)
+            attackAble.AttackStop();
+
         if (hpNow < 0)
         {
             foreach (Collider collider in subBody)

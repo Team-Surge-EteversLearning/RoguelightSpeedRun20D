@@ -36,8 +36,12 @@ public class Projectile_Atackable : AttackAble
     {
         rb = GetComponent<Rigidbody>();
         transform.position = lunchPoint.position;
-        transform.LookAt(stateManager.attackTarget.transform.position);
+        if (stateManager.attackTarget != null)
+        {
+            transform.LookAt(stateManager.attackTarget.transform.position);
+        }
         rb.velocity = Vector3.zero;
+
     }
 
     protected override void _AttackStart()

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerWeaponAttacks : AttackAble
 {
-    public int damagePoint { private get; set; }
-
     public GameObject projectile;
     public Transform projectileSpawnPoint;
 

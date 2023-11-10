@@ -41,7 +41,6 @@ public class PlayerState_Move : State
             runNow = true;
             speed = PlayerSM.runSpeed;
             PlayerSM.staminaNow -= Time.deltaTime;
-            Debug.LogWarning(PlayerSM.staminaNow);
         }
 
         Vector3 normalMove = new Vector3(InputHandler.move.x, 0, InputHandler.move.y).normalized;
@@ -63,6 +62,7 @@ public class PlayerState_Move : State
     protected override void StateEnd()
     {
         rigidBody.velocity = Vector3.zero;
+        Debug.LogWarning("!");
         animator.Play("Idle" + runCheck, 0);
     }
 }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Don't edit this, Copy this!
-public class WizaradMonsterLonDistance : MonsterSM
+public class WizardMonsterMLongDistance : MonsterSM
 {
-    protected override List<State> monsterBattleStates => new List<State>();
+    private List<State> _monsterBattleStates = new List<State>();
+
+    protected override List<State> monsterBattleStates => _monsterBattleStates;
 
     private void Awake()
     {
@@ -15,7 +17,9 @@ public class WizaradMonsterLonDistance : MonsterSM
     public override void MakeState()
     {
         // make custom states
-
+        _monsterBattleStates.Add(new MonsterBasic_Chase());
+        _monsterBattleStates.Add(new MonsterBasic_Melee());
+        
         // make basic states
         base.MakeState();
     }
@@ -29,7 +33,7 @@ public class WizaradMonsterLonDistance : MonsterSM
     // Update is called once per frame
     void Update()
     {
-
+        ManagerUpdate();
     }
 
     protected override void _FixedUpdate()
@@ -39,7 +43,14 @@ public class WizaradMonsterLonDistance : MonsterSM
 
     public override void TargetChanged(List<GameObject> target)
     {
-        
+        if(target != null && target.Count > 0)
+        {
+            attackTarget = target[0];
+            if (attackTarget != null && (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName))
+            {
+                ChangeState("Chase");
+            }
+        }
     }
 
     public override void Interrupt(string stateName)

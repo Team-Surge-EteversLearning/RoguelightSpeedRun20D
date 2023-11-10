@@ -15002,9 +15002,9 @@ GameObject:
   m_Component:
   - component: {fileID: 731661058541015155}
   - component: {fileID: 34335339167081562}
-  - component: {fileID: 7215355075224188332}
   - component: {fileID: 8836372394778710914}
   - component: {fileID: 5275237611305833975}
+  - component: {fileID: 7215355075224188332}
   m_Layer: 0
   m_Name: 01 WizardMonsterWithoutWeapon
   m_TagString: Untagged
@@ -15022,7 +15022,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1327944664605631656}
@@ -15053,31 +15053,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7215355075224188332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214376351174582481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3e833e40f8348618f470ae0a64d9a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 34335339167081562}
-  data: {fileID: 11400000, guid: 8a22e98508e9144899c59f2b68224674, type: 2}
-  _rigidbody: {fileID: 8836372394778710914}
-  eye: {fileID: 1821817916132867218}
-  mainBody: {fileID: 5275237611305833975}
-  subBody: []
-  attackAbles:
-  - {fileID: 6527257302771522606}
-  movePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!54 &8836372394778710914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15128,6 +15103,31 @@ CapsuleCollider:
   m_Height: 7
   m_Direction: 1
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &7215355075224188332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214376351174582481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3e833e40f8348618f470ae0a64d9a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 34335339167081562}
+  data: {fileID: 11400000, guid: 8a22e98508e9144899c59f2b68224674, type: 2}
+  _rigidbody: {fileID: 8836372394778710914}
+  eye: {fileID: 1821817916132867218}
+  mainBody: {fileID: 5275237611305833975}
+  subBody: []
+  attackAbles:
+  - {fileID: 6527257302771522606}
+  movePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1217934236022823120
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class ShopUI
     private ShopProduct s_product;
     private Button productButton;
     private int price;
+    private Shop thisShop;
 
     public Image ProductImage { get => productImage; set => productImage = value; }
     public ShopProduct SProduct
@@ -33,6 +34,7 @@ public class ShopUI
         }
     }
     public Button ProductButton { get => productButton; set => productButton = value; }
+    public Shop ThisShop { get => thisShop; set => thisShop = value; }
 
     public ShopUI(Button productButton)
     {
@@ -50,7 +52,9 @@ public class ShopUI
         PlayerStatsManager.CashNow -= price;
         product.Buy();
         Village.onBuy();
+        thisShop.Products.Remove(this.SProduct);
         Debug.Log(PlayerStatsManager.CashNow);
+        return;
     }
     private void Display()
     {

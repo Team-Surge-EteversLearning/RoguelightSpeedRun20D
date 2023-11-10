@@ -14,10 +14,10 @@ public class SkillShop : Shop
     }
     public override void ResetShop()
     {
-        products.Clear();
+        Products.Clear();
         productSlots.Clear();
 
-        products = factory.Make();
+        Products = factory.Make();
 
         SettingShopUI();
         

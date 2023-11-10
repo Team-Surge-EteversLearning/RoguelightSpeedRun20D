@@ -20,8 +20,8 @@ public class PotionShop : Shop
         factory = new DungeonItemManager();
         potionFac = (DungeonItemManager)factory;
         potionFac.ResetShop();
-        products.Clear();
-        products = potionFac.Make($"5,5,0,0,{type}");
+        Products.Clear();
+        Products = potionFac.Make($"5,5,0,0,{type}");
     }
 
     public override void ResetShop()

@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public abstract class Shop
 {
     protected IProductMaker factory;
-    protected List<ShopProduct> products = new List<ShopProduct>();
+    private List<ShopProduct> products = new List<ShopProduct>();
     protected List<Button> productSlots = new List<Button>();
     protected GameObject shopUIGO;
     protected Dictionary<Button, ShopUI> BtnUIPair = new Dictionary<Button, ShopUI>();
@@ -19,6 +19,7 @@ public abstract class Shop
     private Village village;
 
     public GameObject ShopUIGO { get => shopUIGO; set => shopUIGO = value; }
+    public List<ShopProduct> Products { get => products; set => products = value; }
 
     public virtual void InitShop(GameObject ui, Village village)
     {
@@ -36,15 +37,16 @@ public abstract class Shop
     protected void SettingShopUI()
     {
         Button[] allProductSlots = ShopUIGO.GetComponentsInChildren<Button>();
-        for (int i = 0; i < products.Count; i++)
+        for (int i = 0; i < Products.Count; i++)
         {
             //change slots image and txt
             productSlots.Add(allProductSlots[i]);
             productSlots[i].gameObject.SetActive(true);
-            BtnUIPair[productSlots[i]].SProduct = products[i];
+            BtnUIPair[productSlots[i]].SProduct = Products[i];
         }
 
         OpenShop();
 
     }
+
 }

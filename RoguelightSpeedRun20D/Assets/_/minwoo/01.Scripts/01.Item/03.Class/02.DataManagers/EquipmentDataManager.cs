@@ -94,8 +94,6 @@ public class EquipmentDataManager : IProductMaker
         tierMin = int.TryParse(infoSplit[0].Trim(), out int tempVal1) ? tempVal1 : 0;
         tierMax = int.TryParse(infoSplit[1].Trim(), out int tempVal2) ? tempVal2 : 0;
         quantity = int.TryParse(infoSplit[2].Trim(), out int tempVal3) ? tempVal3 : 0;
-        Debug.Log(quantity);
-
 
         // Creaate Random keys in unlocks
         List<string> displayItemNames = GetRandomItem(quantity);
@@ -121,6 +119,7 @@ public class EquipmentDataManager : IProductMaker
                     break;
             }
         }
+        Debug.Log(displayItemListWithPrice.Count);
         return displayItemListWithPrice;
     }
 

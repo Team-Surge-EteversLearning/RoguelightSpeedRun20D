@@ -16,7 +16,7 @@ public class Village : MonoBehaviour
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
 
     public Action resetUI;
-    private void Awake()
+    private void Start()
     {
         CreateShop();
         ShopBtnConnect();

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MyDBInitializerTester : MonoBehaviour
 {
-    private void Awake()
+   // [ContextMenu("Init")]
+    private void Start()
     {
         EquipmentDataManager eqdb = new EquipmentDataManager();
         eqdb.Init();

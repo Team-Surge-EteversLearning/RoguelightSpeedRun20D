@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public abstract class Shop
 {
@@ -19,7 +18,7 @@ public abstract class Shop
 
     private Village village;
 
-    public GameObject ShopUI { get => shopUIGO; set => shopUIGO = value; }
+    public GameObject ShopUIGO { get => shopUIGO; set => shopUIGO = value; }
 
     public virtual void InitShop(GameObject ui, Village village)
     {
@@ -36,7 +35,7 @@ public abstract class Shop
 
     protected void SettingShopUI()
     {
-        Button[] allProductSlots = ShopUI.GetComponentsInChildren<Button>();
+        Button[] allProductSlots = ShopUIGO.GetComponentsInChildren<Button>();
         for (int i = 0; i < products.Count; i++)
         {
             //change slots image and txt
@@ -44,6 +43,8 @@ public abstract class Shop
             productSlots[i].gameObject.SetActive(true);
             BtnUIPair[productSlots[i]].SProduct = products[i];
         }
+
         OpenShop();
+
     }
 }

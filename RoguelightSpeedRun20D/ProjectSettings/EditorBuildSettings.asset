@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_/minwoo/02.Scenes/MyUITestScene.unity
+    guid: e548a56c58d11b040a43610c4cc9ab9b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 414c8e99e97fc1640938f87224e98ec3, type: 2}

@@ -19,17 +19,16 @@ public class PotionShop : Shop
         base.InitShop(ui, village);
         factory = new DungeonItemManager();
         potionFac = (DungeonItemManager)factory;
+        potionFac.ResetShop();
+        products.Clear();
+        products = potionFac.Make($"5,5,0,0,{type}");
     }
 
     public override void ResetShop()
     {
-        products.Clear();
-        productSlots.Clear();
 
-        potionFac.ResetShop();
-        products = potionFac.Make($"5,5,0,0,{type}");
+        productSlots.Clear();
         //products.Add(new ShopProduct(new Weapon("test", new BasicEquipments(0,0,0,EquipmentType.Weapon), new WeaponData(0,true,0,0))));
-         
         SettingShopUI();
     }
 }

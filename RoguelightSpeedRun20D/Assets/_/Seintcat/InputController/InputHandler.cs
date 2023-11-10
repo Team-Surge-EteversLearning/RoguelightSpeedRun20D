@@ -9,6 +9,7 @@ public class InputHandler : MonoBehaviour
     public static Vector2 move { get; private set; }
     public static bool running { get; private set; }
     public static bool attack { get; private set; }
+    public static bool avoid { get; private set; }
 
     [SerializeField]
     private InputActionAsset actionAsset;
@@ -24,6 +25,8 @@ public class InputHandler : MonoBehaviour
         actionAsset.FindActionMap("Fighting").FindAction("Running").canceled += OnRunning;
         actionAsset.FindActionMap("Fighting").FindAction("Attack").started += OnAttack;
         actionAsset.FindActionMap("Fighting").FindAction("Attack").canceled += OnAttack;
+        actionAsset.FindActionMap("Fighting").FindAction("Avoid").started += OnAvoid;
+        actionAsset.FindActionMap("Fighting").FindAction("Avoid").canceled += OnAvoid;
     }
 
     // Start is called before the first frame update
@@ -36,6 +39,12 @@ public class InputHandler : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void LateUpdate()
+    {
+        attack = false;
+        avoid = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -55,7 +64,11 @@ public class InputHandler : MonoBehaviour
     {
         if (context.ReadValue<float>() > 0.5f)
             attack = true;
-        else
-            attack = false;
+    }
+
+    public void OnAvoid(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            avoid = true;
     }
 }

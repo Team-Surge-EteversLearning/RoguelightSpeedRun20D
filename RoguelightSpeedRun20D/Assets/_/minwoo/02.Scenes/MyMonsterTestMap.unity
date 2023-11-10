@@ -344,7 +344,7 @@ Transform:
   m_GameObject: {fileID: 686171454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46688092, y: 0.6251024, z: 1.8589886}
+  m_LocalPosition: {x: -10.48, y: 0.6251024, z: 1.8589886}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -494,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 8247840514582960745}
     - target: {fileID: 409331110966770340, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
       propertyPath: projectileSpeed
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 838866813971205185, guid: 151e0cea6cbb6d24eb201bc9031ea5e6, type: 3}
       propertyPath: m_Layer
@@ -3725,6 +3725,9 @@ MonoBehaviour:
   - {fileID: 4455308676201950520}
   - {fileID: 3187049912557177510}
   - {fileID: 6934345608324928353}
+  projectileOrigin: {fileID: 1715922908}
+  projectileCount: 5
+  projectiles: []
 --- !u!4 &8315213511072237507
 Transform:
   m_ObjectHideFlags: 0

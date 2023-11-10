@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using static UnityEditorInternal.ReorderableList;
 using System.Collections.Generic;
 
 public abstract class Equipment : IProduct

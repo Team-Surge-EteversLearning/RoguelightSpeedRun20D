@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
-using static UnityEditor.Progress;
 
 [Serializable]
 public class ShopUI

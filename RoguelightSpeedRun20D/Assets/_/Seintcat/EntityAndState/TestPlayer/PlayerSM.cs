@@ -35,10 +35,13 @@ public class PlayerSM : StateManager
     public static Shoes basicShoes;
 
     public static int hpNow { get; private set; }
-    public static float staminaNow { get; private set; }
-    public static int manaNow { get; private set; }
+    public static float staminaNow { get; set; }
+    public static float manaNow { get; private set; }
+    public static int hpMax => PlayerStatsManager.HpMax + armorNow.MaxHp + shoesNow.MaxHp;
+    public static float staminaMax => PlayerStatsManager.StaminaMax + shoesNow.MaxStamina;
+    public static int manaMax => PlayerStatsManager.ManaMax + armorNow.MaxMana;
 
-    
+    public static float attackCooltime;
 
     private void Awake()
     {
@@ -71,9 +74,20 @@ public class PlayerSM : StateManager
     {
         ManagerUpdate();
 
-        if (InputHandler.attack)
+        manaNow += armorNow.ManaRegen * Time.deltaTime;
+        if (mainState.stateName != "Move")
+            staminaNow += (shoesNow.StaminaRegen + 1) * Time.deltaTime;
+
+        if (manaNow > manaMax)
+            manaNow = manaMax;
+        if (staminaNow > staminaMax)
+            staminaNow = staminaMax;
+
+        attackCooltime -= Time.deltaTime;
+        if (InputHandler.attack && attackCooltime < 0)
         {
             gameObject.GetComponent<Animator>().Play("Attack", 1);
+            attackCooltime = weaponNow.Cooltime;
         }
     }
 
@@ -116,8 +130,10 @@ public class PlayerSM : StateManager
         armorNow = basicArmor;
         shoesNow = basicShoes;
 
-        hpNow = PlayerStatsManager.HpMax + armorNow.MaxHp + shoesNow.MaxHp;
-        staminaNow = PlayerStatsManager.StaminaMax + shoesNow.MaxStamina;
-        manaNow = PlayerStatsManager.ManaMax + armorNow.MaxMana;
+        attackCooltime = 0;
+
+        hpNow = hpMax;
+        staminaNow = staminaMax;
+        manaNow = manaMax;
     }
 }

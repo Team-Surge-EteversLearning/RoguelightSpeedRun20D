@@ -7,7 +7,7 @@ public class PlayerState_Move : State
     private Animator animator;
     private Rigidbody rigidBody;
 
-    private string runCheck => InputHandler.running? "Run" : "";
+    private string runCheck => InputHandler.running ? "Run" : "";
 
     public PlayerState_Move()
     {
@@ -34,12 +34,21 @@ public class PlayerState_Move : State
             return "Idle";
         }
 
+        bool runNow = false;
+        float speed = PlayerSM.moveSpeed;
+        if (InputHandler.running && PlayerSM.staminaNow > 0)
+        {
+            runNow = true;
+            speed = PlayerSM.runSpeed;
+            PlayerSM.staminaNow -= Time.deltaTime;
+            Debug.LogWarning(PlayerSM.staminaNow);
+        }
+
         Vector3 normalMove = new Vector3(InputHandler.move.x, 0, InputHandler.move.y).normalized;
         animator.SetFloat("X", Mathf.Lerp(animator.GetFloat("X"), normalMove.x, Time.deltaTime * 2));
         animator.SetFloat("Z", Mathf.Lerp(animator.GetFloat("Z"), normalMove.z, Time.deltaTime * 2));
-        animator.SetBool("Running", InputHandler.running);
+        animator.SetBool("Running", runNow);
 
-        float speed = (InputHandler.running ? PlayerSM.runSpeed : PlayerSM.moveSpeed);
         speed += ((float)(PlayerStatsManager.Speed + PlayerSM.shoesNow.Speed) / (PlayerStatsManager.Speed + 10)) * PlayerSM.speedMaxGap;
         rigidBody.AddForce(normalMove * speed, ForceMode.VelocityChange);
 

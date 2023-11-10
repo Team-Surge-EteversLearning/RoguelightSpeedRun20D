@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6240414658891166126}
   - component: {fileID: 8702138242396871788}
+  - component: {fileID: 2335003081424766340}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -25,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196877176409921718}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000010430811, y: 0.000000044703473, z: -0.13953465, w: 0.99021715}
+  m_LocalRotation: {x: -0.0904236, y: -0.058906287, z: -0.13297117, w: 0.98522705}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4414871117438455635}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -16.042}
+  m_LocalEulerAnglesHint: {x: -11.177, y: -5.382, z: -14.846}
 --- !u!65 &8702138242396871788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47,12 +48,28 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.15, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.1, y: 0.6, z: 0.6}
+  m_Center: {x: 0, y: -0.03, z: 0.7}
+--- !u!114 &2335003081424766340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196877176409921718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f9306313181f649b1bf9ed79e01619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 8702138242396871788}
+  attackTime: 1
+  stateManager: {fileID: 3174114232405812123}
+  maxHitCount: 0
 --- !u!1 &4414871115646680189
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,7 +4036,7 @@ MonoBehaviour:
   mainBody: {fileID: 8163537579052726446}
   subBody: []
   attackAbles:
-  - {fileID: 735850920716608509}
+  - {fileID: 2335003081424766340}
   movePoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -4035,8 +4052,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4414871117353324496}
   - component: {fileID: 4414871117353324499}
-  - component: {fileID: 4002160225521909375}
-  - component: {fileID: 735850920716608509}
   m_Layer: 0
   m_Name: mino_axe
   m_TagString: Untagged
@@ -4168,43 +4183,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.2392193, y: -0.44138673, z: 0.4786701}
     m_Extent: {x: 0.47356153, y: 0.6956465, z: 0.123298675}
   m_DirtyAABB: 0
---- !u!65 &4002160225521909375
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414871117353324497}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.7, z: 0.65}
-  m_Center: {x: 0.5, y: 1.1231751, z: 0.65}
---- !u!114 &735850920716608509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4414871117353324497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8f9306313181f649b1bf9ed79e01619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackTrigger: {fileID: 4002160225521909375}
-  attackTime: 1
-  stateManager: {fileID: 3174114232405812123}
-  maxHitCount: 0
 --- !u!1 &4414871117359810836
 GameObject:
   m_ObjectHideFlags: 0
@@ -4436,14 +4414,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4414871117438455632}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.085015684, y: 0.2041647, z: 0.67807555, w: 0.7009298}
+  m_LocalRotation: {x: 0.14119655, y: 0.30621296, z: 0.6556533, w: 0.6755857}
   m_LocalPosition: {x: 0.14518651, y: -0.06310436, z: 0.0036073022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6240414658891166126}
   m_Father: {fileID: 4414871117745987669}
-  m_LocalEulerAnglesHint: {x: -9.073, y: 23.991, z: 86.169}
+  m_LocalEulerAnglesHint: {x: -12.167, y: 37.782, z: 84.107}
 --- !u!114 &6520580271881259635
 MonoBehaviour:
   m_ObjectHideFlags: 0

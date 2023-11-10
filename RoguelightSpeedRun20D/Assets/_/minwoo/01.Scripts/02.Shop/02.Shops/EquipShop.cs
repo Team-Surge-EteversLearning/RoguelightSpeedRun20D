@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +17,8 @@ public class EquipShop : Shop
         base.InitShop(ui, village);
         factory = new EquipmentDataManager();
 
-        products.Clear();
-        products = factory.Make($"{range}2");
+        Products.Clear();
+        Products = factory.Make($"{range}2");
     }
     public EquipShop(int minTier, int maxTier)
     {
@@ -32,9 +33,9 @@ public class EquipShop : Shop
 
         foreach ( var item in BtnUIPair ) 
         {
-            item.Key.onClick.AddListener(() => products.Remove(item.Value.SProduct));
             item.Key.GetComponentInChildren<TMP_Text>().text = "";
-
+            item.Value.ThisShop = this;
         }
     }
+
 }

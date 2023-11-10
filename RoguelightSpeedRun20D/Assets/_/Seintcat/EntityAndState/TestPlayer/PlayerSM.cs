@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,6 +24,7 @@ public class PlayerSM : StateManager
 
     private List<GameObject> weaponInstance;
     private GameObject weaponModelNow;
+    private AttackAble attackable;
 
     public static Weapon weaponNow { get; set; }
     public static Armor armorNow { get; set; }
@@ -47,6 +47,8 @@ public class PlayerSM : StateManager
     {
         ManagerStart();
         playerObj = gameObject;
+        weaponModelNow = weaponModels[0];
+        attackable = weaponModelNow.GetComponent<AttackAble>();
     }
     public override void MakeState()
     {
@@ -58,6 +60,8 @@ public class PlayerSM : StateManager
         state = new PlayerState_Move();
         allStates.Add(state.stateName, state);
         state = new PlayerState_Damage();
+        allStates.Add(state.stateName, state);
+        state = new PlayerState_Avoid();
         allStates.Add(state.stateName, state);
 
         mainState = allStates["Idle"];
@@ -75,7 +79,7 @@ public class PlayerSM : StateManager
         ManagerUpdate();
 
         manaNow += armorNow.ManaRegen * Time.deltaTime;
-        if (mainState.stateName != "Move")
+        if (mainState.stateName != "Move" || !InputHandler.running)
             staminaNow += (shoesNow.StaminaRegen + 1) * Time.deltaTime;
 
         if (manaNow > manaMax)
@@ -83,11 +87,27 @@ public class PlayerSM : StateManager
         if (staminaNow > staminaMax)
             staminaNow = staminaMax;
 
-        attackCooltime -= Time.deltaTime;
-        if (InputHandler.attack && attackCooltime < 0)
+        if(mainState.stateName != "Avoid")
         {
-            gameObject.GetComponent<Animator>().Play("Attack", 1);
-            attackCooltime = weaponNow.Cooltime;
+            if (InputHandler.avoid && staminaNow > 3f)
+            {
+                attackable.AttackStop();
+                ChangeState("Avoid");
+                return;
+            }
+
+            attackCooltime -= Time.deltaTime;
+            if (attackCooltime < 0)
+            {
+                if (InputHandler.attack)
+                {
+                    gameObject.GetComponent<Animator>().Play("Attack", 1, 0f);
+                    attackCooltime = weaponNow.Cooltime;
+                    attackable.AttackStart();
+                }
+                else
+                    attackable.AttackStop();
+            }
         }
     }
 
@@ -99,7 +119,7 @@ public class PlayerSM : StateManager
     private void OnTriggerEnter(Collider other)
     {
         AttackAble attack = other.gameObject.GetComponent<AttackAble>();
-        if(attack != null)
+        if (mainState.stateName != "Avoid" && attack != null)
         {
             int damage = attack.GetDamage(gameObject);
             if (damage > 1)

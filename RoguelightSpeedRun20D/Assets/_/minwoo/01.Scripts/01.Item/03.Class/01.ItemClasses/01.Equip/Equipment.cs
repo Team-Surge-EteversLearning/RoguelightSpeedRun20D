@@ -17,7 +17,6 @@ public abstract class Equipment : IProduct
     public int ModelIndex { get => modelIndex; set => modelIndex = value; }
     public void Buy()
     {
-        Debug.Log(name);
         Button prvBtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         prvBtn.onClick.RemoveAllListeners();
         prvBtn.GetComponentsInChildren<Image>()[1].sprite = TestDB.instance.iconSet.GetIcon("Default");

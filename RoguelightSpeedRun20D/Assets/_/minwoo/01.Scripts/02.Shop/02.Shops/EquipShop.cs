@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,8 +26,15 @@ public class EquipShop : Shop
 
     public override void ResetShop()
     {
- 
         productSlots.Clear();
+
         SettingShopUI();
+
+        foreach ( var item in BtnUIPair ) 
+        {
+            item.Key.onClick.AddListener(() => products.Remove(item.Value.SProduct));
+            item.Key.GetComponentInChildren<TMP_Text>().text = "";
+
+        }
     }
 }

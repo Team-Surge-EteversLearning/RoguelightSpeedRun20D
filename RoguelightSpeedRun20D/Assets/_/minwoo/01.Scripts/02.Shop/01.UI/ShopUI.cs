@@ -49,6 +49,7 @@ public class ShopUI
         }
         PlayerStatsManager.CashNow -= price;
         product.Buy();
+        Village.onBuy();
         Debug.Log(PlayerStatsManager.CashNow);
     }
     private void Display()
@@ -59,10 +60,10 @@ public class ShopUI
     {
         var equipTypes = new[] { typeof(Armor), typeof(Shoes), typeof(Weapon) };
         var statTypes = new[] { typeof(MaxHp), typeof(MaxMp), typeof(MaxStamina), typeof(PowerWeight), typeof(Speed) };
+        Debug.Log(product.GetType());
         if (equipTypes.Contains(product.GetType()))
         {
             Equipment equipment = (Equipment)product;
-            Debug.Log(equipment.Name);
             return equipment.Name;
         }
         else if (product.GetType() == typeof(Useable))
@@ -70,18 +71,18 @@ public class ShopUI
             Useable useable = (Useable)product;
             productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString();
             productButton.onClick.AddListener(() => productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString());
-            Debug.Log(useable.ItemCode.ToString());
             return useable.ItemCode.ToString();
         }
         else if (statTypes.Contains(product.GetType()))
         {
             Stat stat = (Stat)product;
-            Debug.Log(stat.Name);
+            productButton.GetComponentInChildren<TMP_Text>().text = "";
             return stat.Name;
         }
         else
         {
             ActiveSkill activeSkill = (ActiveSkill)product;
+            productButton.GetComponentInChildren<TMP_Text>().text = "";
             return "RandomSkillBook";
         }
     }

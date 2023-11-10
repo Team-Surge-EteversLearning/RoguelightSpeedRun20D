@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,15 +13,18 @@ public class Village : MonoBehaviour
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject optionPanel;
     [SerializeField] string shopName;
+    [SerializeField] TMP_Text cashTxt;
 
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
-
     public Action resetUI;
+    public static Action onBuy;
     private void Start()
     {
         CreateShop();
         ShopBtnConnect();
         SlotsReset();
+        cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += () => cashTxt.text = PlayerStatsManager.CashNow.ToString();
     }
 
     private void ShopBtnConnect()
@@ -31,6 +35,7 @@ public class Village : MonoBehaviour
         {
             b.onClick.AddListener(() => ResetTargetShops(b.gameObject.name));
             b.onClick.AddListener(ChangeUISet);
+            
         }
     }
 
@@ -68,8 +73,7 @@ public class Village : MonoBehaviour
                 if (allProductSlots[i].name == "Exit")
                     continue;
                 allProductSlots[i].GetComponentsInChildren<Image>()[1].sprite = TestDB.instance.iconSet.GetIcon("Default");
-                allProductSlots[i].onClick.RemoveAllListeners();
-            }
+                allProductSlots[i].onClick.RemoveAllListeners();            }
         };
     }
 

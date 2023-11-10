@@ -13,10 +13,10 @@ public class DungeonItemManager : IProductMaker
     static readonly int bombMax = 1;
     static readonly int barrierMax = 1;
 
-    static int hpPotionPrice;
-    static int manaPotionPrice;
-    static int bombPrice;
-    static int barrierPrice;
+    static int hpPotionPrice = 10;
+    static int manaPotionPrice = 10;
+    static int bombPrice = 10;
+    static int barrierPrice = 10;
 
     static List<int> priceList = new List<int>()
     {

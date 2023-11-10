@@ -28,7 +28,14 @@ public class PlayerStatsManager : IProductMaker
     static List<int> priceWeightList = new List<int>();
     #region property
     public static string Name { get => name; set => name = value; }
-    public static int CashNow { get => cashNow; set => cashNow = value; }
+    public static int CashNow 
+    { 
+        get => cashNow;
+        set 
+        { 
+            cashNow = value; 
+        } 
+    }
     public static int HpMax { get => hpMax; set => hpMax = value; }
     public static int StaminaMax { get => staminaMax; set => staminaMax = value; }
     public static int ManaMax { get => manaMax; set => manaMax = value; }

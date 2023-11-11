@@ -13,8 +13,12 @@ public class DungeonManager : MonoBehaviour
 
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
     
-    [SerializeField] private GameObject indicator;
-    [SerializeField] private GameObject startIndicator;
+    // [SerializeField] private GameObject indicator;
+    // [SerializeField] private GameObject startIndicator;
+
+    public bool isBossDead = true;
+
+    private Vector3 posi;
 
     private int roomCount;
     private int roomInFloor;
@@ -60,7 +64,7 @@ public class DungeonManager : MonoBehaviour
         currentNode = _dungeon.Start;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         randNum = Random.Range(0, 8);
     }
@@ -77,7 +81,7 @@ public class DungeonManager : MonoBehaviour
         GameObject room;
         foreach (var node in target)
         {
-            Vector3 posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
+            posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
             if (node == target.Starts[0])
             {
                 room = Instantiate(dungeonBundleDatas[0].startRoomPresets[0].roomPrefab, posi, Quaternion.identity);
@@ -90,6 +94,7 @@ public class DungeonManager : MonoBehaviour
             {
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
                 Instantiate(dungeonBundleDatas[0].stair, posi, Quaternion.identity);
+
             }
             else if (node.IsShop)
             {
@@ -104,14 +109,14 @@ public class DungeonManager : MonoBehaviour
             room.name = node.Position.ToString();
             yield return new WaitForSeconds(0.1f);
         }
-        foreach (var item in target.Ends)
-        {
-            GameObject instance = Instantiate(indicator, roomNodeTransformPair[item]);
-        }
-        foreach (var item in target.Starts)
-        {
-            GameObject instance = Instantiate(startIndicator, roomNodeTransformPair[item]);
-        }
+        // foreach (var item in target.Ends)
+        // {
+        //     GameObject instance = Instantiate(indicator, roomNodeTransformPair[item]);
+        // }
+        // foreach (var item in target.Starts)
+        // {
+        //     GameObject instance = Instantiate(startIndicator, roomNodeTransformPair[item]);
+        // }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

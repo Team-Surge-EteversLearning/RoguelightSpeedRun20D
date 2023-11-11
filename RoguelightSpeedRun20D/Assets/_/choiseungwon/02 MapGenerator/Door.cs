@@ -11,7 +11,6 @@ public class Door : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         DungeonManager.OnDoorToggle += ToggleDoor;
-
     }
 
     private void Start()

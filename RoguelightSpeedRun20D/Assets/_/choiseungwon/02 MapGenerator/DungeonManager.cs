@@ -105,7 +105,7 @@ public class DungeonManager : MonoBehaviour
             roomNodeTransformPair.Add(node, room.transform);
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
         // foreach (var item in target.Ends)
         // {

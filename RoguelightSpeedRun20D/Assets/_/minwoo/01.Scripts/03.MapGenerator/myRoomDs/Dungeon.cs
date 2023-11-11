@@ -14,7 +14,7 @@ public class DungeonNode
     public DungeonNode Back;
     public bool IsShop { get; set; }
     public int DistanceFromStart;
-    public Vector3Int Position { get; set;}
+    public Vector3Int Position { get; set; }
 
     public int Floor { get; set; }
 
@@ -26,7 +26,7 @@ public class DungeonNode
 
 public class Dungeon : IEnumerable<DungeonNode>
 {
-    public DungeonNode Prev {get; set;}
+    public DungeonNode Prev { get; set; }
     private DungeonNode _current;
     public DungeonNode Current
     {
@@ -103,24 +103,28 @@ public class Dungeon : IEnumerable<DungeonNode>
 
                 // Define all possible directions
                 var directions = new List<Tuple<Action, Func<Vector3Int>>>
-            {
-                new Tuple<Action, Func<Vector3Int>>(() => {
-                    if (selectedNode.Left == null)
-                        selectedNode.Left = node;
-                }, () => selectedNode.Position + Vector3Int.left),
-                new Tuple<Action, Func<Vector3Int>>(() => {
-                    if (selectedNode.Right == null)
-                        selectedNode.Right = node;
-                }, () => selectedNode.Position + Vector3Int.right),
-                new Tuple<Action, Func<Vector3Int>>(() => {
-                    if (selectedNode.Front == null)
-                        selectedNode.Front = node;
-                }, () => selectedNode.Position + new Vector3Int(0, 0, 1)),
-                new Tuple<Action, Func<Vector3Int>>(() => {
-                    if (selectedNode.Back == null)
-                        selectedNode.Back = node;
-                }, () => selectedNode.Position + new Vector3Int(0, 0, -1))
-            };
+{
+                    new Tuple<Action, Func<Vector3Int>>(() => {
+                        if (selectedNode.Left == null && selectedNode.Position.y == floor && selectedNode != node)
+                            selectedNode.Left = node;
+                    }, () => selectedNode.Position + Vector3Int.left),
+
+                    new Tuple<Action, Func<Vector3Int>>(() => {
+                        if (selectedNode.Right == null && selectedNode.Position.y == floor && selectedNode != node)
+                            selectedNode.Right = node;
+                    }, () => selectedNode.Position + Vector3Int.right),
+
+                    new Tuple<Action, Func<Vector3Int>>(() => {
+                        if (selectedNode.Front == null && selectedNode.Position.y == floor && selectedNode != node)
+                            selectedNode.Front = node;
+                    }, () => selectedNode.Position + new Vector3Int(0, 0, 1)),
+
+                    new Tuple<Action, Func<Vector3Int>>(() => {
+                        if (selectedNode.Back == null && selectedNode.Position.y == floor && selectedNode != node)
+                            selectedNode.Back = node;
+                    }, () => selectedNode.Position + new Vector3Int(0, 0, -1))
+                };
+
                 // Shuffle the list
                 directions = directions.OrderBy(x => random.Next()).ToList();
                 // Try to add the node in a random direction
@@ -181,7 +185,9 @@ public class Dungeon : IEnumerable<DungeonNode>
             }
         }
         // Set the End node to the one with the maximum DistanceFromStart, and the most recently added if there are multiple
-        End = nodes.Where(n => n.Position.y == floor).OrderByDescending(n => n.DistanceFromStart).FirstOrDefault();
+        End = nodes.Where(n => n.Position.y == floor)
+            .OrderByDescending(n => n.DistanceFromStart)
+            .FirstOrDefault();
         Current = Starts[0];
     }
 

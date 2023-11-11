@@ -18,7 +18,6 @@ public class DungeonManager : MonoBehaviour
 
     public bool isBossDead = true;
 
-    private Vector3 posi;
 
     private int roomCount;
     private int roomInFloor;
@@ -66,7 +65,7 @@ public class DungeonManager : MonoBehaviour
 
     private void Update()
     {
-        randNum = Random.Range(0, 8);
+        randNum = Random.Range(0, 6);
     }
     
     private void Generate(Dungeon target)
@@ -81,7 +80,7 @@ public class DungeonManager : MonoBehaviour
         GameObject room;
         foreach (var node in target)
         {
-            posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
+            Vector3 posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
             if (node == target.Starts[0])
             {
                 room = Instantiate(dungeonBundleDatas[0].startRoomPresets[0].roomPrefab, posi, Quaternion.identity);
@@ -94,7 +93,6 @@ public class DungeonManager : MonoBehaviour
             {
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
                 Instantiate(dungeonBundleDatas[0].stair, posi, Quaternion.identity);
-
             }
             else if (node.IsShop)
             {
@@ -107,7 +105,7 @@ public class DungeonManager : MonoBehaviour
             roomNodeTransformPair.Add(node, room.transform);
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
         // foreach (var item in target.Ends)
         // {
@@ -138,10 +136,10 @@ public class DungeonManager : MonoBehaviour
         Quaternion leftRot = Quaternion.Euler(0, 0, 0);       
         
         GameObject instance;
-        if (node.Front != null && ! _dungeon.IsAlreadyHaveDoor(node, node.Front)) // path and door
+        if (node.Front != null && !_dungeon.IsAlreadyHaveDoor(node, node.Front)) // path and door
         {
             instance = Instantiate(dungeonBundleDatas[0].doorPresets, frontDoorPosi, frontRot);
-            instance.name = "front_d";
+            instance.name = node.Front.Position.ToString();
             instance.GetComponentInChildren<Door>().nextDoor = DoorDir.Front;
             _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Front));
         }
@@ -154,7 +152,7 @@ public class DungeonManager : MonoBehaviour
         if (node.Right != null && !_dungeon.IsAlreadyHaveDoor(node, node.Right))
         {
             instance = Instantiate(dungeonBundleDatas[0].doorPresets, rightDoorPosi, rightRot);
-            instance.name = "right_d";
+            instance.name = node.Right.Position.ToString();
             instance.GetComponentInChildren<Door>().nextDoor = DoorDir.Right;
             _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Right));
         
@@ -168,7 +166,7 @@ public class DungeonManager : MonoBehaviour
         if (node.Back != null && !_dungeon.IsAlreadyHaveDoor(node, node.Back))
         {
             instance = Instantiate(dungeonBundleDatas[0].doorPresets, backDoorPosi, backRot);
-            instance.name = "back_d";
+            instance.name = node.Back.Position.ToString();
             instance.GetComponentInChildren<Door>().nextDoor = DoorDir.Back;
             _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Back));
         }
@@ -181,7 +179,7 @@ public class DungeonManager : MonoBehaviour
         if (node.Left != null && !_dungeon.IsAlreadyHaveDoor(node, node.Left))
         {
             instance = Instantiate(dungeonBundleDatas[0].doorPresets, leftDoorPosi, leftRot);
-            instance.name = "Left_d";
+            instance.name = node.Left.Position.ToString();
             instance.GetComponentInChildren<Door>().nextDoor = DoorDir.Left;
             _dungeon.Paths.Add(new KeyValuePair<DungeonNode, DungeonNode>(node, node.Left));
         }

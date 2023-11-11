@@ -32,12 +32,6 @@ MonoBehaviour:
     trapLocationList: []
     monsterSpawnPool: []
     trapSpawnPool: []
-  - roomPrefab: {fileID: 5019094470277296039, guid: 09e1ccf7e76c04d4993ba9e32902f639, type: 3}
-    boxLocationList: []
-    monsterLocationList: []
-    trapLocationList: []
-    monsterSpawnPool: []
-    trapSpawnPool: []
   - roomPrefab: {fileID: 1993919157333304183, guid: b1e36954b9f0d40be8fb06d716554948, type: 3}
     boxLocationList: []
     monsterLocationList: []
@@ -63,18 +57,6 @@ MonoBehaviour:
     monsterSpawnPool: []
     trapSpawnPool: []
   - roomPrefab: {fileID: 8615109590014953584, guid: 87f48cf14c7044bbc8cdb3cf0350f264, type: 3}
-    boxLocationList: []
-    monsterLocationList: []
-    trapLocationList: []
-    monsterSpawnPool: []
-    trapSpawnPool: []
-  - roomPrefab: {fileID: 3398753880960273027, guid: 89af16851d43b4079ab78f590be10e06, type: 3}
-    boxLocationList: []
-    monsterLocationList: []
-    trapLocationList: []
-    monsterSpawnPool: []
-    trapSpawnPool: []
-  - roomPrefab: {fileID: 8168176406705027677, guid: 6ef7e6e8c76244245be046024baf6b08, type: 3}
     boxLocationList: []
     monsterLocationList: []
     trapLocationList: []

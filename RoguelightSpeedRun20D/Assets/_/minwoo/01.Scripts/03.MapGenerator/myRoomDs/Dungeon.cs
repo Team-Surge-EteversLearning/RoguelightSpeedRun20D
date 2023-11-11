@@ -28,7 +28,7 @@ public class Dungeon : IEnumerable<DungeonNode>
 {
     public DungeonNode Prev {get; set;}
     private DungeonNode _current;
-    public DungeonNode Current 
+    public DungeonNode Current
     {
         get => _current;
         set
@@ -211,7 +211,7 @@ public class Dungeon : IEnumerable<DungeonNode>
             }
             else
             {
-                Debug.Log("»óÁ¡À» ¼³Á¤ÇÒ ¼ö ÀÖ´Â ³ëµå°¡ ¾ø½À´Ï´Ù.");
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             }
         }
     }

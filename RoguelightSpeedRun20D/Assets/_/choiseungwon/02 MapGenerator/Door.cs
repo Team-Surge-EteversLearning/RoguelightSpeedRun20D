@@ -6,7 +6,8 @@ public class Door : MonoBehaviour
 {
     public DoorDir nextDoor;
     private Animator animator;
-
+    [SerializeField] private bool isBossDead;
+    
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -18,13 +19,17 @@ public class Door : MonoBehaviour
         animator.Play("Open");
     }
 
-    public void ToggleDoor(bool clear)
+    private void Update()
     {
-        if (clear)
+        if (isBossDead)
         {
             animator.Play("Open");
         }
-        else
+    }
+
+    public void ToggleDoor(bool clear)
+    {
+        if (clear == false)
         {
             animator.Play("Close");
         }

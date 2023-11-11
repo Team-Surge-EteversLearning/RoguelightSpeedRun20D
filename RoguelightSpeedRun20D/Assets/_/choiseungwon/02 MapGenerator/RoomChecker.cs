@@ -9,6 +9,15 @@ public class RoomChecker : MonoBehaviour
     public Dungeon dungeon;
     
     private bool isClear;
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("PlayerBody"))
+        {
+            
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerBody"))

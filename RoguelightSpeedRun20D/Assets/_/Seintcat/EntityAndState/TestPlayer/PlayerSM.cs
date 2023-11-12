@@ -31,15 +31,18 @@ public class PlayerSM : StateManager
     public static Weapon weaponNow
     {
         get { return _weaponNow; }
-        set 
-        { 
-            foreach(GameObject weapon in playerObj.GetComponent<PlayerSM>().weaponInstance)
-                weapon.SetActive(false);
-
+        set
+        {
             _weaponNow = value;
 
-            GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
-            weaponModel.SetActive(true);
+            if (playerObj != null)
+            {
+                foreach (GameObject weapon in playerObj.GetComponent<PlayerSM>().weaponInstance)
+                    weapon.SetActive(false);
+
+                GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
+                weaponModel.SetActive(true);
+            }
         }
     }
     private static Armor _armorNow;
@@ -48,13 +51,16 @@ public class PlayerSM : StateManager
         get { return _armorNow; }
         set
         {
-            foreach (GameObject armor in playerObj.GetComponent<PlayerSM>().armorInstance)
-                armor.SetActive(false);
-
             _armorNow = value;
 
-            GameObject armorModel = _armorNow.MakeInGame(playerObj.GetComponent<PlayerSM>().armorInstance);
-            armorModel.SetActive(true);
+            if (playerObj != null)
+            {
+                foreach (GameObject armor in playerObj.GetComponent<PlayerSM>().armorInstance)
+                    armor.SetActive(false);
+
+                GameObject armorModel = _armorNow.MakeInGame(playerObj.GetComponent<PlayerSM>().armorInstance);
+                armorModel.SetActive(true);
+            }
         }
     }
     private static Shoes _shoesNow;
@@ -63,13 +69,16 @@ public class PlayerSM : StateManager
         get { return _shoesNow; }
         set
         {
-            foreach (GameObject shoes in playerObj.GetComponent<PlayerSM>().shoesInstance)
-                shoes.SetActive(false);
-
             _shoesNow = value;
 
-            GameObject shoesModel = _shoesNow.MakeInGame(playerObj.GetComponent<PlayerSM>().shoesInstance);
-            shoesModel.SetActive(true);
+            if (playerObj != null)
+            {
+                foreach (GameObject shoes in playerObj.GetComponent<PlayerSM>().shoesInstance)
+                    shoes.SetActive(false);
+
+                GameObject shoesModel = _shoesNow.MakeInGame(playerObj.GetComponent<PlayerSM>().shoesInstance);
+                shoesModel.SetActive(true);
+            }
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class InputHandler : MonoBehaviour
     public static bool running { get; private set; }
     public static bool attack { get; private set; }
     public static bool avoid { get; private set; }
+    public static bool defence { get; private set; }
 
     [SerializeField]
     private InputActionAsset actionAsset;
@@ -18,15 +20,18 @@ public class InputHandler : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         actionAsset.Enable();
-        actionAsset.FindActionMap("Fighting").Enable();
-        actionAsset.FindActionMap("Fighting").FindAction("Move").performed += OnMove;
-        actionAsset.FindActionMap("Fighting").FindAction("Move").canceled += OnMove;
-        actionAsset.FindActionMap("Fighting").FindAction("Running").started += OnRunning;
-        actionAsset.FindActionMap("Fighting").FindAction("Running").canceled += OnRunning;
-        actionAsset.FindActionMap("Fighting").FindAction("Attack").started += OnAttack;
-        actionAsset.FindActionMap("Fighting").FindAction("Attack").canceled += OnAttack;
-        actionAsset.FindActionMap("Fighting").FindAction("Avoid").started += OnAvoid;
-        actionAsset.FindActionMap("Fighting").FindAction("Avoid").canceled += OnAvoid;
+        InputActionMap map = actionAsset.FindActionMap("Fighting");
+        map.Enable();
+        map.FindAction("Move").performed += OnMove;
+        map.FindAction("Move").canceled += OnMove;
+        map.FindAction("Running").started += OnRunning;
+        map.FindAction("Running").canceled += OnRunning;
+        map.FindAction("Attack").started += OnAttack;
+        map.FindAction("Attack").canceled += OnAttack;
+        map.FindAction("Avoid").started += OnAvoid;
+        map.FindAction("Avoid").canceled += OnAvoid;
+        map.FindAction("Defence").started += OnDefence;
+        map.FindAction("Defence").canceled += OnDefence;
     }
 
     // Start is called before the first frame update
@@ -70,5 +75,13 @@ public class InputHandler : MonoBehaviour
     {
         if (context.ReadValue<float>() > 0.5f)
             avoid = true;
+    }
+
+    private void OnDefence(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            defence = true;
+        else
+            defence = false;
     }
 }

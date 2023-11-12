@@ -13,7 +13,7 @@ public class PlayerState_Avoid : State
     {
         stateName = "Avoid";
         cooltime = -1f;
-        motionSpeed = 1f;
+        motionSpeed = 0.7f;
     }
 
     public override void Initialize(GameObject managerObject)

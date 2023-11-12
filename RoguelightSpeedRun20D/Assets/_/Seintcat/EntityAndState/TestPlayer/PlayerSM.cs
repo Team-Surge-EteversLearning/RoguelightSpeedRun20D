@@ -43,6 +43,8 @@ public class PlayerSM : StateManager
 
     public static float attackCooltime;
 
+    public static bool isDefence { get; private set; }
+
     private void Awake()
     {
         ManagerStart();
@@ -79,7 +81,7 @@ public class PlayerSM : StateManager
         ManagerUpdate();
 
         manaNow += armorNow.ManaRegen * Time.deltaTime;
-        if (mainState.stateName != "Move" || !InputHandler.running)
+        if (!(mainState.stateName == "Move" && InputHandler.running) && !(mainState.stateName != "Move" && isDefence))
             staminaNow += (shoesNow.StaminaRegen + 1) * Time.deltaTime;
 
         if (manaNow > manaMax)
@@ -87,7 +89,14 @@ public class PlayerSM : StateManager
         if (staminaNow > staminaMax)
             staminaNow = staminaMax;
 
-        if(mainState.stateName != "Avoid")
+        attackCooltime -= Time.deltaTime;
+        if (isDefence && !InputHandler.defence)
+        {
+            isDefence = false;
+            gameObject.GetComponent<Animator>().Play("Idle", 1, 0f);
+        }
+
+        if (mainState.stateName != "Avoid")
         {
             if (InputHandler.avoid && staminaNow > 3f)
             {
@@ -96,12 +105,18 @@ public class PlayerSM : StateManager
                 return;
             }
 
-            attackCooltime -= Time.deltaTime;
-            if (attackCooltime < 0)
+            if (!animator.GetCurrentAnimatorStateInfo(1).IsName("Attack") && InputHandler.defence)
+            {
+                isDefence = true;
+                animator.Play("Defence", 1, 0f);
+                return;
+            }
+
+            if (attackCooltime < 0 && !isDefence)
             {
                 if (InputHandler.attack)
                 {
-                    gameObject.GetComponent<Animator>().Play("Attack", 1, 0f);
+                    animator.Play("Attack", 1, 0f);
                     attackCooltime = weaponNow.Cooltime;
                     attackable.AttackStart();
                 }
@@ -109,6 +124,7 @@ public class PlayerSM : StateManager
                     attackable.AttackStop();
             }
         }
+
     }
 
     public override void Interrupt(string stateName)
@@ -119,22 +135,32 @@ public class PlayerSM : StateManager
     private void OnTriggerEnter(Collider other)
     {
         AttackAble attack = other.gameObject.GetComponent<AttackAble>();
-        if (mainState.stateName != "Avoid" && attack != null)
-        {
-            int damage = attack.GetDamage(gameObject);
-            if (damage > 1)
-                return;
+        if (attack == null || mainState.stateName == "Avoid")
+            return;
 
-            hpNow -= damage;
-            if (hpNow < 0)
-            {
-                animator.Play("Death", 0);
-                animator.Play("Death", 1);
-                enabled = false;
-            }
-            else
-                ChangeState("Damage");
+        int damage = attack.GetDamage(gameObject);
+        if (damage < 1)
+            return;
+
+        if (isDefence && (damage / 2) < staminaNow)
+        {
+            staminaNow -= (int)((float)damage / 2);
+            return;
         }
+        else
+        {
+            staminaNow = 0;
+        }
+
+        hpNow -= damage;
+        if (hpNow < 0)
+        {
+            animator.Play("Death", 0);
+            animator.Play("Death", 1);
+            enabled = false;
+        }
+        else
+            ChangeState("Damage");
     }
 
     public static void ResetAfterGameOver()

@@ -36,7 +36,7 @@ public class PlayerState_Move : State
 
         bool runNow = false;
         float speed = PlayerSM.moveSpeed;
-        if (InputHandler.running && PlayerSM.staminaNow > 0)
+        if (!PlayerSM.isDefence && InputHandler.running && PlayerSM.staminaNow > 0)
         {
             runNow = true;
             speed = PlayerSM.runSpeed;
@@ -62,7 +62,7 @@ public class PlayerState_Move : State
     protected override void StateEnd()
     {
         rigidBody.velocity = Vector3.zero;
-        Debug.LogWarning("!");
+        //Debug.LogWarning("!");
         animator.Play("Idle" + runCheck, 0);
     }
 }

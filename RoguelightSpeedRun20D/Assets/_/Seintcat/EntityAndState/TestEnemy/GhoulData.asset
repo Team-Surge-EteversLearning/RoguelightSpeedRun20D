@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
   m_Name: GhoulData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
   monsterName: Ghoul
   cashDrop: 100
   hpMax: 100
-  attackPower: 1
-  motionTime: 1
+  attackPower: 3
   attackCoolTime: 2
   attackRange: 1.5
   idleTime: 5

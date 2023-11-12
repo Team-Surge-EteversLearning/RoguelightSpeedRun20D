@@ -16,19 +16,62 @@ public class PlayerSM : StateManager
     public static GameObject playerObj;
 
     [SerializeField]
-    private GameObject weaponHanger;
+    private List<GameObject> weaponInstance;
     [SerializeField]
-    private List<GameObject> weaponModels;
+    private List<GameObject> armorInstance;
+    [SerializeField]
+    private List<GameObject> shoesInstance;
     [SerializeField]
     private Animator animator;
 
-    private List<GameObject> weaponInstance;
     private GameObject weaponModelNow;
     private AttackAble attackable;
 
-    public static Weapon weaponNow { get; set; }
-    public static Armor armorNow { get; set; }
-    public static Shoes shoesNow { get; set; }
+    private static Weapon _weaponNow;
+    public static Weapon weaponNow
+    {
+        get { return _weaponNow; }
+        set 
+        { 
+            foreach(GameObject weapon in playerObj.GetComponent<PlayerSM>().weaponInstance)
+                weapon.SetActive(false);
+
+            _weaponNow = value;
+
+            GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
+            weaponModel.SetActive(true);
+        }
+    }
+    private static Armor _armorNow;
+    public static Armor armorNow
+    {
+        get { return _armorNow; }
+        set
+        {
+            foreach (GameObject armor in playerObj.GetComponent<PlayerSM>().armorInstance)
+                armor.SetActive(false);
+
+            _armorNow = value;
+
+            GameObject armorModel = _armorNow.MakeInGame(playerObj.GetComponent<PlayerSM>().armorInstance);
+            armorModel.SetActive(true);
+        }
+    }
+    private static Shoes _shoesNow;
+    public static Shoes shoesNow
+    {
+        get { return _shoesNow; }
+        set
+        {
+            foreach (GameObject shoes in playerObj.GetComponent<PlayerSM>().shoesInstance)
+                shoes.SetActive(false);
+
+            _shoesNow = value;
+
+            GameObject shoesModel = _shoesNow.MakeInGame(playerObj.GetComponent<PlayerSM>().shoesInstance);
+            shoesModel.SetActive(true);
+        }
+    }
 
     public static Weapon basicWeapon;
     public static Armor basicArmor;
@@ -49,7 +92,7 @@ public class PlayerSM : StateManager
     {
         ManagerStart();
         playerObj = gameObject;
-        weaponModelNow = weaponModels[0];
+        weaponModelNow = weaponInstance[0];
         attackable = weaponModelNow.GetComponent<AttackAble>();
 
         Cursor.visible = false;
@@ -175,9 +218,9 @@ public class PlayerSM : StateManager
     {
         if(basicWeapon == null || basicArmor == null || basicShoes == null)
         {
-            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(10, false, 1, 1.5f));
-            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(0, false, 0, 0));
-            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0));
+            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(10, false, 1, 1.5f), new List<EquipmentOption>());
+            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(0, false, 0, 0), new List<EquipmentOption>());
+            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0), new List<EquipmentOption>());
         }
 
         weaponNow = basicWeapon;

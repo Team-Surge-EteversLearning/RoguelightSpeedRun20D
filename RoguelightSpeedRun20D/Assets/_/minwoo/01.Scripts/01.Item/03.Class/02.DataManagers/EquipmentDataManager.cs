@@ -106,15 +106,15 @@ public class EquipmentDataManager : IProductMaker
             switch (unlocks[key].Type) //Create another object by type and add it to the list
             {
                 case EquipmentType.Armor:
-                    Armor newArmor = new Armor(key, unlocks[key], armorBasicTable[key]); //constructor:Armor(string name, BasicEquipments basicData, ArmorData data)
+                    Armor newArmor = new Armor(key, unlocks[key], armorBasicTable[key], new List<EquipmentOption>()); //constructor:Armor(string name, BasicEquipments basicData, ArmorData data)
                     displayItemListWithPrice.Add(new ShopProduct( newArmor, unlocks[key].Price));
                     break;
                 case EquipmentType.Weapon:
-                    Weapon newWeapon = new Weapon(key, unlocks[key], weaponBasicTable[key]);
+                    Weapon newWeapon = new Weapon(key, unlocks[key], weaponBasicTable[key], new List<EquipmentOption>());
                     displayItemListWithPrice.Add(new ShopProduct(newWeapon, unlocks[key].Price));
                     break;
                 case EquipmentType.Shoes:
-                    Shoes newShoes = new Shoes(key, unlocks[key], shoesBasicTable[key]);
+                    Shoes newShoes = new Shoes(key, unlocks[key], shoesBasicTable[key], new List<EquipmentOption>());
                     displayItemListWithPrice.Add(new ShopProduct(newShoes, unlocks[key].Price));
                     break;
             }

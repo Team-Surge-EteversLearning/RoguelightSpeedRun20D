@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class Armor : Equipment
 {
     int maxHp;
@@ -6,7 +8,7 @@ public class Armor : Equipment
     float manaRegen;
     ArmorData _data { get; set; }
 
-    public Armor(string name, BasicEquipments basicData, ArmorData data)
+    public Armor(string name, BasicEquipments basicData, ArmorData data, List<EquipmentOption> usableOptions)
     {
         this.Name = name;
         this.SellWhenClear = basicData.SellWhenClear;
@@ -16,6 +18,11 @@ public class Armor : Equipment
         this.MaxMana = data.MaxMana;
         this.ManaRegen = data.ManaRegen;
         this.ModelIndex = basicData.ModelIndex;
+        this.usableOptions = new List<EquipmentOption> { };
+
+        Armor thisArmor = this;
+        foreach (EquipmentOption option in usableOptions)
+            thisArmor = (Armor)option.MakeEquipment(thisArmor);
     }
 
     public int MaxHp { get => maxHp; set => maxHp = value; }

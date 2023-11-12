@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 95924602544960654}
   - component: {fileID: 205907724345007692}
   - component: {fileID: 972570003369249868}
+  - component: {fileID: 7630928773081120584}
+  - component: {fileID: 2967860578101430926}
   m_Layer: 0
   m_Name: Zombie 2
   m_TagString: Untagged
@@ -149,6 +151,7 @@ Transform:
   - {fileID: 4249268939864948}
   - {fileID: 4898503119436184}
   - {fileID: 4107602898785894}
+  - {fileID: 3190705945975441990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95924602544960654
@@ -228,6 +231,59 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &7630928773081120584
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025841268384064}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &2967860578101430926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025841268384064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dba5b53863f4cacb0969767c9fb647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 95924602544960654}
+  data: {fileID: 11400000, guid: ad0b46d02429f429b93f1ea7b102bfbe, type: 2}
+  _rigidbody: {fileID: 7630928773081120584}
+  eye: {fileID: 8048426054661289140}
+  mainBody: {fileID: 972570003369249868}
+  subBody: []
+  attackAbles:
+  - {fileID: 8155520423036382991}
+  - {fileID: 4275134247004267884}
+  movePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1046487267950038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4401,6 +4457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4340011789720396}
   - component: {fileID: 501271784956410038}
+  - component: {fileID: 4275134247004267884}
   m_Layer: 0
   m_Name: ik_hand_r
   m_TagString: Untagged
@@ -4444,6 +4501,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0.15, y: 0, z: 0}
+--- !u!114 &4275134247004267884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870301351928568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f9306313181f649b1bf9ed79e01619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 501271784956410038}
+  attackTime: 1
+  stateManager: {fileID: 2967860578101430926}
+  maxHitCount: 1
 --- !u!1 &1875138974964326
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,6 +4527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4060065321648256}
   - component: {fileID: 8526806818849472556}
+  - component: {fileID: 8155520423036382991}
   m_Layer: 0
   m_Name: ik_hand_l
   m_TagString: Untagged
@@ -4497,6 +4571,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: -0.15, y: 0, z: 0}
+--- !u!114 &8155520423036382991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875138974964326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f9306313181f649b1bf9ed79e01619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 8526806818849472556}
+  attackTime: 1
+  stateManager: {fileID: 2967860578101430926}
+  maxHitCount: 1
 --- !u!1 &1885797725579570
 GameObject:
   m_ObjectHideFlags: 0
@@ -5318,3 +5408,70 @@ Transform:
   - {fileID: 4375038328579968}
   m_Father: {fileID: 4236586627591806}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8048426054661289140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3190705945975441990}
+  - component: {fileID: 9025616205065078038}
+  - component: {fileID: 8425756747700468799}
+  m_Layer: 7
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3190705945975441990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048426054661289140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4280475154797884}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9025616205065078038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048426054661289140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04d08314392e7c49bebd7500b7fb359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 2967860578101430926}
+--- !u!65 &8425756747700468799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048426054661289140}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 3}
+  m_Center: {x: 0, y: 1, z: 1}

@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 95924602544960654}
   - component: {fileID: 205907724345007692}
   - component: {fileID: 993686243947817307}
+  - component: {fileID: 3042817596059520479}
+  - component: {fileID: 2475464449736890466}
   m_Layer: 0
   m_Name: Zombie 3
   m_TagString: Untagged
@@ -149,6 +151,7 @@ Transform:
   - {fileID: 4060682985261150}
   - {fileID: 4895580783343130}
   - {fileID: 4700640986881774}
+  - {fileID: 2797525746406733659}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &95924602544960654
@@ -228,6 +231,59 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &3042817596059520479
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025841268384064}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &2475464449736890466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025841268384064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4dba5b53863f4cacb0969767c9fb647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 95924602544960654}
+  data: {fileID: 11400000, guid: ad0b46d02429f429b93f1ea7b102bfbe, type: 2}
+  _rigidbody: {fileID: 3042817596059520479}
+  eye: {fileID: 4808758085807885564}
+  mainBody: {fileID: 993686243947817307}
+  subBody: []
+  attackAbles:
+  - {fileID: 6088143315287998515}
+  - {fileID: 4011397917101189241}
+  movePoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1041547630651202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4346729177841396}
   - component: {fileID: 6293369060831765024}
+  - component: {fileID: 6088143315287998515}
   m_Layer: 0
   m_Name: ik_hand_l
   m_TagString: Untagged
@@ -1199,6 +1256,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: -0.15, y: 0, z: 0}
+--- !u!114 &6088143315287998515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1220601438291624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f9306313181f649b1bf9ed79e01619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 6293369060831765024}
+  attackTime: 1
+  stateManager: {fileID: 2475464449736890466}
+  maxHitCount: 1
 --- !u!1 &1227227071102476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,6 +1926,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4124057684465654}
   - component: {fileID: 8077380920093968655}
+  - component: {fileID: 4011397917101189241}
   m_Layer: 0
   m_Name: ik_hand_r
   m_TagString: Untagged
@@ -1896,6 +1970,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0.15, y: 0, z: 0}
+--- !u!114 &4011397917101189241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365951587630504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f9306313181f649b1bf9ed79e01619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 8077380920093968655}
+  attackTime: 1
+  stateManager: {fileID: 2475464449736890466}
+  maxHitCount: 1
 --- !u!1 &1372048000374076
 GameObject:
   m_ObjectHideFlags: 0
@@ -5318,3 +5408,70 @@ Transform:
   - {fileID: 4024310629508916}
   m_Father: {fileID: 4461950096890738}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4808758085807885564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2797525746406733659}
+  - component: {fileID: 1092838612966677976}
+  - component: {fileID: 1882823881099309480}
+  m_Layer: 7
+  m_Name: Eyes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2797525746406733659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808758085807885564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4280475154797884}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1092838612966677976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808758085807885564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04d08314392e7c49bebd7500b7fb359, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateManager: {fileID: 2475464449736890466}
+--- !u!65 &1882823881099309480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808758085807885564}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 3}
+  m_Center: {x: 0, y: 1, z: 1}

@@ -31,6 +31,7 @@ public class ChestShop : Shop
         productSlots.Clear();
 
         SettingShopUI();
+        OpenShop();
 
         foreach (var item in BtnUIPair)
         {

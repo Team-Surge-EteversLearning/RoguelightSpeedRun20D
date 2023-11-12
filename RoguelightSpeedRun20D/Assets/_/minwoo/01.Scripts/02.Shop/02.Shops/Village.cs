@@ -19,6 +19,8 @@ public class Village : MonoBehaviour
     public static Action onBuy;
     private void Start()
     {
+        shopPanel.SetActive(false);
+ 
         CreateShop();
         OptionBtnConnect();
         SlotsReset();
@@ -29,12 +31,12 @@ public class Village : MonoBehaviour
 
     private void OptionBtnConnect()
     {
-        Button[] allPanelBtns = optionPanel.GetComponentsInChildren<Button>();
+        Button[] allPanelBtns = optionPanel.GetComponentsInChildren<Button>(true);
 
         foreach (Button b in allPanelBtns)
         {
-            b.onClick.AddListener(() => ResetTargetShops(b.gameObject.name));
             b.onClick.AddListener(ChangeUISet);
+            b.onClick.AddListener(() => ResetTargetShops(b.gameObject.name));
         }
     }
 
@@ -58,7 +60,7 @@ public class Village : MonoBehaviour
     }
     private void SlotsReset()
     {
-        Button[] allProductSlots = shopPanel.GetComponentsInChildren<Button>();
+        Button[] allProductSlots = shopPanel.GetComponentsInChildren<Button>(true);
         for (int i = 0; i < allProductSlots.Length; i++)
         {
             if (allProductSlots[i].name == "Exit")
@@ -76,15 +78,15 @@ public class Village : MonoBehaviour
                 allProductSlots[i].gameObject.SetActive(false);
             }
         };
-        shopPanel.SetActive(false);
-        Debug.Log(shopPanel.activeInHierarchy);
     }
 
     public void ChangeUISet()
     {
         Debug.Log($"{optionPanel.activeInHierarchy} / {shopPanel.activeInHierarchy}");
-        optionPanel.SetActive(!optionPanel.activeInHierarchy);
         shopPanel.SetActive(!shopPanel.activeInHierarchy);
+        optionPanel.SetActive(!optionPanel.activeInHierarchy);
+        Debug.Log($"{optionPanel.activeInHierarchy} / {shopPanel.activeInHierarchy}");
+ 
     }
 
     [ContextMenu("INIT")]

@@ -51,7 +51,6 @@ public abstract class Shop
             BtnUIPair[productSlots[i]].SProduct = Products[i];
         }
 
-        OpenShop();
 
     }
 

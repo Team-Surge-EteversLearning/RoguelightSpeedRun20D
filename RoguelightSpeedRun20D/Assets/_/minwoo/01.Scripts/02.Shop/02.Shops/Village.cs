@@ -12,7 +12,6 @@ public class Village : MonoBehaviour
     private Dictionary<Button, ShopUI> btnShopUIPair = new Dictionary<Button, ShopUI>();
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject optionPanel;
-    [SerializeField] string shopName;
     [SerializeField] TMP_Text cashTxt;
 
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
@@ -21,13 +20,14 @@ public class Village : MonoBehaviour
     private void Start()
     {
         CreateShop();
-        ShopBtnConnect();
+        OptionBtnConnect();
         SlotsReset();
         cashTxt.text = PlayerStatsManager.CashNow.ToString();
         onBuy += () => cashTxt.text = PlayerStatsManager.CashNow.ToString();
     }
 
-    private void ShopBtnConnect()
+
+    private void OptionBtnConnect()
     {
         Button[] allPanelBtns = optionPanel.GetComponentsInChildren<Button>();
 
@@ -35,13 +35,12 @@ public class Village : MonoBehaviour
         {
             b.onClick.AddListener(() => ResetTargetShops(b.gameObject.name));
             b.onClick.AddListener(ChangeUISet);
-            
         }
     }
 
     private void CreateShop()
     {
-        EquipShop v_EquipShop = new EquipShop(0, 3);
+        EquipShop v_EquipShop = new EquipShop(0, 3, 3);
         nameShopPair.Add("v_EquipShop", v_EquipShop);
         nameShopPair["v_EquipShop"].InitShop(shopPanel, this);
 
@@ -73,13 +72,17 @@ public class Village : MonoBehaviour
                 if (allProductSlots[i].name == "Exit")
                     continue;
                 allProductSlots[i].GetComponentsInChildren<Image>()[1].sprite = TestDB.instance.iconSet.GetIcon("Default");
-                allProductSlots[i].onClick.RemoveAllListeners();            
+                allProductSlots[i].onClick.RemoveAllListeners();
+                allProductSlots[i].gameObject.SetActive(false);
             }
         };
+        shopPanel.SetActive(false);
+        Debug.Log(shopPanel.activeInHierarchy);
     }
 
     public void ChangeUISet()
     {
+        Debug.Log($"{optionPanel.activeInHierarchy} / {shopPanel.activeInHierarchy}");
         optionPanel.SetActive(!optionPanel.activeInHierarchy);
         shopPanel.SetActive(!shopPanel.activeInHierarchy);
     }

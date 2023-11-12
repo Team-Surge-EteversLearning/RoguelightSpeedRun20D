@@ -51,8 +51,9 @@ public class ShopUI
         }
         PlayerStatsManager.CashNow -= price;
         product.Buy();
-        Village.onBuy();
-        thisShop.Products.Remove(this.SProduct);
+        Village.onBuy?.Invoke();
+        DungeonShopManager.onBuy?.Invoke();
+
         Debug.Log(PlayerStatsManager.CashNow);
         return;
     }
@@ -68,6 +69,7 @@ public class ShopUI
         if (equipTypes.Contains(product.GetType()))
         {
             Equipment equipment = (Equipment)product;
+            productButton.onClick.AddListener(() => thisShop.Products.Remove(this.SProduct));
             return equipment.Name;
         }
         else if (product.GetType() == typeof(Useable))

@@ -24,6 +24,10 @@ public class PlayerState_Move : State
     protected override string StateEnter_()
     {
         animator.Play(stateName + runCheck, 0);
+
+        foreach (EquipmentOption option in PlayerSM.shoesNow.usableOptions)
+            option.UseOption();
+
         return "";
     }
 

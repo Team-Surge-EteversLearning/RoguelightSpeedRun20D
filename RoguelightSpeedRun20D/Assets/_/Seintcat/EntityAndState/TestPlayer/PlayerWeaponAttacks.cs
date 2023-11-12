@@ -36,6 +36,9 @@ public class PlayerWeaponAttacks : AttackAble
             {
                 attackAble.AttackStart();
             }
+
+            foreach(EquipmentOption option in PlayerSM.weaponNow.usableOptions)
+                option.UseOption();
         }
     }
 

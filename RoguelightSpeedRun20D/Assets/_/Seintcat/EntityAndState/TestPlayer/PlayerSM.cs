@@ -33,13 +33,13 @@ public class PlayerSM : StateManager
         get { return _weaponNow; }
         set
         {
+            if (playerObj != null)
+                playerObj.GetComponent<PlayerSM>().weaponInstance[_weaponNow.ModelIndex].SetActive(false);
+
             _weaponNow = value;
 
             if (playerObj != null)
             {
-                foreach (GameObject weapon in playerObj.GetComponent<PlayerSM>().weaponInstance)
-                    weapon.SetActive(false);
-
                 GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
                 weaponModel.SetActive(true);
             }
@@ -51,13 +51,13 @@ public class PlayerSM : StateManager
         get { return _armorNow; }
         set
         {
+            if (playerObj != null)
+                playerObj.GetComponent<PlayerSM>().armorInstance[armorNow.ModelIndex].SetActive(false);
+
             _armorNow = value;
 
             if (playerObj != null)
             {
-                foreach (GameObject armor in playerObj.GetComponent<PlayerSM>().armorInstance)
-                    armor.SetActive(false);
-
                 GameObject armorModel = _armorNow.MakeInGame(playerObj.GetComponent<PlayerSM>().armorInstance);
                 armorModel.SetActive(true);
             }
@@ -69,13 +69,13 @@ public class PlayerSM : StateManager
         get { return _shoesNow; }
         set
         {
+            if (playerObj != null)
+                playerObj.GetComponent<PlayerSM>().shoesInstance[shoesNow.ModelIndex].SetActive(false);
+
             _shoesNow = value;
 
             if (playerObj != null)
             {
-                foreach (GameObject shoes in playerObj.GetComponent<PlayerSM>().shoesInstance)
-                    shoes.SetActive(false);
-
                 GameObject shoesModel = _shoesNow.MakeInGame(playerObj.GetComponent<PlayerSM>().shoesInstance);
                 shoesModel.SetActive(true);
             }
@@ -220,7 +220,13 @@ public class PlayerSM : StateManager
             enabled = false;
         }
         else
+        {
             ChangeState("Damage");
+
+            foreach (EquipmentOption option in armorNow.usableOptions)
+                option.UseOption();
+        }
+
     }
 
     public static void ResetAfterGameOver()

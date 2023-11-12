@@ -32,6 +32,9 @@ public class PlayerState_Avoid : State
         PlayerSM.staminaNow -= 3f;
         animator.SetFloat("X", Mathf.Lerp(animator.GetFloat("X"), normalMove.x, Time.deltaTime * 2));
         animator.SetFloat("Z", Mathf.Lerp(animator.GetFloat("Z"), normalMove.z, Time.deltaTime * 2));
+
+        normalMove = Quaternion.Euler(0, rigidBody.transform.rotation.eulerAngles.y, 0) * normalMove;
+
         animator.Play(stateName, 0);
         animator.Play(stateName, 1);
         cooltime = motionSpeed;

@@ -51,6 +51,9 @@ public class PlayerSM : StateManager
         playerObj = gameObject;
         weaponModelNow = weaponModels[0];
         attackable = weaponModelNow.GetComponent<AttackAble>();
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     public override void MakeState()
     {
@@ -79,6 +82,11 @@ public class PlayerSM : StateManager
     void Update()
     {
         ManagerUpdate();
+
+        Vector3 rotation = transform.rotation.eulerAngles;
+        rotation.y = rotation.y + (InputHandler.camRotate * Time.deltaTime * 30);
+        //Debug.LogWarning(rotation);
+        transform.rotation = Quaternion.Euler(rotation);
 
         manaNow += armorNow.ManaRegen * Time.deltaTime;
         if (!(mainState.stateName == "Move" && InputHandler.running) && !(mainState.stateName != "Move" && isDefence))

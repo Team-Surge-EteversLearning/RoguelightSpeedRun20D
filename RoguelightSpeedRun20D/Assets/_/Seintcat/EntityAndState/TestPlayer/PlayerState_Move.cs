@@ -48,6 +48,8 @@ public class PlayerState_Move : State
         animator.SetFloat("Z", Mathf.Lerp(animator.GetFloat("Z"), normalMove.z, Time.deltaTime * 2));
         animator.SetBool("Running", runNow);
 
+        normalMove = Quaternion.Euler(0, rigidBody.transform.rotation.eulerAngles.y, 0) * normalMove;
+
         speed += ((float)(PlayerStatsManager.Speed + PlayerSM.shoesNow.Speed) / (PlayerStatsManager.Speed + 10)) * PlayerSM.speedMaxGap;
         rigidBody.AddForce(normalMove * speed, ForceMode.VelocityChange);
 

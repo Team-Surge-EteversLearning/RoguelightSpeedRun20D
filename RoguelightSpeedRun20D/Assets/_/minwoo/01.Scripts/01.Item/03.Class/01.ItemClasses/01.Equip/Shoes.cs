@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class Shoes : Equipment
 {
     int maxHp;
@@ -5,7 +7,7 @@ public class Shoes : Equipment
     int maxStamina;
     float staminaRegen;
 
-    public Shoes(string name, BasicEquipments basicData, ShoesData data)
+    public Shoes(string name, BasicEquipments basicData, ShoesData data, List<EquipmentOption> usableOptions)
     {
         this.Name = name;
         this.SellWhenClear = basicData.SellWhenClear;
@@ -15,6 +17,11 @@ public class Shoes : Equipment
         this.MaxStamina = data.MaxStamina;
         this.StaminaRegen = data.StaminaRegen;
         this.ModelIndex = basicData.ModelIndex;
+        this.usableOptions = new List<EquipmentOption> { };
+
+        Shoes thisShoes = this;
+        foreach (EquipmentOption option in usableOptions)
+            thisShoes = (Shoes)option.MakeEquipment(thisShoes);
 
     }
 

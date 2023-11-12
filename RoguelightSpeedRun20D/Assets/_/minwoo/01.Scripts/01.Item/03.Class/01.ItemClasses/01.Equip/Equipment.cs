@@ -15,6 +15,13 @@ public abstract class Equipment : IProduct
     public int SellWhenClear { get => sellWhenClear; set => sellWhenClear = value; }
     public EquipmentType Type { get => type; set => type = value; }
     public int ModelIndex { get => modelIndex; set => modelIndex = value; }
+
+    public List<EquipmentOption> usableOptions;
+
+    public readonly static List<EquipmentOption> weaponOptionPool = new List<EquipmentOption> { };
+    public readonly static List<EquipmentOption> armorOptionPool = new List<EquipmentOption> { };
+    public readonly static List<EquipmentOption> shoesOptionPool = new List<EquipmentOption> { };
+
     public void Buy()
     {
         Button prvBtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
@@ -24,4 +31,13 @@ public abstract class Equipment : IProduct
     }
 
     public abstract void Equip();
+
+    public GameObject MakeInGame(List<GameObject> modelInstance)
+    {
+        GameObject thisWeapon = modelInstance[ModelIndex];
+        foreach (EquipmentOption option in usableOptions)
+            thisWeapon = option.MakeInGame(thisWeapon);
+
+        return thisWeapon;
+    }
 }

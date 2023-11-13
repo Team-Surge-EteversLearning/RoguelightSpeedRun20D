@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -642,6 +642,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1332660271656469413, guid: 986ba65eb06920f43b8acc5776cb52da, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1972809866562612581, guid: 986ba65eb06920f43b8acc5776cb52da, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1972809866989072748, guid: 986ba65eb06920f43b8acc5776cb52da, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.000061035156
@@ -953,7 +961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopPanel: {fileID: 174002507}
   optionPanel: {fileID: 975242884}
-  shopName: 
   cashTxt: {fileID: 982601881}
 --- !u!1 &982601879
 GameObject:

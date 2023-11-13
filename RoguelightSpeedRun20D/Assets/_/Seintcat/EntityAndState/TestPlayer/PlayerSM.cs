@@ -86,9 +86,9 @@ public class PlayerSM : StateManager
     public static Armor basicArmor;
     public static Shoes basicShoes;
 
-    public static int hpNow { get; private set; }
+    public static int hpNow { get; set; }
     public static float staminaNow { get; set; }
-    public static float manaNow { get; private set; }
+    public static float manaNow { get; set; }
     public static int hpMax => PlayerStatsManager.HpMax + armorNow.MaxHp + shoesNow.MaxHp;
     public static float staminaMax => PlayerStatsManager.StaminaMax + shoesNow.MaxStamina;
     public static int manaMax => PlayerStatsManager.ManaMax + armorNow.MaxMana;

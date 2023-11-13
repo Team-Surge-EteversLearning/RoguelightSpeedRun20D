@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Don't edit this, Copy this!
 public class SkeletonSM : MonsterSM
 {
     private List<State> _monsterBattleStates = new List<State>();
+
     protected override List<State> monsterBattleStates => _monsterBattleStates;
 
     private void Awake()
@@ -17,6 +19,7 @@ public class SkeletonSM : MonsterSM
         // make custom states
         _monsterBattleStates.Add(new MonsterBasic_Chase());
         _monsterBattleStates.Add(new MonsterBasic_Melee());
+        
         // make basic states
         base.MakeState();
     }
@@ -40,16 +43,14 @@ public class SkeletonSM : MonsterSM
 
     public override void TargetChanged(List<GameObject> target)
     {
-        if (target != null && target.Count > 0)
+        if(target != null && target.Count > 0)
         {
             attackTarget = target[0];
-            if (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName)
+            if (attackTarget != null && (mainState.stateName == monsterIdleState.stateName || mainState.stateName == monsterPatrolState.stateName))
             {
                 ChangeState("Chase");
             }
-            return;
         }
-        attackTarget = null;
     }
 
     public override void Interrupt(string stateName)
@@ -74,11 +75,20 @@ public class SkeletonSM : MonsterSM
 
     protected override void ReactDamage()
     {
-
+        
     }
 
     protected override void ResetStateMachine()
     {
-
+        
     }
 }
+
+/*
+ * other code
+ * ChangeState("name");
+ * monsterIdleState.stateName = "Idle"
+ * monsterDamageState.stateName = "Damage"
+ * monsterDeathState.stateName = "Death"
+ * monsterPatrolState.stateName = "Patrol"
+ */

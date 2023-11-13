@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MiniMapManager : MonoBehaviour
 {
     [SerializeField] GameObject miniNodePrefab;
-    [SerializeField] GameObject miniMapSet;
+    [SerializeField] GameObject miniMapCamera;
     private Dictionary<DungeonNode, GameObject> miniMapDict = new Dictionary<DungeonNode, GameObject>();
 
     private void Awake()
     {
-        GameObject miniSet = Instantiate(miniMapSet);
     }
-    public void MiniMapCreate(Dungeon dungeon)
+    public void MiniMapCreate()
     {
-        foreach(var node in dungeon)
+        foreach(var node in DungeonManager.Instance.Dungeon)
         {
             GameObject miniNode = Instantiate(miniNodePrefab);
             miniNode.name = "mini" + node.Position.ToString();
@@ -28,10 +29,14 @@ public class MiniMapManager : MonoBehaviour
     }
     public void ChangeMinimapNode(DungeonNode current, DungeonNode prv = null)
     {
-        if(current.Position.y != prv.Position.y)
+        if (current.Position.y != prv.Position.y && prv != null)
         {
+            Debug.LogWarning(current.Position.y);
+            miniMapCamera.transform.position = new Vector3(DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.x, 10, DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.z);
             ChangeFloorForMiniMap(current.Position.y);
         }
+        if (miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled)
+            miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled = false;
         if (prv != null)
             miniMapDict[prv].GetComponent<SpriteRenderer>().color = Color.white;
         if (miniMapDict.ContainsKey(current))
@@ -39,7 +44,7 @@ public class MiniMapManager : MonoBehaviour
     }
 
     private void ChangeFloorForMiniMap(int next)
-    {
+    { 
         foreach (var item in miniMapDict)
         {
             if (item.Key.Position.y == next)

@@ -6,18 +6,8 @@ using UnityEngine;
 
 public class RoomChecker : MonoBehaviour
 {
-    public Dungeon dungeon;
-    
     private bool isClear;
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("PlayerBody"))
-        {
-            
-        }
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerBody"))
@@ -25,8 +15,8 @@ public class RoomChecker : MonoBehaviour
             DungeonManager.ToggleDoor(isClear);
             // 문 닫힘
             // 현재 노드 변경 Dongeon.CurrentNode
-            // 
-            
+
+            DungeonManager.Instance.ChangeNode(DungeonManager.Instance.GameObjectNode[transform.parent.gameObject]);
         }
     }
 }

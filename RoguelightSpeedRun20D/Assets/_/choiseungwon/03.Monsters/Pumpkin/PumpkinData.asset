@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
-  m_Name: WolfData
+  m_Name: PumpkinData
   m_EditorClassIdentifier: 
-  monsterName: Wolf
+  monsterName: Pumpkin
   cashDrop: 100
   hpMax: 100
-  attackPower: 44444
-  attackCoolTime: 1
+  attackPower: 100
+  attackCoolTime: 2
   attackRange: 2
   idleTime: 1
-  moveSpeed: 12
-  chaseSpeed: 24
+  moveSpeed: 25
+  chaseSpeed: 25
   isFly: 0
-  patrolMode: 1
+  patrolMode: 2
   damagedStaggerTime: 1
-  deadTime: 5
+  deadTime: 3

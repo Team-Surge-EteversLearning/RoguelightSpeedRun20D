@@ -1521,9 +1521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ce5fe967a01e7459d011172662097a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponHanger: {fileID: 6072148523401708900}
-  weaponModels:
+  weaponInstance:
   - {fileID: 5827185619893182413}
+  armorInstance: []
+  shoesInstance: []
   animator: {fileID: 4984025608675093793}
 --- !u!1 &5283802651163112513
 GameObject:

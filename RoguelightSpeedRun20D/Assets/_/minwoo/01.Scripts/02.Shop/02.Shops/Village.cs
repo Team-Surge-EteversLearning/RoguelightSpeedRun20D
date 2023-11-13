@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -14,6 +15,7 @@ public class Village : MonoBehaviour
     [SerializeField] GameObject optionPanel;
     [SerializeField] TMP_Text cashTxt;
     [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
+    [SerializeField] Button startBtn;
 
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
     public Action resetUI;
@@ -28,8 +30,15 @@ public class Village : MonoBehaviour
         cashTxt.text = PlayerStatsManager.CashNow.ToString();
         onBuy += () => cashTxt.text = PlayerStatsManager.CashNow.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
+        startBtn.onClick.AddListener(DungeonInsert);
     }
 
+    private void DungeonInsert()
+    {
+        PlayerStatsManager.WareHouseCash = PlayerStatsManager.CashNow;
+        PlayerStatsManager.CashNow = 0;
+        SceneManager.LoadScene(1);
+    }
 
     private void OptionBtnConnect()
     {

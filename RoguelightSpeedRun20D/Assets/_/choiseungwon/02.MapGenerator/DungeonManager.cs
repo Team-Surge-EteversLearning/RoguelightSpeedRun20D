@@ -12,6 +12,9 @@ public class DungeonManager : MonoBehaviour
     public static DungeonManager Instance { get; set; }
 
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
+    [SerializeField] private MiniMapManager miniMapManager;
+
+    public Dictionary<GameObject, DungeonNode> GameObjectNode = new Dictionary<GameObject, DungeonNode>();
     
     // [SerializeField] private GameObject indicator;
     // [SerializeField] private GameObject startIndicator;
@@ -27,7 +30,11 @@ public class DungeonManager : MonoBehaviour
     private int randNum;
     
     private Dungeon _dungeon = new Dungeon();
-    private DungeonNode currentNode;
+    public Dungeon Dungeon
+    {
+        get => _dungeon;
+        set => _dungeon = value;
+    }
     Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
     
     public delegate void DoorToggleDelegate(bool clear);
@@ -42,7 +49,6 @@ public class DungeonManager : MonoBehaviour
     {
         OnDoorToggle?.Invoke(isClear);
     }
-
     
     private void Awake()
     {
@@ -52,15 +58,22 @@ public class DungeonManager : MonoBehaviour
         roomInFloor = dungeonBundleDatas[0].roomInFloor;
         floorHeight = dungeonBundleDatas[0].floorHeight;
         roomDistance = dungeonBundleDatas[0].roomDistance;
+        
+        GameObjectNode.Clear();
     }
 
     void Start()
     {
         Generate(_dungeon);
         
-        StartCoroutine(GenerateCubes(_dungeon, floorHeight));
+        GenerateRoom(_dungeon, floorHeight);
+        miniMapManager.MiniMapCreate();
         floorHeight += 10;
-        currentNode = _dungeon.Start;
+    }
+    public void ChangeNode(DungeonNode node)
+    {
+        _dungeon.Current = node;
+        miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
     }
 
     private void Update()
@@ -74,9 +87,8 @@ public class DungeonManager : MonoBehaviour
         target.SetShopNode();
     }
 
-    private IEnumerator GenerateCubes(Dungeon target, float height)
+    private void GenerateRoom(Dungeon target, float height)
     {
-        
         GameObject room;
         foreach (var node in target)
         {
@@ -105,16 +117,8 @@ public class DungeonManager : MonoBehaviour
             roomNodeTransformPair.Add(node, room.transform);
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
-            yield return new WaitForSeconds(0.1f);
+            GameObjectNode.Add(room, node);
         }
-        // foreach (var item in target.Ends)
-        // {
-        //     GameObject instance = Instantiate(indicator, roomNodeTransformPair[item]);
-        // }
-        // foreach (var item in target.Starts)
-        // {
-        //     GameObject instance = Instantiate(startIndicator, roomNodeTransformPair[item]);
-        // }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

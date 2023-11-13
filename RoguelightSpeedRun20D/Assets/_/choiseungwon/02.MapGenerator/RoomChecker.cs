@@ -16,8 +16,7 @@ public class RoomChecker : MonoBehaviour
             // 문 닫힘
             // 현재 노드 변경 Dongeon.CurrentNode
 
-            DungeonManager.Instance.Dungeon.Current = DungeonManager.Instance.GameObjectNode[transform.parent.gameObject];
-            Debug.Log(DungeonManager.Instance.Dungeon.Current.Position);
+            DungeonManager.Instance.ChangeNode(DungeonManager.Instance.GameObjectNode[transform.parent.gameObject]);
         }
     }
 }

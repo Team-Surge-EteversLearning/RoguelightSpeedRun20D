@@ -12,6 +12,7 @@ public class DungeonManager : MonoBehaviour
     public static DungeonManager Instance { get; set; }
 
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
+    [SerializeField] private MiniMapManager miniMapManager;
 
     public Dictionary<GameObject, DungeonNode> GameObjectNode = new Dictionary<GameObject, DungeonNode>();
     
@@ -34,7 +35,6 @@ public class DungeonManager : MonoBehaviour
         get => _dungeon;
         set => _dungeon = value;
     }
-    private DungeonNode currentNode;
     Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
     
     public delegate void DoorToggleDelegate(bool clear);
@@ -67,8 +67,13 @@ public class DungeonManager : MonoBehaviour
         Generate(_dungeon);
         
         GenerateRoom(_dungeon, floorHeight);
+        miniMapManager.MiniMapCreate();
         floorHeight += 10;
-        currentNode = _dungeon.Start;
+    }
+    public void ChangeNode(DungeonNode node)
+    {
+        _dungeon.Current = node;
+        miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
     }
 
     private void Update()

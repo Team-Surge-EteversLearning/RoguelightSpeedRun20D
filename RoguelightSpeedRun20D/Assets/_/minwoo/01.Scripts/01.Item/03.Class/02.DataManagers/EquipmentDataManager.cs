@@ -50,7 +50,7 @@ public class EquipmentDataManager : IProductMaker
         while (sql.read && sql.dataReader.Read())
         {
             string currentName = sql.dataReader.GetValue(0).ToString();
-            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon, sql.dataReader.GetInt32(4));
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Armor, sql.dataReader.GetInt32(4));
             ArmorData armorData = new ArmorData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
             locks.Add(currentName, basicEquipments); 
@@ -68,7 +68,7 @@ public class EquipmentDataManager : IProductMaker
         while (sql.read && sql.dataReader.Read())
         {
             string currentName = sql.dataReader.GetValue(0).ToString();
-            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Weapon, sql.dataReader.GetInt32(4));
+            BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Shoes, sql.dataReader.GetInt32(4));
             ShoesData shoesData = new ShoesData(sql.dataReader.GetInt32(5), sql.dataReader.GetInt32(6), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
             locks.Add(currentName, basicEquipments);

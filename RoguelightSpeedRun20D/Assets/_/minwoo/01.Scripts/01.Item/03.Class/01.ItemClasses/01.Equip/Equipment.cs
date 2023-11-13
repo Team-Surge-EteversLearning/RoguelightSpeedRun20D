@@ -11,6 +11,9 @@ public abstract class Equipment : IProduct
     private EquipmentType type;
     private int modelIndex;
 
+    private BasicEquipments basicData;
+    public BasicEquipments BasicData { get => basicData; set => basicData = value; }
+
     public string Name { get => name; set => name = value; }
     public int SellWhenClear { get => sellWhenClear; set => sellWhenClear = value; }
     public EquipmentType Type { get => type; set => type = value; }

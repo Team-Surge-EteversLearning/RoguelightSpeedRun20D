@@ -7,7 +7,10 @@ public class TestDB : MonoBehaviour
     public static TestDB instance;
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+            instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
     public IconSet iconSet;
 

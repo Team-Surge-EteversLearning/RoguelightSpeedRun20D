@@ -10,7 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5437499263618031581}
   - component: {fileID: 3178265860973523898}
+<<<<<<< Updated upstream
   - component: {fileID: 9218403478287969498}
+=======
+  - component: {fileID: 9018875892380507624}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: MiniMapSet
   m_TagString: Untagged
@@ -86,7 +90,11 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+<<<<<<< Updated upstream
 --- !u!114 &9218403478287969498
+=======
+--- !u!114 &9018875892380507624
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

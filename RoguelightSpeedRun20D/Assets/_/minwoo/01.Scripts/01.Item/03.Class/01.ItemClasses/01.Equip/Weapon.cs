@@ -10,6 +10,8 @@ public class Weapon : Equipment
     float size;
     float cooltime;
 
+    WeaponData weaponData;
+
     public Weapon(string name, BasicEquipments basicData, WeaponData data, List<EquipmentOption> usableOptions)
     {
         this.Name = name;
@@ -21,6 +23,8 @@ public class Weapon : Equipment
         this.cooltime = data.Cooltime;
         this.ModelIndex = basicData.ModelIndex;
         this.usableOptions = new List<EquipmentOption> { };
+        this.BasicData = basicData;
+        this.weaponData = data;
 
         Weapon thisWeapon = this;
         foreach (EquipmentOption option in usableOptions)
@@ -31,6 +35,7 @@ public class Weapon : Equipment
     public bool IsRangeAttack { get => isRangeAttack; set => isRangeAttack = value; }
     public float Size { get => size; set => size = value; }
     public float Cooltime { get => cooltime; set => cooltime = value; }
+    public WeaponData WeaponData { get => weaponData; set => weaponData = value; }
 
     public override void Equip()
     {

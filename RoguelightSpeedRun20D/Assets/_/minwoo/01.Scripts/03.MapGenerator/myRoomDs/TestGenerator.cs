@@ -32,7 +32,7 @@ public class TestGenerator : MonoBehaviour
     public GameObject doorPrefab;
     public GameObject closedWall;
     public int roomCount = 10;
-    private Dungeon _dungeon = new Dungeon();
+    private static Dungeon _dungeon = new Dungeon();
     private DungeonNode currentNode;
 
     [SerializeField] private float testFloornob = 10;
@@ -50,6 +50,8 @@ public class TestGenerator : MonoBehaviour
     public delegate void DoorToggleDelegate(bool flag);
     public static event DoorToggleDelegate OnDoorToggle;
 
+    public static Dictionary<GameObject, DungeonNode> GoNodePair = new Dictionary<GameObject, DungeonNode>();
+
     public bool testFlag;
     public int testFloor = 0;
     [ContextMenu("testClear")]
@@ -61,6 +63,7 @@ public class TestGenerator : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        GoNodePair.Clear();
     }
     void Start()
     {
@@ -69,11 +72,6 @@ public class TestGenerator : MonoBehaviour
         StartCoroutine(GenerateRooms(_dungeon, testFloornob));
     }
 
-
-    private void Update()
-    {
-
-    }
     public void MoveNode(int floor, GameObject player)
     {
         CurrentNode = _dungeon.Starts[floor];
@@ -161,6 +159,7 @@ public class TestGenerator : MonoBehaviour
             roomNodeTransformPair.Add(node, room.transform);
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
+            GoNodePair.Add(room, node);
             yield return new WaitForSeconds(0.1f);
         }
         foreach (var item in target.Ends)
@@ -255,6 +254,8 @@ public class TestGenerator : MonoBehaviour
 
     private void ChangeMinimapNode(DungeonNode current, DungeonNode prv = null)
     {
+        if (miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled)
+            miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled = false;
         if (prv != null)
             miniMapDict[prv].GetComponent<SpriteRenderer>().color = Color.white;
         if (miniMapDict.ContainsKey(current))

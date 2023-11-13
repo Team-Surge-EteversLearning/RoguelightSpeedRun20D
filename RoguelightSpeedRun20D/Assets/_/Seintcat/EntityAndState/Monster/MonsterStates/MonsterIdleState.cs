@@ -21,7 +21,8 @@ public class MonsterIdleState : State
     protected override string StateEnter_()
     {
         startRotation = stateManager.transform.rotation;
-        stateManager.animator.Play(stateName);
+        stateManager.animator.Play(stateName, 0);
+        stateManager.animator.Play(stateName, 1);
         cooltime = stateManager.basicData.idleTime;
         return "";
     }

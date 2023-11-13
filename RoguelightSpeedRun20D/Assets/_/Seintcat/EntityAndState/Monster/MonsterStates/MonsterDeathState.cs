@@ -19,7 +19,9 @@ public class MonsterDeathState : State
 
     protected override string StateEnter_()
     {
-        stateManager.animator.Play(stateName);
+        stateManager.animator.Play(stateName, 0);
+        stateManager.animator.Play(stateName, 1);
+
         cooltime = stateManager.basicData.deadTime;
         return "";
     }

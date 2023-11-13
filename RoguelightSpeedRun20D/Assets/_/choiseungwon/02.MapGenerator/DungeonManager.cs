@@ -12,6 +12,8 @@ public class DungeonManager : MonoBehaviour
     public static DungeonManager Instance { get; set; }
 
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
+
+    public Dictionary<GameObject, DungeonNode> GameObjectNode = new Dictionary<GameObject, DungeonNode>();
     
     // [SerializeField] private GameObject indicator;
     // [SerializeField] private GameObject startIndicator;
@@ -27,6 +29,11 @@ public class DungeonManager : MonoBehaviour
     private int randNum;
     
     private Dungeon _dungeon = new Dungeon();
+    public Dungeon Dungeon
+    {
+        get => _dungeon;
+        set => _dungeon = value;
+    }
     private DungeonNode currentNode;
     Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
     
@@ -42,7 +49,6 @@ public class DungeonManager : MonoBehaviour
     {
         OnDoorToggle?.Invoke(isClear);
     }
-
     
     private void Awake()
     {
@@ -52,13 +58,15 @@ public class DungeonManager : MonoBehaviour
         roomInFloor = dungeonBundleDatas[0].roomInFloor;
         floorHeight = dungeonBundleDatas[0].floorHeight;
         roomDistance = dungeonBundleDatas[0].roomDistance;
+        
+        GameObjectNode.Clear();
     }
 
     void Start()
     {
         Generate(_dungeon);
         
-        StartCoroutine(GenerateCubes(_dungeon, floorHeight));
+        GenerateRoom(_dungeon, floorHeight);
         floorHeight += 10;
         currentNode = _dungeon.Start;
     }
@@ -74,9 +82,8 @@ public class DungeonManager : MonoBehaviour
         target.SetShopNode();
     }
 
-    private IEnumerator GenerateCubes(Dungeon target, float height)
+    private void GenerateRoom(Dungeon target, float height)
     {
-        
         GameObject room;
         foreach (var node in target)
         {
@@ -105,16 +112,8 @@ public class DungeonManager : MonoBehaviour
             roomNodeTransformPair.Add(node, room.transform);
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
-            yield return new WaitForSeconds(0.1f);
+            GameObjectNode.Add(room, node);
         }
-        // foreach (var item in target.Ends)
-        // {
-        //     GameObject instance = Instantiate(indicator, roomNodeTransformPair[item]);
-        // }
-        // foreach (var item in target.Starts)
-        // {
-        //     GameObject instance = Instantiate(startIndicator, roomNodeTransformPair[item]);
-        // }
     }
 
     // ReSharper disable Unity.PerformanceAnalysis

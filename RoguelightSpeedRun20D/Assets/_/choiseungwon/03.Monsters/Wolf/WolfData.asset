@@ -24,4 +24,4 @@ MonoBehaviour:
   isFly: 0
   patrolMode: 1
   damagedStaggerTime: 1
-  deadTime: 3
+  deadTime: 5

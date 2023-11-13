@@ -34,7 +34,7 @@ public abstract class Shop
     abstract public void ResetShop(); //now setui afterReset, but Ingame, reset just one time.
     protected void OpenShop()
     {
-        shopUIGO.SetActive(!shopUIGO.activeInHierarchy);
+        shopUIGO.SetActive(true);
     }
 
     protected void SettingShopUI()
@@ -50,8 +50,6 @@ public abstract class Shop
             productSlots[i].gameObject.SetActive(true);
             BtnUIPair[productSlots[i]].SProduct = Products[i];
         }
-
-
     }
 
 }

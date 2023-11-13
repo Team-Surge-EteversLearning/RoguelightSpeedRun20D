@@ -13,6 +13,7 @@ public class Village : MonoBehaviour
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject optionPanel;
     [SerializeField] TMP_Text cashTxt;
+    [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
 
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
     public Action resetUI;
@@ -26,6 +27,7 @@ public class Village : MonoBehaviour
         SlotsReset();
         cashTxt.text = PlayerStatsManager.CashNow.ToString();
         onBuy += () => cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += purchaseCompletePanel.ActiveAndDisable;
     }
 
 

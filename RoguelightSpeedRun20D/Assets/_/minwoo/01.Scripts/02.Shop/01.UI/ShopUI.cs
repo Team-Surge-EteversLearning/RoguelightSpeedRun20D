@@ -53,7 +53,6 @@ public class ShopUI
         product.Buy();
         Village.onBuy?.Invoke();
         DungeonShopManager.onBuy?.Invoke();
-
         Debug.Log(PlayerStatsManager.CashNow);
         return;
     }

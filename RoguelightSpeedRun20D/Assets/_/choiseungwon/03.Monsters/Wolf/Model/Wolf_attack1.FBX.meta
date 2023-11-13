@@ -487,7 +487,7 @@ ModelImporter:
       scale: {x: 2.54, y: 2.54, z: 2.54}
     - name: WolfHub003
       parentName: Wolf_attack1(Clone)
-      position: {x: 1.270564e-13, y: 1.4399498, z: 0.013493121}
+      position: {x: 1.270564e-13, y: 1.4399496, z: 0.013493121}
       rotation: {x: -0.7070936, y: 0.004321684, z: 0.70709366, w: -0.004321778}
       scale: {x: 2.54, y: 2.54, z: 2.54}
     - name: WolfSpine1
@@ -548,12 +548,12 @@ ModelImporter:
     - name: WolfLLeg2 1
       parentName: WolfLLeg1 1
       position: {x: -0.22363399, y: -0.000000019073486, z: 0}
-      rotation: {x: 0.073736824, y: 0.12959105, z: -0.029370418, w: 0.98838586}
+      rotation: {x: 0.073736824, y: 0.12959103, z: -0.029370418, w: 0.98838574}
       scale: {x: 0.9999993, y: 1.0000002, z: 1.0000004}
     - name: WolfLLeg3 1
       parentName: WolfLLeg2 1
       position: {x: -0.31711903, y: -0.000008640289, z: -0.000000085830685}
-      rotation: {x: -0.014063344, y: 0.00548264, z: -0.016376723, w: 0.9997519}
+      rotation: {x: -0.014063307, y: 0.0054824026, z: -0.016377032, w: 0.999752}
       scale: {x: 1.0000013, y: 0.9999985, z: 1}
     - name: WolfLLegAnkle 1
       parentName: WolfLLeg3 1
@@ -633,17 +633,17 @@ ModelImporter:
     - name: WolfRLeg2
       parentName: WolfRLeg1
       position: {x: -0.15913448, y: 0, z: 0}
-      rotation: {x: -0.011972822, y: 0.00038490066, z: 0.32277486, w: 0.9464}
+      rotation: {x: -0.011972823, y: 0.00038489923, z: 0.3227749, w: 0.9463999}
       scale: {x: 1.0000008, y: 1.0000001, z: 1.0000006}
     - name: WolfRLeg3
       parentName: WolfRLeg2
       position: {x: -0.27394915, y: -0.0000017929077, z: 0.00000027656554}
-      rotation: {x: -0.0030491431, y: -0.01291794, z: -0.2651489, w: 0.9641161}
+      rotation: {x: -0.0030491427, y: -0.012917938, z: -0.26514897, w: 0.96411616}
       scale: {x: 1.0000023, y: 0.99999994, z: 0.999999}
     - name: WolfRLegAnkle
       parentName: WolfRLeg3
       position: {x: -0.16539717, y: 0.000000038146972, z: -0.000000009536743}
-      rotation: {x: 0.0038806929, y: 0.0030150937, z: -0.6786091, w: 0.7344833}
+      rotation: {x: 0.0038806929, y: 0.0030150935, z: -0.6786091, w: 0.73448324}
       scale: {x: 1.000002, y: 0.99999803, z: 0.99999994}
     armTwist: 0.5
     foreArmTwist: 0.5

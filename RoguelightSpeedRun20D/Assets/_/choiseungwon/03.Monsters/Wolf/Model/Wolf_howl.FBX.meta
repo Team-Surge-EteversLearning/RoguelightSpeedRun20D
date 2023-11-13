@@ -599,7 +599,7 @@ ModelImporter:
     - name: WolfLLegAnkle
       parentName: WolfLLeg3
       position: {x: -0.16539714, y: -0.000000038146972, z: -0.000000009536743}
-      rotation: {x: -0.003733162, y: -0.0023828573, z: -0.67910266, w: 0.73402995}
+      rotation: {x: -0.0037331625, y: -0.0023828573, z: -0.6791027, w: 0.73402995}
       scale: {x: 0.99999887, y: 1.0000014, z: 1.0000005}
     - name: Wolf_tail
       parentName: WolfHub003
@@ -644,7 +644,7 @@ ModelImporter:
     - name: WolfRLegAnkle
       parentName: WolfRLeg3
       position: {x: -0.16539717, y: -0.000000038146972, z: -0.000000009536743}
-      rotation: {x: 0.0039394787, y: 0.0033389835, z: -0.6787651, w: 0.7343373}
+      rotation: {x: 0.0039394787, y: 0.003338984, z: -0.6787651, w: 0.73433733}
       scale: {x: 1.0000025, y: 0.99999744, z: 0.9999999}
     armTwist: 0.5
     foreArmTwist: 0.5

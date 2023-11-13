@@ -5,6 +5,10 @@ using UnityEngine;
 public class PurchaseCompletePanelController : MonoBehaviour
 {
     [SerializeField] float waitTime;
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
     // Start is called before the first frame update
     public void ActiveAndDisable()
     {

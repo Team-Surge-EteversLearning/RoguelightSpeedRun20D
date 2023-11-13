@@ -39,3 +39,5 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 8a0d6cc1670564442ae8718c2fa9016a, type: 3}
   - name: Default
     icon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  - name: 2
+    icon: {fileID: 21300000, guid: 276f9eb2914ed8b4cbccd11e130703cf, type: 3}

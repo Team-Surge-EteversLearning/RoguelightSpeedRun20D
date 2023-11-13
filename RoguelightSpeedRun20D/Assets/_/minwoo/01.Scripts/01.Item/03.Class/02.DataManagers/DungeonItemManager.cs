@@ -18,15 +18,15 @@ public class DungeonItemManager : IProductMaker
     static int bombPrice = 10;
     static int barrierPrice = 10;
 
+    static int hpPotionPriceWeight = hpPotionPrice * 2;
+    static int manaPotionPriceWeight = manaPotionPrice * 2;
+    static int bombPriceWeight = bombPrice * 2;
+    static int barrierPriceWeight = barrierPrice * 2;
+
     static List<int> priceList = new List<int>()
     {
         hpPotionPrice, manaPotionPrice, bombPrice, barrierPrice
     };
-    static int hpPotionPriceWeight;
-    static int manaPotionPriceWeight;
-    static int bombPriceWeight;
-    static int barrierPriceWeight;
-
     static List<int> priceWeightList;
 
     static int hpPotionNow;

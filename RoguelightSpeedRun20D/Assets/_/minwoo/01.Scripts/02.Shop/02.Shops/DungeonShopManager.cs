@@ -49,11 +49,17 @@ public class DungeonShopManager : MonoBehaviour
             b.onClick.RemoveAllListeners();
         }
     }
-    public void CreateShop(GameObject go, int minTier, int maxTier, int amount)
+    public void CreateChestShop(GameObject go, int minTier, int maxTier, int amount)
     {
         ChestShop chestShop = new ChestShop(minTier,maxTier,amount);
         chestShop.InitShop(shopPanel, this);
         GOShopShopPair.Add(go, chestShop);
+    }
+    public void CreateInDungeonShop(GameObject go, int minTier, int maxTier, int amount, string type)
+    {
+        InDungeonShop inDungeonShop = new InDungeonShop(minTier, maxTier, amount, type);
+        inDungeonShop.InitShop(shopPanel, this);
+        GOShopShopPair.Add(go, inDungeonShop);
     }
 
     private void SlotsReset()
@@ -79,6 +85,7 @@ public class DungeonShopManager : MonoBehaviour
     }
     public void ResetTargetShops(GameObject GO)
     {
+        Debug.LogWarning(1);
         resetUI();
         GOShopShopPair[GO].ResetShop();
     }

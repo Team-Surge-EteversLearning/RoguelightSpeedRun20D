@@ -8,7 +8,7 @@ public class Chest : MonoBehaviour
     [SerializeField] int maxTier;
     private void Start()
     {
-        DungeonShopManager.Instance.CreateShop(gameObject, minTier, maxTier, 1);
+        DungeonShopManager.Instance.CreateChestShop(gameObject, minTier, maxTier, 1);
     }
     private void OnTriggerEnter(Collider other)
     {

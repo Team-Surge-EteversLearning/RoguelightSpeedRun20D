@@ -554,7 +554,7 @@ ModelImporter:
     - name: WolfLLeg3 1
       parentName: WolfLLeg2 1
       position: {x: -0.31711897, y: -0.000008640289, z: -0.000000047683713}
-      rotation: {x: -0.014058738, y: 0.005486722, z: -0.016370932, w: 0.9997521}
+      rotation: {x: -0.014058783, y: 0.0054868264, z: -0.016370874, w: 0.9997521}
       scale: {x: 1.0000013, y: 0.9999983, z: 1.0000001}
     - name: WolfLLegAnkle 1
       parentName: WolfLLeg3 1
@@ -594,12 +594,12 @@ ModelImporter:
     - name: WolfLLeg3
       parentName: WolfLLeg2
       position: {x: -0.27394906, y: -0.0000016403197, z: -0.00000032424927}
-      rotation: {x: 0.002872682, y: 0.012704264, z: -0.2648762, w: 0.9641945}
+      rotation: {x: 0.0028726312, y: 0.012704234, z: -0.26487625, w: 0.9641944}
       scale: {x: 1.0000002, y: 1.0000007, z: 0.99999934}
     - name: WolfLLegAnkle
       parentName: WolfLLeg3
       position: {x: -0.16539714, y: 0, z: 0}
-      rotation: {x: -0.0037866454, y: -0.0025453225, z: -0.67907053, w: 0.73405886}
+      rotation: {x: -0.0037866458, y: -0.0025453225, z: -0.6790706, w: 0.73405886}
       scale: {x: 0.99999946, y: 1.000001, z: 1.0000004}
     - name: Wolf_tail
       parentName: WolfHub003
@@ -639,7 +639,7 @@ ModelImporter:
     - name: WolfRLeg3
       parentName: WolfRLeg2
       position: {x: -0.2739491, y: -0.0000017547607, z: 0.00000027656554}
-      rotation: {x: -0.002984458, y: -0.012982865, z: -0.26510873, w: 0.9641265}
+      rotation: {x: -0.002984473, y: -0.01298284, z: -0.26510876, w: 0.9641265}
       scale: {x: 1.0000025, y: 0.9999993, z: 0.9999989}
     - name: WolfRLegAnkle
       parentName: WolfRLeg3

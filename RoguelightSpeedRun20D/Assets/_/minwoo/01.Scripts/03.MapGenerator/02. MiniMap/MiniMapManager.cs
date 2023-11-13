@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MiniMapManager : MonoBehaviour
@@ -32,6 +33,8 @@ public class MiniMapManager : MonoBehaviour
         {
             ChangeFloorForMiniMap(current.Position.y);
         }
+        if (miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled)
+            miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled = false;
         if (prv != null)
             miniMapDict[prv].GetComponent<SpriteRenderer>().color = Color.white;
         if (miniMapDict.ContainsKey(current))

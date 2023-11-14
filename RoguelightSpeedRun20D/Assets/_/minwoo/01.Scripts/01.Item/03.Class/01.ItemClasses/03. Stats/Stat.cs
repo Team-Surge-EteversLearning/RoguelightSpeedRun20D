@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 public class Stat : IProduct
 {
+    public string description;
     public Stat(string name, int index)
     {
         Name = name;

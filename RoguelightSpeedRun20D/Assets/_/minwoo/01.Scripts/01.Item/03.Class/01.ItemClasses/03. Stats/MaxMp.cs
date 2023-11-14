@@ -6,6 +6,8 @@ public class MaxMp : Stat, IProduct
 {
     public MaxMp(string name, int index) : base(name, index)
     {
+        this.description = "Increase your maxMana";
+
     }
     public override void Buy()
     {

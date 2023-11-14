@@ -26,15 +26,15 @@ MonoBehaviour:
   - name: 1
     icon: {fileID: 21300000, guid: 43d966808d7394040be26c9acd9f9cf4, type: 3}
   - name: MaxHp
-    icon: {fileID: 21300000, guid: fcb2cee8bc5b89e428783e3e78773bc4, type: 3}
+    icon: {fileID: 21300000, guid: 27a96b28bfb87b842b0f473e4ed6acd6, type: 3}
   - name: MaxStamina
-    icon: {fileID: 21300000, guid: 432cf841931c3734288e3606e249edc9, type: 3}
+    icon: {fileID: 21300000, guid: 6797ab0888c2c4c47a4c4aefe181e885, type: 3}
   - name: MaxMp
-    icon: {fileID: 21300000, guid: c11a17f5044658d40b18e9356c6b2a0e, type: 3}
+    icon: {fileID: 21300000, guid: 26fb508b6d27f0144a0eb126d6157b28, type: 3}
   - name: PowerWeight
-    icon: {fileID: 21300000, guid: d64bb33ee877a6e4a885e2e49220c495, type: 3}
+    icon: {fileID: 21300000, guid: 4306f118947d1fc47a95891f23303b8f, type: 3}
   - name: Speed
-    icon: {fileID: 21300000, guid: 4ce4069ef3f55a843ae3e8bc4253b876, type: 3}
+    icon: {fileID: 21300000, guid: 0c4fa2378213a8248b2930763c9073c0, type: 3}
   - name: RandomSkillBook
     icon: {fileID: 21300000, guid: 8a0d6cc1670564442ae8718c2fa9016a, type: 3}
   - name: Default

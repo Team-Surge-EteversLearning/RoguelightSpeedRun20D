@@ -6,6 +6,7 @@ public class Speed : Stat, IProduct
 {
     public Speed(string name, int index) : base(name, index)
     {
+        this.description = "You can run faster.";
     }
     public override void Buy()
     {

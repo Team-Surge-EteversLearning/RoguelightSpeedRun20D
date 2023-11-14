@@ -12,12 +12,14 @@ public class DescriptionController : MonoBehaviour
     [SerializeField] TMP_Text descriptionTxt;
     [SerializeField] TMP_Text optList;
 
-    public static Action<string, List<EquipmentOption>> onDescription;
+    public static Action<string, List<EquipmentOption>> onDescriptionWithOpts;
+    public static Action<string> onDescription;
     public static Action onDescriptionComplete;
 
 
     void Start()
     {
+        onDescriptionWithOpts = UpdateDescriptionText;
         onDescription = UpdateDescriptionText;
         onDescriptionComplete = endDescription;
         gameObject.SetActive(false);
@@ -50,6 +52,25 @@ public class DescriptionController : MonoBehaviour
         {
             optList.text += $"{item.optName}\n";
         }
+    }
+    void UpdateDescriptionText(string descriptiontText)
+    {
+        RectTransform rectTransform = GetComponent<RectTransform>();
+
+        // 마우스 우상단에 위치할 거리 계산
+        Vector3 mousePosition = Input.mousePosition + new Vector3(distanceAboveMouse, distanceAboveMouse, 0);
+
+        // 마우스 포인터 위치에 UI의 왼쪽 하단이 위치하도록 보정
+        Vector2 pivot = new Vector2(0, 0);
+        rectTransform.pivot = pivot;
+
+        // UI 좌표계에서 월드 좌표로 변환
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, mousePosition, Camera.main, out Vector3 worldPosition);
+
+        // RectTransform 위치 설정
+        rectTransform.position = worldPosition;
+        gameObject.SetActive(true);
+        descriptionTxt.text = descriptiontText;
     }
     void endDescription()
     {

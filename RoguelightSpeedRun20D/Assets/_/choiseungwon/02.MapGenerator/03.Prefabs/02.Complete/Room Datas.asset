@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102740e853cdb42c787605741dc1438b, type: 3}
+  m_Name: Room Datas
+  m_EditorClassIdentifier: 
+  startRoomPresets:
+  - roomPrefab: {fileID: 5490829892222806828, guid: 0b4608fb679e54663b50d47a5fc6c1dc, type: 3}
+  - roomPrefab: {fileID: 7867386267158510061, guid: dd36116f21c3945ab86c53e12e277b5c, type: 3}
+  normalRoomPresets:
+  - roomPrefab: {fileID: 3492190888458431744, guid: a991a44b442984b7c8cd80b895ae693c, type: 3}
+  - roomPrefab: {fileID: 3492190888458431744, guid: 9220802fe8d6247969f3a6c262d7c7ab, type: 3}
+  - roomPrefab: {fileID: 5019094470277296039, guid: 09e1ccf7e76c04d4993ba9e32902f639, type: 3}
+  - roomPrefab: {fileID: 1993919157333304183, guid: b1e36954b9f0d40be8fb06d716554948, type: 3}
+  - roomPrefab: {fileID: 8931496021088591642, guid: 02a0de9ad0d2e4202ba962fc1560eeb6, type: 3}
+  - roomPrefab: {fileID: 7820632130282400860, guid: fe8dcd7ea963f426bbdf5e25e3e6352b, type: 3}
+  - roomPrefab: {fileID: 6089483822839719903, guid: 4f420428ffa3b413fa2618a76e05e31b, type: 3}
+  - roomPrefab: {fileID: 5019094470277296039, guid: 087c7d3dd8b8a485fb2eb60715477dc3, type: 3}
+  - roomPrefab: {fileID: 1993919157333304183, guid: 4e86d82d78612407ea5a33ad3c2b7102, type: 3}
+  - roomPrefab: {fileID: 8931496021088591642, guid: c9ce5a0cf37b54223ac958dfa6d0f559, type: 3}
+  - roomPrefab: {fileID: 7820632130282400860, guid: 63f58c6de293948bc97e1fd58d44085f, type: 3}
+  - roomPrefab: {fileID: 6089483822839719903, guid: 8fe981cb45cb642f2b93557ff9fee8c7, type: 3}
+  - roomPrefab: {fileID: 3492190888458431744, guid: 10b39e3f44f904a3b8661f1445ef39c9, type: 3}
+  - roomPrefab: {fileID: 3492190888458431744, guid: 664fb14d3ed37454985c63a6c17c7c5d, type: 3}
+  - roomPrefab: {fileID: 5019094470277296039, guid: 7a7a7eedb2dc446a3bc2bf956424991c, type: 3}
+  - roomPrefab: {fileID: 1993919157333304183, guid: be635a03406c04588990f035f30498ea, type: 3}
+  - roomPrefab: {fileID: 8931496021088591642, guid: 882dc3e31fed74b6884fe913c8a2bbd2, type: 3}
+  - roomPrefab: {fileID: 7820632130282400860, guid: 824764f0f604845c4803cb55f0f1e878, type: 3}
+  - roomPrefab: {fileID: 6089483822839719903, guid: aef0dfb68f13e4770af5b54213ff5a66, type: 3}
+  - roomPrefab: {fileID: 5019094470277296039, guid: 1d83397d62f674fdfa630f41a1dd63d6, type: 3}
+  - roomPrefab: {fileID: 1993919157333304183, guid: fedf066c02f7349af9d6ebdef518a14c, type: 3}
+  - roomPrefab: {fileID: 8931496021088591642, guid: 181f5e234293d47d99fe5c9daffe2712, type: 3}
+  - roomPrefab: {fileID: 7820632130282400860, guid: bcafec7c622524cd19d859dcf08896b1, type: 3}
+  - roomPrefab: {fileID: 6089483822839719903, guid: ac33ac4863f324678979eb62977d18a6, type: 3}
+  - roomPrefab: {fileID: 8261572542104916804, guid: fa83f5501759f422d89597d8dc18f386, type: 3}
+  - roomPrefab: {fileID: 8261572542104916804, guid: 11510bc764c444975b602ecbceeacb7c, type: 3}
+  - roomPrefab: {fileID: 8261572542104916804, guid: b948d6cd6a57d4ba8a02a92e5c1a8bfb, type: 3}
+  - roomPrefab: {fileID: 8615109590014953584, guid: 87f48cf14c7044bbc8cdb3cf0350f264, type: 3}
+  - roomPrefab: {fileID: 8615109590014953584, guid: 7f7ddab9fd9ec4162a40855585943e12, type: 3}
+  - roomPrefab: {fileID: 8615109590014953584, guid: 425a1af92b85445c4aa38b9f1bf91571, type: 3}
+  shopRoomPresets:
+  - roomPrefab: {fileID: 9121149530977306964, guid: 7befaa573a08f4c4ebe339fc816b0346, type: 3}
+  - roomPrefab: {fileID: 968918257229762092, guid: 2b7466c30925744c9bee353c4439fe0e, type: 3}
+  bossRoomPresets:
+  - roomPrefab: {fileID: 1188233378133636767, guid: bea6f8bdfab5a49e28eb2e65bc57fef9, type: 3}
+  doorPresets: {fileID: 7561981834410391685, guid: 3c52630cab5074c41b03293412a6bfd3, type: 3}
+  wall: {fileID: 7574105056553344709, guid: 9e2ef0d5cdc8d4006a4455d10acef99e, type: 3}
+  stair: {fileID: 3944323598870722307, guid: f28786878df5f49938a57886084cb469, type: 3}
+  roomCount: 30
+  roomInFloor: 5
+  floorHeight: 4.5
+  roomDistance: 20.58

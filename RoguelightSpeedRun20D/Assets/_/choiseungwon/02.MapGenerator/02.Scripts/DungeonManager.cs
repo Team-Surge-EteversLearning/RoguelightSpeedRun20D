@@ -78,7 +78,7 @@ public class DungeonManager : MonoBehaviour
 
     private void Update()
     {
-        randNum = Random.Range(0, 6);
+        randNum = Random.Range(0, 29);
     }
     
     private void Generate(Dungeon target)

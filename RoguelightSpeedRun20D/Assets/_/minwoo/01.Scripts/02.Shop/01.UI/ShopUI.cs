@@ -31,6 +31,8 @@ public class ShopUI
             price = value.Price;
             productButton.onClick.RemoveAllListeners();
             productButton.onClick.AddListener(CashCheckAndBuy);
+            if (productButton.gameObject.GetComponent<EventTrigger>() != null)
+                UnityEngine.Object.Destroy(productButton.gameObject.GetComponent<EventTrigger>());
             Display();
         }
     }
@@ -52,7 +54,8 @@ public class ShopUI
         product.Buy();
         Village.onBuy?.Invoke();
         DungeonShopManager.onBuy?.Invoke();
-        Debug.Log(PlayerStatsManager.CashNow);
+        if(productButton.gameObject.GetComponent<EventTrigger>() != null)
+            UnityEngine.Object.Destroy(productButton.gameObject.GetComponent<EventTrigger>());
         return;
     }
     private void Display()
@@ -78,9 +81,6 @@ public class ShopUI
             pointerExitEntry.eventID = EventTriggerType.PointerExit;
             pointerExitEntry.callback.AddListener((eventData) => { OnPointExitProduct(); });
             eventTrigger.triggers.Add(pointerExitEntry);
-
-            productButton.onClick.AddListener(() => UnityEngine.Object.Destroy(eventTrigger));
-
             return equipment.Name;
         }
         else if (product.GetType() == typeof(Useable))
@@ -109,7 +109,7 @@ public class ShopUI
         switch(equip)
         {
             case Weapon weapon:
-                DescriptionController.onDescription?.Invoke($"{weapon.Name} ( +{weapon.Tier})\nDamage: {weapon.Damage}\nCoolTime: {weapon.Cooltime}");
+                DescriptionController.onDescription?.Invoke($"{weapon.Name} ( +{weapon.Tier})\nDamage: {weapon.Damage}\nCoolTime: {weapon.Cooltime}", weapon.usableOptions);
                 break;
 
         }

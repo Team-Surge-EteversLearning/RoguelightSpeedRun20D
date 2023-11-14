@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = System.Random;
 
 public class EquipmentDataManager : IProductMaker
@@ -53,7 +55,7 @@ public class EquipmentDataManager : IProductMaker
             BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Armor, sql.dataReader.GetInt32(4));
             ArmorData armorData = new ArmorData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
-            locks.Add(currentName, basicEquipments); 
+            locks.Add(currentName, basicEquipments);
             armorBasicTable.Add(currentName, armorData);
         }
         sql.dataReader.Close();
@@ -109,7 +111,7 @@ public class EquipmentDataManager : IProductMaker
             {
                 case EquipmentType.Armor:
                     Armor newArmor = new Armor(key, unlocks[key], armorBasicTable[key], SelectRandomOption(unlocks[key].Type, currentTier), currentTier); //constructor:Armor(string name, BasicEquipments basicData, ArmorData data)
-                    displayItemListWithPrice.Add(new ShopProduct( newArmor, unlocks[key].Price));
+                    displayItemListWithPrice.Add(new ShopProduct(newArmor, unlocks[key].Price));
                     break;
                 case EquipmentType.Weapon:
                     Weapon newWeapon = new Weapon(key, unlocks[key], weaponBasicTable[key], SelectRandomOption(unlocks[key].Type, currentTier), currentTier);
@@ -127,15 +129,27 @@ public class EquipmentDataManager : IProductMaker
     private List<EquipmentOption> SelectRandomOption(EquipmentType equipmentType, int tier)
     {
         List<EquipmentOption> currentEquipOpts = new List<EquipmentOption>();
+        for (int i = 0; i < tier; i++)
+        {
+            switch (equipmentType)
+            {
+                case EquipmentType.Armor:
+                    break;
+                case EquipmentType.Weapon:
+                    currentEquipOpts.Add(Equipment.weaponOptionPool[UnityEngine.Random.Range(0, Equipment.weaponOptionPool.Count)]);
+                    break;
+                case EquipmentType.Shoes:
+                    break;
+            }
+        }
         return currentEquipOpts;
     }
-
     //return string list in unlocks.keys
     private List<string> GetRandomItem(int n)
     {
         Random random = new Random();
         List<string> values = unlocks.Keys.ToList(); //test
-        // shffle List
+                                                     // shffle List
         for (int i = values.Count - 1; i > 0; i--)
         {
             int j = random.Next(0, i + 1);

@@ -10,6 +10,7 @@ public abstract class Equipment : IProduct
     private int sellWhenClear;
     private EquipmentType type;
     private int modelIndex;
+    private int tier;
 
     private BasicEquipments basicData;
     public BasicEquipments BasicData { get => basicData; set => basicData = value; }
@@ -18,6 +19,7 @@ public abstract class Equipment : IProduct
     public int SellWhenClear { get => sellWhenClear; set => sellWhenClear = value; }
     public EquipmentType Type { get => type; set => type = value; }
     public int ModelIndex { get => modelIndex; set => modelIndex = value; }
+    public int Tier { get => tier; set => tier = value; }
 
     public List<EquipmentOption> usableOptions;
 

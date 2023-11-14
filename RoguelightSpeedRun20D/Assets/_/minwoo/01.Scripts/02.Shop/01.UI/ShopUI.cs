@@ -68,7 +68,7 @@ public class ShopUI
             Equipment equipment = (Equipment)product;
             productButton.onClick.AddListener(() => thisShop.Products.Remove(this.SProduct));
            
-            EventTrigger eventTrigger = productImage.gameObject.AddComponent<EventTrigger>();
+            EventTrigger eventTrigger = productButton.gameObject.AddComponent<EventTrigger>();
             EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
             pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, equipment); });
@@ -76,7 +76,7 @@ public class ShopUI
 
             EventTrigger.Entry pointerExitEntry = new EventTrigger.Entry();
             pointerExitEntry.eventID = EventTriggerType.PointerExit;
-            pointerExitEntry.callback.AddListener((eventData) => { OnPointExitProduct(productButton, equipment); });
+            pointerExitEntry.callback.AddListener((eventData) => { OnPointExitProduct(); });
             eventTrigger.triggers.Add(pointerExitEntry);
 
             productButton.onClick.AddListener(() => UnityEngine.Object.Destroy(eventTrigger));
@@ -106,9 +106,15 @@ public class ShopUI
 
     public static void OnPointEnterProduct(Button button, Equipment equip)
     {
-        DescriptionController.onDescription?.Invoke(equip.Name);
+        switch(equip)
+        {
+            case Weapon weapon:
+                DescriptionController.onDescription?.Invoke($"{weapon.Name} ( +{weapon.Tier})\nDamage: {weapon.Damage}\nCoolTime: {weapon.Cooltime}");
+                break;
+
+        }
     }
-    private void OnPointExitProduct(Button productButton, Equipment equipment)
+    private void OnPointExitProduct()
     {
         DescriptionController.onDescriptionComplete?.Invoke();
     }

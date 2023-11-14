@@ -692,10 +692,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7467237527762219531}
   - component: {fileID: 6363916142200518945}
-  - component: {fileID: 1018060957412678139}
-  - component: {fileID: 6730984522490820759}
   - component: {fileID: 2050572405800751227}
-  - component: {fileID: 1440351021840671246}
+  - component: {fileID: 89005964548216186}
   m_Layer: 0
   m_Name: CardboardFatMan
   m_TagString: Untagged
@@ -742,41 +740,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1018060957412678139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068595657497101215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddcbb1ff2ef4c498a83a46a39a4a7fe2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minTier: 0
-  maxTier: 2
---- !u!65 &6730984522490820759
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068595657497101215}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.5, y: 1, z: 2.5}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &2050572405800751227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -798,7 +761,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5, y: 1, z: 2.5}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1440351021840671246
+--- !u!114 &89005964548216186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -807,11 +770,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2068595657497101215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddcbb1ff2ef4c498a83a46a39a4a7fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: fff5fd876c4e466478079e4d9566f9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minTier: 0
-  maxTier: 3
+  maxTier: 5
+  equipeAmount: 2
+  hpPotionAmount: 1
+  mpPotionAmount: 1
+  bombProbability: 10
+  barrierProbability: 10
 --- !u!1 &2352340511612146732
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class FireBall : ActiveSkill
         base.Init();
     }
 
-    protected override void Use()
+    public override void Use(int mana, out float coolTime)
     {
         throw new NotImplementedException();
     }

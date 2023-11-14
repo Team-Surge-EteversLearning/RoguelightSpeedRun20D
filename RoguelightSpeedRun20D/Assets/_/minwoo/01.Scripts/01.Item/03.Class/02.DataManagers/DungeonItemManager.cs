@@ -29,15 +29,20 @@ public class DungeonItemManager : IProductMaker
     };
     static List<int> priceWeightList;
 
-    static int hpPotionNow;
-    static int manaPotionNow;
-    static int bombNow;
-    static int barrierNow;
+    static int hpPotionShopNow;
+    static int manaPotionShopNow;
+    static int bombShopNow;
+    static int barrierShopNow;
 
-    public static int HpPotionNow { get => hpPotionNow; set => hpPotionNow = value; }
-    public static int ManaPotionNow { get => manaPotionNow; set => manaPotionNow = value; }
-    public static int BombNow { get => bombNow; set => bombNow = value; }
-    public static int BarrierNow { get => barrierNow; set => barrierNow = value; }
+    public static int hpPotionNow;
+    public static int manaPotionNow;
+    public static int bombNow;
+    public static int barrierNow;
+
+    public static int HpPotionShopNow { get => hpPotionShopNow; set => hpPotionShopNow = value; }
+    public static int ManaPotionShopNow { get => manaPotionShopNow; set => manaPotionShopNow = value; }
+    public static int BombShopNow { get => bombShopNow; set => bombShopNow = value; }
+    public static int BarrierShopNow { get => barrierShopNow; set => barrierShopNow = value; }
 
     public void InitPrcieTable()
     {
@@ -51,10 +56,10 @@ public class DungeonItemManager : IProductMaker
 
     public void ResetShop()
     {
-        HpPotionNow = 0;
-        ManaPotionNow = 0;
-        BombNow = 0;
-        BarrierNow = 0;
+        HpPotionShopNow = 0;
+        ManaPotionShopNow = 0;
+        BombShopNow = 0;
+        BarrierShopNow = 0;
     }
     /// <summary>
     /// input int4 + place (hpPotionQuantity, mpPotionQuantity, bombQuantity, barrierQuantity, D or V)
@@ -69,21 +74,21 @@ public class DungeonItemManager : IProductMaker
         string[] infoSplit = info.Split(',');
 
         // If you put in the correct value, it's stored in the variable, or it's stored in zero
-        HpPotionNow = int.TryParse(infoSplit[0].Trim(), out int tempVal1) ? tempVal1 : 0;
-        Mathf.Clamp(HpPotionNow, 0, hpPotionMax);
-        itemList.Add(HpPotionNow);
+        HpPotionShopNow = int.TryParse(infoSplit[0].Trim(), out int tempVal1) ? tempVal1 : 0;
+        Mathf.Clamp(HpPotionShopNow, 0, hpPotionMax);
+        itemList.Add(HpPotionShopNow);
 
-        ManaPotionNow = int.TryParse(infoSplit[1].Trim(), out int tempVal2) ? tempVal2 : 0;
-        Mathf.Clamp(ManaPotionNow, 0, manaPotionMax);
-        itemList.Add(ManaPotionNow);
+        ManaPotionShopNow = int.TryParse(infoSplit[1].Trim(), out int tempVal2) ? tempVal2 : 0;
+        Mathf.Clamp(ManaPotionShopNow, 0, manaPotionMax);
+        itemList.Add(ManaPotionShopNow);
 
-        BombNow = int.TryParse(infoSplit[2].Trim(), out int tempVal3) ? tempVal3 : 0;
-        Mathf.Clamp(BombNow, 0, bombMax);
-        itemList.Add(BombNow);
+        BombShopNow = int.TryParse(infoSplit[2].Trim(), out int tempVal3) ? tempVal3 : 0;
+        Mathf.Clamp(BombShopNow, 0, bombMax);
+        itemList.Add(BombShopNow);
 
-        BarrierNow = int.TryParse(infoSplit[3].Trim(), out int tempVal4) ? tempVal4 : 0;
-        Mathf.Clamp(BarrierNow, 0, barrierMax);
-        itemList.Add(BarrierNow);
+        BarrierShopNow = int.TryParse(infoSplit[3].Trim(), out int tempVal4) ? tempVal4 : 0;
+        Mathf.Clamp(BarrierShopNow, 0, barrierMax);
+        itemList.Add(BarrierShopNow);
 
         if (infoSplit[4].First() == 'D' || infoSplit[4].First() == 'd')
         {

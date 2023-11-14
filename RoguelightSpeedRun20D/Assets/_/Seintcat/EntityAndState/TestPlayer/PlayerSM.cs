@@ -96,6 +96,11 @@ public class PlayerSM : StateManager
     public static float attackCooltime;
 
     public static bool isDefence { get; private set; }
+    public static string skill1Index { get; set; }
+    public static string skill2Index { get; set; }
+
+    private float skill1CoolTime;
+    private float skill2CoolTime;
 
     private void Awake()
     {
@@ -134,6 +139,12 @@ public class PlayerSM : StateManager
     void Update()
     {
         ManagerUpdate();
+
+        if (InputHandler.skill1 && skill1Index != null && skill1Index != "" && skill1CoolTime < 0)
+            SkillDataModel.UnlockActive[skill1Index].Use((int)manaNow, out skill1CoolTime);
+
+        if (InputHandler.skill2 && skill2Index != null && skill2Index != "" && skill2CoolTime < 0)
+            SkillDataModel.UnlockActive[skill2Index].Use((int)manaNow, out skill2CoolTime);
 
         Vector3 rotation = transform.rotation.eulerAngles;
         rotation.y = rotation.y + (InputHandler.camRotate * Time.deltaTime * 30);

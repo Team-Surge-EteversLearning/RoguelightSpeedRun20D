@@ -13,6 +13,8 @@ public class InputHandler : MonoBehaviour
     public static bool avoid { get; private set; }
     public static bool defence { get; private set; }
     public static float camRotate { get; private set; }
+    public static bool skill1 { get; private set; }
+    public static bool skill2 { get; private set; }
 
     [SerializeField]
     private InputActionAsset actionAsset;
@@ -35,6 +37,10 @@ public class InputHandler : MonoBehaviour
         map.FindAction("Defence").canceled += OnDefence;
         map.FindAction("CameraRotate").performed += OnCameraRotate;
         map.FindAction("CameraRotate").canceled += OnCameraRotate;
+        map.FindAction("Skill1").performed += OnSkill1;
+        map.FindAction("Skill1").canceled += OnSkill1;
+        map.FindAction("Skill2").performed += OnSkill2;
+        map.FindAction("Skill2").canceled += OnSkill2;
     }
 
     // Start is called before the first frame update
@@ -53,6 +59,8 @@ public class InputHandler : MonoBehaviour
     {
         attack = false;
         avoid = false;
+        skill1 = false;
+        skill2 = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -92,5 +100,17 @@ public class InputHandler : MonoBehaviour
     {
         camRotate = context.ReadValue<float>();
         //Debug.LogWarning(camRotate);
+    }
+
+    public void OnSkill1(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            skill1 = true;
+    }
+
+    public void OnSkill2(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            skill2 = true;
     }
 }

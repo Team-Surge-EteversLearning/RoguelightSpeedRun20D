@@ -21,7 +21,7 @@ public class Chest : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("PlayerBody"))
         {
             DungeonShopManager.Instance.ResetTargetShops(gameObject);
             animator.Play("OpenAnimation");

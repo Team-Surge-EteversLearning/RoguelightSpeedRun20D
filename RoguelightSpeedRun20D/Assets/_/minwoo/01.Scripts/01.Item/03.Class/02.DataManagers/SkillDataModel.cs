@@ -13,6 +13,7 @@ public class SkillDataModel : IProductMaker
     static int skillBookPrice;
 
     public static Dictionary<string, ActiveSkill> LockActive { get => lockActive; set => lockActive = value; }
+    public static Dictionary<string, ActiveSkill> UnlockActive { get => unlockActive; set => unlockActive = value; }
 
     public void Init()
     {

@@ -15,19 +15,14 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private MiniMapManager miniMapManager;
 
     public Dictionary<GameObject, DungeonNode> GameObjectNode = new Dictionary<GameObject, DungeonNode>();
-    
-    // [SerializeField] private GameObject indicator;
-    // [SerializeField] private GameObject startIndicator;
-
-    public bool isBossDead = true;
-
 
     private int roomCount;
     private int roomInFloor;
     private float floorHeight;
     private float roomDistance;
 
-    private int randNum;
+    private int normalRoomrandNum;
+    private int shopRoomrandNum;
     
     private Dungeon _dungeon = new Dungeon();
     public Dungeon Dungeon
@@ -39,11 +34,22 @@ public class DungeonManager : MonoBehaviour
     
     public delegate void DoorToggleDelegate(bool clear);
     public static event DoorToggleDelegate OnDoorToggle;
-
+    [SerializeField] private int _currentMonsterCount;
+    public int CurrentMonsterCount 
+    {
+        get => _currentMonsterCount; 
+        set 
+        {
+            _currentMonsterCount = value;
+            if(_currentMonsterCount == 0)
+            {
+                ToggleDoor(true);
+            }
+        } 
+    }
 
     [FormerlySerializedAs("testFlag")] public bool bossRoomClear;
     [ContextMenu("testClear")]
-    
 
     public static void ToggleDoor(bool isClear)
     {
@@ -70,15 +76,15 @@ public class DungeonManager : MonoBehaviour
         miniMapManager.MiniMapCreate();
         floorHeight += 10;
     }
-    public void ChangeNode(DungeonNode node)
+    public void ChangeNode(DungeonNode node, GameObject go)
     {
         _dungeon.Current = node;
         miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
-    }
-
-    private void Update()
-    {
-        randNum = Random.Range(0, 6);
+        CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>(true).Length;
+        foreach(var item in go.GetComponentsInChildren<MonsterSM>(true))
+        {
+            item.gameObject.SetActive(true);
+        }
     }
     
     private void Generate(Dungeon target)
@@ -108,16 +114,18 @@ public class DungeonManager : MonoBehaviour
             }
             else if (node.IsShop)
             {
-                room = Instantiate(dungeonBundleDatas[0].shopRoomPresets[0].roomPrefab, posi, Quaternion.identity);
+                room = Instantiate(dungeonBundleDatas[0].shopRoomPresets[shopRoomrandNum].roomPrefab, posi, Quaternion.identity);
             }
             else
             {
-                room = Instantiate(dungeonBundleDatas[0].normalRoomPresets[randNum].roomPrefab, posi, Quaternion.identity);
+                room = Instantiate(dungeonBundleDatas[0].normalRoomPresets[normalRoomrandNum].roomPrefab, posi, Quaternion.identity);
             }
             roomNodeTransformPair.Add(node, room.transform);
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             GameObjectNode.Add(room, node);
+            normalRoomrandNum = Random.Range(0, 40);
+            shopRoomrandNum = Random.Range(0, 2);
         }
     }
 

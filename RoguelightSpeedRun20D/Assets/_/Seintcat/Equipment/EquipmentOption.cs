@@ -6,6 +6,7 @@ public abstract class EquipmentOption
 {
     public int priceOffset;
     public int sellWhenClear;
+    public string optName;
 
     public abstract Equipment MakeEquipment(Equipment equipment);
     public abstract void UseOption();

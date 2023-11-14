@@ -16,9 +16,16 @@ public class FireBall : ActiveSkill
         base.Init();
     }
 
-    protected override void Use()
+    public override void Use(int mana, out float coolTime)
     {
-        throw new NotImplementedException();
+        if(ActiveSkill.projectile == null)
+        {
+            projectile = new UnityEngine.GameObject("Projectile");
+            projectile.AddComponent<Projectile_Atackable>();
+        }
+        projectile.gameObject.transform.position = PlayerSM.playerObj.transform.position;
+        projectile.gameObject.SetActive(true);
+        coolTime = this.coolTime;
     }
 }
 

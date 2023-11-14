@@ -6,7 +6,6 @@ public class Door : MonoBehaviour
 {
     public DoorDir nextDoor;
     private Animator animator;
-    [SerializeField] private bool isBossDead;
     
     private void Awake()
     {

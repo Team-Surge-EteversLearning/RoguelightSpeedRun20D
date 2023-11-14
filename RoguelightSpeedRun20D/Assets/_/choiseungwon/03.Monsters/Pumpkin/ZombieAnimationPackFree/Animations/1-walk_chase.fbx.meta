@@ -882,7 +882,7 @@ ModelImporter:
       lastFrame: 186
       wrapMode: 0
       orientationOffsetY: 0
-      level: 0
+      level: 0.2
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
@@ -890,7 +890,7 @@ ModelImporter:
       loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0

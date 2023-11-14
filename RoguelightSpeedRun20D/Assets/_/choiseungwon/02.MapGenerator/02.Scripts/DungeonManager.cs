@@ -80,17 +80,11 @@ public class DungeonManager : MonoBehaviour
     {
         _dungeon.Current = node;
         miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
-        CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>().Length;
+        CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>(true).Length;
         foreach(var item in go.GetComponentsInChildren<MonsterSM>(true))
         {
             item.gameObject.SetActive(true);
         }
-    }
-
-    private void Update()
-    {
-        normalRoomrandNum = Random.Range(0, 29);
-        shopRoomrandNum = Random.Range(0, 2);
     }
     
     private void Generate(Dungeon target)
@@ -130,6 +124,8 @@ public class DungeonManager : MonoBehaviour
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             GameObjectNode.Add(room, node);
+            normalRoomrandNum = Random.Range(0, 40);
+            shopRoomrandNum = Random.Range(0, 2);
         }
     }
 

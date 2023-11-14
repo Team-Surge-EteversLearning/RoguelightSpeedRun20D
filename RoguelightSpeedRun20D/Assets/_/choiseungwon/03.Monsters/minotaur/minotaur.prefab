@@ -3937,7 +3937,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1.7}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4414871117353324496}
@@ -4040,8 +4040,6 @@ MonoBehaviour:
   movePoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &4414871117353324497
 GameObject:
   m_ObjectHideFlags: 0
@@ -4094,7 +4092,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7554a7af0586986438ea09adb8e77d86, type: 2}
+  - {fileID: 2100000, guid: e802a570d0fad4b40b8a2685dad4f928, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4726,7 +4724,7 @@ GameObject:
   - component: {fileID: 3113069188808045671}
   - component: {fileID: 6341358755000836604}
   m_Layer: 7
-  m_Name: MinotaurEye
+  m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4766,8 +4764,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 0, z: 20}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 7, y: 1, z: 7}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &6341358755000836604
 MonoBehaviour:
   m_ObjectHideFlags: 0

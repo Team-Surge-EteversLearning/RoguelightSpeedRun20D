@@ -54,8 +54,11 @@ public class ShopUI
         product.Buy();
         Village.onBuy?.Invoke();
         DungeonShopManager.onBuy?.Invoke();
-        if(productButton.gameObject.GetComponent<EventTrigger>() != null)
+        DescriptionController.onDescriptionComplete?.Invoke();
+        if (productButton.gameObject.GetComponent<EventTrigger>() != null && product is Equipment)
+        {
             UnityEngine.Object.Destroy(productButton.gameObject.GetComponent<EventTrigger>());
+        }
         return;
     }
     private void Display()
@@ -66,21 +69,20 @@ public class ShopUI
     {
         var equipTypes = new[] { typeof(Armor), typeof(Shoes), typeof(Weapon) };
         var statTypes = new[] { typeof(MaxHp), typeof(MaxMp), typeof(MaxStamina), typeof(PowerWeight), typeof(Speed) };
+        EventTrigger eventTrigger = productButton.gameObject.AddComponent<EventTrigger>();
+        EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
+        pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
+        eventTrigger.triggers.Add(pointerEnterEntry);
+
+        EventTrigger.Entry pointerExitEntry = new EventTrigger.Entry();
+        pointerExitEntry.eventID = EventTriggerType.PointerExit;
+        pointerExitEntry.callback.AddListener((eventData) => { OnPointExitProduct(); });
+        eventTrigger.triggers.Add(pointerExitEntry);
         if (equipTypes.Contains(product.GetType()))
         {
             Equipment equipment = (Equipment)product;
             productButton.onClick.AddListener(() => thisShop.Products.Remove(this.SProduct));
-           
-            EventTrigger eventTrigger = productButton.gameObject.AddComponent<EventTrigger>();
-            EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
-            pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, equipment); });
-            eventTrigger.triggers.Add(pointerEnterEntry);
-
-            EventTrigger.Entry pointerExitEntry = new EventTrigger.Entry();
-            pointerExitEntry.eventID = EventTriggerType.PointerExit;
-            pointerExitEntry.callback.AddListener((eventData) => { OnPointExitProduct(); });
-            eventTrigger.triggers.Add(pointerExitEntry);
             return equipment.Name;
         }
         else if (product.GetType() == typeof(Useable))
@@ -88,28 +90,50 @@ public class ShopUI
             Useable useable = (Useable)product;
             productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString();
             productButton.onClick.AddListener(() => productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString());
+            pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, useable); });
+
             return useable.ItemCode.ToString();
         }
         else if (statTypes.Contains(product.GetType()))
         {
             Stat stat = (Stat)product;
             productButton.GetComponentInChildren<TMP_Text>().text = "";
+            pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, stat); });
             return stat.Name;
         }
         else
         {
             ActiveSkill activeSkill = (ActiveSkill)product;
             productButton.GetComponentInChildren<TMP_Text>().text = "";
+            pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, activeSkill); });
             return "RandomSkillBook";
         }
     }
 
-    public static void OnPointEnterProduct(Button button, Equipment equip)
+    public static void OnPointEnterProduct(Button button, IProduct product)
     {
-        switch(equip)
+        switch (product)
         {
             case Weapon weapon:
-                DescriptionController.onDescription?.Invoke($"{weapon.Name} ( +{weapon.Tier})\nDamage: {weapon.Damage}\nCoolTime: {weapon.Cooltime}", weapon.usableOptions);
+                DescriptionController.onDescriptionWithOpts?.Invoke($"{weapon.Name} ( +{weapon.Tier})\nDamage: {weapon.Damage}\nCoolTime: {weapon.Cooltime}", weapon.usableOptions);
+                break;
+            case Useable useable:
+                string description = "";
+                if (useable.ItemCode == 0)
+                    description = "HpPotion";
+                else if (useable.ItemCode == 1)
+                    description = "ManaPotion";
+                else if (useable.ItemCode == 2)
+                    description = "Bomb";
+                else if (useable.ItemCode == 3)
+                    description = "Barrier";
+                DescriptionController.onDescription?.Invoke(description);
+                break;
+            case Stat stat:
+                DescriptionController.onDescription?.Invoke(stat.description);
+                break;
+            case ActiveSkill activeSkill:
+                DescriptionController.onDescription?.Invoke("RandomSkillBook");
                 break;
 
         }

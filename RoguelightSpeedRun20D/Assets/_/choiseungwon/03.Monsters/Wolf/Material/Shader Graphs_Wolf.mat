@@ -79,5 +79,5 @@ Material:
     m_Colors:
     - _ClippingColor: {r: 1, g: 0, b: 0, a: 1}
     - _DissolveEmmitionColor: {r: 0, g: 0, b: 0, a: 0}
-    - _DissolveTextureColor: {r: 0.18867922, g: 0.18867922, b: 0.17176929, a: 1}
+    - _DissolveTextureColor: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 1}
   m_BuildTextureStacks: []

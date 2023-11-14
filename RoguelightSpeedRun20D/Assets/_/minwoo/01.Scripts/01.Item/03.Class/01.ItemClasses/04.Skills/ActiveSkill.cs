@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class ActiveSkill : IProduct
 {
+    public static GameObject projectile;
 
     protected string name;
     protected int mana;
@@ -18,7 +19,9 @@ public abstract class ActiveSkill : IProduct
 
     public void Buy()
     {
-        Debug.Log(name);
+        if (!SkillDataModel.UnlockActive.ContainsKey(name))
+            SkillDataModel.UnlockActive.Add(name, this);
+        Debug.Log(this.name);
     }
 
     protected virtual void Init()

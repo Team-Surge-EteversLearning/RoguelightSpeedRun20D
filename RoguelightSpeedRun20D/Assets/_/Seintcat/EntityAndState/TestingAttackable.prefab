@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4396489556163396762}
   - component: {fileID: 5738133582780365932}
   - component: {fileID: 8690516953055049696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TestingAttackable
-  m_TagString: Untagged
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

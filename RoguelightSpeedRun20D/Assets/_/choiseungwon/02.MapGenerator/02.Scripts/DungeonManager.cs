@@ -81,7 +81,10 @@ public class DungeonManager : MonoBehaviour
         _dungeon.Current = node;
         miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
         CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>().Length;
-        Debug.Log(CurrentMonsterCount);
+        foreach(var item in go.GetComponentsInChildren<MonsterSM>(true))
+        {
+            item.gameObject.SetActive(true);
+        }
     }
 
     private void Update()

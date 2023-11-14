@@ -49,6 +49,7 @@ MonoBehaviour:
   shopRoomPresets:
   - roomPrefab: {fileID: 9121149530977306964, guid: 7befaa573a08f4c4ebe339fc816b0346, type: 3}
   - roomPrefab: {fileID: 968918257229762092, guid: 2b7466c30925744c9bee353c4439fe0e, type: 3}
+  - roomPrefab: {fileID: 2281418874763581594, guid: 0b5fa9b4c01814384ae8dbba3bd96996, type: 3}
   bossRoomPresets:
   - roomPrefab: {fileID: 1188233378133636767, guid: bea6f8bdfab5a49e28eb2e65bc57fef9, type: 3}
   doorPresets: {fileID: 7561981834410391685, guid: 3c52630cab5074c41b03293412a6bfd3, type: 3}

@@ -31,16 +31,16 @@ public class Useable : IProduct
         switch (ItemCode) 
         {
             case 0:
-                Debug.Log("체력포션 구매");
+                DungeonItemManager.hpPotionNow += 1;
                 break;
             case 1:
-                Debug.Log("마나포션 구매");
+                DungeonItemManager.manaPotionNow += 1;
                 break;
             case 2:
-                Debug.Log("폭탄 구매");
+                DungeonItemManager.bombNow += 1;
                 break;
             case 3:
-                Debug.Log("배리어 구매");
+                DungeonItemManager.barrierNow += 1;
                 break;
         }
         Quantity -= 1;

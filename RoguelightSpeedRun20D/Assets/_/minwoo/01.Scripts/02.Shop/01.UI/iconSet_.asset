@@ -19,7 +19,7 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 4f6a94c08feabbc47bfe7be1ce855587, type: 3}
   - name: bigSword
     icon: {fileID: 21300000, guid: 79cc5d9729cb1044b9c72a2122351fe4, type: 3}
-  - name: magicWe
+  - name: magicWeapon
     icon: {fileID: 21300000, guid: c415d8d024d0dd54388fe20f88cb7876, type: 3}
   - name: 0
     icon: {fileID: 21300000, guid: 5ebef582a40153e4da449bbb50f9cdc3, type: 3}

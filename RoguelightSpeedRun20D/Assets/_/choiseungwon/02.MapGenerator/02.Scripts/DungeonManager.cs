@@ -72,7 +72,7 @@ public class DungeonManager : MonoBehaviour
     {
         Generate(_dungeon);
         
-        StartCoroutine(GenerateRoom(_dungeon, floorHeight));
+        GenerateRoom(_dungeon, floorHeight);
         miniMapManager.MiniMapCreate();
         floorHeight += 10;
     }
@@ -80,17 +80,11 @@ public class DungeonManager : MonoBehaviour
     {
         _dungeon.Current = node;
         miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
-        CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>().Length;
+        CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>(true).Length;
         foreach(var item in go.GetComponentsInChildren<MonsterSM>(true))
         {
             item.gameObject.SetActive(true);
         }
-    }
-
-    private void Update()
-    {
-        normalRoomrandNum = Random.Range(0, 40);
-        shopRoomrandNum = Random.Range(0, 2);
     }
     
     private void Generate(Dungeon target)
@@ -99,7 +93,7 @@ public class DungeonManager : MonoBehaviour
         target.SetShopNode();
     }
 
-    private IEnumerator GenerateRoom(Dungeon target, float height)
+    private void GenerateRoom(Dungeon target, float height)
     {
         GameObject room;
         foreach (var node in target)
@@ -130,7 +124,8 @@ public class DungeonManager : MonoBehaviour
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             GameObjectNode.Add(room, node);
-            yield return new WaitForSeconds(0.1f);
+            normalRoomrandNum = Random.Range(0, 40);
+            shopRoomrandNum = Random.Range(0, 2);
         }
     }
 

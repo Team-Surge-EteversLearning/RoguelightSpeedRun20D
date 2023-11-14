@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/_/minwoo/02.Scenes/MyVillageScene.unity
     guid: 2beb04868e35f0046ae71cae23ee903f
   - enabled: 1
-    path: Assets/_/choiseungwon/02.MapGenerator/MapGenerateScene.unity
+    path: Assets/_/choiseungwon/02.MapGenerator/01.MapGenerateScene.unity
     guid: 9140ab96ed83c49b2a16ac49721d3afb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 414c8e99e97fc1640938f87224e98ec3, type: 2}

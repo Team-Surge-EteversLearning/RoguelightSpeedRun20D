@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 [Serializable]
 public class ShopUI
@@ -35,13 +36,11 @@ public class ShopUI
     }
     public Button ProductButton { get => productButton; set => productButton = value; }
     public Shop ThisShop { get => thisShop; set => thisShop = value; }
-
     public ShopUI(Button productButton)
     {
         this.ProductButton = productButton;
         this.ProductImage = productButton.GetComponentsInChildren<Image>()[1];
     }
-
     private void CashCheckAndBuy()
     {
         if (PlayerStatsManager.CashNow < price)
@@ -64,11 +63,24 @@ public class ShopUI
     {
         var equipTypes = new[] { typeof(Armor), typeof(Shoes), typeof(Weapon) };
         var statTypes = new[] { typeof(MaxHp), typeof(MaxMp), typeof(MaxStamina), typeof(PowerWeight), typeof(Speed) };
-        Debug.Log(product.GetType());
         if (equipTypes.Contains(product.GetType()))
         {
             Equipment equipment = (Equipment)product;
             productButton.onClick.AddListener(() => thisShop.Products.Remove(this.SProduct));
+           
+            EventTrigger eventTrigger = productImage.gameObject.AddComponent<EventTrigger>();
+            EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
+            pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
+            pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, equipment); });
+            eventTrigger.triggers.Add(pointerEnterEntry);
+
+            EventTrigger.Entry pointerExitEntry = new EventTrigger.Entry();
+            pointerExitEntry.eventID = EventTriggerType.PointerExit;
+            pointerExitEntry.callback.AddListener((eventData) => { OnPointExitProduct(productButton, equipment); });
+            eventTrigger.triggers.Add(pointerExitEntry);
+
+            productButton.onClick.AddListener(() => UnityEngine.Object.Destroy(eventTrigger));
+
             return equipment.Name;
         }
         else if (product.GetType() == typeof(Useable))
@@ -91,4 +103,14 @@ public class ShopUI
             return "RandomSkillBook";
         }
     }
+
+    public static void OnPointEnterProduct(Button button, Equipment equip)
+    {
+        DescriptionController.onDescription?.Invoke(equip.Name);
+    }
+    private void OnPointExitProduct(Button productButton, Equipment equipment)
+    {
+        DescriptionController.onDescriptionComplete?.Invoke();
+    }
+
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class Village : MonoBehaviour
     [SerializeField] TMP_Text cashTxt;
     [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
     [SerializeField] Button startBtn;
+    [SerializeField] TMP_Text descriptionTxt;
 
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
     public Action resetUI;
@@ -50,7 +52,6 @@ public class Village : MonoBehaviour
             b.onClick.AddListener(() => ResetTargetShops(b.gameObject.name));
         }
     }
-
     private void CreateShop()
     {
         EquipShop v_EquipShop = new EquipShop(0, 3, 3);
@@ -93,11 +94,8 @@ public class Village : MonoBehaviour
 
     public void ChangeUISet()
     {
-        Debug.Log($"{optionPanel.activeInHierarchy} / {shopPanel.activeInHierarchy}");
         shopPanel.SetActive(!shopPanel.activeInHierarchy);
-        optionPanel.SetActive(!optionPanel.activeInHierarchy);
-        Debug.Log($"{optionPanel.activeInHierarchy} / {shopPanel.activeInHierarchy}");
- 
+        optionPanel.SetActive(!optionPanel.activeInHierarchy); 
     }
 
     [ContextMenu("INIT")]
@@ -106,4 +104,5 @@ public class Village : MonoBehaviour
         resetUI();
         nameShopPair[name].ResetShop();
     }
+
 }

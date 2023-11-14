@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Minotaur
   cashDrop: 1000
-  hpMax: 100
+  hpMax: 10
   attackPower: 100
   attackCoolTime: 2
-  attackRange: 3
+  attackRange: 1
   idleTime: 1
   moveSpeed: 50
   chaseSpeed: 175

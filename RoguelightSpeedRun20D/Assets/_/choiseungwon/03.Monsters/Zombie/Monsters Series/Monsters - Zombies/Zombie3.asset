@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Zombie1
   cashDrop: 100
-  hpMax: 100
+  hpMax: 10
   attackPower: 100
   attackCoolTime: 1
-  attackRange: 1.5
+  attackRange: 1
   idleTime: 1
   moveSpeed: 25
   chaseSpeed: 25

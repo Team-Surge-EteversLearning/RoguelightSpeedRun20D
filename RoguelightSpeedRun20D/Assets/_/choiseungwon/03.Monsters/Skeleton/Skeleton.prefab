@@ -821,7 +821,7 @@ Transform:
   m_GameObject: {fileID: 2943319504259096602}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.21, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -847,7 +847,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d99630e4d5e92b43b38292a6c902370, type: 2}
+  - {fileID: 2100000, guid: ec1ab3ed8cf7b4fbaa282ced05fd3386, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2581,7 +2581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 4991831937091697352}
   attackTime: 1
-  stateManager: {fileID: 0}
+  stateManager: {fileID: 3093753732604110454}
   maxHitCount: 1
 --- !u!65 &4991831937091697352 stripped
 BoxCollider:

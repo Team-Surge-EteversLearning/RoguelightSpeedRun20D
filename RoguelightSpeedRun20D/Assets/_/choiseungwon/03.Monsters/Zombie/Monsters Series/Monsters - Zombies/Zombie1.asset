@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
   m_Name: Zombie1
   m_EditorClassIdentifier: 
-  monsterName: Zombie1
+  monsterName: Zombie2
   cashDrop: 100
   hpMax: 100
   attackPower: 100
   attackCoolTime: 1
-  attackRange: 1.5
+  attackRange: 1
   idleTime: 1
   moveSpeed: 25
   chaseSpeed: 25

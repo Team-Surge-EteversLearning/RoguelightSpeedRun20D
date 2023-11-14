@@ -30,7 +30,10 @@ public class MonsterDeathState : State
     {
         cooltime -= Time.deltaTime;
         if(cooltime < 0)
+        {
+            DungeonManager.Instance.CurrentMonsterCount -= 1;
             stateManager.gameObject.SetActive(false);
+        }
 
         return "";
     }

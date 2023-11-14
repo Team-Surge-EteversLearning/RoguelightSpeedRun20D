@@ -34,7 +34,20 @@ public class DungeonManager : MonoBehaviour
     
     public delegate void DoorToggleDelegate(bool clear);
     public static event DoorToggleDelegate OnDoorToggle;
-    
+    [SerializeField] private int _currentMonsterCount;
+    public int CurrentMonsterCount 
+    {
+        get => _currentMonsterCount; 
+        set 
+        {
+            _currentMonsterCount = value;
+            if(_currentMonsterCount == 0)
+            {
+                ToggleDoor(true);
+            }
+        } 
+    }
+
     [FormerlySerializedAs("testFlag")] public bool bossRoomClear;
     [ContextMenu("testClear")]
 
@@ -63,10 +76,12 @@ public class DungeonManager : MonoBehaviour
         miniMapManager.MiniMapCreate();
         floorHeight += 10;
     }
-    public void ChangeNode(DungeonNode node)
+    public void ChangeNode(DungeonNode node, GameObject go)
     {
         _dungeon.Current = node;
         miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
+        CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>().Length;
+        Debug.Log(CurrentMonsterCount);
     }
 
     private void Update()

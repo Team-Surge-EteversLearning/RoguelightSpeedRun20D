@@ -341,7 +341,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 1, z: 20}
+  m_Size: {x: 10, y: 1, z: 10}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5003573606334474605
 MonoBehaviour:
@@ -1442,8 +1442,6 @@ MonoBehaviour:
   attackAbles:
   - {fileID: 8610891526446037324}
   movePoints:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &8043854346993847856

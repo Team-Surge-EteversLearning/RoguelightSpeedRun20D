@@ -1302,7 +1302,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: af78e882fd8b84262bec4ad70bbdabec, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da6c2eb6663ec49c2885902c8140b7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
+  _animator: {fileID: 2959893027594477396}
   data: {fileID: 11400000, guid: f501e71a124f0492c840e7d7f7fa8454, type: 2}
   _rigidbody: {fileID: 2968569930529687344}
   eye: {fileID: 257780292163306757}

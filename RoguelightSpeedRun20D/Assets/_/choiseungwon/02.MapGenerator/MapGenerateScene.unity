@@ -704,7 +704,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20a9a950076644dd484ac9efe897dae5, type: 2}
   miniMapManager: {fileID: 1319843306}
   _currentMonsterCount: 0
-  bossRoomClear: 0
 --- !u!4 &1857621106
 Transform:
   m_ObjectHideFlags: 0

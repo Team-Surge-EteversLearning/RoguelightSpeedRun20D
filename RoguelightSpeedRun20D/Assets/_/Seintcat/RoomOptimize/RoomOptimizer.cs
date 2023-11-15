@@ -19,7 +19,13 @@ public class RoomOptimizer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Vector3 objPos;
+        if (PlayerSM.playerObj == null)
+            objPos = Camera.main.transform.position;
+        else
+            objPos = PlayerSM.playerObj.transform.position;
+
+        CheckSelf(objPos);
     }
 
     // Update is called once per frame
@@ -37,22 +43,25 @@ public class RoomOptimizer : MonoBehaviour
             objPos = PlayerSM.playerObj.transform.position;
 
         foreach (RoomOptimizer roomOptimizer in rooms)
-        {
-            if(Vector3.Distance(roomOptimizer.transform.position, objPos) < distanceCheckValue)
-            {
-                foreach (MeshRenderer renderer in roomOptimizer.renderers)
-                    renderer.enabled = true;
-            }
-            else
-            {
-                foreach (MeshRenderer renderer in roomOptimizer.renderers)
-                    renderer.enabled = false;
-            }
-        }
+            roomOptimizer.CheckSelf(objPos);
     }
 
     public static void ResetRoomList()
     {
         rooms.Clear();
+    }
+
+    private void CheckSelf(Vector3 objPos)
+    {
+        if (Vector3.Distance(transform.position, objPos) < distanceCheckValue)
+        {
+            foreach (MeshRenderer renderer in renderers)
+                renderer.enabled = true;
+        }
+        else
+        {
+            foreach (MeshRenderer renderer in renderers)
+                renderer.enabled = false;
+        }
     }
 }

@@ -13,6 +13,8 @@ public class RoomChecker : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerBody"))
         {
+            RoomOptimizer.RoomCheck();
+
             if (DungeonManager.Instance.Dungeon.Starts.Contains(DungeonManager.Instance.GameObjectNode[transform.parent.gameObject])
                 || DungeonManager.Instance.GameObjectNode[transform.parent.gameObject].IsShop)
             {

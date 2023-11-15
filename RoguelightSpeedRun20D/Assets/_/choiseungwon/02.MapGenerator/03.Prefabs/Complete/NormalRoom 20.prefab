@@ -3215,6 +3215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 01.TreasureChest
       objectReference: {fileID: 0}
+    - target: {fileID: 1170026491547098456, guid: f56f5d24e3b2842028471235a8e5ee9b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6441125041412421017, guid: f56f5d24e3b2842028471235a8e5ee9b, type: 3}
       propertyPath: maxTier
       value: 0

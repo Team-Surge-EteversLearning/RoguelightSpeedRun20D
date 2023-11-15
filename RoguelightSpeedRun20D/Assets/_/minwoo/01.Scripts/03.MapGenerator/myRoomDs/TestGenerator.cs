@@ -130,7 +130,7 @@ public class TestGenerator : MonoBehaviour
     private void Generate(Dungeon target)
     {
         target.AddUntil(roomCount, roomInFloor);
-        target.SetShopNode();
+        target.SetShopNode(3);
     }
 
     private IEnumerator GenerateRooms(Dungeon target, float height)

@@ -28,5 +28,9 @@ public abstract class ActiveSkill : IProduct
     {
         SkillDataModel.LockActive.Add(name, this);
     }
+    public void Equip()
+    {
+
+    }
     public abstract void Use();
 }

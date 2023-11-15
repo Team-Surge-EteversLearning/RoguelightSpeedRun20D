@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UnityEngine;
 
 public class FireBall : ActiveSkill
 {
@@ -15,16 +15,17 @@ public class FireBall : ActiveSkill
     {
         base.Init();
     }
-
+        
     public override void Use()
     {
-        if(ActiveSkill.projectile == null)
-        {
-            projectile = new UnityEngine.GameObject("Projectile");
-            projectile.AddComponent<Projectile_Atackable>();
-        }
-        projectile.gameObject.transform.position = PlayerSM.playerObj.transform.position;
-        projectile.gameObject.SetActive(true);
+        PlayerSM playerSM = PlayerSM.playerObj.GetComponent<PlayerSM>();
+        GameObject projectile = playerSM.skillPrefabs[0];
+        //SetRotation
+        Vector3 direction = playerSM.skillTransform.forward; 
+        Quaternion rotation = Quaternion.LookRotation(direction);
+
+        GameObject instantiatedObject = UnityEngine.Object.Instantiate(projectile, playerSM.skillTransform.position, rotation);
+        instantiatedObject.GetComponent<AttackAble>().AttackStart();
     }
 }
 

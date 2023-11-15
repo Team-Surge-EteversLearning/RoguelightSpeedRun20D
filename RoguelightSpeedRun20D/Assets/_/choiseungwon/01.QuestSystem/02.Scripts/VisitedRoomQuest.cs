@@ -9,6 +9,7 @@ public class VisitedRoomQuest : Quest
     
     public VisitedRoomQuest(string name, string description, int targetCount, int rewardGold) : base(QuestType.VisitedRoom)
     {
+        this.Key = "room";
         this.Name = name;
         this.Description = description;
         this.targetCount = targetCount;

@@ -135,6 +135,11 @@ public abstract class MonsterSM : StateManager, ITargetCatch
         //Debug.LogWarning(damage);
         hpNow -= damage;
 
+        if (QuestSystem.currentQuests != null)
+            foreach (Quest quest in QuestSystem.currentQuests)
+                if (quest.Key == "damage")
+                    ((TotalDamageQuest)quest).UpdateCurrentCount(damage);
+
         foreach (AttackAble attackAble in attackAbles)
             attackAble.AttackStop();
 

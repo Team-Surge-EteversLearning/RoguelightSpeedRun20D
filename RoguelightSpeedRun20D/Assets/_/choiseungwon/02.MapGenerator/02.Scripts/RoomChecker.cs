@@ -21,6 +21,10 @@ public class RoomChecker : MonoBehaviour
             else
             {
                 DungeonManager.ToggleDoor(!isClear);
+                if (QuestSystem.currentQuests != null)
+                    foreach (Quest quest in QuestSystem.currentQuests)
+                        if (quest.Key == "room")
+                            ((VisitedRoomQuest)quest).UpdateCurrentCount(1);
             }
 
             // 문 닫힘

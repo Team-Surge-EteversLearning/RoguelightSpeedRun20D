@@ -68,6 +68,7 @@ public class DungeonManager : MonoBehaviour
 
     void Start()
     {
+        RoomOptimizer.ResetRoomList();
         Generate(_dungeon);
         
         GenerateRoom(_dungeon, floorHeight);

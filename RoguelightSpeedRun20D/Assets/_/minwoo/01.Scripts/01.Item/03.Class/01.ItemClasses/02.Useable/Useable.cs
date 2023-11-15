@@ -16,9 +16,7 @@ public class Useable : IProduct
 
     private int quantity;
     public int Quantity { get => quantity; set => quantity = value; }
-
-
-
+    string IProduct.key { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     public void Buy()
     {
@@ -44,6 +42,11 @@ public class Useable : IProduct
                 break;
         }
         Quantity -= 1;
+    }
+
+    void IProduct.Buy()
+    {
+        throw new NotImplementedException();
     }
 }
 

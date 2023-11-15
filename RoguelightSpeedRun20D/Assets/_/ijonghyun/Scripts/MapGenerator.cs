@@ -22,7 +22,6 @@ public class MapGenerator : MonoBehaviour
 
     void GenerateMap()
     {
-        
         for (int i = 0; i < gridSizeX; i++)
         {
             for (int j = 0; j < gridSizeZ; j++)

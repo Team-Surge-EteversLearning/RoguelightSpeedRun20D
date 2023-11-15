@@ -22,10 +22,15 @@ public class Stat : IProduct
     public string Name { get; set; }
     protected int statIndex;
     protected int StatIndex { get => statIndex; set => statIndex = value; }
-
+    string IProduct.key { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
     public virtual void Buy()
     {
         PlayerStatsManager.AddPrice(statIndex);
+    }
+
+    void IProduct.Buy()
+    {
+        throw new NotImplementedException();
     }
 }

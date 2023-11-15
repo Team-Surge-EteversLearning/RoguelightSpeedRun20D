@@ -9,6 +9,8 @@ public abstract class ActiveSkill : IProduct
     protected int mana;
     protected float coolTime;
 
+    string IProduct.key { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
     protected ActiveSkill(string name, int mana, float coolTime)
     {
         this.name = name;
@@ -33,4 +35,9 @@ public abstract class ActiveSkill : IProduct
 
     }
     public abstract void Use();
+
+    void IProduct.Buy()
+    {
+        throw new System.NotImplementedException();
+    }
 }

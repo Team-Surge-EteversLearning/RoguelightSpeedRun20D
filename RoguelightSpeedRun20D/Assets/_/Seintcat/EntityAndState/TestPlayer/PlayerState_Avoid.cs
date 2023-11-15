@@ -13,7 +13,7 @@ public class PlayerState_Avoid : State
     {
         stateName = "Avoid";
         cooltime = -1f;
-        motionSpeed = 0.7f;
+        motionSpeed = 0.5f;
     }
 
     public override void Initialize(GameObject managerObject)
@@ -45,7 +45,7 @@ public class PlayerState_Avoid : State
     {
         float speed = PlayerSM.moveSpeed;
         speed += ((float)(PlayerStatsManager.Speed + PlayerSM.shoesNow.Speed + 10f) / (PlayerStatsManager.Speed + 10)) * PlayerSM.speedMaxGap;
-        rigidBody.AddForce(normalMove * speed, ForceMode.VelocityChange);
+        rigidBody.AddForce(normalMove * speed * 2.5f, ForceMode.VelocityChange);
 
         cooltime -= Time.deltaTime;
         if(cooltime < 0)

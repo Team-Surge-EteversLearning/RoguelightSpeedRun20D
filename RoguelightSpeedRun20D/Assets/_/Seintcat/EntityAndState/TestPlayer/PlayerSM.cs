@@ -99,8 +99,11 @@ public class PlayerSM : StateManager
     public static string skill1Index { get; set; }
     public static string skill2Index { get; set; }
 
-    private float skill1CoolTime;
-    private float skill2CoolTime;
+    public static float skill1CoolTime;
+    public static float skill2CoolTime;
+
+    public Transform skillTransform;
+    public List<GameObject> skillPrefabs;
 
     private void Awake()
     {
@@ -141,10 +144,10 @@ public class PlayerSM : StateManager
         ManagerUpdate();
 
         if (InputHandler.skill1 && skill1Index != null && skill1Index != "" && skill1CoolTime < 0)
-            SkillDataModel.UnlockActive[skill1Index].Use((int)manaNow, out skill1CoolTime);
+            SkillDataModel.UnlockActive[skill1Index].Use();
 
         if (InputHandler.skill2 && skill2Index != null && skill2Index != "" && skill2CoolTime < 0)
-            SkillDataModel.UnlockActive[skill2Index].Use((int)manaNow, out skill2CoolTime);
+            SkillDataModel.UnlockActive[skill2Index].Use();
 
         Vector3 rotation = transform.rotation.eulerAngles;
         rotation.y = rotation.y + (InputHandler.camRotate * Time.deltaTime * 30);

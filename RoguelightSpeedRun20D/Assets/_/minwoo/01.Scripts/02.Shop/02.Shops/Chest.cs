@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -25,6 +26,11 @@ public class Chest : MonoBehaviour
         {
             DungeonShopManager.Instance.ResetTargetShops(gameObject);
             animator.Play("OpenAnimation");
+
+            if (QuestSystem.currentQuests != null)
+                foreach (Quest quest in QuestSystem.currentQuests)
+                    if (quest.Key == "box")
+                        ((OpenBoxQuest)quest).UpdateCurrentCount(1);
         }
     }
 }

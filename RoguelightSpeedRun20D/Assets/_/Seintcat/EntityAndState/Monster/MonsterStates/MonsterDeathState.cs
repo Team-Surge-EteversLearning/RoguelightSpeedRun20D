@@ -23,6 +23,12 @@ public class MonsterDeathState : State
         stateManager.animator.Play(stateName, 1);
 
         cooltime = stateManager.basicData.deadTime;
+
+        if(QuestSystem.currentQuests != null)
+            foreach (Quest quest in QuestSystem.currentQuests)
+                if (quest.Key == stateManager.basicData.name)
+                    ((HuntingQuest)quest).UpdateCurrentCount(1);
+
         return "";
     }
 

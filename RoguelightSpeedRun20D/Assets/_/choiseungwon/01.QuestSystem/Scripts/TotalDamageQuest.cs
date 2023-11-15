@@ -9,6 +9,7 @@ public class TotalDamageQuest : Quest
 
     public TotalDamageQuest(string name, string description, float targetDamage, int rewardGold) : base(QuestType.TotalDamage)
     {
+        this.Key = "damage";
         this.Name = name;
         this.Description = description;
         this.targetDamage = targetDamage;

@@ -12,7 +12,7 @@ public class QuestSystem : MonoBehaviour
     [SerializeField] private Text[] questReward;
     
     private List<Quest> allQuests;
-    public List<Quest> currentQuests;
+    public static List<Quest> currentQuests;
 
     void Start()
     {
@@ -24,15 +24,15 @@ public class QuestSystem : MonoBehaviour
     {
         allQuests = new List<Quest>()
         {
-            new HuntingQuest("스켈레톤 사냥", "스켈레톤을 3마리 잡으세요.", 3, 100),
-            new HuntingQuest("스켈레톤 사냥", "스켈레톤을 5마리 잡으세요.", 5, 200),
-            new HuntingQuest("스켈레톤 사냥", "스켈레톤을 7마리 잡으세요.", 7, 300),
-            new HuntingQuest("스켈레톤 사냥", "스켈레톤을 10마리 잡으세요.", 10, 500),
+            new HuntingQuest("", "스켈레톤 사냥", "스켈레톤을 3마리 잡으세요.", 3, 100),
+            new HuntingQuest("", "스켈레톤 사냥", "스켈레톤을 5마리 잡으세요.", 5, 200),
+            new HuntingQuest("", "스켈레톤 사냥", "스켈레톤을 7마리 잡으세요.", 7, 300),
+            new HuntingQuest("", "스켈레톤 사냥", "스켈레톤을 10마리 잡으세요.", 10, 500),
             
-            new ColletItemQuest("루비 수집가", "루비를 3개 획득하세요.", 3, 100),
-            new ColletItemQuest("루비 수집가", "루비를 5개 획득하세요.", 5, 200),
-            new ColletItemQuest("루비 수집가", "루비를 7개 획득하세요.", 7, 300),
-            new ColletItemQuest("루비 수집가", "루비를 10개 획득하세요.", 10, 500),
+            new ColletItemQuest("", "루비 수집가", "루비를 3개 획득하세요.", 3, 100),
+            new ColletItemQuest("", "루비 수집가", "루비를 5개 획득하세요.", 5, 200),
+            new ColletItemQuest("", "루비 수집가", "루비를 7개 획득하세요.", 7, 300),
+            new ColletItemQuest("", "루비 수집가", "루비를 10개 획득하세요.", 10, 500),
             
             new OpenBoxQuest("상자 사랑꾼", "상자를 1개 여세요.", 1, 100),
             new OpenBoxQuest("상자 사랑꾼", "상자를 2개 여세요.", 2, 200),

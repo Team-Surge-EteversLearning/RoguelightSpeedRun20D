@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ColletItemQuest : Quest
 {
     private int targetCount;
     private int currentCount;
 
-    public ColletItemQuest(string name, string description, int targetCount, int rewardGold) 
+    public ColletItemQuest(string key, string name, string description, int targetCount, int rewardGold) 
         : base(QuestType.CollectItem)
     {
+        this.Key = key;
         this.Name = name;
         this.Description = description;
         this.targetCount = targetCount;

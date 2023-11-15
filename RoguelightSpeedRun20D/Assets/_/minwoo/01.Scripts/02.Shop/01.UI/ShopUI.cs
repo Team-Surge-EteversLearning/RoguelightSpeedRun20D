@@ -9,6 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 [Serializable]
 public class ShopUI
@@ -59,6 +60,12 @@ public class ShopUI
         {
             UnityEngine.Object.Destroy(productButton.gameObject.GetComponent<EventTrigger>());
         }
+
+        if(price == 0)
+            if (QuestSystem.currentQuests != null)
+                foreach (Quest quest in QuestSystem.currentQuests)
+                    if (quest.Key == product.key)
+                        ((ColletItemQuest)quest).UpdateCurrentCount(1);
         return;
     }
     private void Display()

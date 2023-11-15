@@ -1,0 +1,8 @@
+new HuntingQuest("여기 키값 입력", "스켈레톤 사냥", ~ ),
+HuntingQuest 키값은 몬스터데이터의 이름과 동일해야 함
+
+IProduct에 변수 추가됨
+public string key { get; protected set; }
+new ColletItemQuest("여기 키값 입력", "루비 수집가", ~ ),
+ColletItemQuest 키값과 IProduct.key가 서로 같으면 퀘 카운트
+

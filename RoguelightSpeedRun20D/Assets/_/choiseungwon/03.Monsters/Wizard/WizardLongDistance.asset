@@ -19,8 +19,8 @@ MonoBehaviour:
   attackCoolTime: 2
   attackRange: 10
   idleTime: 1
-  moveSpeed: 10
-  chaseSpeed: 20
+  moveSpeed: 20
+  chaseSpeed: 30
   isFly: 0
   patrolMode: 2
   damagedStaggerTime: 1

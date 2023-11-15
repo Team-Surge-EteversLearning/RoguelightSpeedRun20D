@@ -23,7 +23,7 @@ public class DungeonManager : MonoBehaviour
 
     private int normalRoomrandNum;
     private int shopRoomrandNum;
-    
+
     private Dungeon _dungeon = new Dungeon();
     public Dungeon Dungeon
     {
@@ -43,6 +43,7 @@ public class DungeonManager : MonoBehaviour
             _currentMonsterCount = value;
             if(_currentMonsterCount == 0)
             {
+                Dungeon.Current.isSafe = true;
                 ToggleDoor(true);
             }
         } 
@@ -78,6 +79,7 @@ public class DungeonManager : MonoBehaviour
     public void ChangeNode(DungeonNode node, GameObject go)
     {
         _dungeon.Current = node;
+        Debug.LogWarning(Dungeon.Current.isSafe);
         miniMapManager.ChangeMinimapNode(Dungeon.Current, Dungeon.Prev);
         CurrentMonsterCount = go.GetComponentsInChildren<MonsterSM>(true).Length;
         foreach(var item in go.GetComponentsInChildren<MonsterSM>(true))

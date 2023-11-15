@@ -17,6 +17,7 @@ public class DungeonNode
     public Vector3Int Position { get; set; }
 
     public int Floor { get; set; }
+    public bool isSafe = false;
 
     public DungeonNode(int distance)
     {
@@ -89,6 +90,7 @@ public class Dungeon : IEnumerable<DungeonNode>
             node.Position = Vector3Int.zero;
             node.DistanceFromStart = 0;
             Starts.Add(node);
+            node.isSafe = true;
         }
         else
         {
@@ -213,13 +215,14 @@ public class Dungeon : IEnumerable<DungeonNode>
 
             if (availableNodes.Count > 0)
             {
-                for(int j = 0; j < amountInFloor; j++)
+                for (int j = 0; j < amountInFloor; j++)
                 {
                     if (availableNodes.Count < 1)
                         break;
                     var shopNode = availableNodes[random.Next(availableNodes.Count)];
                     availableNodes.Remove(shopNode);
                     shopNode.IsShop = true;
+                    shopNode.isSafe = true;
                 }
             }
             else

@@ -170,6 +170,10 @@ public class PlayerSM : StateManager
             gameObject.GetComponent<Animator>().Play("Idle", 1, 0f);
         }
 
+        BattleUI.hpBar = ((float)hpNow / hpMax);
+        BattleUI.mpBar = ((float)manaNow / manaMax);
+        BattleUI.stBar = ((float)staminaNow / staminaMax);
+
         if (mainState.stateName != "Avoid")
         {
             if (InputHandler.avoid && staminaNow > 3f)

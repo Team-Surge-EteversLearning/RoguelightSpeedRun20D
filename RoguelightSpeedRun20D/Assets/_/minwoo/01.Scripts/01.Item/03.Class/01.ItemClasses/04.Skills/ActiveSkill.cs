@@ -28,5 +28,5 @@ public abstract class ActiveSkill : IProduct
     {
         SkillDataModel.LockActive.Add(name, this);
     }
-    public abstract void Use(int mana, out float coolTime);
+    public abstract void Use();
 }

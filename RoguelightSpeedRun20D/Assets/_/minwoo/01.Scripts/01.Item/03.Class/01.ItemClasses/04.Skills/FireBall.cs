@@ -16,7 +16,7 @@ public class FireBall : ActiveSkill
         base.Init();
     }
 
-    public override void Use(int mana, out float coolTime)
+    public override void Use()
     {
         if(ActiveSkill.projectile == null)
         {
@@ -25,7 +25,6 @@ public class FireBall : ActiveSkill
         }
         projectile.gameObject.transform.position = PlayerSM.playerObj.transform.position;
         projectile.gameObject.SetActive(true);
-        coolTime = this.coolTime;
     }
 }
 

@@ -67,7 +67,7 @@ public class RangeMonsterSM : MonsterSM
     protected override void OnTriggerEnter(Collider other)
     {
         AttackAble otherAttack = other.GetComponent<AttackAble>();
-        if (otherAttack != null && otherAttack.gameObject.tag == "PlayerBody")
+        if (otherAttack != null)
         {
             GetDamage(otherAttack.GetDamage(gameObject), other);
             if (mainBody.Raycast(new Ray(other.transform.position, other.transform.forward), out RaycastHit hit, 0.1f))

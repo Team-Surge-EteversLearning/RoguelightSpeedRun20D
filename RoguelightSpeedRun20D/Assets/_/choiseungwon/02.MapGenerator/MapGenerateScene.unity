@@ -409,8 +409,7 @@ GameObject:
   - component: {fileID: 576860880}
   - component: {fileID: 576860884}
   - component: {fileID: 576860883}
-  - component: {fileID: 576860882}
-  - component: {fileID: 576860881}
+  - component: {fileID: 576860885}
   m_Layer: 5
   m_Name: ST_ampule
   m_TagString: Untagged
@@ -438,40 +437,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!95 &576860881
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576860879}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: deb921bae83a02040a0af7dd55f38e7c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &576860882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576860879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b199043ded446c74e831fcf9cf9dfbe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 1043361860}
 --- !u!114 &576860883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +488,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 576860882}
+      - m_Target: {fileID: 576860885}
         m_TargetAssemblyTypeName: CryptUI.Scripts.ResourceBarController, Assembly-CSharp
         m_MethodName: ApplyValue
         m_Mode: 0
@@ -543,6 +508,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 576860879}
   m_CullTransparentMesh: 0
+--- !u!114 &576860885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576860879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b199043ded446c74e831fcf9cf9dfbe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1043361860}
 --- !u!1 &822867852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1417,6 @@ GameObject:
   - component: {fileID: 1216182984393511579}
   - component: {fileID: 1216182984393511576}
   - component: {fileID: 1216182984393511577}
-  - component: {fileID: 1216182984393511582}
   m_Layer: 5
   m_Name: MP_ampule
   m_TagString: Untagged
@@ -1447,27 +1424,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &1216182984393511582
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216182984393511580}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: deb921bae83a02040a0af7dd55f38e7c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &1216182984393511583
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1800,27 +1756,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
---- !u!95 &5340551174490152647
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5340551174490152648}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: deb921bae83a02040a0af7dd55f38e7c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5340551174490152648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1833,7 +1768,6 @@ GameObject:
   - component: {fileID: 5340551174490152644}
   - component: {fileID: 5340551174490152645}
   - component: {fileID: 5340551174490152650}
-  - component: {fileID: 5340551174490152647}
   m_Layer: 5
   m_Name: Hp_ampule
   m_TagString: Untagged

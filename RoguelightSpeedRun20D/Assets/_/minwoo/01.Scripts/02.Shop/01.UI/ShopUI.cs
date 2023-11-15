@@ -112,6 +112,8 @@ public class ShopUI
         {
             ActiveSkill activeSkill = (ActiveSkill)product;
             productButton.GetComponentInChildren<TMP_Text>().text = "";
+            productButton.onClick.AddListener(() => Debug.LogWarning(thisShop));
+            productButton.onClick.AddListener(() => thisShop.ResetShop());
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, activeSkill); });
             return "RandomSkillBook";
         }

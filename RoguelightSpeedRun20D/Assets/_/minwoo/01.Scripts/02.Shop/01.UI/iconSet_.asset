@@ -43,3 +43,7 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 276f9eb2914ed8b4cbccd11e130703cf, type: 3}
   - name: fireBall
     icon: {fileID: 21300000, guid: 819db057f40986e49850b087cead73e1, type: 3}
+  - name: iceBolt
+    icon: {fileID: 21300000, guid: 68ec74238f4d8f947bdd8bc477589b29, type: 3}
+  - name: swordShoot
+    icon: {fileID: 21300000, guid: abea7078c302d9746baac6c1ec2298e4, type: 3}

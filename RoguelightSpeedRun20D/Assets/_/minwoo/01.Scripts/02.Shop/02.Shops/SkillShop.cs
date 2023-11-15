@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 
 public class SkillShop : Shop
@@ -20,6 +21,10 @@ public class SkillShop : Shop
         Products = factory.Make();
 
         SettingShopUI();
-        
+        foreach (var item in BtnUIPair)
+        {
+            item.Key.GetComponentInChildren<TMP_Text>().text = "";
+            item.Value.ThisShop = this;
+        }
     }
 }

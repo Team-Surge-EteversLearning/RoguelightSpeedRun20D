@@ -29,6 +29,9 @@ public class InDungeonShopMB : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerBody"))
+        {
+            DungeonShopManager.CursorToggle(true);
             DungeonShopManager.Instance.ResetTargetShops(gameObject);
+        }
     }
 }

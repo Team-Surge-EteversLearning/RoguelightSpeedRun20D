@@ -90,4 +90,10 @@ public class DungeonShopManager : MonoBehaviour
         resetUI();
         GOShopShopPair[GO].ResetShop();
     }
+
+    public static void CursorToggle(bool flag)
+    {
+        Cursor.visible = flag;
+        Cursor.lockState = flag ? CursorLockMode.None : CursorLockMode.Locked;
+    }
 }

@@ -39,8 +39,4 @@ public abstract class ActiveSkill : IProduct
     }
     public abstract void Use();
 
-    void IProduct.Buy()
-    {
-        throw new System.NotImplementedException();
-    }
 }

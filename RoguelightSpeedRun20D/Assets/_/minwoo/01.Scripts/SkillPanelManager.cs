@@ -44,6 +44,9 @@ public class SkillPanelManager : MonoBehaviour
 
     public void LearnSkill(ActiveSkill skill)
     {
+        if (btnSkillPair.Any(pair => pair.Value == skill))
+            return;
+        
         btnSkillPair.Add(emptySlots[0], skill);
         emptySlots[0].onClick.AddListener(() => OpenChoicePanel(skill.Name));
         emptySlots[0].GetComponentsInChildren<Image>(true)[1].sprite = TestDB.instance.iconSet.GetIcon(skill.Name);

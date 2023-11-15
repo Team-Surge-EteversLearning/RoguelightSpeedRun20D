@@ -26,7 +26,7 @@ public class Chest : MonoBehaviour
         {
             DungeonShopManager.Instance.ResetTargetShops(gameObject);
             animator.Play("OpenAnimation");
-
+            DungeonShopManager.CursorToggle(true);
             if (QuestSystem.currentQuests != null)
                 foreach (Quest quest in QuestSystem.currentQuests)
                     if (quest.Key == "box")

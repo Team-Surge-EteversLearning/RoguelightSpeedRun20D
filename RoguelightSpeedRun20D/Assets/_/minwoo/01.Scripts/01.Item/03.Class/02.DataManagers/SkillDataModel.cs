@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using UnityEngine;
 
 public class SkillDataModel : IProductMaker
 {
@@ -21,13 +21,16 @@ public class SkillDataModel : IProductMaker
         //lockActive add all skills
         //unlockSkills remove at lockaActive and add to unlockActive
         FireBall fireBall = new FireBall("fireBall", 10, 1);
+        IceBolt iceBolt = new IceBolt("iceBolt", 10, 1);
+        SwordShoot swordShoot = new SwordShoot("swordShoot", 10, 1);
     }
 
     public List<ShopProduct> Make(string info = "")
     {
         List<ShopProduct> displayItemListWithPrice = new List<ShopProduct>();
-        Random rand = new Random();
+        System.Random rand = new System.Random();
         List<ActiveSkill> skillList = LockActive.Values.ToList();
+        Debug.LogWarning(skillList.Count);
         int index = rand.Next(skillList.Count); // 0 ~ (dictList.Count - 1) 범위의 랜덤 정수 생성
 
         ActiveSkill randomSkill = skillList[index];

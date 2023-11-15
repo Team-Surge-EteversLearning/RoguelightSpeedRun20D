@@ -22,6 +22,6 @@ MonoBehaviour:
   moveSpeed: 10
   chaseSpeed: 20
   isFly: 0
-  patrolMode: 2
+  patrolMode: 1
   damagedStaggerTime: 1
   deadTime: 6

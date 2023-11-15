@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerSM : StateManager
 {
-    public static readonly float moveSpeed = 0.2f;
-    public static readonly float runSpeed = 0.35f;
+    public static readonly float moveSpeed = 2f; // 0.2
+    public static readonly float runSpeed = 3.5f; // 0.35
     public static readonly float speedMaxGap = 0.5f;
     public static readonly float powerWeight = 0.5f;
     public static readonly float powerWeightGap = 1f;
@@ -247,8 +247,8 @@ public class PlayerSM : StateManager
     {
         if(basicWeapon == null || basicArmor == null || basicShoes == null)
         {
-            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(10, false, 1, 1.5f), new List<EquipmentOption>());
-            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(0, false, 0, 0), new List<EquipmentOption>());
+            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(1000, false, 1, 1.5f), new List<EquipmentOption>());
+            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(9999, false, 0, 0), new List<EquipmentOption>());
             basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0), new List<EquipmentOption>());
         }
 

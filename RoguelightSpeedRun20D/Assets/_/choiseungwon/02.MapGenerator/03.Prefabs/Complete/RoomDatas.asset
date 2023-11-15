@@ -28,7 +28,7 @@ MonoBehaviour:
   - roomPrefab: {fileID: 8931496021088591642, guid: c9ce5a0cf37b54223ac958dfa6d0f559, type: 3}
   - roomPrefab: {fileID: 7820632130282400860, guid: 63f58c6de293948bc97e1fd58d44085f, type: 3}
   - roomPrefab: {fileID: 6089483822839719903, guid: 8fe981cb45cb642f2b93557ff9fee8c7, type: 3}
-  - roomPrefab: {fileID: 3492190888458431744, guid: 10b39e3f44f904a3b8661f1445ef39c9, type: 3}
+  - roomPrefab: {fileID: 0}
   - roomPrefab: {fileID: 3492190888458431744, guid: 664fb14d3ed37454985c63a6c17c7c5d, type: 3}
   - roomPrefab: {fileID: 5019094470277296039, guid: 7a7a7eedb2dc446a3bc2bf956424991c, type: 3}
   - roomPrefab: {fileID: 6089483822839719903, guid: aef0dfb68f13e4770af5b54213ff5a66, type: 3}

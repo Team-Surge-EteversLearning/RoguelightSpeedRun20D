@@ -204,7 +204,7 @@ public class Dungeon : IEnumerable<DungeonNode>
     }
 
 
-    public void SetShopNode()
+    public void SetShopNode(int amountInFloor)
     {
         var random = new Random();
         for (int i = 0; i < floor; i++)
@@ -213,8 +213,14 @@ public class Dungeon : IEnumerable<DungeonNode>
 
             if (availableNodes.Count > 0)
             {
-                var shopNode = availableNodes[random.Next(availableNodes.Count)];
-                shopNode.IsShop = true;
+                for(int j = 0; j < amountInFloor; j++)
+                {
+                    if (availableNodes.Count < 1)
+                        break;
+                    var shopNode = availableNodes[random.Next(availableNodes.Count)];
+                    availableNodes.Remove(shopNode);
+                    shopNode.IsShop = true;
+                }
             }
             else
             {

@@ -47,8 +47,6 @@ public class DungeonManager : MonoBehaviour
             }
         } 
     }
-
-    [FormerlySerializedAs("testFlag")] public bool bossRoomClear;
     [ContextMenu("testClear")]
 
     public static void ToggleDoor(bool isClear)
@@ -90,7 +88,7 @@ public class DungeonManager : MonoBehaviour
     private void Generate(Dungeon target)
     {
         target.AddUntil(roomCount, roomInFloor);
-        target.SetShopNode();
+        target.SetShopNode(3);
     }
 
     private void GenerateRoom(Dungeon target, float height)
@@ -124,8 +122,8 @@ public class DungeonManager : MonoBehaviour
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             GameObjectNode.Add(room, node);
-            normalRoomrandNum = Random.Range(0, 40);
-            shopRoomrandNum = Random.Range(0, 2);
+            normalRoomrandNum = Random.Range(0, 33);
+            shopRoomrandNum = Random.Range(0, 10);
         }
     }
 

@@ -3,32 +3,35 @@ using UnityEngine;
 
 public abstract class ActiveSkill : IProduct
 {
-    public static GameObject projectile;
+    private string name;
+    private int mana;
+    private float coolTime;
 
-    protected string name;
-    protected int mana;
-    protected float coolTime;
+    public string Name { get => name; set => name = value; }
+    public int Mana { get => mana; set => mana = value; }
+    public float CoolTime { get => coolTime; set => coolTime = value; }
 
     string IProduct.key { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 
     protected ActiveSkill(string name, int mana, float coolTime)
     {
-        this.name = name;
-        this.mana = mana;
-        this.coolTime = coolTime;
+        this.Name = name;
+        this.Mana = mana;
+        this.CoolTime = coolTime;
         Init();
     }
 
     public void Buy()
     {
-        if (!SkillDataModel.UnlockActive.ContainsKey(name))
-            SkillDataModel.UnlockActive.Add(name, this);
-        Debug.Log(this.name);
+        if (!SkillDataModel.UnlockActive.ContainsKey(Name))
+            SkillDataModel.UnlockActive.Add(Name, this);
+        SkillPanelManager.onLearnSkill?.Invoke(this);
+        Debug.Log(this.Name);
     }
 
     protected virtual void Init()
     {
-        SkillDataModel.LockActive.Add(name, this);
+        SkillDataModel.LockActive.Add(Name, this);
     }
     public void Equip()
     {

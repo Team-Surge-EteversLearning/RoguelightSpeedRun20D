@@ -21,6 +21,7 @@ public abstract class ActiveSkill : IProduct
         this.Name = name;
         this.Mana = mana;
         this.CoolTime = coolTime;
+        SkillDecription = name;
         Init();
     }
 

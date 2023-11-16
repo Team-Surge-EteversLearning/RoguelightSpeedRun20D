@@ -4,7 +4,7 @@ public class BerSerk : ActiveSkill
 {
     public BerSerk(string name, int mana, float coolTime) : base(name, mana, coolTime)
     {
-        SkillDecription = "I'm angry";
+        SkillDecription += " : I'm angry";
     }
 
     protected override void Init()

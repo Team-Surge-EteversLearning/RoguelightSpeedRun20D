@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class ChainLightning : ActiveSkill
 {
-    // Start is called before the first frame update
-    void Start()
+    public ChainLightning(string name, int mana, float coolTime) : base(name, mana, coolTime)
     {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Init()
     {
-        
+        base.Init();
+    }
+
+    public override void Use()
+    {
+        PlayerSM playerSM = PlayerSM.playerObj.GetComponent<PlayerSM>();
+        GameObject projectile = playerSM.skillPrefabs[3];
+        //SetRotation
+        Vector3 direction = playerSM.skillTransform.forward;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+
+        GameObject instantiatedObject = UnityEngine.Object.Instantiate(projectile, playerSM.skillTransform.position, rotation);
+        instantiatedObject.GetComponent<AttackAble>().AttackStart();
+
+        //ApplyChainDamage(playerSM.skillTransform.position, playerSM.chainReactionRadius);
+    }
+    private void ApplyChainDamage(Vector3 center, float radius)
+    {
+        Collider[] colliders = Physics.OverlapSphere(center, radius);
+
+        foreach(Collider collider in colliders)
+        {
+
+        }
     }
 }

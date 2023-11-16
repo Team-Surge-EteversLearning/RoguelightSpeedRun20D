@@ -28,6 +28,8 @@ public class DungeonManager : MonoBehaviour
 
     private int normalRoomrandNum;
     private int shopRoomrandNum;
+    
+    
 
     private Dungeon _dungeon = new Dungeon();
     public Dungeon Dungeon

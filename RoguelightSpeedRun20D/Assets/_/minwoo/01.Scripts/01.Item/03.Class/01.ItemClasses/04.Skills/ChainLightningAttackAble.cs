@@ -13,6 +13,7 @@ public class ChainLightningAttackAble : AttackAble
     private float projectileSpeed;
     [SerializeField] int magicPower;
     private Rigidbody rb;
+    private bool hasTriggered = false;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class ChainLightningAttackAble : AttackAble
     {
         rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
         ApplyChainDamage(transform.position, 5);
+        hasTriggered = true;
     }
 
     protected override void _AttackStop()
@@ -74,6 +76,6 @@ public class ChainLightningAttackAble : AttackAble
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        ApplyChainDamage(transform.position, 5);
     }
 }

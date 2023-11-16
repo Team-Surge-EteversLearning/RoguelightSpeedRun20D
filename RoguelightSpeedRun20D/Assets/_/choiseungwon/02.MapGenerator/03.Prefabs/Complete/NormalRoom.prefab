@@ -1076,6 +1076,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: pumpkin
       objectReference: {fileID: 0}
+    - target: {fileID: 6796289062226680811, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 7147496856565193714}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 2769937663246560173}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 6984434127862985274}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 5921337670626199463}
     - target: {fileID: 8314569151122273417, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.09
@@ -1217,6 +1237,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: pumpkin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6796289062226680811, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 2769937663246560173}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 7147496856565193714}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 5921337670626199463}
+    - target: {fileID: 7093109166829417360, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
+      propertyPath: movePoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 7147496856565193714}
     - target: {fileID: 8314569151122273417, guid: 094cbb255beb77b4eb335bb27b015895, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.22

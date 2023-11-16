@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
-  m_Name: CrabData
+  m_Name: Wolf
   m_EditorClassIdentifier: 
-  monsterName: Crab
-  cashDrop: 1000
-  hpMax: 10
+  monsterName: Wolf
+  cashDrop: 100
+  hpMax: 12
   attackPower: 100
   attackCoolTime: 1
-  attackRange: 4.5
+  attackRange: 1.5
   idleTime: 1
-  moveSpeed: 10
-  chaseSpeed: 18
+  moveSpeed: 12
+  chaseSpeed: 24
   isFly: 0
-  patrolMode: 2
+  patrolMode: 1
   damagedStaggerTime: 1
-  deadTime: 3
+  deadTime: 5

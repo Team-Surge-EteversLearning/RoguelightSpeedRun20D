@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
-  m_Name: MinotaurData
+  m_Name: Skeleton
   m_EditorClassIdentifier: 
-  monsterName: Minotaur
-  cashDrop: 1000
-  hpMax: 500
+  monsterName: Skeleton
+  cashDrop: 100
+  hpMax: 100
   attackPower: 100
-  attackCoolTime: 2
-  attackRange: 2
+  attackCoolTime: 1
+  attackRange: 1.5
   idleTime: 1
-  moveSpeed: 50
-  chaseSpeed: 150
+  moveSpeed: 8
+  chaseSpeed: 14
   isFly: 0
-  patrolMode: 2
-  damagedStaggerTime: 1.2
+  patrolMode: 0
+  damagedStaggerTime: 1
   deadTime: 3

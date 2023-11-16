@@ -9,6 +9,7 @@ public class FireBall : ActiveSkill
 {
     public FireBall(string name, int mana, float coolTime) : base(name, mana, coolTime)
     {
+        SkillDecription = "You can throw So hot hot ball";
     }
 
     protected override void Init()

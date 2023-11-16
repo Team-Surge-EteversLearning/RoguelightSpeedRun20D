@@ -9,6 +9,7 @@ public class IceBolt : ActiveSkill
 {
     public IceBolt(string name, int mana, float coolTime) : base(name, mana, coolTime)
     {
+        SkillDecription = "Elsa? Let it go~";
     }
 
     protected override void Init()

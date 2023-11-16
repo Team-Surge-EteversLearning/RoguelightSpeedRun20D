@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SkillPanelManager : MonoBehaviour
@@ -50,6 +51,18 @@ public class SkillPanelManager : MonoBehaviour
         btnSkillPair.Add(emptySlots[0], skill);
         emptySlots[0].onClick.AddListener(() => OpenChoicePanel(skill.Name));
         emptySlots[0].GetComponentsInChildren<Image>(true)[1].sprite = TestDB.instance.iconSet.GetIcon(skill.Name);
+
+        EventTrigger eventTrigger = emptySlots[0].gameObject.AddComponent<EventTrigger>();
+        EventTrigger.Entry pointerEnterEntry = new EventTrigger.Entry();
+        pointerEnterEntry.eventID = EventTriggerType.PointerEnter;
+        pointerEnterEntry.callback.AddListener((eventData) => { ShopUI.OnPointEnterProduct(skill.SkillDecription); });
+        eventTrigger.triggers.Add(pointerEnterEntry);
+
+        EventTrigger.Entry pointerExitEntry = new EventTrigger.Entry();
+        pointerExitEntry.eventID = EventTriggerType.PointerExit;
+        pointerExitEntry.callback.AddListener((eventData) => { OnPointExitProduct(); });
+        eventTrigger.triggers.Add(pointerExitEntry);
+
         emptySlots.RemoveAt(0);
     }
     private void OpenChoicePanel(string name)
@@ -73,9 +86,9 @@ public class SkillPanelManager : MonoBehaviour
             Debug.LogWarning(1);
             indicator1.SetActive(true);
             Button targetButton = btnSkillPair.FirstOrDefault(x => x.Value == SkillDataModel.UnlockActive[PlayerSM.skill1Index]).Key;
+            indicator1.transform.parent = targetButton.transform;
             RectTransform indicator1RectTransform = indicator1.GetComponent<RectTransform>();
-            RectTransform targetButtonRectTransform = targetButton.GetComponent<RectTransform>();
-            indicator1RectTransform.position = targetButtonRectTransform.position;
+            indicator1RectTransform.anchoredPosition = Vector3.zero;
         }
         else
         {
@@ -85,13 +98,17 @@ public class SkillPanelManager : MonoBehaviour
         {
             indicator2.SetActive(true);
             Button targetButton = btnSkillPair.FirstOrDefault(x => x.Value == SkillDataModel.UnlockActive[PlayerSM.skill2Index]).Key;
+            indicator2.transform.parent = targetButton.transform;
             RectTransform indicator2RectTransform = indicator2.GetComponent<RectTransform>();
-            RectTransform targetButtonRectTransform = targetButton.GetComponent<RectTransform>();
-            indicator2RectTransform.position = targetButtonRectTransform.position;
+            indicator2RectTransform.anchoredPosition = Vector3.zero;
         }
         else
         {
             indicator2.SetActive(false);
         }
+    }
+    private void OnPointExitProduct()
+    {
+        DescriptionController.onDescriptionComplete?.Invoke();
     }
 }

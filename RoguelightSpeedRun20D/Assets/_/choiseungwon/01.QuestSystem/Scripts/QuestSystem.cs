@@ -54,12 +54,12 @@ public class QuestSystem : MonoBehaviour
             new TotalDamageQuest("노련한 싸움꾼", "총 데미지 3000 달성", 3000, 500),
             new TotalDamageQuest("진정한 싸움꾼", "총 데미지 5000 달성", 5000, 1000),
             
-            new VisitedRoomQuest("귀차니즘", "10개의 방 방문", 10, 100),
+            new VisitedRoomQuest("뭐하노", "10개의 방 방문", 10, 100),
             new VisitedRoomQuest("노련한 탐험가", "15개의 방 방문", 15, 250),
             new VisitedRoomQuest("진정한 탐험가", "20개의 방 방문", 20, 500),
-            new VisitedRoomQuest("뭐하는 놈이지?", "30개의 방 방문", 30, 1000),
+            new VisitedRoomQuest("미친놈", "30개의 방 방문", 30, 1000),
             
-            new ClearTimeQuest("어리바리 까지마라 ㅋㅋ", "30분 안에 클리어", 10, 100),
+            new ClearTimeQuest("어리바리 까지마라", "30분 안에 클리어", 10, 100),
             new ClearTimeQuest("일반인", "20분 안에 클리어", 20, 250),
             new ClearTimeQuest("평범한 한국인", "15분 안에 클리어", 15, 500),
             new ClearTimeQuest("진정한 한국인", "10분 안에 클리어", 10, 1000),

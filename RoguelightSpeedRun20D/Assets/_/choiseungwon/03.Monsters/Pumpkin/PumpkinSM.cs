@@ -6,7 +6,6 @@ using UnityEngine;
 public class PumpkinSM : MonsterSM
 {
     private List<State> _monsterBattleStates = new List<State>();
-
     protected override List<State> monsterBattleStates => _monsterBattleStates;
 
     private void Awake()

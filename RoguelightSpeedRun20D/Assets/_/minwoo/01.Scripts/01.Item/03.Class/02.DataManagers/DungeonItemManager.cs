@@ -37,7 +37,7 @@ public class DungeonItemManager : IProductMaker
     public static int hpPotionNow = 3;
     public static int manaPotionNow = 3;
     public static int bombNow = 3;
-    public static int barrierNow = 1;
+    public static int barrierNow = 5;
 
     public static int HpPotionShopNow { get => hpPotionShopNow; set => hpPotionShopNow = value; }
     public static int ManaPotionShopNow { get => manaPotionShopNow; set => manaPotionShopNow = value; }

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Wizard-Melee
   cashDrop: 100
-  hpMax: 100
+  hpMax: 500
   attackPower: 100
-  attackCoolTime: 1
-  attackRange: 2
+  attackCoolTime: 1.2
+  attackRange: 1.2
   idleTime: 1
   moveSpeed: 10
   chaseSpeed: 20

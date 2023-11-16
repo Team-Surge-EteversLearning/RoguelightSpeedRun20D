@@ -21,7 +21,7 @@ public class Village : MonoBehaviour
 
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
     public Action resetUI;
-    public static Action onBuy;
+    public static Action<string> onBuy;
     private void Start()
     {
         shopPanel.SetActive(false);
@@ -30,7 +30,7 @@ public class Village : MonoBehaviour
         OptionBtnConnect();
         SlotsReset();
         cashTxt.text = PlayerStatsManager.CashNow.ToString();
-        onBuy += () => cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += (string name) => cashTxt.text = PlayerStatsManager.CashNow.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
         startBtn.onClick.AddListener(DungeonInsert);
     }

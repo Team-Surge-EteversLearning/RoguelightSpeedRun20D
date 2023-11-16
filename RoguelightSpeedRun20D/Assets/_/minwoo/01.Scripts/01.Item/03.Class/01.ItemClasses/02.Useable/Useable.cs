@@ -44,9 +44,6 @@ public class Useable : IProduct
         Quantity -= 1;
     }
 
-    void IProduct.Buy()
-    {
-        throw new NotImplementedException();
-    }
+
 }
 

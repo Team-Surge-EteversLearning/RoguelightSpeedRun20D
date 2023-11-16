@@ -29,8 +29,4 @@ public class Stat : IProduct
         PlayerStatsManager.AddPrice(statIndex);
     }
 
-    void IProduct.Buy()
-    {
-        throw new NotImplementedException();
-    }
 }

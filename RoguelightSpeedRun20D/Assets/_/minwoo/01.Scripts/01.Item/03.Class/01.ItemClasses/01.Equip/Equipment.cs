@@ -59,8 +59,4 @@ public abstract class Equipment : IProduct
         return thisWeapon;
     }
 
-    void IProduct.Buy()
-    {
-        throw new System.NotImplementedException();
-    }
 }

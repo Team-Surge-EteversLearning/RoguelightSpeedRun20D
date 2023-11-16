@@ -18,10 +18,7 @@ public class DungeonShopManager : MonoBehaviour
     public Action resetUI;
 
     List<Button> shopButtons = new List<Button>();
-    public static Action onBuy;
-
-    private EquipmentDataManager dungeonEquipmentFactroy = new EquipmentDataManager();
-    private DungeonItemManager dungeonPotionFactory = new DungeonItemManager();
+    public static Action<string> onBuy;
 
     public  Dictionary<GameObject, Shop> GOShopShopPair = new Dictionary<GameObject, Shop>();
     public  Dictionary<GameObject, List<ShopProduct>> DungeonShopSProductPair = new Dictionary<GameObject, List<ShopProduct>>();
@@ -37,7 +34,7 @@ public class DungeonShopManager : MonoBehaviour
         InitSlot();
         SlotsReset();
         cashTxt.text = PlayerStatsManager.CashNow.ToString();
-        onBuy += () => cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += (string name) => cashTxt.text = PlayerStatsManager.CashNow.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
     }
 

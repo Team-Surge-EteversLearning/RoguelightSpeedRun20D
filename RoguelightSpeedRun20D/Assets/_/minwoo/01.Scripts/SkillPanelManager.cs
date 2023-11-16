@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class SkillPanelManager : MonoBehaviour
     [SerializeField] GameObject choicePanel;
     [SerializeField] GameObject indicator1;
     [SerializeField] GameObject indicator2;
+    [SerializeField] GameObject skillNotificationPanel;
 
     public static List<Button> emptySlots = new List<Button>();
     public static Dictionary<Button, ActiveSkill> btnSkillPair = new Dictionary<Button, ActiveSkill>();
@@ -28,13 +30,11 @@ public class SkillPanelManager : MonoBehaviour
         onLearnSkill = LearnSkill;
         SetIndicator();
     }
-    private void Update()
+
+    public void OpenPanel()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            skillPanel.SetActive(!skillPanel.activeInHierarchy);
-            SetIndicator();
-        }
+        skillPanel.SetActive(!skillPanel.activeInHierarchy);
+        SetIndicator();
     }
 
     private void InitUnlockSkill()
@@ -59,6 +59,11 @@ public class SkillPanelManager : MonoBehaviour
         buttons[0].onClick.AddListener(() => { PlayerSM.skill1Index = name; buttons[0].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); });
         buttons[1].onClick.AddListener(() => { PlayerSM.skill2Index = name; buttons[1].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); });
     }
+    private void OpenNotificationPanel()
+    {
+
+    }
+
     private void SetIndicator()
     {
         if(PlayerSM.skill1Index != null && SkillDataModel.UnlockActive.ContainsKey(PlayerSM.skill1Index))

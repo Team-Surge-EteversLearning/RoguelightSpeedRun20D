@@ -11,7 +11,7 @@ public class BerSerk : ActiveSkill
         base.Init();
     }
 
-    public override void Use()
+    public override void _Use()
     {
         PlayerStatsManager.PowerWeight *= 2;
         PlayerSM.hpNow = (int)(PlayerSM.hpNow * 0.7f);

@@ -13,7 +13,7 @@ public class ChainLightning : ActiveSkill
         base.Init();
     }
 
-    public override void Use()
+    public override void _Use()
     {
         PlayerSM playerSM = PlayerSM.playerObj.GetComponent<PlayerSM>();
         GameObject projectile = playerSM.skillPrefabs[3];

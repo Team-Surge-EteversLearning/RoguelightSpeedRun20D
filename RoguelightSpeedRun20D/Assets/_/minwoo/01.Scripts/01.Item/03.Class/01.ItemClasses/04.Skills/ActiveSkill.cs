@@ -37,6 +37,17 @@ public abstract class ActiveSkill : IProduct
     {
 
     }
-    public abstract void Use();
-
+    public abstract void _Use();
+    public void Use(bool skill1)
+    {
+        if (skill1)
+        {
+            PlayerSM.skill1CoolTime = coolTime;
+        }
+        else
+        {
+            PlayerSM.skill2CoolTime = coolTime;
+        }
+        _Use();
+    }
 }

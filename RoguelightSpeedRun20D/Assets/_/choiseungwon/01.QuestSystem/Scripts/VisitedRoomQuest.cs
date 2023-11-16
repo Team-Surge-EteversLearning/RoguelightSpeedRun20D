@@ -22,11 +22,16 @@ public class VisitedRoomQuest : Quest
         CheckQuestStatus();
     }
     
-    public override void CheckQuestStatus()
+    protected override void _CheckQuestStatus()
     {
         if (currentCount >= targetCount)
         {
             IsCompleted = true;
         }
+    }
+
+    public override string GetProgress()
+    {
+        return "(" + currentCount + " / " + targetCount + ")";
     }
 }

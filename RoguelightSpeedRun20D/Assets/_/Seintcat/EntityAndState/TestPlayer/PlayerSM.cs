@@ -264,6 +264,12 @@ public class PlayerSM : StateManager
         if (isDefence && (damage / 2) < staminaNow)
         {
             staminaNow -= (int)((float)damage / 2);
+
+            if (QuestSystem.currentQuests != null)
+                foreach (Quest quest in QuestSystem.currentQuests)
+                    if (quest.Key == "Guard")
+                        ((SuccessGuardQuest)quest).UpdateCurrentCount(damage);
+
             return;
         }
         else

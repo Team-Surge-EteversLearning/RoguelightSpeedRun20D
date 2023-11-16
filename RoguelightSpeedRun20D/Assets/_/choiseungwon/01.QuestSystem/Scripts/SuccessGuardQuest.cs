@@ -7,9 +7,9 @@ public class SuccessGuardQuest : Quest
     public int currentCount;
     public int targetCount;
     
-    public SuccessGuardQuest(string name, string description, int targetCount, int rewardGold) : base(QuestType.SuccessGuard)
+    public SuccessGuardQuest(string description, int targetCount, int rewardGold) : base(QuestType.SuccessGuard)
     {
-        this.Name = name;
+        this.Name = "Guard";
         this.Description = description;
         this.targetCount = targetCount;
         this.rewardGold = rewardGold;
@@ -21,11 +21,16 @@ public class SuccessGuardQuest : Quest
         CheckQuestStatus();
     }
     
-    public override void CheckQuestStatus()
+    protected override void _CheckQuestStatus()
     {
         if (currentCount >= targetCount)
         {
             IsCompleted = true;
         }
+    }
+
+    public override string GetProgress()
+    {
+        return "(" + currentCount + " / " + targetCount + ")";
     }
 }

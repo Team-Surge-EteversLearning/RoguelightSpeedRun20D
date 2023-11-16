@@ -21,11 +21,16 @@ public class ClearTimeQuest : Quest
         CheckQuestStatus();
     }
     
-    public override void CheckQuestStatus()
+    protected override void _CheckQuestStatus()
     {
         if (currentTime <= targetTime)
         {
             IsCompleted = true;
         }
+    }
+
+    public override string GetProgress()
+    {
+        throw new System.NotImplementedException();
     }
 }

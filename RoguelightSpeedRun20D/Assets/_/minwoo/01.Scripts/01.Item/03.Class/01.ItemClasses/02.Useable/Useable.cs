@@ -43,5 +43,7 @@ public class Useable : IProduct
         }
         Quantity -= 1;
     }
+
+
 }
 

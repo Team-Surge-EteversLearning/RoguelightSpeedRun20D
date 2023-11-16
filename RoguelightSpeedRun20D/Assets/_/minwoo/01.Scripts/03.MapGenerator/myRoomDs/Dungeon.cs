@@ -202,6 +202,7 @@ public class Dungeon : IEnumerable<DungeonNode>
         {
             this.Add(blockPerFloor);
         }
+        Ends.Add(End);
         //Current = Starts[0];
     }
 

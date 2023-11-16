@@ -34,6 +34,7 @@ public class DungeonManager : MonoBehaviour
     
     public delegate void DoorToggleDelegate(bool clear);
     public static event DoorToggleDelegate OnDoorToggle;
+    
     [SerializeField] private int _currentMonsterCount;
     public int CurrentMonsterCount 
     {
@@ -48,7 +49,6 @@ public class DungeonManager : MonoBehaviour
             }
         } 
     }
-    [ContextMenu("testClear")]
 
     public static void ToggleDoor(bool isClear)
     {
@@ -99,7 +99,10 @@ public class DungeonManager : MonoBehaviour
         GameObject room;
         foreach (var node in target)
         {
+            Debug.Log(target.Ends.Count);
+
             Vector3 posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
+            
             if (node == target.Starts[0])
             {
                 room = Instantiate(dungeonBundleDatas[0].startRoomPresets[0].roomPrefab, posi, Quaternion.identity);
@@ -110,6 +113,11 @@ public class DungeonManager : MonoBehaviour
             }
             else if (target.Ends.Contains(node))
             {
+                if (node == target.Ends[target.Ends.Count - 1])
+                {
+                    room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[1].roomPrefab, posi, Quaternion.identity);
+                    continue;
+                }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
                 Instantiate(dungeonBundleDatas[0].stair, posi, Quaternion.identity);
             }
@@ -146,7 +154,7 @@ public class DungeonManager : MonoBehaviour
         Quaternion frontRot = Quaternion.Euler(0, -270, 0);
         Quaternion rightRot = Quaternion.Euler(0, 180, 0);
         Quaternion backRot = Quaternion.Euler(0, 270, 0);
-        Quaternion leftRot = Quaternion.Euler(0, 0, 0);       
+        Quaternion leftRot = Quaternion.Euler(0, 0, 0);
         
         GameObject instance;
         if (node.Front != null && !_dungeon.IsAlreadyHaveDoor(node, node.Front)) // path and door

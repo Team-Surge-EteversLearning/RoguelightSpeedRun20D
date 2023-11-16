@@ -21,6 +21,8 @@ public class ShopUI
     private int price;
     private Shop thisShop;
 
+    private string name;
+
     public Image ProductImage { get => productImage; set => productImage = value; }
     public ShopProduct SProduct
     {
@@ -30,6 +32,7 @@ public class ShopUI
             s_product = value;
             product = value.Product;
             price = value.Price;
+            
             productButton.onClick.RemoveAllListeners();
             productButton.onClick.AddListener(CashCheckAndBuy);
             if (productButton.gameObject.GetComponent<EventTrigger>() != null)
@@ -53,8 +56,8 @@ public class ShopUI
         }
         PlayerStatsManager.CashNow -= price;
         product.Buy();
-        Village.onBuy?.Invoke();
-        DungeonShopManager.onBuy?.Invoke();
+        Village.onBuy?.Invoke(name);
+        DungeonShopManager.onBuy?.Invoke(name);
         DescriptionController.onDescriptionComplete?.Invoke();
         if (productButton.gameObject.GetComponent<EventTrigger>() != null && product is Equipment)
         {
@@ -90,6 +93,7 @@ public class ShopUI
             Equipment equipment = (Equipment)product;
             productButton.onClick.AddListener(() => thisShop.Products.Remove(this.SProduct));
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, equipment); });
+            name = equipment.Name;
             return equipment.Name;
         }
         else if (product.GetType() == typeof(Useable))
@@ -98,7 +102,7 @@ public class ShopUI
             productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString();
             productButton.onClick.AddListener(() => productButton.GetComponentInChildren<TMP_Text>().text = useable.Quantity.ToString());
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, useable); });
-
+            name = useable.ItemCode.ToString();
             return useable.ItemCode.ToString();
         }
         else if (statTypes.Contains(product.GetType()))
@@ -106,6 +110,7 @@ public class ShopUI
             Stat stat = (Stat)product;
             productButton.GetComponentInChildren<TMP_Text>().text = "";
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, stat); });
+            name= stat.Name;
             return stat.Name;
         }
         else
@@ -115,6 +120,7 @@ public class ShopUI
             productButton.onClick.AddListener(() => Debug.LogWarning(thisShop));
             productButton.onClick.AddListener(() => thisShop.ResetShop());
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, activeSkill); });
+            name = activeSkill.Name;
             return "RandomSkillBook";
         }
     }

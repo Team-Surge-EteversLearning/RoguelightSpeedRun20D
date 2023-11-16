@@ -21,7 +21,6 @@ public class Door : MonoBehaviour
 
     public void ToggleDoor(bool clear)
     {
-        Debug.Log(clear);
         if (clear == false)
         {
             animator.Play("Close");

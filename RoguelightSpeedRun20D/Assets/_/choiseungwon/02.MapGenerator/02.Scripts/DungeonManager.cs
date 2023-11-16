@@ -156,7 +156,7 @@ public class DungeonManager : MonoBehaviour
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
-                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0,-4,0), Quaternion.identity);
+                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0,-5,0), Quaternion.identity);
             }
             else if (node.IsShop)
             {

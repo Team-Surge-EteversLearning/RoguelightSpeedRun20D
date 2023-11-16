@@ -23,6 +23,8 @@ public class SkillDataModel : IProductMaker
         FireBall fireBall = new FireBall("fireBall", 10, 1);
         IceBolt iceBolt = new IceBolt("iceBolt", 10, 1);
         SwordShoot swordShoot = new SwordShoot("swordShoot", 10, 1);
+        BerSerk berSerk = new BerSerk("berSerk", 10, 1);
+        Healing healing = new Healing("healing", 10, 1);
     }
 
     public List<ShopProduct> Make(string info = "")

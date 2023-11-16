@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class RoomChecker : MonoBehaviour
 {
-    private bool isClear = true;
+    private bool isRoomClear = true;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -19,23 +19,19 @@ public class RoomChecker : MonoBehaviour
             if (DungeonManager.Instance.Dungeon.Starts.Contains(DungeonManager.Instance.GameObjectNode[transform.parent.gameObject])
                 || DungeonManager.Instance.GameObjectNode[transform.parent.gameObject].IsShop)
             {
-                DungeonManager.ToggleDoor(isClear);
+                DungeonManager.ToggleDoor(isRoomClear);
             }
             else
             {
                 if(!DungeonManager.Instance.Dungeon.Current.isSafe)
                 {
-                    DungeonManager.ToggleDoor(!isClear);
+                    DungeonManager.ToggleDoor(!isRoomClear);
                     if (QuestSystem.currentQuests != null)
                         foreach (Quest quest in QuestSystem.currentQuests)
                             if (quest.Key == "room")
                                 ((VisitedRoomQuest)quest).UpdateCurrentCount(1);
                 }
             }
-
-            // 문 닫힘
-            // 현재 노드 변경 Dongeon.CurrentNode
-
         }
     }
 }

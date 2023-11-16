@@ -6,7 +6,7 @@ public class ChainLightning : ActiveSkill
 {
     public ChainLightning(string name, int mana, float coolTime) : base(name, mana, coolTime)
     {
-        SkillDecription = "pakin!";
+        SkillDecription += " : pakin!";
     }
 
     protected override void Init()

@@ -21,6 +21,7 @@ public abstract class ActiveSkill : IProduct
         this.Name = name;
         this.Mana = mana;
         this.CoolTime = coolTime;
+        SkillDecription = name;
         Init();
     }
 
@@ -43,7 +44,6 @@ public abstract class ActiveSkill : IProduct
     public abstract void _Use();
     public void Use(bool skill1)
     {
-        float nowMana;
         if (PlayerSM.manaNow < mana)
         {
             return;

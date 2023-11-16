@@ -31,6 +31,6 @@ public class ClearTimeQuest : Quest
 
     public override string GetProgress()
     {
-        throw new System.NotImplementedException();
+        return "¹Ì±¸Çö";
     }
 }

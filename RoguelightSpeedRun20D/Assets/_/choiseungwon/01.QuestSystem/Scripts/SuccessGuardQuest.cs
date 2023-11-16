@@ -7,9 +7,10 @@ public class SuccessGuardQuest : Quest
     public int currentCount;
     public int targetCount;
     
-    public SuccessGuardQuest(string description, int targetCount, int rewardGold) : base(QuestType.SuccessGuard)
+    public SuccessGuardQuest(string name, string description, int targetCount, int rewardGold) : base(QuestType.SuccessGuard)
     {
-        this.Name = "Guard";
+        this.Key = "Guard";
+        this.Name = name;
         this.Description = description;
         this.targetCount = targetCount;
         this.rewardGold = rewardGold;

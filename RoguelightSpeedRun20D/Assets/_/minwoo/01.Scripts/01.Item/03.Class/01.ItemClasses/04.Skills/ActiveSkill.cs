@@ -40,6 +40,12 @@ public abstract class ActiveSkill : IProduct
     public abstract void _Use();
     public void Use(bool skill1)
     {
+        float nowMana;
+        if (PlayerSM.manaNow < mana)
+        {
+            return;
+        }
+
         if (skill1)
         {
             PlayerSM.skill1CoolTime = coolTime;
@@ -48,6 +54,8 @@ public abstract class ActiveSkill : IProduct
         {
             PlayerSM.skill2CoolTime = coolTime;
         }
+
+        PlayerSM.manaNow -= mana;
         _Use();
     }
 }

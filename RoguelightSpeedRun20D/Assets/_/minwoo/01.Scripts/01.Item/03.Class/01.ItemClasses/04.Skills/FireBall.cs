@@ -18,6 +18,7 @@ public class FireBall : ActiveSkill
         
     public override void _Use()
     {
+        Debug.LogWarning(Name);
         PlayerSM playerSM = PlayerSM.playerObj.GetComponent<PlayerSM>();
         GameObject projectile = playerSM.skillPrefabs[0];
         //SetRotation

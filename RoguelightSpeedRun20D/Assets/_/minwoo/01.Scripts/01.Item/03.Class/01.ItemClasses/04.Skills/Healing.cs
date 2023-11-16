@@ -6,7 +6,7 @@ public class Healing : ActiveSkill
 {
     public Healing(string name, int mana, float coolTime) : base(name, mana, coolTime)
     {
-        SkillDecription = "Mom's touch";
+        SkillDecription += " : Mom's touch";
     }
 
     protected override void Init()

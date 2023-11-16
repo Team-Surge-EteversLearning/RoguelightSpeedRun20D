@@ -15,6 +15,7 @@ public class MagicAttackable : AttackAble
     private Rigidbody rb;
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
 
     }
 
@@ -59,6 +60,5 @@ public class MagicAttackable : AttackAble
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        gameObject.SetActive(false);
     }
 }

@@ -1709,6 +1709,7 @@ MonoBehaviour:
   shoesInstance: []
   animator: {fileID: 6115844169010753114}
   shieldAnimator: {fileID: 6854369945872619676}
+  bomb: {fileID: 9096126917929880007, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
   skillTransform: {fileID: 4643055108469232782}
   skillPrefabs: []
 --- !u!1 &6398083520821258939

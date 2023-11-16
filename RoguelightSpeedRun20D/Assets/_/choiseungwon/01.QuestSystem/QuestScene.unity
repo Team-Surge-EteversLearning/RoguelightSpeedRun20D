@@ -401,7 +401,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+<<<<<<< HEAD
 --- !u!1001 &3392328004471321426
+=======
+--- !u!1001 &1976565057
+>>>>>>> 7b06b71610798ae5ce83658742fd5160744c7cd7
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -577,4 +581,8 @@ SceneRoots:
   - {fileID: 581448612}
   - {fileID: 1443607701}
   - {fileID: 100679675}
+<<<<<<< HEAD
   - {fileID: 3392328004471321426}
+=======
+  - {fileID: 1976565057}
+>>>>>>> 7b06b71610798ae5ce83658742fd5160744c7cd7

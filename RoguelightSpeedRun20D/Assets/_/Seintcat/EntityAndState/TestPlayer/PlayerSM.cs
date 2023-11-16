@@ -25,6 +25,8 @@ public class PlayerSM : StateManager
     private Animator animator;
     [SerializeField]
     private Animator shieldAnimator;
+    [SerializeField]
+    private GameObject bomb;
 
     private GameObject weaponModelNow;
     private AttackAble attackable;
@@ -193,7 +195,10 @@ public class PlayerSM : StateManager
         if (InputHandler.item3 && DungeonItemManager.bombNow > 0)
         {
             DungeonItemManager.bombNow--;
-
+            AttackAble bombNow = Instantiate(bomb).GetComponent<AttackAble>();
+            bombNow.transform.position = skillTransform.position;
+            bombNow.transform.rotation = skillTransform.rotation;
+            bombNow.AttackStart();
         }
         if (InputHandler.item4 && DungeonItemManager.barrierNow > 0)
         {

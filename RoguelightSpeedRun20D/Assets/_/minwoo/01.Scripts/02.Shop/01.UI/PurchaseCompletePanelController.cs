@@ -16,7 +16,6 @@ public class PurchaseCompletePanelController : MonoBehaviour
     public void ActiveAndDisable(string name)
     {
         text = GetComponentInChildren<TMP_Text>();
-
         switch (name)
         {
             case "0":
@@ -32,8 +31,10 @@ public class PurchaseCompletePanelController : MonoBehaviour
                 name = "Barrier";
                 break;
         }
+        Debug.LogWarning(gameObject.activeInHierarchy + "0");
         gameObject.SetActive(true);
-        Debug.LogWarning($"{name is null} or {text is null}");
+        Debug.LogWarning(gameObject.activeInHierarchy + "1");
+
         text.text = $"You successfully purchased the {name}.";
         StartCoroutine(WaitDisable());
     }

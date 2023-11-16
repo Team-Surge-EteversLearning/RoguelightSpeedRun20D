@@ -7,7 +7,7 @@ public class Stair : MonoBehaviour
 {
     private void Awake()
     {
-        DungeonManager.OnDoorToggle += ToggleStair;
+        DungeonManager.ClearEvent += ToggleStair;
     }
 
     public void ToggleStair(bool clear)

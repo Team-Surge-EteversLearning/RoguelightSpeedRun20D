@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GranadeAttackable : AttackAble
 {
@@ -8,18 +9,17 @@ public class GranadeAttackable : AttackAble
     private int maxHitCount;
     [SerializeField]
     private float projectileSpeed;
-    [SerializeField] int magicFower;
+    [SerializeField] private int magicPower;
     private Rigidbody rb;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        AttackStart();
     }
 
     // Update is called once per frame
@@ -52,8 +52,8 @@ public class GranadeAttackable : AttackAble
         if ((!attackedObject.ContainsKey(obj) || attackedObject[obj] < maxHitCount))
         {
             Destroy(gameObject, 2f);
-            Debug.Log(magicFower);
-            return magicFower;
+            Debug.Log(magicPower);
+            return magicPower;
         }
         return 0;
     }

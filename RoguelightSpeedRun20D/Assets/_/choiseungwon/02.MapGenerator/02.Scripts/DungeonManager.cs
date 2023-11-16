@@ -12,15 +12,10 @@ public class DungeonManager : MonoBehaviour
 {
     public static DungeonManager Instance { get; set; }
     public Dictionary<GameObject, DungeonNode> GameObjectNode = new Dictionary<GameObject, DungeonNode>();
-
-
+    
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
     [SerializeField] private MiniMapManager miniMapManager;
-
-    [SerializeField] private Button nextButton;
-    [SerializeField] private Button lobbyButton;
-
-
+    
     private int roomCount;
     private int roomInFloor;
     private float floorHeight;
@@ -29,8 +24,6 @@ public class DungeonManager : MonoBehaviour
     private int normalRoomrandNum;
     private int shopRoomrandNum;
     
-    
-
     private Dungeon _dungeon = new Dungeon();
     public Dungeon Dungeon
     {
@@ -41,7 +34,6 @@ public class DungeonManager : MonoBehaviour
     
     public delegate void DoorToggleDelegate(bool clear);
     public static event DoorToggleDelegate OnDoorToggle;   
-
     
     [SerializeField] private int _currentMonsterCount;
     public int CurrentMonsterCount 

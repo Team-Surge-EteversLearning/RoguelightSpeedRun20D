@@ -14,7 +14,14 @@ public abstract class Quest
         QuestType = type;
     }
 
-    public abstract void CheckQuestStatus();
+    protected abstract void _CheckQuestStatus();
+    public void CheckQuestStatus()
+    {
+        _CheckQuestStatus();
+        QuestSystem.UpdateUI();
+    }
+
+    public abstract string GetProgress();
 }
 
 public enum QuestType

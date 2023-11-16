@@ -23,6 +23,8 @@ public class PlayerSM : StateManager
     private List<GameObject> shoesInstance;
     [SerializeField]
     private Animator animator;
+    [SerializeField]
+    private Animator shieldAnimator;
 
     private GameObject weaponModelNow;
     private AttackAble attackable;
@@ -105,6 +107,8 @@ public class PlayerSM : StateManager
     public Transform skillTransform;
     public List<GameObject> skillPrefabs;
 
+    public static int barrierNow;
+
     private void Awake()
     {
         ManagerStart();
@@ -174,6 +178,34 @@ public class PlayerSM : StateManager
         BattleUI.mpBar = ((float)manaNow / manaMax);
         BattleUI.stBar = ((float)staminaNow / staminaMax);
 
+        if (InputHandler.item1 && DungeonItemManager.hpPotionNow > 0 && hpNow < hpMax)
+        {
+            DungeonItemManager.hpPotionNow--;
+            hpNow += (hpMax / 2);
+            if(hpNow > hpMax)
+                hpNow = hpMax;
+        }
+        if (InputHandler.item2 && DungeonItemManager.manaPotionNow > 0 && manaNow < manaMax)
+        {
+            DungeonItemManager.manaPotionNow--;
+            manaNow = manaMax;
+        }
+        if (InputHandler.item3 && DungeonItemManager.bombNow > 0)
+        {
+            DungeonItemManager.bombNow--;
+
+        }
+        if (InputHandler.item4 && DungeonItemManager.barrierNow > 0)
+        {
+            DungeonItemManager.barrierNow--;
+
+            if(barrierNow == 0)
+                shieldAnimator.Play("ShieldOn");
+
+            barrierNow += 3;
+        }
+
+
         if (mainState.stateName != "Avoid")
         {
             if (InputHandler.avoid && staminaNow > 3f)
@@ -220,9 +252,24 @@ public class PlayerSM : StateManager
         if (damage < 1)
             return;
 
+        if(barrierNow > 0)
+        {
+            barrierNow--;
+
+            if (barrierNow == 0)
+                shieldAnimator.Play("ShieldOff");
+            return;
+        }
+
         if (isDefence && (damage / 2) < staminaNow)
         {
             staminaNow -= (int)((float)damage / 2);
+
+            if (QuestSystem.currentQuests != null)
+                foreach (Quest quest in QuestSystem.currentQuests)
+                    if (quest.Key == "Guard")
+                        ((SuccessGuardQuest)quest).UpdateCurrentCount(damage);
+
             return;
         }
         else

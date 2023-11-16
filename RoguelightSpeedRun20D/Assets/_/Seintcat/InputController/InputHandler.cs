@@ -15,6 +15,10 @@ public class InputHandler : MonoBehaviour
     public static float camRotate { get; private set; }
     public static bool skill1 { get; private set; }
     public static bool skill2 { get; private set; }
+    public static bool item1 { get; private set; }
+    public static bool item2 { get; private set; }
+    public static bool item3 { get; private set; }
+    public static bool item4 { get; private set; }
 
     [SerializeField]
     private InputActionAsset actionAsset;
@@ -41,7 +45,16 @@ public class InputHandler : MonoBehaviour
         map.FindAction("Skill1").canceled += OnSkill1;
         map.FindAction("Skill2").performed += OnSkill2;
         map.FindAction("Skill2").canceled += OnSkill2;
+        map.FindAction("Item1").performed += OnItem1;
+        map.FindAction("Item1").canceled += OnItem1;
+        map.FindAction("Item2").performed += OnItem2;
+        map.FindAction("Item2").canceled += OnItem2;
+        map.FindAction("Item3").performed += OnItem3;
+        map.FindAction("Item3").canceled += OnItem3;
+        map.FindAction("Item4").performed += OnItem4;
+        map.FindAction("Item4").canceled += OnItem4;
     }
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +74,9 @@ public class InputHandler : MonoBehaviour
         avoid = false;
         skill1 = false;
         skill2 = false;
+        item1 = false;
+        item2 = false;
+        item3 = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -112,5 +128,27 @@ public class InputHandler : MonoBehaviour
     {
         if (context.ReadValue<float>() > 0.5f)
             skill2 = true;
+    }
+
+    private void OnItem1(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            item1 = true;
+    }
+
+    private void OnItem2(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            item2 = true;
+    }
+    private void OnItem3(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            item3 = true;
+    }
+    private void OnItem4(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            item4 = true;
     }
 }

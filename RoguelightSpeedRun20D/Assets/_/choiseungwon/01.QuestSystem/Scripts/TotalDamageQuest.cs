@@ -22,11 +22,15 @@ public class TotalDamageQuest : Quest
         CheckQuestStatus();
     }
 
-    public override void CheckQuestStatus()
+    protected override void _CheckQuestStatus()
     {
         if (currentDamage >= targetDamage)
         {
             IsCompleted = true;
         }
+    }
+    public override string GetProgress()
+    {
+        return "(" + currentDamage + " / " + targetDamage + ")";
     }
 }

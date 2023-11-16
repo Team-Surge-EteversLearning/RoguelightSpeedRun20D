@@ -3,21 +3,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class QuestSystem : MonoBehaviour
 {
-    [SerializeField] private Image questImage;
-    [SerializeField] private Text[] questTitle;
-    [SerializeField] private Text[] questDescription;
-    [SerializeField] private Text[] questReward;
-    
     private List<Quest> allQuests;
     public static List<Quest> currentQuests;
+    private static QuestSystem singleton;
+
+    [SerializeField]
+    private List<TextMeshProUGUI> titles;
+    [SerializeField]
+    private List<TextMeshProUGUI> texts;
+    [SerializeField]
+    private List<TextMeshProUGUI> progress;
+    [SerializeField]
+    private List<TextMeshProUGUI> rewards;
+
+    private void Awake()
+    {
+        singleton = this;
+    }
 
     void Start()
     {
-        InitializeQuestsAllQuests();
-        SelectRandomQuests();
+        ResetQuests();
     }
 
     private void InitializeQuestsAllQuests()
@@ -69,12 +79,7 @@ public class QuestSystem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(currentQuests[0]);
-            Debug.Log(currentQuests[1]);
-            Debug.Log(currentQuests[2]);
-        }
+
     }
 
     public void ResetQuests()
@@ -85,11 +90,30 @@ public class QuestSystem : MonoBehaviour
 
     public void OpenQuest()
     {
-        questImage.gameObject.SetActive(true);
     }
     
     public void CloseQuest()
     {
-        questImage.gameObject.SetActive(false);
+    }
+
+    public static void UpdateUI()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (!currentQuests[i].IsCompleted)
+            {
+                singleton.titles[i].text = currentQuests[i].Name;
+                singleton.texts[i].text = currentQuests[i].Description;
+                singleton.progress[i].text = currentQuests[i].GetProgress();
+                singleton.rewards[i].text = currentQuests[i].rewardGold + "";
+            }
+            else
+            {
+                singleton.titles[i].text = "Cleared";
+                singleton.texts[i].text = "Cleared";
+                singleton.progress[i].text = "";
+                singleton.progress[i].text = "";
+            }
+        }
     }
 }

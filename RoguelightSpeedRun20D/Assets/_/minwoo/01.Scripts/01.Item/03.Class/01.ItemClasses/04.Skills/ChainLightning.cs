@@ -25,15 +25,6 @@ public class ChainLightning : ActiveSkill
         GameObject instantiatedObject = UnityEngine.Object.Instantiate(projectile, playerSM.skillTransform.position, rotation);
         instantiatedObject.GetComponent<AttackAble>().AttackStart();
 
-        //ApplyChainDamage(playerSM.skillTransform.position, playerSM.chainReactionRadius);
-    }
-    private void ApplyChainDamage(Vector3 center, float radius)
-    {
-        Collider[] colliders = Physics.OverlapSphere(center, radius);
 
-        foreach(Collider collider in colliders)
-        {
-
-        }
     }
 }

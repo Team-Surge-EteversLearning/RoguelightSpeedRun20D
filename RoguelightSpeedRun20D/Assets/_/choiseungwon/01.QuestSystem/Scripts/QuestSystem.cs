@@ -86,6 +86,7 @@ public class QuestSystem : MonoBehaviour
     {
         InitializeQuestsAllQuests();
         SelectRandomQuests();
+        UpdateUI();
     }
 
     public void OpenQuest()

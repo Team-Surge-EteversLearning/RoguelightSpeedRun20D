@@ -16,12 +16,12 @@ MonoBehaviour:
   cashDrop: 100
   hpMax: 100
   attackPower: 100
-  attackCoolTime: 3
+  attackCoolTime: 1
   attackRange: 1.5
   idleTime: 1
-  moveSpeed: 50
-  chaseSpeed: 100
+  moveSpeed: 8
+  chaseSpeed: 14
   isFly: 0
   patrolMode: 0
-  damagedStaggerTime: 1.5
+  damagedStaggerTime: 1
   deadTime: 3

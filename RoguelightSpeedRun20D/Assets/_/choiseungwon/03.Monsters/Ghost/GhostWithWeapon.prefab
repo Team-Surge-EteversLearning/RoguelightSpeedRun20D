@@ -5847,7 +5847,7 @@ GameObject:
   - component: {fileID: 2034574783277953087}
   - component: {fileID: 4917770533658590613}
   m_Layer: 0
-  m_Name: 02 WizardMonsterWithWeapon
+  m_Name: GhostWithWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

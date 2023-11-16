@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 95924602544960654}
-  data: {fileID: 11400000, guid: 432674260a9204666982615f766534ad, type: 2}
+  data: {fileID: 11400000, guid: e4d70cd0dff554a2a8319761afaae41b, type: 2}
   _rigidbody: {fileID: 7630928773081120584}
   eye: {fileID: 8048426054661289140}
   mainBody: {fileID: 972570003369249868}

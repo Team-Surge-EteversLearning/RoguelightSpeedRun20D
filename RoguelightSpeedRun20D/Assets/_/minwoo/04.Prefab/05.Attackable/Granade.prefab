@@ -132,9 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 5453086864618078836}
   attackTime: 1
-  maxHitCount: 0
+  maxHitCount: 1
   projectileSpeed: 0
-  magicFower: 0
+  magicFower: 1000
 --- !u!135 &5453086864618078836
 SphereCollider:
   m_ObjectHideFlags: 0

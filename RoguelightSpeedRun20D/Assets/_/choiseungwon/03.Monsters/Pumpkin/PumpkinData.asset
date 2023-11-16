@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
   m_Name: PumpkinData
   m_EditorClassIdentifier: 
-  monsterName: 
-  cashDrop: 0
-  hpMax: 0
-  attackPower: 0
-  attackCoolTime: 0
-  attackRange: 0
-  idleTime: 0
-  moveSpeed: 0
-  chaseSpeed: 0
+  monsterName: Pumpkin
+  cashDrop: 100
+  hpMax: 100
+  attackPower: 30
+  attackCoolTime: 1
+  attackRange: 7
+  idleTime: 1
+  moveSpeed: 100
+  chaseSpeed: 100
   isFly: 0
-  patrolMode: 0
-  damagedStaggerTime: 0
-  deadTime: 0
+  patrolMode: 2
+  damagedStaggerTime: 1
+  deadTime: 3

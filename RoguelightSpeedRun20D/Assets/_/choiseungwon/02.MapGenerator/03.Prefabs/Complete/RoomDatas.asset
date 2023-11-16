@@ -70,11 +70,11 @@ MonoBehaviour:
   - roomPrefab: {fileID: 8615109590014953584, guid: 425a1af92b85445c4aa38b9f1bf91571, type: 3}
   bossRoomPresets:
   - roomPrefab: {fileID: 1188233378133636767, guid: bea6f8bdfab5a49e28eb2e65bc57fef9, type: 3}
-  - roomPrefab: {fileID: 100002, guid: 2f3c1491c0a1e48608545575dac1f07b, type: 3}
+  - roomPrefab: {fileID: 1188233378133636767, guid: 42a2b4bd4b8641545ae28d62e2131a7d, type: 3}
   doorPresets: {fileID: 7561981834410391685, guid: 3c52630cab5074c41b03293412a6bfd3, type: 3}
   wall: {fileID: 7574105056553344709, guid: 9e2ef0d5cdc8d4006a4455d10acef99e, type: 3}
   stair: {fileID: 3944323598870722307, guid: f28786878df5f49938a57886084cb469, type: 3}
-  roomCount: 100
-  roomInFloor: 10
+  roomCount: 24
+  roomInFloor: 5
   floorHeight: 4.5
   roomDistance: 20.58

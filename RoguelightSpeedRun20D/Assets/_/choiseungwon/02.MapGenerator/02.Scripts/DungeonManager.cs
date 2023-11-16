@@ -33,7 +33,8 @@ public class DungeonManager : MonoBehaviour
     Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
     
     public delegate void DoorToggleDelegate(bool clear);
-    public static event DoorToggleDelegate OnDoorToggle;
+    public static event DoorToggleDelegate OnDoorToggle;   
+
     
     [SerializeField] private int _currentMonsterCount;
     public int CurrentMonsterCount 
@@ -42,17 +43,34 @@ public class DungeonManager : MonoBehaviour
         set 
         {
             _currentMonsterCount = value;
-            if(_currentMonsterCount == 0)
+            if (Dungeon.Current == Dungeon.Ends[Dungeon.Ends.Count - 1])
             {
-                Dungeon.Current.isSafe = true;
-                ToggleDoor(true);
+                if (_currentMonsterCount == 0)
+                {
+                    Dungeon.Current.isSafe = true;
+                    BundleClear();
+                }
+            }
+            else
+            {
+                if (_currentMonsterCount == 0)
+                {
+                    Dungeon.Current.isSafe = true;
+                    ToggleDoor(true);
+
+                }
             }
         } 
     }
 
-    public static void ToggleDoor(bool isClear)
+    private void BundleClear()
     {
-        OnDoorToggle?.Invoke(isClear);
+        Debug.Log("kimmoddi");
+    }
+
+    public static void ToggleDoor(bool isRoomClear)
+    {
+        OnDoorToggle?.Invoke(isRoomClear);
     }
     
     private void Awake()
@@ -91,7 +109,7 @@ public class DungeonManager : MonoBehaviour
     private void Generate(Dungeon target)
     {
         target.AddUntil(roomCount, roomInFloor);
-        target.SetShopNode(3);
+        target.SetShopNode(1);
     }
 
     private void GenerateRoom(Dungeon target, float height)
@@ -116,6 +134,12 @@ public class DungeonManager : MonoBehaviour
                 if (node == target.Ends[target.Ends.Count - 1])
                 {
                     room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[1].roomPrefab, posi, Quaternion.identity);
+                    roomNodeTransformPair.Add(node, room.transform);
+                    DoorGenerate(node, room.transform);
+                    room.name = node.Position.ToString();
+                    GameObjectNode.Add(room, node);
+                    normalRoomrandNum = Random.Range(0, 39);
+                    shopRoomrandNum = Random.Range(0, 10);
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point

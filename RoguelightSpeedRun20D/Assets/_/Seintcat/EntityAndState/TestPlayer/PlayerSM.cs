@@ -151,7 +151,6 @@ public class PlayerSM : StateManager
 
         if (InputHandler.skill1 && skill1Index != null && skill1Index != "" && skill1CoolTime < 0)
             SkillDataModel.UnlockActive[skill1Index].Use(true);
-
         if (InputHandler.skill2 && skill2Index != null && skill2Index != "" && skill2CoolTime < 0)
             SkillDataModel.UnlockActive[skill2Index].Use(false);
 

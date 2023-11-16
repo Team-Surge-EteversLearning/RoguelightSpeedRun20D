@@ -59,6 +59,7 @@ public class MagicAttackable : AttackAble
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if(!other.CompareTag("PlayerBody"))
+            Destroy(gameObject);
     }
 }

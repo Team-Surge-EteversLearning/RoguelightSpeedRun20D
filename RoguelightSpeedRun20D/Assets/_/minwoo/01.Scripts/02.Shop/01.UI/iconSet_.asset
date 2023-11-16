@@ -36,14 +36,18 @@ MonoBehaviour:
   - name: Speed
     icon: {fileID: 21300000, guid: 0c4fa2378213a8248b2930763c9073c0, type: 3}
   - name: RandomSkillBook
-    icon: {fileID: 21300000, guid: 8a0d6cc1670564442ae8718c2fa9016a, type: 3}
+    icon: {fileID: 21300000, guid: bf6e3a0463208ee478774d7c6a2c2d96, type: 3}
   - name: Default
     icon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   - name: 2
     icon: {fileID: 21300000, guid: 276f9eb2914ed8b4cbccd11e130703cf, type: 3}
   - name: fireBall
-    icon: {fileID: 21300000, guid: 819db057f40986e49850b087cead73e1, type: 3}
+    icon: {fileID: 21300000, guid: f9cd13ec4054ac149956cafefc3a3510, type: 3}
   - name: iceBolt
-    icon: {fileID: 21300000, guid: 68ec74238f4d8f947bdd8bc477589b29, type: 3}
+    icon: {fileID: 21300000, guid: 926227997c111e944b2a09209b954d59, type: 3}
   - name: swordShoot
-    icon: {fileID: 21300000, guid: abea7078c302d9746baac6c1ec2298e4, type: 3}
+    icon: {fileID: 21300000, guid: 0f8e499274385ae47ab5f565d7b48160, type: 3}
+  - name: berSerk
+    icon: {fileID: 21300000, guid: 9d2205cac73af3243bd55876bf497f92, type: 3}
+  - name: healing
+    icon: {fileID: 21300000, guid: 1941fcd054e7080409b836b3b5437e82, type: 3}

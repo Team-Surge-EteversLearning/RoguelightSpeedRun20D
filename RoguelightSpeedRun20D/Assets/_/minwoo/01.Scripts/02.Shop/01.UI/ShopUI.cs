@@ -153,6 +153,10 @@ public class ShopUI
 
         }
     }
+    public static void OnPointEnterProduct(string description)
+    {
+        DescriptionController.onDescription?.Invoke(description);
+    }
     private void OnPointExitProduct()
     {
         DescriptionController.onDescriptionComplete?.Invoke();

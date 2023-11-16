@@ -9,6 +9,7 @@ public class SwordShoot : ActiveSkill
 {
     public SwordShoot(string name, int mana, float coolTime) : base(name, mana, coolTime)
     {
+        SkillDecription = "Not Gilgamesh";
     }
 
     protected override void Init()

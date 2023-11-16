@@ -41,9 +41,11 @@ public abstract class ActiveSkill : IProduct
     public void Use(bool skill1)
     {
         float nowMana;
-        nowMana = PlayerSM.manaNow;
-        if (nowMana > mana)
+        if (PlayerSM.manaNow < mana)
+        {
+            Debug.LogWarning("PlayerSM.manaNow > " + PlayerSM.manaNow + ", skillMana > " + mana);
             return;
+        }
 
         if (skill1)
         {

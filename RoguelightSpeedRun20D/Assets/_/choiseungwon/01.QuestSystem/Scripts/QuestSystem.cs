@@ -64,10 +64,10 @@ public class QuestSystem : MonoBehaviour
             new ClearTimeQuest("평범한 한국인", "15분 안에 클리어", 15, 500),
             new ClearTimeQuest("진정한 한국인", "10분 안에 클리어", 10, 1000),
 
-            new SuccessGuardQuest("ㅁㅁㅁ", 10, 100),
-            new SuccessGuardQuest("ㅁㅁㅁ", 10, 100),
-            new SuccessGuardQuest("ㅁㅁㅁ", 10, 100),
-            new SuccessGuardQuest("ㅁㅁㅁ", 10, 100),
+            new SuccessGuardQuest("ㅁㅁㅁ","ㅁㅁㅁ", 10, 100),
+            new SuccessGuardQuest("ㅁㅁㅁ","ㅁㅁㅁ", 10, 100),
+            new SuccessGuardQuest("ㅁㅁㅁ","ㅁㅁㅁ", 10, 100),
+            new SuccessGuardQuest("ㅁㅁㅁ","ㅁㅁㅁ", 10, 100),
         };
     }
 

@@ -20,6 +20,13 @@ public class InputHandler : MonoBehaviour
     public static bool item3 { get; private set; }
     public static bool item4 { get; private set; }
 
+    public static float skill1Last;
+    public static float skill2Last;
+    public static float item1Last;
+    public static float item2Last;
+    public static float item3Last;
+    public static float item4Last;
+
     [SerializeField]
     private InputActionAsset actionAsset;
 
@@ -77,6 +84,7 @@ public class InputHandler : MonoBehaviour
         item1 = false;
         item2 = false;
         item3 = false;
+        item4 = false;
     }
 
     public void OnMove(InputAction.CallbackContext context)

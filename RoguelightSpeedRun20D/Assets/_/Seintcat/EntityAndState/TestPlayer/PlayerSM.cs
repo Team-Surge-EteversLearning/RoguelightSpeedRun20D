@@ -150,10 +150,13 @@ public class PlayerSM : StateManager
         ManagerUpdate();
 
         if (InputHandler.skill1 && skill1Index != null && skill1Index != "" && skill1CoolTime < 0)
-            SkillDataModel.UnlockActive[skill1Index].Use();
+            SkillDataModel.UnlockActive[skill1Index].Use(true);
 
         if (InputHandler.skill2 && skill2Index != null && skill2Index != "" && skill2CoolTime < 0)
-            SkillDataModel.UnlockActive[skill2Index].Use();
+            SkillDataModel.UnlockActive[skill2Index].Use(false);
+
+        skill1CoolTime -= Time.deltaTime;
+        skill2CoolTime -= Time.deltaTime;
 
         Vector3 rotation = transform.rotation.eulerAngles;
         rotation.y = rotation.y + (InputHandler.camRotate * Time.deltaTime * 30);
@@ -275,11 +278,12 @@ public class PlayerSM : StateManager
                     if (quest.Key == "Guard")
                         ((SuccessGuardQuest)quest).UpdateCurrentCount(damage);
 
+            if (staminaNow < 0)
+            {
+                staminaNow = 0;
+            }
+
             return;
-        }
-        else
-        {
-            staminaNow = 0;
         }
 
         hpNow -= damage;

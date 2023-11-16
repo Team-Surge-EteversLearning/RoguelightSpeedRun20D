@@ -13,7 +13,7 @@ public class Healing : ActiveSkill
         base.Init();
     }
 
-    public override void Use()
+    public override void _Use()
     {
         PlayerSM.hpNow = PlayerSM.hpNow + (int)(PlayerSM.hpMax * 0.2f);
     }

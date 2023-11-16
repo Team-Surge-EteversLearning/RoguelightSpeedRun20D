@@ -74,7 +74,7 @@ public class QuestSystem : MonoBehaviour
             // new ColletItemQuest("", "루비 수집가", "루비를 7개 획득하세요.", 7, 300),
             // new ColletItemQuest("", "루비 수집가", "루비를 10개 획득하세요.", 10, 500),
 
-            // new OpenBoxQuest("상자 사랑꾼", "상자를 1개 여세요.", 1, 100),
+            // new OpenBoxQuest("1", "상자 사랑꾼", "상자를 1개 여세요.", 1, 100),
             // new OpenBoxQuest("상자 사랑꾼", "상자를 2개 여세요.", 2, 200),
             // new OpenBoxQuest("상자 사랑꾼", "상자를 3개 여세요.", 3, 300),
             // new OpenBoxQuest("상자 사랑꾼", "상자를 4개 여세요.", 5, 500),

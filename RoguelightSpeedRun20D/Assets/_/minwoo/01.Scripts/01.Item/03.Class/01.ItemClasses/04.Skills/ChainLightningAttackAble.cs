@@ -39,7 +39,6 @@ public class ChainLightningAttackAble : AttackAble
     protected override void _AttackStart()
     {
         rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
-        ApplyChainDamage(transform.position, 5);
     }
 
     protected override void _AttackStop()
@@ -51,7 +50,6 @@ public class ChainLightningAttackAble : AttackAble
     {
         if (obj.tag == "EnemyBody" && (!attackedObject.ContainsKey(obj) || attackedObject[obj] < maxHitCount))
         {
-            Destroy(gameObject);
             Debug.Log(magicPower);
             return magicPower;
         }
@@ -67,6 +65,7 @@ public class ChainLightningAttackAble : AttackAble
 
             if (attackableComponent != null)
             {
+                GameObject newChain = Instantiate(gameObject);
                 int damage = attackableComponent.GetDamage(gameObject); 
             }
         }
@@ -74,6 +73,6 @@ public class ChainLightningAttackAble : AttackAble
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        ApplyChainDamage(transform.position, 5);
     }
 }

@@ -7,9 +7,9 @@ public class OpenBoxQuest : Quest
     public int currentCount;
     public int targetCount;
     
-    public OpenBoxQuest(string name, string description, int reward, int targetCount) : base(QuestType.OpenBox)
+    public OpenBoxQuest(string key, string name, string description, int reward, int targetCount) : base(QuestType.OpenBox)
     {
-        this.Key = "box";
+        this.Key = key;
         this.Name = name;
         this.Description = description;
         this.targetCount = targetCount;

@@ -22,7 +22,7 @@ public class Stat : IProduct
     public string Name { get; set; }
     protected int statIndex;
     protected int StatIndex { get => statIndex; set => statIndex = value; }
-    string IProduct.key { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    string IProduct.key { get => throw new NotImplementedException();}
 
     public virtual void Buy()
     {

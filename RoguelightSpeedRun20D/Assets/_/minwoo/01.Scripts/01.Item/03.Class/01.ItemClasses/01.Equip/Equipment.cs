@@ -20,7 +20,7 @@ public abstract class Equipment : IProduct
     public EquipmentType Type { get => type; set => type = value; }
     public int ModelIndex { get => modelIndex; set => modelIndex = value; }
     public int Tier { get => tier; set => tier = value; }
-    string IProduct.key { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    string IProduct.key { get => Name;}
 
     public List<EquipmentOption> usableOptions;
 
@@ -59,4 +59,8 @@ public abstract class Equipment : IProduct
         return thisWeapon;
     }
 
+    void IProduct.Buy()
+    {
+        throw new System.NotImplementedException();
+    }
 }

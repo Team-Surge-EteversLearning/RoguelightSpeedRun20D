@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using UnityEngine;
 
 public class Useable : IProduct
@@ -16,7 +17,7 @@ public class Useable : IProduct
 
     private int quantity;
     public int Quantity { get => quantity; set => quantity = value; }
-    string IProduct.key { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+    string IProduct.key { get => ItemCode + "";  }
 
     public void Buy()
     {

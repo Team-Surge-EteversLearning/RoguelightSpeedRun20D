@@ -6,7 +6,7 @@ using UnityEngine;
 public class PurchaseCompletePanelController : MonoBehaviour
 {
     [SerializeField] float waitTime;
-    TMP_Text text;
+    [SerializeField]TMP_Text text;
     private void Start()
     {
         gameObject.SetActive(false);
@@ -15,6 +15,8 @@ public class PurchaseCompletePanelController : MonoBehaviour
     // Start is called before the first frame update
     public void ActiveAndDisable(string name)
     {
+        text = GetComponentInChildren<TMP_Text>();
+
         switch (name)
         {
             case "0":
@@ -31,6 +33,7 @@ public class PurchaseCompletePanelController : MonoBehaviour
                 break;
         }
         gameObject.SetActive(true);
+        Debug.LogWarning($"{name is null} or {text is null}");
         text.text = $"You successfully purchased the {name}.";
         StartCoroutine(WaitDisable());
     }

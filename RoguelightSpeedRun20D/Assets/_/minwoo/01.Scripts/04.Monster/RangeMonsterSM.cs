@@ -90,7 +90,6 @@ public class RangeMonsterSM : MonsterSM
     }
     private void OnFire()
     {
-        Debug.Log(projectiles.Count);
         projectiles[0].gameObject.SetActive(true);
         projectiles[0].gameObject.GetComponent<AttackAble>().AttackStart();
         projectiles.RemoveAt(0);

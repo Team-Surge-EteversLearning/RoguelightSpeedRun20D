@@ -275,11 +275,12 @@ public class PlayerSM : StateManager
                     if (quest.Key == "Guard")
                         ((SuccessGuardQuest)quest).UpdateCurrentCount(damage);
 
+            if (staminaNow < 0)
+            {
+                staminaNow = 0;
+            }
+
             return;
-        }
-        else
-        {
-            staminaNow = 0;
         }
 
         hpNow -= damage;

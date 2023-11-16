@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869e0eb78091b324d98d746e705a4d53, type: 3}
-  m_Name: SkeletonData
+  m_Name: Pumpkin
   m_EditorClassIdentifier: 
-  monsterName: Skeleton
+  monsterName: Pumpkin
   cashDrop: 100
   hpMax: 100
   attackPower: 100
-  attackCoolTime: 1
-  attackRange: 1.5
+  attackCoolTime: 2
+  attackRange: 2
   idleTime: 1
-  moveSpeed: 8
-  chaseSpeed: 14
+  moveSpeed: 10
+  chaseSpeed: 10
   isFly: 0
-  patrolMode: 0
+  patrolMode: 2
   damagedStaggerTime: 1
   deadTime: 3

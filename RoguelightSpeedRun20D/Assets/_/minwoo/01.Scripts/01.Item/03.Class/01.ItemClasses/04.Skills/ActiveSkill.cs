@@ -43,7 +43,6 @@ public abstract class ActiveSkill : IProduct
     public abstract void _Use();
     public void Use(bool skill1)
     {
-        float nowMana;
         if (PlayerSM.manaNow < mana)
         {
             return;

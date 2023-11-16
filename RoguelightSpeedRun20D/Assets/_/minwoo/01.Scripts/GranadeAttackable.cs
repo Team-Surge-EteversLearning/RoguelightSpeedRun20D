@@ -1,11 +1,8 @@
-﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
-public class MagicAttackable : AttackAble
+public class GranadeAttackable : AttackAble
 {
     [SerializeField]
     private int maxHitCount;
@@ -32,13 +29,16 @@ public class MagicAttackable : AttackAble
     }
     private void OnEnable()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
+        //rb = GetComponent<Rigidbody>();
+        //rb.velocity = Vector3.zero;
     }
 
     protected override void _AttackStart()
     {
-        rb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
+        rb.velocity = Vector3.zero;
+        Vector3 diagonalForce = transform.forward + transform.up; // add forward, up
+        diagonalForce.Normalize(); 
+        rb.AddForce(diagonalForce * projectileSpeed, ForceMode.Impulse);
     }
 
     protected override void _AttackStop()
@@ -48,9 +48,10 @@ public class MagicAttackable : AttackAble
 
     protected override int _GetDamage(GameObject obj)
     {
-        if (obj.tag == "EnemyBody" && (!attackedObject.ContainsKey(obj) || attackedObject[obj] < maxHitCount))
+        //Debug.LogWarning(obj.name);
+        if ((!attackedObject.ContainsKey(obj) || attackedObject[obj] < maxHitCount))
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
             Debug.Log(magicFower);
             return magicFower;
         }
@@ -59,6 +60,7 @@ public class MagicAttackable : AttackAble
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        attackTrigger.enabled = true;
+        //Destroy(gameObject);
     }
 }

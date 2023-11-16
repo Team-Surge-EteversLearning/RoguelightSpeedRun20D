@@ -32,8 +32,8 @@ public class DungeonManager : MonoBehaviour
     }
     Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
     
-    public delegate void DoorToggleDelegate(bool clear);
-    public static event DoorToggleDelegate OnDoorToggle;   
+    public delegate void RoomClearDelegate(bool clear);
+    public static event RoomClearDelegate ClearEvent;   
     
     [SerializeField] private int _currentMonsterCount;
     public int CurrentMonsterCount 
@@ -42,12 +42,25 @@ public class DungeonManager : MonoBehaviour
         set 
         {
             _currentMonsterCount = value;
-            if (Dungeon.Current == Dungeon.Ends[Dungeon.Ends.Count - 1])
+
+            if (Dungeon.Ends.Contains(Dungeon.Current))
             {
-                if (_currentMonsterCount == 0)
+                if (Dungeon.Current == Dungeon.Ends[Dungeon.Ends.Count - 1])
                 {
-                    Dungeon.Current.isSafe = true;
-                    BundleClear();
+                    if (_currentMonsterCount == 0)
+                    {
+                        Dungeon.Current.isSafe = true;
+                        ToggleDoor(true);
+                        StairSpawn(true);
+                    }
+                }
+                else
+                {
+                    if (_currentMonsterCount == 0)
+                    {
+                        Dungeon.Current.isSafe = true;
+                        ToggleDoor(true);
+                    }
                 }
             }
             else
@@ -56,19 +69,21 @@ public class DungeonManager : MonoBehaviour
                 {
                     Dungeon.Current.isSafe = true;
                     ToggleDoor(true);
-
                 }
             }
         } 
     }
 
-    private void BundleClear()
-    {
-    }
+
 
     public static void ToggleDoor(bool isRoomClear)
     {
-        OnDoorToggle?.Invoke(isRoomClear);
+        ClearEvent?.Invoke(isRoomClear);
+    }
+
+    public static void StairSpawn(bool isRoomClear)
+    {
+        ClearEvent?.Invoke(isRoomClear);
     }
     
     private void Awake()
@@ -141,7 +156,7 @@ public class DungeonManager : MonoBehaviour
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
-                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0,-4,0), Quaternion.identity);
+                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0,-5,0), Quaternion.identity);
             }
             else if (node.IsShop)
             {

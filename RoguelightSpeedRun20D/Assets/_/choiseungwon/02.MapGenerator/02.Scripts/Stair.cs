@@ -7,7 +7,7 @@ public class Stair : MonoBehaviour
 {
     private void Awake()
     {
-        DungeonManager.OnDoorToggle += ToggleStair;
+        DungeonManager.ClearEvent += ToggleStair;
     }
 
     public void ToggleStair(bool clear)
@@ -18,7 +18,14 @@ public class Stair : MonoBehaviour
         }
         else if(clear)
         {
-            transform.GetChild(0).gameObject.SetActive(true);
+            if (DungeonManager.Instance.Dungeon.Ends.Contains(DungeonManager.Instance.Dungeon.Current))
+            {
+                transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+            }
         }
     }
 }

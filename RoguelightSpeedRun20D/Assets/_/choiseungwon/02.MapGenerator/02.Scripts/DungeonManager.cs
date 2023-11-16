@@ -4,17 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class DungeonManager : MonoBehaviour
 {
     public static DungeonManager Instance { get; set; }
+    public Dictionary<GameObject, DungeonNode> GameObjectNode = new Dictionary<GameObject, DungeonNode>();
+
 
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
     [SerializeField] private MiniMapManager miniMapManager;
 
-    public Dictionary<GameObject, DungeonNode> GameObjectNode = new Dictionary<GameObject, DungeonNode>();
+    [SerializeField] private Button nextButton;
+    [SerializeField] private Button lobbyButton;
+
 
     private int roomCount;
     private int roomInFloor;
@@ -65,7 +70,6 @@ public class DungeonManager : MonoBehaviour
 
     private void BundleClear()
     {
-        Debug.Log("kimmoddi");
     }
 
     public static void ToggleDoor(bool isRoomClear)

@@ -51,6 +51,7 @@ public class DungeonManager : MonoBehaviour
                     {
                         Dungeon.Current.isSafe = true;
                         ToggleDoor(true);
+                        StairSpawn(true);
                     }
                 }
                 else
@@ -59,7 +60,6 @@ public class DungeonManager : MonoBehaviour
                     {
                         Dungeon.Current.isSafe = true;
                         ToggleDoor(true);
-                        StairSpawn(true);
                     }
                 }
             }

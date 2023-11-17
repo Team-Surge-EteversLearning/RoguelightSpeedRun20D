@@ -23,7 +23,6 @@ public class DungeonShopManager : MonoBehaviour
     public  Dictionary<GameObject, Shop> GOShopShopPair = new Dictionary<GameObject, Shop>();
     public  Dictionary<GameObject, List<ShopProduct>> DungeonShopSProductPair = new Dictionary<GameObject, List<ShopProduct>>();
 
-
     private void Awake()
     {
         if(Instance == null)
@@ -83,13 +82,13 @@ public class DungeonShopManager : MonoBehaviour
     }
     public void ResetTargetShops(GameObject GO)
     {
-        Debug.LogWarning(1);
         resetUI();
         GOShopShopPair[GO].ResetShop();
     }
 
     public static void CursorToggle(bool flag)
     {
+        Debug.Log(flag);
         Cursor.visible = flag;
         Cursor.lockState = flag ? CursorLockMode.None : CursorLockMode.Locked;
     }

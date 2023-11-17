@@ -1,0 +1,6 @@
+public static class PlayerSaveManager
+public static void SaveData(string name, int cashNow, int hpMax, int staminaMax, int manaMax, int powerWeight, string activeSkill1, string activeSkill2, Dictionary<string, bool> itemUnlock)
+public static List<string> PlayerList()
+public static void LoadData(string name)
+EquipmentDataManager.Load(Dictionary<string, bool> itemUnlock);
+SkillDataModel.Load(Dictionary<string, bool> itemUnlock);

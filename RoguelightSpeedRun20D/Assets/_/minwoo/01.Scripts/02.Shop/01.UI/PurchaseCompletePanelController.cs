@@ -9,7 +9,6 @@ public class PurchaseCompletePanelController : MonoBehaviour
     [SerializeField]TMP_Text text;
     private void Start()
     {
-        gameObject.SetActive(false);
         text = GetComponentInChildren<TMP_Text>();
     }
     // Start is called before the first frame update

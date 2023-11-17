@@ -1,0 +1,37 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+
+public class MyCharacterPanelController : MonoBehaviour
+{
+    [SerializeField] TMP_Text damageTxt;
+    [SerializeField] TMP_Text attackSpeedTxt;
+    [SerializeField] TMP_Text hpTxt;
+    [SerializeField] TMP_Text staminaTxt;
+    [SerializeField] TMP_Text mpTxt;
+    [SerializeField] TMP_Text powerTxt;
+    [SerializeField] TMP_Text speedTxt;
+    //public static Dictionary<string, TMP_Text> nameTxtPair = new Dictionary<string, TMP_Text>();
+    //public static Action<string> onStatChange;
+    //private void Awake()
+    //{
+    //    PlayerSM
+    //    onStatChange = StatViewChange;
+    //}
+    //private void StatViewChange(string stat)
+    //{
+
+    //}
+    private void OnEnable()
+    {
+        damageTxt.text = $"DAMAGE : {PlayerSM.weaponNow.Damage * PlayerSM.powerWeight}";
+        attackSpeedTxt.text = $"ATTACKSPEED : {PlayerSM.weaponNow.Cooltime}";
+        hpTxt.text = $"HP : {PlayerSM.hpNow}/{PlayerSM.hpMax}";
+        staminaTxt.text = $"STAMINA : {PlayerSM.staminaNow}/{PlayerSM.staminaMax}";
+        mpTxt.text = $"MP : {PlayerSM.manaNow}/{PlayerSM.manaMax}";
+        powerTxt.text = $"Power : {PlayerSM.powerWeight}";
+        speedTxt.text = $"SPEED : {PlayerSM.moveSpeed}";
+    }
+}

@@ -88,5 +88,15 @@ public class PlayerStatsManager : IProductMaker
         //return to shop
         return displayItemListWithPrice;
     }
+
+    public static void Set(string _name, int _cashNow, int _hpMax, int _staminaMax, int _manaMax, int _powerWeight)
+    {
+        name = _name;
+        cashNow = _cashNow;
+        hpMax = _hpMax;
+        staminaMax = _staminaMax;
+        manaMax = _manaMax;
+        powerWeight = _powerWeight;
+    }
 }
 

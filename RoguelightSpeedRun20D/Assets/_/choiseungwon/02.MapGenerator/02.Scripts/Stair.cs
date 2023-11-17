@@ -5,30 +5,46 @@ using UnityEngine;
 
 public class Stair : MonoBehaviour
 {
+    public static Vector3 clearPos;
+
     private void Awake()
     {
-        DungeonManager.ClearEvent += ToggleStair;
+        DungeonManager.ClearEvent += StairSpawn;
+        DungeonManager.ClearEvent += UpStair;
     }
 
-    public void ToggleStair(bool clear)
+    private void Start()
+    {
+        clearPos = this.transform.position + new Vector3(0, 5, 0);
+    }
+
+    public void StairSpawn(bool clear)
     {
         if (clear == false)
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }
-        else if(clear)
+        else if (clear)
         {
-            if (DungeonManager.Instance.Dungeon.Ends.Contains(DungeonManager.Instance.Dungeon.Current) 
+            if (DungeonManager.Instance.Dungeon.Ends.Contains(DungeonManager.Instance.Dungeon.Current)
                 || DungeonManager.Instance.Dungeon.Starts.Contains(DungeonManager.Instance.Dungeon.Current))
             {
                 transform.GetChild(0).gameObject.SetActive(true);
-               // this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position,this.transform.position + new Vector3(0, 5, 0), 5);
             }
             else
             {
                 transform.GetChild(0).gameObject.SetActive(false);
-                
             }
+        }
+    }
+
+    public void UpStair(bool clear)
+    {
+        if (clear == false)
+        {
+        }
+        else if (clear)
+        {
         }
     }
 }

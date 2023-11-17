@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "iconSet_", menuName = "icon")]
 public class IconSet : ScriptableObject
 {
+    [SerializeField] Sprite defaultImg;
     [SerializeField] List<Icon> icons = new List<Icon>();
 
     public Sprite GetIcon(string name)
@@ -16,6 +17,6 @@ public class IconSet : ScriptableObject
             if (name == icon.Name)
                 return icon.IconSprite;
         }
-        return null;
+        return defaultImg;
     }
 }

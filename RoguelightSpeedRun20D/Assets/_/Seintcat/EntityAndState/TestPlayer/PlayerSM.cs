@@ -121,6 +121,7 @@ public class PlayerSM : StateManager
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        ResetAfterGameOver();
     }
     public override void MakeState()
     {
@@ -143,7 +144,6 @@ public class PlayerSM : StateManager
     void Start()
     {
         ui = FindAnyObjectByType<MyCharacterPanelController>().gameObject;
-        ResetAfterGameOver();
     }
 
     // Update is called once per frame

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MyCharacterPanelController : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class MyCharacterPanelController : MonoBehaviour
     [SerializeField] TMP_Text mpTxt;
     [SerializeField] TMP_Text powerTxt;
     [SerializeField] TMP_Text speedTxt;
+
+    [SerializeField] Image headImg;
+    [SerializeField] Image torsoImg;
+    [SerializeField] Image shoesImg;
     //public static Dictionary<string, TMP_Text> nameTxtPair = new Dictionary<string, TMP_Text>();
     //public static Action<string> onStatChange;
     //private void Awake()
@@ -24,7 +29,7 @@ public class MyCharacterPanelController : MonoBehaviour
     //{
 
     //}
-    private void OnEnable()
+    public void ResetUI()
     {
         damageTxt.text = $"DAMAGE : {PlayerSM.weaponNow.Damage * PlayerSM.powerWeight}";
         attackSpeedTxt.text = $"ATTACKSPEED : {PlayerSM.weaponNow.Cooltime}";
@@ -33,5 +38,9 @@ public class MyCharacterPanelController : MonoBehaviour
         mpTxt.text = $"MP : {PlayerSM.manaNow}/{PlayerSM.manaMax}";
         powerTxt.text = $"Power : {PlayerSM.powerWeight}";
         speedTxt.text = $"SPEED : {PlayerSM.moveSpeed}";
+
+        headImg.sprite = TestDB.instance.iconSet.GetIcon(PlayerSM.weaponNow.Name);
+        torsoImg.sprite = TestDB.instance.iconSet.GetIcon(PlayerSM.armorNow.Name);
+        shoesImg.sprite = TestDB.instance.iconSet.GetIcon(PlayerSM.shoesNow.Name);
     }
 }

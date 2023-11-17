@@ -18,7 +18,7 @@ public class EquipmentDataManager : IProductMaker
     public void Init()
     {
         WeaponTableLoad();
-        //ArmorTableLoad();
+        ArmorTableLoad();
         //ShoesTableLoad();
         //read db
         //Categorize to each list
@@ -26,7 +26,7 @@ public class EquipmentDataManager : IProductMaker
 
     private void WeaponTableLoad()
     {
-        sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
+        sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "GameData.db");
         sql.Open();
         sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, EquipmentBasic.modelIndex, Weapon.damage, Weapon.isRangeAttack, Weapon.size, Weapon.coolTime FROM item JOIN Weapon ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
 
@@ -45,7 +45,7 @@ public class EquipmentDataManager : IProductMaker
     }
     private void ArmorTableLoad()
     {
-        sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "test.db");
+        sql = SqlAccess.GetAccess(Application.streamingAssetsPath + "/" + "GameData.db");
         sql.Open();
         sql.SqlRead("SELECT Item.name, EquipmentBasic.sellWhenClear, Item.price, Item.priceWeight, EquipmentBasic.modelIndex, Armor.maxHp, Armor.trapAvoid, Armor.maxMana, Armor.manaRegen FROM item JOIN Armor ON item.name = Weapon.name JOIN EquipmentBasic ON item.name = EquipmentBasic.name;");
 

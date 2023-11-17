@@ -143,4 +143,17 @@ public static class PlayerSaveManager
         EquipmentDataManager.Load(itemUnlock);
         SkillDataModel.Load(itemUnlock);
     }
+    public static List<string> WrappingUnlocks()
+    {
+        List<string> list = new List<string>();
+        foreach(var item in EquipmentDataManager.unlocks.Keys)
+        {
+            list.Add(item);
+        }
+        foreach(var item in SkillDataModel.UnlockActive.Keys)
+        {
+            list.Add(item);
+        }
+        return list;
+    }
 }

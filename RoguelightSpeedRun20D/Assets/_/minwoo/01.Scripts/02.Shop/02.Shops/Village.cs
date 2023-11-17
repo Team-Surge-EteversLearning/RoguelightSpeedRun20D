@@ -24,6 +24,7 @@ public class Village : MonoBehaviour
     public static Action<string> onBuy;
     private void Start()
     {
+        //PlayerSaveManager.SaveData("default", PlayerStatsManager.WareHouseCash, PlayerStatsManager.HpMax, PlayerStatsManager.StaminaMax, PlayerStatsManager.ManaMax, PlayerStatsManager.PowerWeight, PlayerSM.skill1Index, PlayerSM.skill2Index, PlayerSaveManager.WrappingUnlocks());
         shopPanel.SetActive(false);
  
         CreateShop();

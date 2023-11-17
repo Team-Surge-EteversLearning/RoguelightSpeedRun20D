@@ -291,6 +291,7 @@ public class PlayerSM : StateManager
             animator.Play("Death", 0);
             animator.Play("Death", 1);
             enabled = false;
+            DungeonEndUI.DungeonEnd(false);
         }
         else
         {

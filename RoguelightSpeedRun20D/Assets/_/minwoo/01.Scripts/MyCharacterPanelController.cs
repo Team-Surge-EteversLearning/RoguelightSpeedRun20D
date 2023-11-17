@@ -34,7 +34,7 @@ public class MyCharacterPanelController : MonoBehaviour
         damageTxt.text = $"DAMAGE : {PlayerSM.weaponNow.Damage * PlayerSM.powerWeight}";
         attackSpeedTxt.text = $"ATTACKSPEED : {PlayerSM.weaponNow.Cooltime}";
         hpTxt.text = $"HP : {PlayerSM.hpNow}/{PlayerSM.hpMax}";
-        staminaTxt.text = $"STAMINA : {PlayerSM.staminaNow}/{PlayerSM.staminaMax}";
+        staminaTxt.text = $"STAMINA : {(int)PlayerSM.staminaNow}/{PlayerSM.staminaMax}";
         mpTxt.text = $"MP : {PlayerSM.manaNow}/{PlayerSM.manaMax}";
         powerTxt.text = $"Power : {PlayerSM.powerWeight}";
         speedTxt.text = $"SPEED : {PlayerSM.moveSpeed}";

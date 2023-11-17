@@ -122,7 +122,6 @@ public class PlayerSM : StateManager
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         ResetAfterGameOver();
-        ui.ResetUI();
     }
     public override void MakeState()
     {
@@ -145,6 +144,7 @@ public class PlayerSM : StateManager
     void Start()
     {
         ui = FindAnyObjectByType<MyCharacterPanelController>();
+        ui.ResetUI();
     }
 
     // Update is called once per frame
@@ -185,7 +185,8 @@ public class PlayerSM : StateManager
         BattleUI.mpBar = ((float)manaNow / manaMax);
         BattleUI.stBar = ((float)staminaNow / staminaMax);
 
-        ui.gameObject.SetActive(InputHandler.info);
+        ui.gameObject.SetActive(InputHandler.info); 
+        ui.ResetUI();
 
         if (InputHandler.item1 && DungeonItemManager.hpPotionNow > 0 && hpNow < hpMax)
         {

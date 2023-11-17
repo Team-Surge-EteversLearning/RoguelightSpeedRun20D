@@ -11,6 +11,7 @@ public class RangeMonsterSM : MonsterSM
     public int projectileCount;
     [HideInInspector]
     public List<GameObject> projectiles = new List<GameObject>();
+    public AudioClip attackClip;
 
     private void Awake()
     { 
@@ -38,6 +39,14 @@ public class RangeMonsterSM : MonsterSM
     void Update()
     {
         ManagerUpdate();
+    }
+
+    private void LateUpdate()
+    { 
+        if (mainState.stateName == "Attack" && !mainState.started)
+        {
+            AudioPlayer.PlayOneShot(attackClip);
+        }
     }
 
     protected override void _FixedUpdate()

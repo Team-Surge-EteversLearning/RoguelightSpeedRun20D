@@ -5257,11 +5257,7 @@ MonoBehaviour:
   subBody: []
   attackAbles:
   - {fileID: 6527257302771522606}
-  movePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  movePoints: []
 --- !u!1 &1217934236022823120
 GameObject:
   m_ObjectHideFlags: 0

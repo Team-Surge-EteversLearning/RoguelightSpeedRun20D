@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1957712374219810073}
   - component: {fileID: 7794164521371410756}
   - component: {fileID: 3978085688371093752}
+  - component: {fileID: 7484274336931063951}
   m_Layer: 0
   m_Name: Zombie 1
   m_TagString: Untagged
@@ -239,10 +240,23 @@ MonoBehaviour:
   attackAbles:
   - {fileID: 2029346699634086320}
   - {fileID: 6470545012077439995}
-  movePoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  movePoints: []
+--- !u!114 &7484274336931063951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025841268384064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d564827dc431e4a8b6f7b384a1da27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 90a66ba8bfe7745bf9cc6e850c6ddc74, type: 3}
+  - {fileID: 8300000, guid: c6e371d039a8548b3904ed78deb0bd56, type: 3}
+  - {fileID: 8300000, guid: 92c4cade30ab341e097e5471c67673d6, type: 3}
 --- !u!1 &1027635304350226
 GameObject:
   m_ObjectHideFlags: 0

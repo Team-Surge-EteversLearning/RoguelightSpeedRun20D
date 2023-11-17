@@ -2227,6 +2227,7 @@ GameObject:
   - component: {fileID: 2635722600735410000}
   - component: {fileID: 8646492853893904823}
   - component: {fileID: 3772474476415563651}
+  - component: {fileID: 8436455381206680203}
   m_Layer: 22
   m_Name: pumpkin
   m_TagString: Untagged
@@ -2282,6 +2283,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 1584801430282303801}
   projectileCount: 7
   projectiles: []
+  attackClip: {fileID: 8300000, guid: 21315ca47b612408096d1842b6ee6540, type: 3}
 --- !u!95 &2635722600735410000
 Animator:
   serializedVersion: 5
@@ -2353,6 +2355,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &8436455381206680203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6796289062226680811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d564827dc431e4a8b6f7b384a1da27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 0}
 --- !u!1 &6931748901314603233
 GameObject:
   m_ObjectHideFlags: 0

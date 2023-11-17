@@ -33,7 +33,11 @@ public class DungeonManager : MonoBehaviour
     Dictionary<DungeonNode, Transform> roomNodeTransformPair = new Dictionary<DungeonNode, Transform>();
     
     public delegate void RoomClearDelegate(bool clear);
-    public static event RoomClearDelegate ClearEvent;   
+    public static event RoomClearDelegate RoomClearEvent;    
+    public delegate void BossRoomClearDelegate(bool clear);
+    public static event BossRoomClearDelegate BossRoomClearEvent;
+    public delegate void BundleClearDelegate(bool clear);
+    public static event BundleClearDelegate BundleClearEvent;
     
     [SerializeField] private int _currentMonsterCount;
     public int CurrentMonsterCount 
@@ -51,8 +55,7 @@ public class DungeonManager : MonoBehaviour
                     {
                         Dungeon.Current.isSafe = true;
                         ToggleDoor(true);
-                        StairSpawn(true);
-                        UpStair(true);
+                        BundleClear(true);
                     }
                 }
                 else
@@ -60,6 +63,7 @@ public class DungeonManager : MonoBehaviour
                     if (_currentMonsterCount == 0)
                     {
                         Dungeon.Current.isSafe = true;
+                        BossRoomClear(true);
                         ToggleDoor(true);
                     }
                 }
@@ -77,16 +81,16 @@ public class DungeonManager : MonoBehaviour
 
     public static void ToggleDoor(bool isRoomClear)
     {
-        ClearEvent?.Invoke(isRoomClear);
+        RoomClearEvent?.Invoke(isRoomClear);
     }
 
-    public static void StairSpawn(bool isRoomClear)
+    public static void BossRoomClear(bool isBossRoomClear)
     {
-        ClearEvent?.Invoke(isRoomClear);
+        BossRoomClearEvent?.Invoke(isBossRoomClear);
     }
-    public static void UpStair(bool isBossRoomClear)
+    public static void BundleClear(bool isBundleRoomClear)
     {
-        ClearEvent?.Invoke(isBossRoomClear);
+        BundleClearEvent?.Invoke(isBundleRoomClear);
     }
     
     private void Awake()
@@ -110,6 +114,7 @@ public class DungeonManager : MonoBehaviour
         miniMapManager.MiniMapCreate();
         floorHeight += 10;
     }
+
     public void ChangeNode(DungeonNode node, GameObject go)
     {
         _dungeon.Current = node;
@@ -159,7 +164,7 @@ public class DungeonManager : MonoBehaviour
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
-                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0,-5,0), Quaternion.identity);
+                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0, -5, 0), Quaternion.identity);
             }
             else if (node.IsShop)
             {

@@ -9,13 +9,17 @@ public class Stair : MonoBehaviour
 
     private void Awake()
     {
-        DungeonManager.ClearEvent += StairSpawn;
-        DungeonManager.ClearEvent += UpStair;
+        DungeonManager.BossRoomClearEvent += StairSpawn;
+        DungeonManager.BossRoomClearEvent += UpStair;
     }
 
     private void Start()
     {
         clearPos = this.transform.position + new Vector3(0, 5, 0);
+    }
+
+    private void Update()
+    {
     }
 
     public void StairSpawn(bool clear)
@@ -40,11 +44,15 @@ public class Stair : MonoBehaviour
 
     public void UpStair(bool clear)
     {
-        if (clear == false)
+        StartCoroutine(UpStair());
+    }
+
+    IEnumerator UpStair()
+    {
+        for (int i = 0; i < 10; i++)
         {
-        }
-        else if (clear)
-        {
+            this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + new Vector3(0, 0.5f, 0), 1);
+            yield return new WaitForSeconds(0.7f);
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DungeonEndUI : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class DungeonEndUI : MonoBehaviour
     {
         singleton = this;
         gameObject.SetActive(false);
+        DungeonManager.BundleClearEvent += DungeonEnd;
     }
 
     // Start is called before the first frame update
@@ -32,6 +34,7 @@ public class DungeonEndUI : MonoBehaviour
 
     public static void DungeonEnd(bool gameClear)
     {
+        Debug.LogWarning("DungeonEnd");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -42,11 +45,15 @@ public class DungeonEndUI : MonoBehaviour
 
     public void NextStage()
     {
-
+        // SceneManager.LoadScene()
     }
 
     public void GoVillage()
     {
-
+        SceneManager.LoadScene(0);
+        PlayerStatsManager.WareHouseCash += PlayerStatsManager.CashNow;
+        PlayerStatsManager.CashNow = 0;
+        
+        // PlayerSaveManager.SaveData("default", PlayerStatsManager.WareHouseCash, PlayerStatsManager.HpMax, PlayerStatsManager.StaminaMax, PlayerStatsManager.ManaMax, PlayerStatsManager.PowerWeight, PlayerSM.skill1Index, PlayerSM.skill2Index, PlayerSaveManager.WrappingUnlocks());
     }
 }

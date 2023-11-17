@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        DungeonManager.ClearEvent += ToggleDoor;
+        DungeonManager.RoomClearEvent += ToggleDoor;
     }
 
     private void Start()

@@ -8,11 +8,7 @@ using UnityEngine;
 public class RoomChecker : MonoBehaviour
 {
     private bool isRoomClear = true;
-
-    private void FixedUpdate()
-    {
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerBody"))

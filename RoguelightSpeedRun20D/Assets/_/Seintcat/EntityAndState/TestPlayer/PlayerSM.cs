@@ -14,6 +14,7 @@ public class PlayerSM : StateManager
     public static readonly float powerWeightGap = 1f;
 
     public static GameObject playerObj;
+    private static GameObject ui;
 
     [SerializeField]
     private List<GameObject> weaponInstance;
@@ -27,8 +28,6 @@ public class PlayerSM : StateManager
     private Animator shieldAnimator;
     [SerializeField]
     private GameObject bomb;
-    [SerializeField]
-    private GameObject ui;
 
     private GameObject weaponModelNow;
     private AttackAble attackable;
@@ -143,6 +142,7 @@ public class PlayerSM : StateManager
     // Start is called before the first frame update
     void Start()
     {
+        ui = FindAnyObjectByType<MyCharacterPanelController>().gameObject;
         ResetAfterGameOver();
     }
 

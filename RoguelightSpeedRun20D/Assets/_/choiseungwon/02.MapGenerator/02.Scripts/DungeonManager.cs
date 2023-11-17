@@ -52,6 +52,7 @@ public class DungeonManager : MonoBehaviour
                         Dungeon.Current.isSafe = true;
                         ToggleDoor(true);
                         StairSpawn(true);
+                        UpStair(true);
                     }
                 }
                 else
@@ -74,8 +75,6 @@ public class DungeonManager : MonoBehaviour
         } 
     }
 
-
-
     public static void ToggleDoor(bool isRoomClear)
     {
         ClearEvent?.Invoke(isRoomClear);
@@ -84,6 +83,10 @@ public class DungeonManager : MonoBehaviour
     public static void StairSpawn(bool isRoomClear)
     {
         ClearEvent?.Invoke(isRoomClear);
+    }
+    public static void UpStair(bool isBossRoomClear)
+    {
+        ClearEvent?.Invoke(isBossRoomClear);
     }
     
     private void Awake()
@@ -156,7 +159,7 @@ public class DungeonManager : MonoBehaviour
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
-                Instantiate(dungeonBundleDatas[0].stair, posi, Quaternion.identity);
+                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0,-5,0), Quaternion.identity);
             }
             else if (node.IsShop)
             {

@@ -38,14 +38,12 @@ public class DescriptionController : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition + new Vector3(distanceAboveMouse, distanceAboveMouse, 0);
 
         // 마우스 포인터 위치에 UI의 왼쪽 하단이 위치하도록 보정
-        Vector2 pivot = new Vector2(0, 0);
+        Vector2 pivot = Vector2.zero;
         rectTransform.pivot = pivot;
 
-        // UI 좌표계에서 월드 좌표로 변환
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, mousePosition, Camera.main, out Vector3 worldPosition);
-
-        // RectTransform 위치 설정
-        rectTransform.position = worldPosition;
+        Debug.LogWarning($"mousePosi = {Input.mousePosition} calculatedMousePosi = {mousePosition}");
+        // 스크린 좌표계를 사용하여 RectTransform 위치 설정
+        rectTransform.position = mousePosition;
         gameObject.SetActive(true);
         descriptionTxt.text = descriptiontText;
         foreach (var item in opts)
@@ -64,11 +62,8 @@ public class DescriptionController : MonoBehaviour
         Vector2 pivot = new Vector2(0, 0);
         rectTransform.pivot = pivot;
 
-        // UI 좌표계에서 월드 좌표로 변환
-        RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, mousePosition, Camera.main, out Vector3 worldPosition);
-
-        // RectTransform 위치 설정
-        rectTransform.position = worldPosition;
+        // 스크린 좌표계를 사용하여 RectTransform 위치 설정
+        rectTransform.position = mousePosition;
         gameObject.SetActive(true);
         descriptionTxt.text = descriptiontText;
     }

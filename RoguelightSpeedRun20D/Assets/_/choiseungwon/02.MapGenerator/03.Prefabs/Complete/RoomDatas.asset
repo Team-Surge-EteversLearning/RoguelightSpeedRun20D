@@ -74,8 +74,7 @@ MonoBehaviour:
   doorPresets: {fileID: 7561981834410391685, guid: 3c52630cab5074c41b03293412a6bfd3, type: 3}
   wall: {fileID: 7574105056553344709, guid: 9e2ef0d5cdc8d4006a4455d10acef99e, type: 3}
   stair: {fileID: 3944323598870722307, guid: f28786878df5f49938a57886084cb469, type: 3}
-  stairPosition: {fileID: 219874242123488478, guid: 62ed037f436daa846b0f08119705feef, type: 3}
-  roomCount: 24
+  roomCount: 14
   roomInFloor: 5
   floorHeight: 4.5
   roomDistance: 20.58

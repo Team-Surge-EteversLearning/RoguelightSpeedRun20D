@@ -6,7 +6,7 @@ public class ClearTimeQuest : Quest
 {
     public float currentTime;
     public float targetTime;
-    
+
     public ClearTimeQuest(string name, string description, float targetTime, int rewardGold) : base(QuestType.ClearTime)
     {
         this.Name = name;
@@ -15,12 +15,12 @@ public class ClearTimeQuest : Quest
         this.rewardGold = rewardGold;
     }
 
-    public void UpdateCurrentCount(float count)
+    public void UpdateCurrentTime(float time)
     {
-        this.currentTime += count;
+        this.currentTime += time;
         CheckQuestStatus();
     }
-    
+
     protected override void _CheckQuestStatus()
     {
         if (currentTime <= targetTime)
@@ -31,6 +31,6 @@ public class ClearTimeQuest : Quest
 
     public override string GetProgress()
     {
-        return "¹Ì±¸Çö";
+        return "ï¿½Ì±ï¿½ï¿½ï¿½";
     }
 }

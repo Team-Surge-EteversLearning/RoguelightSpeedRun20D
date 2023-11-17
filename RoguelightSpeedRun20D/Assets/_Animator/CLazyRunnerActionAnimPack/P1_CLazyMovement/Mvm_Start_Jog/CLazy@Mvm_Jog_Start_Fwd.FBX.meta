@@ -451,10 +451,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 12.234782 mm\n\t'calf_l' : position error = 9.857045 mm\n\t'foot_l'
-      : position error = 9.151042 mm\n\t'ball_l' : position error = 3.075409 mm\n\t'thigh_r'
+      : position error = 12.234782 mm\n\t'calf_l' : position error = 9.857056 mm\n\t'foot_l'
+      : position error = 9.151027 mm\n\t'ball_l' : position error = 3.075409 mm\n\t'thigh_r'
       : position error = 12.245770 mm\n\t'calf_r' : position error = 12.736463 mm\n\t'foot_r'
-      : position error = 11.053644 mm\n\t'ball_r' : position error = 5.695047 mm\n"
+      : position error = 11.053644 mm\n\t'ball_r' : position error = 5.695061 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
@@ -534,7 +534,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.11439114
+        functionName: FX
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 1
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

@@ -27,6 +27,8 @@ public class PlayerSM : StateManager
     private Animator shieldAnimator;
     [SerializeField]
     private GameObject bomb;
+    [SerializeField]
+    private GameObject ui;
 
     private GameObject weaponModelNow;
     private AttackAble attackable;
@@ -181,6 +183,8 @@ public class PlayerSM : StateManager
         BattleUI.hpBar = ((float)hpNow / hpMax);
         BattleUI.mpBar = ((float)manaNow / manaMax);
         BattleUI.stBar = ((float)staminaNow / staminaMax);
+
+        ui.SetActive(InputHandler.info);
 
         if (InputHandler.item1 && DungeonItemManager.hpPotionNow > 0 && hpNow < hpMax)
         {

@@ -14,7 +14,7 @@ public class PlayerSM : StateManager
     public static readonly float powerWeightGap = 1f;
 
     public static GameObject playerObj;
-    private static GameObject ui;
+    private static MyCharacterPanelController ui;
 
     [SerializeField]
     private List<GameObject> weaponInstance;
@@ -122,6 +122,7 @@ public class PlayerSM : StateManager
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         ResetAfterGameOver();
+        ui.ResetUI();
     }
     public override void MakeState()
     {
@@ -143,7 +144,7 @@ public class PlayerSM : StateManager
     // Start is called before the first frame update
     void Start()
     {
-        ui = FindAnyObjectByType<MyCharacterPanelController>().gameObject;
+        ui = FindAnyObjectByType<MyCharacterPanelController>();
     }
 
     // Update is called once per frame
@@ -184,7 +185,7 @@ public class PlayerSM : StateManager
         BattleUI.mpBar = ((float)manaNow / manaMax);
         BattleUI.stBar = ((float)staminaNow / staminaMax);
 
-        ui.SetActive(InputHandler.info);
+        ui.gameObject.SetActive(InputHandler.info);
 
         if (InputHandler.item1 && DungeonItemManager.hpPotionNow > 0 && hpNow < hpMax)
         {

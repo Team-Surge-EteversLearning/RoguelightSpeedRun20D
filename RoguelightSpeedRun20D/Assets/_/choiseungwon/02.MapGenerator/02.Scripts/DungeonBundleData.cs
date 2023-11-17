@@ -17,6 +17,7 @@ public class DungeonBundleData : ScriptableObject
     public GameObject doorPresets;
     public GameObject wall;
     public GameObject stair;
+    // public GameObject stairPosition;
     
     public int roomCount = 10;
     public int roomInFloor;

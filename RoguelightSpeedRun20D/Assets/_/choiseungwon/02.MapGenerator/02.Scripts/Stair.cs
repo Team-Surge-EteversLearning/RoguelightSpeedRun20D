@@ -18,13 +18,16 @@ public class Stair : MonoBehaviour
         }
         else if(clear)
         {
-            if (DungeonManager.Instance.Dungeon.Ends.Contains(DungeonManager.Instance.Dungeon.Current))
+            if (DungeonManager.Instance.Dungeon.Ends.Contains(DungeonManager.Instance.Dungeon.Current) 
+                || DungeonManager.Instance.Dungeon.Starts.Contains(DungeonManager.Instance.Dungeon.Current))
             {
                 transform.GetChild(0).gameObject.SetActive(true);
+               // this.gameObject.transform.position = Vector3.MoveTowards(this.transform.position,this.transform.position + new Vector3(0, 5, 0), 5);
             }
             else
             {
                 transform.GetChild(0).gameObject.SetActive(false);
+                
             }
         }
     }

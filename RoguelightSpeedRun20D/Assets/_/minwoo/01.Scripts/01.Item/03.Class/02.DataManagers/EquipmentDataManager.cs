@@ -169,7 +169,7 @@ public class EquipmentDataManager : IProductMaker
         return values.Take(n).ToList();
     }
 
-    public static void Load(Dictionary<string, bool> itemUnlock)
+    public static void Load(List<string> itemUnlock)
     {
 
     }

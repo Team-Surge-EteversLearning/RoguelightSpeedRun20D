@@ -3920,6 +3920,7 @@ GameObject:
   - component: {fileID: 8163537579052726446}
   - component: {fileID: 40273101357415800}
   - component: {fileID: 3174114232405812123}
+  - component: {fileID: 5195714392418628428}
   m_Layer: 0
   m_Name: minotaur
   m_TagString: Untagged
@@ -4040,6 +4041,20 @@ MonoBehaviour:
   movePoints:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &5195714392418628428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414871117303439921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83d564827dc431e4a8b6f7b384a1da27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 99b408affc5b248049b8985c0fed0223, type: 3}
 --- !u!1 &4414871117353324497
 GameObject:
   m_ObjectHideFlags: 0

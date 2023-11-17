@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,7 @@ public static class PlayerSaveManager
 
     private static SqlAccess sql;
 
-    public static void SaveData(string name, int cashNow, int hpMax, int staminaMax, int manaMax, int powerWeight, string activeSkill1, string activeSkill2, Dictionary<string, bool> itemUnlock)
+    public static void SaveData(string name, int cashNow, int hpMax, int staminaMax, int manaMax, int powerWeight, string activeSkill1, string activeSkill2, List<string> itemUnlock)
     {
         if(!File.Exists(savePath))
             File.Copy(originData, savePath, true);
@@ -44,21 +45,15 @@ public static class PlayerSaveManager
             return;
         }
 
-        foreach ( KeyValuePair<string, bool> pair in itemUnlock)
+        foreach (string unlockName in itemUnlock)
         {
-            sql.SqlRead($"SELECT COUNT(name) FROM ItemUnlock WHERE playerName = '{name}' AND name = '{pair.Key}';");
+            sql.SqlRead($"SELECT COUNT(name) FROM ItemUnlock WHERE playerName = '{name}' AND name = '{unlockName}';");
             if (sql.read && sql.dataReader.Read())
             {
-                int boolVal = pair.Value ? 1 : 0;
-                if ((sql.dataReader.GetDecimal(0) > 0))
+                if (!(sql.dataReader.GetDecimal(0) > 0))
                     sql.SqlExecute(
-                        $"UPDATE ItemUnlock SET " +
-                        $"Unlock = {boolVal}, " +
-                        $"WHERE playerName = '{name}' AND name = '{pair.Key}'");
-                else
-                    sql.SqlExecute(
-                        $"INSERT INTO ItemUnlock(name, Unlock, playerName) " +
-                        $"VALUES ('{pair.Key}', {boolVal}, '{name}');");
+                        $"INSERT INTO ItemUnlock(name, playerName) " +
+                        $"VALUES ('{unlockName}', '{name}');");
             }
             else
             {
@@ -125,17 +120,17 @@ public static class PlayerSaveManager
             return;
         }
 
-        Dictionary<string, bool> itemUnlock = new Dictionary<string, bool>();
+        List<string> itemUnlock = new List<string>();
         sql.SqlRead($"SELECT COUNT(name) FROM ItemUnlock WHERE playerName = '{name}';");
         if(sql.read && sql.dataReader.Read())
         {
             int count = (int)sql.dataReader.GetDecimal(0);
             for(int i = 0; i < count; i++)
             {
-                sql.SqlRead($"SELECT name,  FROM ItemUnlock WHERE playerName = '{name}';");
+                sql.SqlRead($"SELECT name FROM ItemUnlock WHERE playerName = '{name}';");
 
                 if (sql.read && sql.dataReader.Read())
-                    itemUnlock.Add(sql.dataReader.GetString(0), sql.dataReader.GetDecimal(1) == 1);
+                    itemUnlock.Add(sql.dataReader.GetString(0));
                 else
                 {
                     Debug.LogError("SqlRead fail");
@@ -147,5 +142,18 @@ public static class PlayerSaveManager
 
         EquipmentDataManager.Load(itemUnlock);
         SkillDataModel.Load(itemUnlock);
+    }
+    public static List<string> WrappingUnlocks()
+    {
+        List<string> list = new List<string>();
+        foreach(var item in EquipmentDataManager.unlocks.Keys)
+        {
+            list.Add(item);
+        }
+        foreach(var item in SkillDataModel.UnlockActive.Keys)
+        {
+            list.Add(item);
+        }
+        return list;
     }
 }

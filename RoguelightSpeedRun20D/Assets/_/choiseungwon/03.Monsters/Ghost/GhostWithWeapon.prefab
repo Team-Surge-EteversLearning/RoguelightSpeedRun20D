@@ -5861,7 +5861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4379742951602169970}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 0
@@ -5971,6 +5971,7 @@ MonoBehaviour:
   projectileOrigin: {fileID: 5720704641202718342}
   projectileCount: 7
   projectiles: []
+  attackClip: {fileID: 8300000, guid: 9ae60f2a9dd1348bda94a6b3314d2460, type: 3}
 --- !u!1 &4496238907236650346
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,11 +8,11 @@ using Random = System.Random;
 
 public class EquipmentDataManager : IProductMaker
 {
-    static Dictionary<string, BasicEquipments> unlocks = new Dictionary<string, BasicEquipments>();
-    static Dictionary<string, BasicEquipments> locks = new Dictionary<string, BasicEquipments>();
-    static Dictionary<string, WeaponData> weaponBasicTable = new Dictionary<string, WeaponData>();
-    static Dictionary<string, ArmorData> armorBasicTable = new Dictionary<string, ArmorData>();
-    static Dictionary<string, ShoesData> shoesBasicTable = new Dictionary<string, ShoesData>();
+    public static Dictionary<string, BasicEquipments> unlocks = new Dictionary<string, BasicEquipments>();
+    public static Dictionary<string, BasicEquipments> locks = new Dictionary<string, BasicEquipments>();
+    public static Dictionary<string, WeaponData> weaponBasicTable = new Dictionary<string, WeaponData>();
+    public static Dictionary<string, ArmorData> armorBasicTable = new Dictionary<string, ArmorData>();
+    public static Dictionary<string, ShoesData> shoesBasicTable = new Dictionary<string, ShoesData>();
 
     SqlAccess sql;
     public void Init()
@@ -169,7 +169,7 @@ public class EquipmentDataManager : IProductMaker
         return values.Take(n).ToList();
     }
 
-    public static void Load(Dictionary<string, bool> itemUnlock)
+    public static void Load(List<string> itemUnlock)
     {
 
     }

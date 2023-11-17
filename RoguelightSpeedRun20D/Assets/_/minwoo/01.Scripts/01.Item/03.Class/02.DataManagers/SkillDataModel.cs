@@ -44,7 +44,7 @@ public class SkillDataModel : IProductMaker
         return displayItemListWithPrice;
     }
 
-    public static void Load(Dictionary<string, bool> itemUnlock)
+    public static void Load(List<string> itemUnlock)
     {
 
     }

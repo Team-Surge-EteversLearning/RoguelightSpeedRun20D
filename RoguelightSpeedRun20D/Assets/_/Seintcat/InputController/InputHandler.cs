@@ -19,6 +19,7 @@ public class InputHandler : MonoBehaviour
     public static bool item2 { get; private set; }
     public static bool item3 { get; private set; }
     public static bool item4 { get; private set; }
+    public static bool info { get; private set; }
 
     public static float skill1Last;
     public static float skill2Last;
@@ -60,6 +61,8 @@ public class InputHandler : MonoBehaviour
         map.FindAction("Item3").canceled += OnItem3;
         map.FindAction("Item4").performed += OnItem4;
         map.FindAction("Item4").canceled += OnItem4;
+        map.FindAction("OpenInfo").performed += OnInfo;
+        map.FindAction("OpenInfo").canceled += OnInfo;
     }
 
 
@@ -158,5 +161,12 @@ public class InputHandler : MonoBehaviour
     {
         if (context.ReadValue<float>() > 0.5f)
             item4 = true;
+    }
+    private void OnInfo(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<float>() > 0.5f)
+            info = true;
+        else
+            info = false;
     }
 }

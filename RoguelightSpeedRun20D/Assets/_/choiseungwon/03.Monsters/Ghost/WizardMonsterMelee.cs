@@ -9,6 +9,8 @@ public class WizardMonsterMelee : MonsterSM
 
     protected override List<State> monsterBattleStates => _monsterBattleStates;
 
+    public AudioClip attackClip;
+
     private void Awake()
     {
         ManagerStart();
@@ -34,6 +36,15 @@ public class WizardMonsterMelee : MonsterSM
     void Update()
     {
         ManagerUpdate();
+    }
+
+    private void LateUpdate()
+    {
+        if(mainState.stateName == "Attack" && !mainState.started)
+        {
+            Debug.LogWarning("!!!");
+            AudioPlayer.PlayOneShot(attackClip);
+        }
     }
 
     protected override void _FixedUpdate()

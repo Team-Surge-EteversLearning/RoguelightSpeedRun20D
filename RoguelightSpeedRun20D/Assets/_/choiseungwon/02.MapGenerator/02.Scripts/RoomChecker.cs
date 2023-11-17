@@ -19,13 +19,13 @@ public class RoomChecker : MonoBehaviour
             if (DungeonManager.Instance.Dungeon.Starts.Contains(DungeonManager.Instance.GameObjectNode[transform.parent.gameObject])
                 || DungeonManager.Instance.GameObjectNode[transform.parent.gameObject].IsShop)
             {
-                DungeonManager.ToggleDoor(isRoomClear);
+                DungeonManager.Door(isRoomClear);
             }
             else
             {
                 if(!DungeonManager.Instance.Dungeon.Current.isSafe)
                 {
-                    DungeonManager.ToggleDoor(!isRoomClear);
+                    DungeonManager.Door(!isRoomClear);
                     if (QuestSystem.currentQuests != null)
                         foreach (Quest quest in QuestSystem.currentQuests)
                             if (quest.Key == "room")

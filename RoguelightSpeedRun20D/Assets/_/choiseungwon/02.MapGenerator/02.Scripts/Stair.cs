@@ -5,40 +5,21 @@ using UnityEngine;
 
 public class Stair : MonoBehaviour
 {
-    public static Vector3 clearPos;
-
     private void Awake()
     {
-        DungeonManager.BossRoomClearEvent += StairSpawn;
+        DungeonManager.SpawnStairEvent += SpawnStair;
         DungeonManager.BossRoomClearEvent += UpStair;
     }
 
-    private void Start()
+    public void SpawnStair(bool clear)
     {
-        clearPos = this.transform.position + new Vector3(0, 5, 0);
-    }
-
-    private void Update()
-    {
-    }
-
-    public void StairSpawn(bool clear)
-    {
-        if (clear == false)
+        if (clear == true)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
         {
             transform.GetChild(0).gameObject.SetActive(false);
-        }
-        else if (clear)
-        {
-            if (DungeonManager.Instance.Dungeon.Ends.Contains(DungeonManager.Instance.Dungeon.Current)
-                || DungeonManager.Instance.Dungeon.Starts.Contains(DungeonManager.Instance.Dungeon.Current))
-            {
-                transform.GetChild(0).gameObject.SetActive(true);
-            }
-            else
-            {
-                transform.GetChild(0).gameObject.SetActive(false);
-            }
         }
     }
 
@@ -51,8 +32,13 @@ public class Stair : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, this.transform.position + new Vector3(0, 0.5f, 0), 1);
+            this.transform.position = Vector3.MoveTowards(this.transform.position,
+                this.transform.position + new Vector3(0, 0.5f, 0), 1);
             yield return new WaitForSeconds(0.7f);
         }
+        yield return new WaitForSeconds(10f);
+        
+        this.transform.position =
+            Vector3.MoveTowards(this.transform.position, this.transform.position + new Vector3(0, -5f, 0), 5);
     }
 }

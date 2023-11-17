@@ -34,10 +34,13 @@ public class DungeonManager : MonoBehaviour
     
     public delegate void RoomClearDelegate(bool clear);
     public static event RoomClearDelegate RoomClearEvent;    
+    public delegate void SpawnStairDelegate(bool clear);
+    public static event SpawnStairDelegate SpawnStairEvent;    
     public delegate void BossRoomClearDelegate(bool clear);
     public static event BossRoomClearDelegate BossRoomClearEvent;
     public delegate void BundleClearDelegate(bool clear);
-    public static event BundleClearDelegate BundleClearEvent;
+    public static event BundleClearDelegate BundleClearEvent;    
+
     
     [SerializeField] private int _currentMonsterCount;
     public int CurrentMonsterCount 
@@ -47,15 +50,31 @@ public class DungeonManager : MonoBehaviour
         {
             _currentMonsterCount = value;
 
-            if (Dungeon.Ends.Contains(Dungeon.Current))
+            if (Dungeon.Current == Dungeon.Starts[0])
             {
-                if (Dungeon.Current == Dungeon.Ends[Dungeon.Ends.Count - 1])
+                if (_currentMonsterCount == 0)
                 {
+                    SpawnStair(false);
+                }
+            }
+            else
+            {
+                if (Dungeon.Ends.Contains(Dungeon.Current) || Dungeon.Starts.Contains(Dungeon.Current))
+                {
+                    if (Dungeon.Current == Dungeon.Ends[Dungeon.Ends.Count - 1])
+                    {
+                        if (_currentMonsterCount == 0)
+                        {
+                            Dungeon.Current.isSafe = true;
+                            Door(true);
+                            BundleClear(true);
+                        }
+                    }
                     if (_currentMonsterCount == 0)
                     {
                         Dungeon.Current.isSafe = true;
-                        ToggleDoor(true);
-                        BundleClear(true);
+                        Door(true);
+                        SpawnStair(true);
                     }
                 }
                 else
@@ -63,27 +82,22 @@ public class DungeonManager : MonoBehaviour
                     if (_currentMonsterCount == 0)
                     {
                         Dungeon.Current.isSafe = true;
-                        BossRoomClear(true);
-                        ToggleDoor(true);
+                        Door(true);
+                        SpawnStair(false);
                     }
-                }
-            }
-            else
-            {
-                if (_currentMonsterCount == 0)
-                {
-                    Dungeon.Current.isSafe = true;
-                    ToggleDoor(true);
                 }
             }
         } 
     }
 
-    public static void ToggleDoor(bool isRoomClear)
+    public static void Door(bool isRoomClear)
     {
         RoomClearEvent?.Invoke(isRoomClear);
     }
-
+    public static void SpawnStair(bool isBossRoomClear)
+    {
+        SpawnStairEvent?.Invoke(isBossRoomClear);
+    }
     public static void BossRoomClear(bool isBossRoomClear)
     {
         BossRoomClearEvent?.Invoke(isBossRoomClear);
@@ -164,7 +178,7 @@ public class DungeonManager : MonoBehaviour
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
-                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0, -5, 0), Quaternion.identity);
+                Instantiate(dungeonBundleDatas[0].stair, posi, Quaternion.identity);
             }
             else if (node.IsShop)
             {

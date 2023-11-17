@@ -33,5 +33,4 @@ public enum QuestType
     VisitedRoom,
     ClearTime,
     SuccessGuard,
-    KillBoss
 }

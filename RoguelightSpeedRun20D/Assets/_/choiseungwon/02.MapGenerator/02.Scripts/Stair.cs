@@ -5,10 +5,18 @@ using UnityEngine;
 
 public class Stair : MonoBehaviour
 {
+    private Vector3 afterPosition;
+    private Vector3 beforePosition;
     private void Awake()
     {
         DungeonManager.SpawnStairEvent += SpawnStair;
         DungeonManager.BossRoomClearEvent += UpStair;
+    }
+
+    private void Start()
+    {
+        beforePosition = transform.GetChild(1).transform.position;
+        afterPosition = transform.GetChild(2).transform.position;
     }
 
     public void SpawnStair(bool clear)
@@ -32,13 +40,10 @@ public class Stair : MonoBehaviour
     {
         for (int i = 0; i < 10; i++)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position,
-                this.transform.position + new Vector3(0, 0.5f, 0), 1);
-            yield return new WaitForSeconds(0.7f);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, afterPosition, 0.5f);
+            yield return new WaitForSeconds(0.5f);
         }
-        yield return new WaitForSeconds(10f);
         
-        this.transform.position =
-            Vector3.MoveTowards(this.transform.position, this.transform.position + new Vector3(0, -5f, 0), 5);
+        // this.transform.position = Vector3.MoveTowards(this.transform.position, beforePosition, 4.75f);
     }
 }

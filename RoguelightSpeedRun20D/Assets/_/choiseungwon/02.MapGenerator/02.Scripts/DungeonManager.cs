@@ -75,6 +75,7 @@ public class DungeonManager : MonoBehaviour
                         Dungeon.Current.isSafe = true;
                         Door(true);
                         SpawnStair(true);
+                        BossRoomClear(true);
                     }
                 }
                 else
@@ -178,7 +179,7 @@ public class DungeonManager : MonoBehaviour
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
-                Instantiate(dungeonBundleDatas[0].stair, posi, Quaternion.identity);
+                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0, -4.75f, 0), Quaternion.identity);
             }
             else if (node.IsShop)
             {

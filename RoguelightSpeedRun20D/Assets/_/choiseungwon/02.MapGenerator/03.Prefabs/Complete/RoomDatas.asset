@@ -56,6 +56,16 @@ MonoBehaviour:
   - roomPrefab: {fileID: 8615109590014953584, guid: 87f48cf14c7044bbc8cdb3cf0350f264, type: 3}
   - roomPrefab: {fileID: 8615109590014953584, guid: 7f7ddab9fd9ec4162a40855585943e12, type: 3}
   - roomPrefab: {fileID: 8615109590014953584, guid: 87f48cf14c7044bbc8cdb3cf0350f264, type: 3}
+  - roomPrefab: {fileID: 7820632130282400860, guid: 179b41d7acac2fb4b9f69b34d47a64db, type: 3}
+  - roomPrefab: {fileID: 8931496021088591642, guid: bb8be0b18d602ba4f9ebc355ce55f47a, type: 3}
+  - roomPrefab: {fileID: 3492190888458431744, guid: 03cdc1f93efd6264f8b0ba68f33e5a1c, type: 3}
+  - roomPrefab: {fileID: 8615109590014953584, guid: 7f7ddab9fd9ec4162a40855585943e12, type: 3}
+  - roomPrefab: {fileID: 8931496021088591642, guid: 882dc3e31fed74b6884fe913c8a2bbd2, type: 3}
+  - roomPrefab: {fileID: 6089483822839719903, guid: 8fe981cb45cb642f2b93557ff9fee8c7, type: 3}
+  - roomPrefab: {fileID: 8931496021088591642, guid: d2861a2dd47fec54da12ba87ac3eef05, type: 3}
+  - roomPrefab: {fileID: 8615109590014953584, guid: 87f48cf14c7044bbc8cdb3cf0350f264, type: 3}
+  - roomPrefab: {fileID: 3492190888458431744, guid: ee3e2dcf3f44a0341aa5b82a9b9a4bba, type: 3}
+  - roomPrefab: {fileID: 3492190888458431744, guid: 10b39e3f44f904a3b8661f1445ef39c9, type: 3}
   shopRoomPresets:
   - roomPrefab: {fileID: 9121149530977306964, guid: 7befaa573a08f4c4ebe339fc816b0346, type: 3}
   - roomPrefab: {fileID: 968918257229762092, guid: 2b7466c30925744c9bee353c4439fe0e, type: 3}
@@ -74,7 +84,7 @@ MonoBehaviour:
   doorPresets: {fileID: 7561981834410391685, guid: 3c52630cab5074c41b03293412a6bfd3, type: 3}
   wall: {fileID: 7574105056553344709, guid: 9e2ef0d5cdc8d4006a4455d10acef99e, type: 3}
   stair: {fileID: 3944323598870722307, guid: f28786878df5f49938a57886084cb469, type: 3}
-  roomCount: 9
-  roomInFloor: 5
+  roomCount: 149
+  roomInFloor: 10
   floorHeight: 4.5
   roomDistance: 20.58

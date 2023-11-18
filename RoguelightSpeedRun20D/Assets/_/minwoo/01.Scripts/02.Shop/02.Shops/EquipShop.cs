@@ -22,7 +22,7 @@ public class EquipShop : Shop
     }
     public EquipShop(int minTier, int maxTier, int amount)
     {
-        this.range = $"{minTier},{maxTier},{amount},V";
+        this.range = $"{minTier},{maxTier},{amount},D";
     }
 
     public override void ResetShop()

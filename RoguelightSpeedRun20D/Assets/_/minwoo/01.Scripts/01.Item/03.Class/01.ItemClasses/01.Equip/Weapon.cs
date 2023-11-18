@@ -40,6 +40,8 @@ public class Weapon : Equipment
 
     public override void Equip()
     {
+        PlayerOutfitSelecter.Instance.weaponNow = this;
+
         PlayerSM.weaponNow = this;
     }
 }

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerOutfitSelecter : MonoBehaviour
 {
+    public static PlayerOutfitSelecter Instance {  get; private set; }
     [SerializeField]
     private List<GameObject> weaponInstance;
     [SerializeField]
     private List<GameObject> armorInstance;
 
     private int _weaponNow = 0;
-    public Weapon weaponNow
+    public  Weapon weaponNow
     {
         set
         {
@@ -40,7 +41,10 @@ public class PlayerOutfitSelecter : MonoBehaviour
 
     private void Awake()
     {
-
+        if(Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
     // Start is called before the first frame update

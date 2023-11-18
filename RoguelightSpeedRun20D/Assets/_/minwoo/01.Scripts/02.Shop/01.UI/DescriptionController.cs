@@ -35,7 +35,7 @@ public class DescriptionController : MonoBehaviour
         RectTransform rectTransform = GetComponent<RectTransform>();
 
         // 마우스 우상단에 위치할 거리 계산
-        Vector3 mousePosition = Input.mousePosition + new Vector3(distanceAboveMouse, 0, 0);
+        Vector3 mousePosition = Input.mousePosition + new Vector3(distanceAboveMouse, -50, 0);
 
         // 마우스 포인터 위치에 UI의 왼쪽 하단이 위치하도록 보정
         Vector2 pivot = Vector2.zero;

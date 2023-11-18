@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Armor : Equipment
 {
@@ -33,6 +34,8 @@ public class Armor : Equipment
 
     public override void Equip()
     {
+
+        PlayerOutfitSelecter.Instance.armorNow = this;
         PlayerSM.armorNow = this;
     }
 }

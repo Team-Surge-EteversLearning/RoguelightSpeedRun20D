@@ -15,6 +15,10 @@ public class SkillPanelManager : MonoBehaviour
     [SerializeField] GameObject indicator2;
     [SerializeField] GameObject skillNotificationPanel;
 
+    [SerializeField] GameObject shopPanel;
+    [SerializeField] GameObject optPanel;
+    [SerializeField] GameObject outfit;
+
     public static List<Button> emptySlots = new List<Button>();
     public static Dictionary<Button, ActiveSkill> btnSkillPair = new Dictionary<Button, ActiveSkill>();
     public static Action<ActiveSkill> onLearnSkill;
@@ -22,7 +26,7 @@ public class SkillPanelManager : MonoBehaviour
     private void Start()
     {
         Button[] buttons = skillPanel.GetComponentsInChildren<Button>(true);
-        foreach(var item in buttons)
+        foreach (var item in buttons)
         {
             emptySlots.Add(item);
         }
@@ -35,6 +39,9 @@ public class SkillPanelManager : MonoBehaviour
     public void OpenPanel()
     {
         skillPanel.SetActive(!skillPanel.activeInHierarchy);
+        optPanel.SetActive(!skillPanel.activeInHierarchy);
+        skillPanel.SetActive(!optPanel.activeInHierarchy);
+        outfit.SetActive(!skillPanel.activeInHierarchy);
         SetIndicator();
     }
 
@@ -47,7 +54,7 @@ public class SkillPanelManager : MonoBehaviour
     {
         if (btnSkillPair.Any(pair => pair.Value == skill))
             return;
-        
+
         btnSkillPair.Add(emptySlots[0], skill);
         emptySlots[0].onClick.AddListener(() => OpenChoicePanel(skill.Name));
         emptySlots[0].GetComponentsInChildren<Image>(true)[1].sprite = TestDB.instance.iconSet.GetIcon(skill.Name);
@@ -74,14 +81,9 @@ public class SkillPanelManager : MonoBehaviour
 
         Debug.LogWarning($"{PlayerSM.skill1Index} / {PlayerSM.skill2Index}");
     }
-    private void OpenNotificationPanel()
-    {
-
-    }
-
     private void SetIndicator()
     {
-        if(PlayerSM.skill1Index != null && SkillDataModel.UnlockActive.ContainsKey(PlayerSM.skill1Index))
+        if (PlayerSM.skill1Index != null && SkillDataModel.UnlockActive.ContainsKey(PlayerSM.skill1Index))
         {
             Debug.LogWarning(1);
             indicator1.SetActive(true);

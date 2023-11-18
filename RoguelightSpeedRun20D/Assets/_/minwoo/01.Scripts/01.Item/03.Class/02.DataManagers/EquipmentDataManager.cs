@@ -39,9 +39,11 @@ public class EquipmentDataManager : IProductMaker
             WeaponData weaponData = new WeaponData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetFloat(7), sql.dataReader.GetFloat(8));
 
             if (!locks.ContainsKey(currentName))
+            {
                 locks.Add(currentName, basicEquipments);
-            weaponBasicTable.Add(currentName, weaponData);
-
+            }
+            if(!weaponBasicTable.ContainsKey(currentName))
+                weaponBasicTable.Add(currentName, weaponData);
         }
         sql.dataReader.Close();
         sql.ShutDown();

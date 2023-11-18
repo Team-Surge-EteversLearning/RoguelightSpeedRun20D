@@ -19,6 +19,8 @@ public class Village : MonoBehaviour
     [SerializeField] Button startBtn;
     [SerializeField] TMP_Text descriptionTxt;
 
+    [SerializeField] GameObject Outfit;
+
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
     public Action resetUI;
     public static Action<string> onBuy;
@@ -49,7 +51,7 @@ public class Village : MonoBehaviour
 
         foreach (Button b in allPanelBtns)
         {
-            b.onClick.AddListener(ChangeUISet);
+            b.onClick.AddListener(ToggleShopUI);
             b.onClick.AddListener(() => ResetTargetShops(b.gameObject.name));
         }
     }
@@ -93,9 +95,10 @@ public class Village : MonoBehaviour
         };
     }
 
-    public void ChangeUISet()
+    public void ToggleShopUI()
     {
         shopPanel.SetActive(!shopPanel.activeInHierarchy);
+        Outfit.SetActive(!shopPanel.activeInHierarchy);
         optionPanel.SetActive(!optionPanel.activeInHierarchy); 
     }
 

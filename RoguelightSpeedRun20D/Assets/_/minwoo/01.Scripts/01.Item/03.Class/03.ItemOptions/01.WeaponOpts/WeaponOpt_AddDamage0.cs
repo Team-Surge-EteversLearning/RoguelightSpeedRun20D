@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class WeaponOpt_ReduceCoolTime1 : EquipmentOption
+public class WeaponOpt_AddDamage0 : EquipmentOption
 {
     public override Equipment MakeEquipment(Equipment equipment)
     {
-        this.optName = "Lightweighting_UnCommon";
+        this.optName = "Enhance_0";
         Weapon tempWeapon = (Weapon)equipment;
-        tempWeapon.Cooltime -= 0.4f;
+        tempWeapon.Damage += 3;
         tempWeapon.usableOptions.Add(this);
         return tempWeapon;
     }

@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class WeaponOpt_ReduceCoolTime4 : EquipmentOption
+public class WeaponOpt_ReduceCoolTime1 : EquipmentOption
 {
     public override Equipment MakeEquipment(Equipment equipment)
     {
-        this.optName = "Lightweightinge_Legendary";
+        this.optName = "Lightweighting_1";
         Weapon tempWeapon = (Weapon)equipment;
-        tempWeapon.Cooltime -= 1f;
+        tempWeapon.Cooltime -= 0.04f;
         tempWeapon.usableOptions.Add(this);
         return tempWeapon;
     }

@@ -25,7 +25,7 @@ public abstract class Equipment : IProduct
     public List<EquipmentOption> usableOptions;
 
     public readonly static List<EquipmentOption> weaponOptionPool = new List<EquipmentOption>
-    { 
+    {
         new WeaponOpt_AddDamage0(),
         new WeaponOpt_AddDamage1(),
         new WeaponOpt_AddDamage2(),
@@ -35,7 +35,9 @@ public abstract class Equipment : IProduct
         new WeaponOpt_ReduceCoolTime1(),
         new WeaponOpt_ReduceCoolTime2(),
         new WeaponOpt_ReduceCoolTime3(),
-        new WeaponOpt_ReduceCoolTime4()
+        new WeaponOpt_ReduceCoolTime4(),
+        new WeaponOpt_EvilPower(),
+        new WeaponOpt_AngelPower(),
     };
     public readonly static List<EquipmentOption> armorOptionPool = new List<EquipmentOption> { };
     public readonly static List<EquipmentOption> shoesOptionPool = new List<EquipmentOption> { };

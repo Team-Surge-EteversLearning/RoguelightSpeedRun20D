@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class WeaponOpt_ReduceCoolTime3 : EquipmentOption
+public class WeaponOpt_AddDamage4 : EquipmentOption
 {
     public override Equipment MakeEquipment(Equipment equipment)
     {
-        this.optName = "Enhance_Unique";
+        this.optName = "Enhance_4";
         Weapon tempWeapon = (Weapon)equipment;
-        tempWeapon.Cooltime -= 0.8f;
+        tempWeapon.Damage += 7;
         tempWeapon.usableOptions.Add(this);
         return tempWeapon;
     }

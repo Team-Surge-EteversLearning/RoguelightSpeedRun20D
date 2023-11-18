@@ -44,6 +44,8 @@ public class Stair : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         
-        // this.transform.position = Vector3.MoveTowards(this.transform.position, beforePosition, 4.75f);
+        yield return new WaitForSeconds(10f);
+
+        this.transform.position = Vector3.MoveTowards(this.transform.position, beforePosition, 4.75f);
     }
 }

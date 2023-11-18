@@ -23,7 +23,6 @@ public abstract class Equipment : IProduct
     string IProduct.key { get => Name;}
 
     public List<EquipmentOption> usableOptions;
-
     public readonly static List<EquipmentOption> weaponOptionPool = new List<EquipmentOption>
     {
         new WeaponOpt_AddDamage0(),
@@ -39,7 +38,17 @@ public abstract class Equipment : IProduct
         new WeaponOpt_EvilPower(),
         new WeaponOpt_AngelPower(),
     };
-    public readonly static List<EquipmentOption> armorOptionPool = new List<EquipmentOption> { };
+    public readonly static List<EquipmentOption> armorOptionPool = new List<EquipmentOption> 
+    {
+        new ArmorOpt_AddMaxHp0(),
+        new ArmorOpt_AddMaxHp1(),
+        new ArmorOpt_AddMaxHp2(),
+        new ArmorOpt_AddMaxMp0(),
+        new ArmorOpt_AddMaxMp1(),
+        new ArmorOpt_AddMaxMp2(),
+        new ArmorOpt_Special0(),
+        new ArmorOpt_Special1(),
+    };
     public readonly static List<EquipmentOption> shoesOptionPool = new List<EquipmentOption> { };
 
     public void Buy()
@@ -47,6 +56,8 @@ public abstract class Equipment : IProduct
         Button prvBtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
         prvBtn.onClick.RemoveAllListeners();
         prvBtn.GetComponentsInChildren<Image>()[1].sprite = TestDB.instance.iconSet.GetIcon("Default");
+        if(!EquipmentDataManager.unlocks.ContainsKey(name))
+            EquipmentDataManager.unlocks.Add(name, basicData);
         Equip();
     }
 

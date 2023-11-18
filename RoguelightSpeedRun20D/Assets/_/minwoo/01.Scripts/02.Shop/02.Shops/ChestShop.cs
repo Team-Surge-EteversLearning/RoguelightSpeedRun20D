@@ -23,7 +23,7 @@ public class ChestShop : Shop
     }
     public ChestShop(int minTier, int maxTier, int amount)
     {
-        this.range = $"{minTier},{maxTier},{amount}";
+        this.range = $"{minTier},{maxTier},{amount},D";
     }
 
     public override void ResetShop()

@@ -35,7 +35,9 @@ public abstract class ActiveSkill : IProduct
 
     protected virtual void Init()
     {
-        SkillDataModel.LockActive.Add(Name, this);
+        if(!SkillDataModel.LockActive.ContainsKey(Name))
+            SkillDataModel.LockActive.Add(Name, this);
+
     }
     public void Equip()
     {

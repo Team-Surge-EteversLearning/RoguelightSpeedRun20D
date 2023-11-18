@@ -71,7 +71,7 @@ MonoBehaviour:
   attackTrigger: {fileID: 4523282850568049975}
   attackTime: 1
   maxHitCount: 1
-  projectileSpeed: 50
+  projectileSpeed: 30
   magicFower: 100
 --- !u!54 &1860713334211567633
 Rigidbody:
@@ -151,6 +151,14 @@ PrefabInstance:
     - target: {fileID: 2527298531764070780, guid: 2bddad797c2838042a856f26f2f43f67, type: 3}
       propertyPath: m_Name
       value: S_Fireball_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527298531764070782, guid: 2bddad797c2838042a856f26f2f43f67, type: 3}
+      propertyPath: m_ResetSeedOnPlay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527298531764070782, guid: 2bddad797c2838042a856f26f2f43f67, type: 3}
+      propertyPath: m_InitialEventNameOverriden
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2527298531764070782, guid: 2bddad797c2838042a856f26f2f43f67, type: 3}
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.size

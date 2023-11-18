@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class WeaponOpt_AddDamage2 : EquipmentOption
+public class WeaponOpt_AddDamage1 : EquipmentOption
 {
     public override Equipment MakeEquipment(Equipment equipment)
     {
-        this.optName = "Enhance_Epic";
+        this.optName = "Enhance_1";
         Weapon tempWeapon = (Weapon)equipment;
-        tempWeapon.Damage += 15;
+        tempWeapon.Damage += 4;
         tempWeapon.usableOptions.Add(this);
         return tempWeapon;
     }

@@ -9,9 +9,9 @@ public class WeaponOpt_ReduceCoolTime0 : EquipmentOption
 {
     public override Equipment MakeEquipment(Equipment equipment)
     {
-        this.optName = "Lightweighting_Common";
+        this.optName = "Lightweighting_0";
         Weapon tempWeapon = (Weapon)equipment;
-        tempWeapon.Cooltime -= 0.2f;
+        tempWeapon.Cooltime -= 0.02f;
         tempWeapon.usableOptions.Add(this);
         return tempWeapon;
     }

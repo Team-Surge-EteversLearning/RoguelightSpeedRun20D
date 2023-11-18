@@ -40,7 +40,7 @@ public class SkillPanelManager : MonoBehaviour
     {
         skillPanel.SetActive(!skillPanel.activeInHierarchy);
         optPanel.SetActive(!skillPanel.activeInHierarchy);
-        skillPanel.SetActive(!optPanel.activeInHierarchy);
+        shopPanel.SetActive(!optPanel.activeInHierarchy);
         outfit.SetActive(!skillPanel.activeInHierarchy);
         SetIndicator();
     }

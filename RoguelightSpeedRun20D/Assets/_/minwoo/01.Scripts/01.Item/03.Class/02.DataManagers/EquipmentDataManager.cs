@@ -39,10 +39,9 @@ public class EquipmentDataManager : IProductMaker
             WeaponData weaponData = new WeaponData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetFloat(7), sql.dataReader.GetFloat(8));
 
             if (!locks.ContainsKey(currentName))
-            {
                 locks.Add(currentName, basicEquipments);
-            }
-            if(!weaponBasicTable.ContainsKey(currentName))
+
+            if (!weaponBasicTable.ContainsKey(currentName))
                 weaponBasicTable.Add(currentName, weaponData);
         }
         sql.dataReader.Close();
@@ -61,8 +60,10 @@ public class EquipmentDataManager : IProductMaker
             BasicEquipments basicEquipments = new BasicEquipments(sql.dataReader.GetInt32(1), sql.dataReader.GetInt32(2), sql.dataReader.GetInt32(3), EquipmentType.Armor, sql.dataReader.GetInt32(4));
             ArmorData armorData = new ArmorData(sql.dataReader.GetInt32(5), Convert.ToBoolean(sql.dataReader.GetInt32(6)), sql.dataReader.GetInt32(7), sql.dataReader.GetFloat(8));
 
-            locks.Add(currentName, basicEquipments);
-            armorBasicTable.Add(currentName, armorData);
+            if (!locks.ContainsKey(currentName))
+                locks.Add(currentName, basicEquipments);
+            if (!armorBasicTable.ContainsKey(currentName))
+                armorBasicTable.Add(currentName, armorData);
         }
         sql.dataReader.Close();
         sql.ShutDown();

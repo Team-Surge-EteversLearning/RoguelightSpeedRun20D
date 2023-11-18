@@ -51,7 +51,7 @@ public class ShopUI
     {
         if (PlayerStatsManager.CashNow < price)
         {
-            Debug.Log("µ·ºÎÁ·");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             return;
         }
         PlayerStatsManager.CashNow -= price;
@@ -68,7 +68,7 @@ public class ShopUI
             if (QuestSystem.currentQuests != null)
                 foreach (Quest quest in QuestSystem.currentQuests)
                     if (quest.Key == product.key)
-                        ((ColletItemQuest)quest).UpdateCurrentCount(1);
+                        ((CollectItemQuest)quest).UpdateCurrentCount(1);
         return;
     }
     private void Display()

@@ -145,7 +145,7 @@ public class DungeonManager : MonoBehaviour
     private void Generate(Dungeon target)
     {
         target.AddUntil(roomCount, roomInFloor);
-        target.SetShopNode(1);
+        target.SetShopNode(2);
     }
 
     private void GenerateRoom(Dungeon target, float height)

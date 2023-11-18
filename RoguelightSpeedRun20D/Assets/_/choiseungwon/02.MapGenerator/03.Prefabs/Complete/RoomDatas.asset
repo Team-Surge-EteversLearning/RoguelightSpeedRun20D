@@ -76,7 +76,7 @@ MonoBehaviour:
   - roomPrefab: {fileID: 6089483822839719903, guid: ea4360453768eca44ad237ce68ab7bfa, type: 3}
   - roomPrefab: {fileID: 7820632130282400860, guid: 2393071d87bf8ae4382ac773ecc569f7, type: 3}
   - roomPrefab: {fileID: 1993919157333304183, guid: c71d0b92c85a6d24c8ce0b22a3ca270e, type: 3}
-  - roomPrefab: {fileID: 6089483822839719903, guid: 13cd8d05896479344bcee7f38e055243, type: 3}
+  - roomPrefab: {fileID: 6089483822839719903, guid: ae13cf12f971d452cbffe70850c60adf, type: 3}
   - roomPrefab: {fileID: 8615109590014953584, guid: 425a1af92b85445c4aa38b9f1bf91571, type: 3}
   bossRoomPresets:
   - roomPrefab: {fileID: 1188233378133636767, guid: bea6f8bdfab5a49e28eb2e65bc57fef9, type: 3}

@@ -318,9 +318,12 @@ public class PlayerSM : StateManager
             basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0), new List<EquipmentOption>());
         }
 
-        _weaponNow = basicWeapon;
-        _armorNow = basicArmor;
-        _shoesNow = basicShoes;
+        if (_weaponNow == null)
+            _weaponNow = basicWeapon;
+        if (_armorNow == null)
+            _armorNow = basicArmor;
+        if (_shoesNow == null)
+            _shoesNow = basicShoes;
 
         attackCooltime = 0;
 

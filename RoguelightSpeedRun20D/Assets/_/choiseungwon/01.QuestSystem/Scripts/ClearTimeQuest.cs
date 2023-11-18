@@ -18,7 +18,6 @@ public class ClearTimeQuest : Quest
     public void UpdateCurrentTime(float time)
     {
         this.currentTime += time;
-        CheckQuestStatus();
     }
 
     protected override void _CheckQuestStatus()
@@ -31,6 +30,6 @@ public class ClearTimeQuest : Quest
 
     public override string GetProgress()
     {
-        return "�̱���";
+        return "("+ Mathf.CeilToInt(currentTime) +" / " + targetTime + ")";
     }
 }

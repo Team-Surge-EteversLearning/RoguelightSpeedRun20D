@@ -48,6 +48,8 @@ public class GranadeAttackable : AttackAble
 
     protected override int _GetDamage(GameObject obj)
     {
+        if (obj.gameObject.CompareTag("PlayerBody"))
+            return 0;
         //Debug.LogWarning(obj.name);
         if ((!attackedObject.ContainsKey(obj) || attackedObject[obj] < maxHitCount))
         {
@@ -57,10 +59,13 @@ public class GranadeAttackable : AttackAble
         }
         return 0;
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        attackTrigger.enabled = true;
+        if (!other.gameObject.CompareTag("PlayerBody") || !other.gameObject.CompareTag("PlayerAttack"))
+        {
+            attackTrigger.enabled = true;
+            GetComponentInChildren<Light>().enabled = false;
+        }
         //Destroy(gameObject);
     }
 }

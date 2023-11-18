@@ -132,6 +132,9 @@ public class ShopUI
             case Weapon weapon:
                 DescriptionController.onDescriptionWithOpts?.Invoke($"{weapon.Name} ( +{weapon.Tier})\nDamage: {weapon.Damage}\nCoolTime: {weapon.Cooltime}", weapon.usableOptions);
                 break;
+            case Armor armor:
+                DescriptionController.onDescriptionWithOpts?.Invoke($"{armor.Name} ( +{armor.Tier})\nMaxHp: {armor.MaxHp}\nMaxMana: {armor.MaxMana}\nManaRegen: {armor.ManaRegen}", armor.usableOptions);
+                break;
             case Useable useable:
                 string description = "";
                 if (useable.ItemCode == 0)

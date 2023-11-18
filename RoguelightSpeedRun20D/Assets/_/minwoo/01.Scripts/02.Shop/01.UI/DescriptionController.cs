@@ -41,7 +41,6 @@ public class DescriptionController : MonoBehaviour
         Vector2 pivot = Vector2.zero;
         rectTransform.pivot = pivot;
 
-        Debug.LogWarning($"mousePosi = {Input.mousePosition} calculatedMousePosi = {mousePosition}");
         // 스크린 좌표계를 사용하여 RectTransform 위치 설정
         rectTransform.position = mousePosition;
         gameObject.SetActive(true);

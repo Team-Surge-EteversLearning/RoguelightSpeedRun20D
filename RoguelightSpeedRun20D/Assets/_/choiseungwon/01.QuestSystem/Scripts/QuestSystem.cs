@@ -47,7 +47,7 @@ public class QuestSystem : MonoBehaviour
             }
         }
 
-        Debug.Log(time);
+        //Debug.Log(time);
     }
 
     private void InitializeQuestsAllQuests()

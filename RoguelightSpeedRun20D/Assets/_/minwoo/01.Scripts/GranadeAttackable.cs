@@ -37,7 +37,7 @@ public class GranadeAttackable : AttackAble
     {
         rb.velocity = Vector3.zero;
         Vector3 diagonalForce = transform.forward + transform.up; // add forward, up
-        diagonalForce.Normalize(); 
+        diagonalForce.Normalize();
         rb.AddForce(diagonalForce * projectileSpeed, ForceMode.Impulse);
     }
 
@@ -61,11 +61,16 @@ public class GranadeAttackable : AttackAble
     }
     private void OnCollisionEnter(Collision other)
     {
-        if (!other.gameObject.CompareTag("PlayerBody") || !other.gameObject.CompareTag("PlayerAttack"))
+        if (other.gameObject.layer != 6)
         {
+            Debug.LogWarning(other.transform.name);
             attackTrigger.enabled = true;
             GetComponentInChildren<Light>().enabled = false;
         }
+        else
+        {
+            Debug.LogWarning("Player!");
+        }    
         //Destroy(gameObject);
     }
 }

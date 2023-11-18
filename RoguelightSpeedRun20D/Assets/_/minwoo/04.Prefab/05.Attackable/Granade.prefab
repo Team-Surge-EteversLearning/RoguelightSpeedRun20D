@@ -201,7 +201,7 @@ MonoBehaviour:
   attackTrigger: {fileID: 5453086864618078836}
   attackTime: 1.01
   maxHitCount: 1
-  projectileSpeed: 15
+  projectileSpeed: 3
   magicPower: 1000
 --- !u!135 &5453086864618078836
 SphereCollider:

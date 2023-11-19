@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Xml.Linq;
 using UnityEngine;
@@ -95,8 +96,10 @@ public static class PlayerSaveManager
             return;
 
         sql = SqlAccess.GetAccess(savePath);
-
+        sql.Open();
         sql.SqlRead($"SELECT COUNT(name) FROM PlayerData WHERE name = '{name}';");
+
+        Debug.LogWarning($"SELECT COUNT(name) FROM PlayerData WHERE name = '{name}';");
 
         if (sql.read && sql.dataReader.Read() && sql.dataReader.GetDecimal(0) > 0)
         {

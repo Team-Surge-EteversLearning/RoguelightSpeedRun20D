@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 3185927371629095731}
   - component: {fileID: 5622303226651440778}
   m_Layer: 0
-  m_Name: NormalRoom 31
+  m_Name: NormalRoom 25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

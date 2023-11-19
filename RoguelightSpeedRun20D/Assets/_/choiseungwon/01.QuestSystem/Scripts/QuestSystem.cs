@@ -91,15 +91,15 @@ public class QuestSystem : MonoBehaviour
             // new HuntingQuest("Zombie", "좀비 사냥꾼", "좀비 다섯 마리 사냥", 5, 500),
             // new HuntingQuest("Zombie", "좀비 사냥꾼", "좀비 열 마리 사냥", 10, 1000),
 
-             new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 100),
-             new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 200),
-             new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 300),
-             new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 500),
+             // new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 100),
+             // new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 200),
+             // new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 300),
+             // new CollectItemQuest("warhammer", "수집가", "아이템 3개 획득", 1, 500),
 
-            new OpenBoxQuest("0", "상자 사랑꾼", "상자를 1개 여세요.", 1, 100),
-            new OpenBoxQuest("0","상자 사랑꾼", "상자를 2개 여세요.", 2, 200),
-            new OpenBoxQuest("0","상자 사랑꾼", "상자를 3개 여세요.", 3, 300),
-            new OpenBoxQuest("0","상자 사랑꾼", "상자를 4개 여세요.", 5, 500),
+            new OpenBoxQuest("상자 사랑꾼", "상자를 1개 여세요.", 1, 100),
+            new OpenBoxQuest("상자 사랑꾼", "상자를 2개 여세요.", 2, 200),
+            new OpenBoxQuest("상자 사랑꾼", "상자를 3개 여세요.", 3, 300),
+            new OpenBoxQuest("상자 사랑꾼", "상자를 4개 여세요.", 5, 500),
 
             // new TotalDamageQuest("약한 싸움꾼", "총 데미지 1000 달성", 1000, 100),
             // new TotalDamageQuest("조금 약한 싸움꾼", "총 데미지 2000 달성", 2000, 250),

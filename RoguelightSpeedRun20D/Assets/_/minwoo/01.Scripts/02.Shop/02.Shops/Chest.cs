@@ -20,6 +20,7 @@ public class Chest : MonoBehaviour
     {
         DungeonShopManager.Instance.CreateChestShop(gameObject, minTier, maxTier, 1);
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerBody"))
@@ -27,10 +28,17 @@ public class Chest : MonoBehaviour
             DungeonShopManager.Instance.ResetTargetShops(gameObject);
             animator.Play("OpenAnimation");
             DungeonShopManager.CursorToggle(true);
+
             if (QuestSystem.currentQuests != null)
+            {
                 foreach (Quest quest in QuestSystem.currentQuests)
-                    if (quest.Key == "box")
+                {
+                    if (quest.Key == "01.TreasureChest")
+                    {
                         ((OpenBoxQuest)quest).UpdateCurrentCount(1);
+                    }
+                }
+            }
         }
     }
 }

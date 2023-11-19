@@ -1162,6 +1162,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhostWithoutWeapon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1214376351174582481, guid: 723c99fd2b8474190a1d32be9b9d4c5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7215355075224188332, guid: 723c99fd2b8474190a1d32be9b9d4c5c, type: 3}
       propertyPath: movePoints.Array.size
       value: 2
@@ -1770,6 +1774,10 @@ PrefabInstance:
     - target: {fileID: 1214376351174582481, guid: 723c99fd2b8474190a1d32be9b9d4c5c, type: 3}
       propertyPath: m_Name
       value: GhostWithoutWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1214376351174582481, guid: 723c99fd2b8474190a1d32be9b9d4c5c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7215355075224188332, guid: 723c99fd2b8474190a1d32be9b9d4c5c, type: 3}
       propertyPath: movePoints.Array.size

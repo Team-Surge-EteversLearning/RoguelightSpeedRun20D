@@ -12,6 +12,7 @@ public class DungeonShopManager : MonoBehaviour
     [SerializeField] GameObject shopPanel;
     [SerializeField] TMP_Text cashTxt1;
     [SerializeField] TMP_Text cashTxt2;
+    [SerializeField] Button exit;
 
     [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
 
@@ -39,6 +40,9 @@ public class DungeonShopManager : MonoBehaviour
         cashTxt2.text = PlayerStatsManager.CashNow.ToString();
         onBuy += (string name) => cashTxt2.text = PlayerStatsManager.CashNow.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
+
+        exit.onClick.AddListener(() => { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; });
+        exit.onClick.AddListener(() => shopPanel.gameObject.SetActive(false));
     }
 
     private void InitSlot()

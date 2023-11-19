@@ -8,6 +8,7 @@ public class MiniMapManager : MonoBehaviour
 {
     [SerializeField] GameObject miniNodePrefab;
     [SerializeField] GameObject miniMapCamera;
+    [SerializeField] Sprite bossMark;
     private Dictionary<DungeonNode, GameObject> miniMapDict = new Dictionary<DungeonNode, GameObject>();
 
     private void Awake()
@@ -32,11 +33,18 @@ public class MiniMapManager : MonoBehaviour
         if (current.Position.y != prv.Position.y && prv != null)
         {
             Debug.LogWarning(current.Position.y);
-            miniMapCamera.transform.position = new Vector3(DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.x, 10, DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.z);
+            miniMapCamera.transform.position = new Vector3(DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.x, 100, DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.z);
             ChangeFloorForMiniMap(current.Position.y);
         }
         if (miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled)
-            miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled = false;
+        {
+            if (DungeonManager.Instance.Dungeon.Ends.Contains(current))
+            {
+                miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].sprite = bossMark;
+            }
+            else
+                miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled = false;
+        }
         if (prv != null)
             miniMapDict[prv].GetComponent<SpriteRenderer>().color = Color.white;
         if (miniMapDict.ContainsKey(current))

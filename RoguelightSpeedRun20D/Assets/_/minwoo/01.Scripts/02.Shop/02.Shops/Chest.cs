@@ -23,6 +23,8 @@ public class Chest : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+        if (DungeonShopManager.Instance.GOShopShopPair[gameObject].Products.Count < 1)
+            return;
         if (other.CompareTag("PlayerBody"))
         {
             DungeonShopManager.Instance.ResetTargetShops(gameObject);

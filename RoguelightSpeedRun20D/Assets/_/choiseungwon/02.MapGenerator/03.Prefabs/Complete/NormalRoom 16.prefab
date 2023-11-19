@@ -402,6 +402,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2458335501764044755}
   - {fileID: 1288521034207773427}
   - {fileID: 3329323147101311181}
   - {fileID: 6304130703205915492}
@@ -409,7 +410,6 @@ Transform:
   - {fileID: 6098003815579103916}
   - {fileID: 7056894481297375693}
   - {fileID: 5772382755361038086}
-  - {fileID: 2458335501764044755}
   - {fileID: 7331197814485806841}
   m_Father: {fileID: 5874656609234290189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1293,17 +1293,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3978085688371093752, guid: 02bc2c64282935841a0fe4b896015856, type: 3}
+      propertyPath: movePoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3978085688371093752, guid: 02bc2c64282935841a0fe4b896015856, type: 3}
       propertyPath: movePoints.Array.data[0]
       value: 
-      objectReference: {fileID: 6304130703205915492}
+      objectReference: {fileID: 2458335501764044755}
     - target: {fileID: 3978085688371093752, guid: 02bc2c64282935841a0fe4b896015856, type: 3}
       propertyPath: movePoints.Array.data[1]
       value: 
-      objectReference: {fileID: 7056894481297375693}
+      objectReference: {fileID: 3329323147101311181}
     - target: {fileID: 3978085688371093752, guid: 02bc2c64282935841a0fe4b896015856, type: 3}
       propertyPath: movePoints.Array.data[2]
       value: 
-      objectReference: {fileID: 7331197814485806841}
+      objectReference: {fileID: 6098003815579103916}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

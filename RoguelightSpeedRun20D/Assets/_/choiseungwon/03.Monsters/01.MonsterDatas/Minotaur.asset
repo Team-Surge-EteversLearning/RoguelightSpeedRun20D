@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Minotaur
   m_EditorClassIdentifier: 
   monsterName: Minotaur
-  cashDrop: 1000
-  hpMax: 500
-  attackPower: 5
+  cashDrop: 500
+  hpMax: 300
+  attackPower: 30
   attackCoolTime: 2
   attackRange: 2
   idleTime: 1

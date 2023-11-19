@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: Wizard-Melee
   cashDrop: 100
   hpMax: 500
-  attackPower: 5
+  attackPower: 20
   attackCoolTime: 1.2
   attackRange: 1.2
   idleTime: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   monsterName: WizardLongDistance
   cashDrop: 200
   hpMax: 250
-  attackPower: 5
+  attackPower: 15
   attackCoolTime: 3
   attackRange: 10
   idleTime: 1

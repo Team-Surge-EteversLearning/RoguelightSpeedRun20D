@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using TMPro;
-using UnityEditor.ShaderGraph.Internal;
 
 public class QuestSystem : MonoBehaviour
 {

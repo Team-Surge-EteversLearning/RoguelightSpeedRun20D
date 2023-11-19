@@ -54,12 +54,22 @@ public abstract class Equipment : IProduct
     public void Buy()
     {
         Button prvBtn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
-        prvBtn.onClick.RemoveAllListeners();
-        prvBtn.GetComponentsInChildren<Image>()[1].sprite = TestDB.instance.iconSet.GetIcon("Default");
-        if(!EquipmentDataManager.unlocks.ContainsKey(name))
+
+        if (prvBtn != null)
+        {
+            prvBtn.onClick.RemoveAllListeners();
+
+            Image[] images = prvBtn.GetComponentsInChildren<Image>();
+            if (images != null && images.Length > 1)
+            {
+                images[1].sprite = TestDB.instance.iconSet.GetIcon("Default");
+            }
+        }
+        if (!EquipmentDataManager.unlocks.ContainsKey(name))
             EquipmentDataManager.unlocks.Add(name, basicData);
         Equip();
     }
+
 
     public abstract void Equip();
 

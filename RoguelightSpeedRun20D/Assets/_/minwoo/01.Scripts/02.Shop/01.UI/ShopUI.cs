@@ -32,7 +32,7 @@ public class ShopUI
             s_product = value;
             product = value.Product;
             price = value.Price;
-            
+
             productButton.onClick.RemoveAllListeners();
             productButton.onClick.AddListener(CashCheckAndBuy);
             if (productButton.gameObject.GetComponent<EventTrigger>() != null)
@@ -56,8 +56,22 @@ public class ShopUI
                 Debug.Log("Not Enough");
                 return;
             }
-            PlayerStatsManager.CashNow -= price;
-            DungeonShopManager.onBuy?.Invoke(name);
+            if (product.GetType() == typeof(Useable))
+            {
+                Useable useable = (Useable)product;
+                if (useable.Quantity > 0)
+                {
+                    DungeonShopManager.onBuy?.Invoke(name);
+                    PlayerStatsManager.CashNow -= price;
+                    product.Buy();
+                }
+            }
+            else
+            {
+                DungeonShopManager.onBuy?.Invoke(name);
+                product.Buy();
+                PlayerStatsManager.CashNow -= price;
+            }
         }
         else                                                                                         // in vill
         {
@@ -66,17 +80,30 @@ public class ShopUI
                 Debug.Log("Not Enough");
                 return;
             }
-            PlayerStatsManager.WareHouseCash -= price;
-            Village.onBuy?.Invoke(name);
+            if (product.GetType() == typeof(Useable))
+            {
+                Useable useable = (Useable)product;
+                if (useable.Quantity > 0)
+                {
+                    Village.onBuy?.Invoke(name);
+                    PlayerStatsManager.CashNow -= price;
+                    product.Buy();
+                }
+            }
+            else
+            {
+                Village.onBuy?.Invoke(name);
+                product.Buy();
+                PlayerStatsManager.CashNow -= price;
+            }
         }
-        product.Buy();
         DescriptionController.onDescriptionComplete?.Invoke();
         if (productButton.gameObject.GetComponent<EventTrigger>() != null && product is Equipment)
         {
             UnityEngine.Object.Destroy(productButton.gameObject.GetComponent<EventTrigger>());
         }
 
-        if(price == 0)
+        if (price == 0)
             if (QuestSystem.currentQuests != null)
                 foreach (Quest quest in QuestSystem.currentQuests)
                     if (quest.Key == product.key)
@@ -122,7 +149,7 @@ public class ShopUI
             Stat stat = (Stat)product;
             productButton.GetComponentInChildren<TMP_Text>().text = "";
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, stat); });
-            name= stat.Name;
+            name = stat.Name;
             return stat.Name;
         }
         else

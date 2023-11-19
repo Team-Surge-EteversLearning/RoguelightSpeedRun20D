@@ -22,7 +22,7 @@ public class PotionShop : Shop
         potionFac = (DungeonItemManager)factory;
         potionFac.ResetShop();
         Products.Clear();
-        Products = potionFac.Make($"5,5,0,0,{type}");
+        Products = potionFac.Make($"3,3,0,0,{type}");
     }
 
     public override void ResetShop()

@@ -27,9 +27,10 @@ public class Village : MonoBehaviour
     public static Action<string> onBuy;
     private void Start()
     {
+        onBuy = null;
         PlayerStatsManager.WareHouseCash += PlayerStatsManager.CashNow;
         PlayerStatsManager.CashNow = 0;
-
+        purchaseCompletePanel = FindObjectOfType<PurchaseCompletePanelController>(true);
         //PlayerSaveManager.SaveData("default", PlayerStatsManager.WareHouseCash, PlayerStatsManager.HpMax, PlayerStatsManager.StaminaMax, PlayerStatsManager.ManaMax, PlayerStatsManager.PowerWeight, PlayerSM.skill1Index, PlayerSM.skill2Index, PlayerSaveManager.WrappingUnlocks());
         shopPanel.SetActive(false);
  

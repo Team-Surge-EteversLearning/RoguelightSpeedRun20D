@@ -13,7 +13,7 @@ public abstract class ActiveSkill : IProduct
     public int Mana { get => mana; set => mana = value; }
     public float CoolTime { get => coolTime; set => coolTime = value; }
 
-    string IProduct.key { get => throw new System.NotImplementedException(); }
+    string IProduct.key { get => name; }
     public string SkillDecription { get => _skillDecription; set => _skillDecription = value; }
 
     protected ActiveSkill(string name, int mana, float coolTime)

@@ -14,7 +14,7 @@ public class DungeonShopManager : MonoBehaviour
     [SerializeField] TMP_Text cashTxt2;
     [SerializeField] Button exit;
 
-    [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
+    PurchaseCompletePanelController purchaseCompletePanel;
 
     private Dictionary<Button, ShopUI> btnShopUIPair = new Dictionary<Button, ShopUI>();
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
@@ -33,6 +33,7 @@ public class DungeonShopManager : MonoBehaviour
     }
     private void Start()
     {
+        purchaseCompletePanel = FindObjectOfType<PurchaseCompletePanelController>(true);
         InitSlot();
         SlotsReset();
         cashTxt1.text = PlayerStatsManager.CashNow.ToString();

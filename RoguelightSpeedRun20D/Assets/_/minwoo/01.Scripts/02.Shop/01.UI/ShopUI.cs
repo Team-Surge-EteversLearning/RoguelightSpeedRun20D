@@ -86,7 +86,7 @@ public class ShopUI
                 if (useable.Quantity > 0)
                 {
                     Village.onBuy?.Invoke(name);
-                    PlayerStatsManager.CashNow -= price;
+                    PlayerStatsManager.WareHouseCash -= price;
                     product.Buy();
                 }
             }
@@ -94,7 +94,7 @@ public class ShopUI
             {
                 Village.onBuy?.Invoke(name);
                 product.Buy();
-                PlayerStatsManager.CashNow -= price;
+                PlayerStatsManager.WareHouseCash -= price;
             }
         }
         DescriptionController.onDescriptionComplete?.Invoke();

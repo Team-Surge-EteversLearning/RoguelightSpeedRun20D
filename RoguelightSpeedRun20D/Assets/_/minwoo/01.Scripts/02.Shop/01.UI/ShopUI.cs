@@ -49,15 +49,27 @@ public class ShopUI
     }
     private void CashCheckAndBuy()
     {
-        if (PlayerStatsManager.CashNow < price)
+        if (thisShop.GetType() == typeof(ChestShop) || thisShop.GetType() == typeof(InDungeonShop)) // in dun
         {
-            Debug.Log("������");
-            return;
+            if (PlayerStatsManager.CashNow < price)
+            {
+                Debug.Log("Not Enough");
+                return;
+            }
+            PlayerStatsManager.CashNow -= price;
+            DungeonShopManager.onBuy?.Invoke(name);
         }
-        PlayerStatsManager.CashNow -= price;
+        else                                                                                         // in vill
+        {
+            if (PlayerStatsManager.WareHouseCash < price)
+            {
+                Debug.Log("Not Enough");
+                return;
+            }
+            PlayerStatsManager.WareHouseCash -= price;
+            Village.onBuy?.Invoke(name);
+        }
         product.Buy();
-        Village.onBuy?.Invoke(name);
-        DungeonShopManager.onBuy?.Invoke(name);
         DescriptionController.onDescriptionComplete?.Invoke();
         if (productButton.gameObject.GetComponent<EventTrigger>() != null && product is Equipment)
         {

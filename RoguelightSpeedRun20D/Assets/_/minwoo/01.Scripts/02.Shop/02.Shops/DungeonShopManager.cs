@@ -10,7 +10,9 @@ public class DungeonShopManager : MonoBehaviour
 {
     public static DungeonShopManager Instance { get; private set; }
     [SerializeField] GameObject shopPanel;
-    [SerializeField] TMP_Text cashTxt;
+    [SerializeField] TMP_Text cashTxt1;
+    [SerializeField] TMP_Text cashTxt2;
+
     [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
 
     private Dictionary<Button, ShopUI> btnShopUIPair = new Dictionary<Button, ShopUI>();
@@ -32,8 +34,10 @@ public class DungeonShopManager : MonoBehaviour
     {
         InitSlot();
         SlotsReset();
-        cashTxt.text = PlayerStatsManager.CashNow.ToString();
-        onBuy += (string name) => cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        cashTxt1.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += (string name) => cashTxt1.text = PlayerStatsManager.CashNow.ToString();
+        cashTxt2.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += (string name) => cashTxt2.text = PlayerStatsManager.CashNow.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
     }
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,15 +34,15 @@ public class Village : MonoBehaviour
         OptionBtnConnect();
         SlotsReset();
         cashTxt.text = PlayerStatsManager.CashNow.ToString();
-        onBuy += (string name) => cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += (string name) => cashTxt.text = PlayerStatsManager.WareHouseCash.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
         startBtn.onClick.AddListener(DungeonInsert);
+        PlayerStatsManager.WareHouseCash = PlayerStatsManager.CashNow;
+        PlayerStatsManager.CashNow = 0;
     }
 
     private void DungeonInsert()
     {
-        PlayerStatsManager.WareHouseCash = PlayerStatsManager.CashNow;
-        PlayerStatsManager.CashNow = 0;
         SceneManager.LoadScene(1);
     }
 

@@ -32,7 +32,7 @@ public class MiniMapManager : MonoBehaviour
         if (current.Position.y != prv.Position.y && prv != null)
         {
             Debug.LogWarning(current.Position.y);
-            miniMapCamera.transform.position = new Vector3(DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.x, 10, DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.z);
+            miniMapCamera.transform.position = new Vector3(DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.x, 100, DungeonManager.Instance.Dungeon.Starts[current.Position.y].Position.z);
             ChangeFloorForMiniMap(current.Position.y);
         }
         if (miniMapDict[current].GetComponentsInChildren<SpriteRenderer>()[1].enabled)

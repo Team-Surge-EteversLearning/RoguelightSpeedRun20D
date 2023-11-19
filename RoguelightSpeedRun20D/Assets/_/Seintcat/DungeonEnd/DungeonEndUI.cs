@@ -43,15 +43,19 @@ public class DungeonEndUI : MonoBehaviour
 
     public void GoVillage()
     {
-        SceneManager.LoadScene(0);
 
-        PlayerStatsManager.CashNow += PlayerSM.weaponNow.SellWhenClear;
-        PlayerStatsManager.CashNow += PlayerSM.armorNow.SellWhenClear;
-        PlayerStatsManager.CashNow += PlayerSM.shoesNow.SellWhenClear;
+        PlayerStatsManager.WareHouseCash += PlayerSM.weaponNow.SellWhenClear;
+        Debug.LogWarning(PlayerSM.weaponNow.SellWhenClear);
+        PlayerStatsManager.WareHouseCash += PlayerSM.armorNow.SellWhenClear;
+        Debug.LogWarning(PlayerSM.armorNow.SellWhenClear) ;
+        PlayerStatsManager.WareHouseCash += PlayerSM.shoesNow.SellWhenClear;
+        Debug.LogWarning(PlayerSM.shoesNow.SellWhenClear);
 
         PlayerSaveManager.SaveData("default", PlayerStatsManager.WareHouseCash, 
             PlayerStatsManager.HpMax, PlayerStatsManager.StaminaMax, PlayerStatsManager.ManaMax,
             PlayerStatsManager.PowerWeight, PlayerSM.skill1Index,
             PlayerSM.skill2Index, PlayerSaveManager.WrappingUnlocks());
+        SceneManager.LoadScene(0);
+
     }
 }

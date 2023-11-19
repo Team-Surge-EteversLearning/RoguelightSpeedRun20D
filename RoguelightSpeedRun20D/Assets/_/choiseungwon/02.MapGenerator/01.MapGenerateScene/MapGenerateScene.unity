@@ -272,6 +272,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2004091533097412358, guid: 3c55f89165bc8764d90c008cac284376, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 1755514330}
+    - target: {fileID: 2004091533097412358, guid: 3c55f89165bc8764d90c008cac284376, type: 3}
       propertyPath: cashTxt
       value: 
       objectReference: {fileID: 936894564}
@@ -2188,6 +2192,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 604032ea82970fc40b3318a480975ec4, type: 3}
+--- !u!114 &1755514330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3746901898985170824, guid: 604032ea82970fc40b3318a480975ec4, type: 3}
+  m_PrefabInstance: {fileID: 1755514329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1758019787 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 897656392649915231, guid: edfdace7c52892146b919f7aa55a57d9, type: 3}

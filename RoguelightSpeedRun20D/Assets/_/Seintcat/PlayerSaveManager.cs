@@ -129,10 +129,9 @@ public static class PlayerSaveManager
         if (sql.read && sql.dataReader.Read())
         {
             int count = (int)sql.dataReader.GetDecimal(0);
+            sql.SqlRead($"SELECT name FROM ItemUnlock WHERE playerName = '{name}';");
             for (int i = 0; i < count; i++)
             {
-                sql.SqlRead($"SELECT name FROM ItemUnlock WHERE playerName = '{name}';");
-
                 if (sql.read && sql.dataReader.Read())
                     itemUnlock.Add(sql.dataReader.GetString(0));
                 else

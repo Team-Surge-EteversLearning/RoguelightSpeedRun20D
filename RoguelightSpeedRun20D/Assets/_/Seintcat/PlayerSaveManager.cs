@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.IO;
 using System.Xml.Linq;
 using UnityEngine;
@@ -14,7 +15,7 @@ public static class PlayerSaveManager
 
     public static void SaveData(string name, int cashNow, int hpMax, int staminaMax, int manaMax, int powerWeight, string activeSkill1, string activeSkill2, List<string> itemUnlock)
     {
-        if(!File.Exists(savePath))
+        if (!File.Exists(savePath))
             File.Copy(originData, savePath, true);
 
 
@@ -23,7 +24,7 @@ public static class PlayerSaveManager
         sql.SqlRead($"SELECT COUNT(name) FROM PlayerData WHERE name = '{name}';");
         if (sql.read && sql.dataReader.Read())
         {
-            if(sql.dataReader.GetDecimal(0) > 0)
+            if (sql.dataReader.GetDecimal(0) > 0)
                 sql.SqlExecute(
                     $"UPDATE PlayerData SET " +
                     $"cashNow = {cashNow}, " +
@@ -67,7 +68,7 @@ public static class PlayerSaveManager
 
     public static List<string> PlayerList()
     {
-        List<string> list = new List<string> ();
+        List<string> list = new List<string>();
 
         if (!File.Exists(savePath))
             return list;
@@ -95,15 +96,18 @@ public static class PlayerSaveManager
             return;
 
         sql = SqlAccess.GetAccess(savePath);
-
+        sql.Open();
         sql.SqlRead($"SELECT COUNT(name) FROM PlayerData WHERE name = '{name}';");
+
+        Debug.LogWarning($"SELECT COUNT(name) FROM PlayerData WHERE name = '{name}';");
+
         if (sql.read && sql.dataReader.Read() && sql.dataReader.GetDecimal(0) > 0)
         {
             sql.SqlRead($"SELECT name, cashNow, hpMax, staminaMax, manaMax, powerWeight, activeSkill1, activeSkill2 FROM PlayerData WHERE name = '{name}';");
             if (sql.read && sql.dataReader.Read())
             {
                 PlayerStatsManager.Set(
-                    sql.dataReader.GetString(0), 
+                    sql.dataReader.GetString(0),
                     (int)sql.dataReader.GetDecimal(1),
                     (int)sql.dataReader.GetDecimal(2),
                     (int)sql.dataReader.GetDecimal(3),
@@ -122,10 +126,10 @@ public static class PlayerSaveManager
 
         List<string> itemUnlock = new List<string>();
         sql.SqlRead($"SELECT COUNT(name) FROM ItemUnlock WHERE playerName = '{name}';");
-        if(sql.read && sql.dataReader.Read())
+        if (sql.read && sql.dataReader.Read())
         {
             int count = (int)sql.dataReader.GetDecimal(0);
-            for(int i = 0; i < count; i++)
+            for (int i = 0; i < count; i++)
             {
                 sql.SqlRead($"SELECT name FROM ItemUnlock WHERE playerName = '{name}';");
 
@@ -146,11 +150,11 @@ public static class PlayerSaveManager
     public static List<string> WrappingUnlocks()
     {
         List<string> list = new List<string>();
-        foreach(var item in EquipmentDataManager.unlocks.Keys)
+        foreach (var item in EquipmentDataManager.unlocks.Keys)
         {
             list.Add(item);
         }
-        foreach(var item in SkillDataModel.UnlockActive.Keys)
+        foreach (var item in SkillDataModel.UnlockActive.Keys)
         {
             list.Add(item);
         }

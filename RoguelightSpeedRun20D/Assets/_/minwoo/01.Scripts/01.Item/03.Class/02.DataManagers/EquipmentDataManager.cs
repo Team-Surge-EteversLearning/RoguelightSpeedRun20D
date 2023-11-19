@@ -67,10 +67,7 @@ public class EquipmentDataManager : IProductMaker
         }
         sql.dataReader.Close();
         sql.ShutDown();
-        foreach (var item in locks.Keys)
-        {
-            //Debug.LogWarning(item);
-        }
+
     }
     private void ShoesTableLoad()
     {

@@ -33,7 +33,7 @@ public class DungeonEndUI : MonoBehaviour
 
         singleton.gameObject.SetActive(true);
         singleton.title.text = (gameClear ? "Dungeon Clear" : "Game Over");
-        singleton.nextbutton.SetActive(gameClear);
+        //singleton.nextbutton.SetActive(gameClear);
     }
 
     public void NextStage()

@@ -301,6 +301,10 @@ public class PlayerSM : StateManager
             animator.Play("Death", 1);
             enabled = false;
             DungeonEndUI.DungeonEnd(false);
+
+            _weaponNow = basicWeapon;
+            _armorNow = basicArmor;
+            _shoesNow = basicShoes;
         }
         else
         {

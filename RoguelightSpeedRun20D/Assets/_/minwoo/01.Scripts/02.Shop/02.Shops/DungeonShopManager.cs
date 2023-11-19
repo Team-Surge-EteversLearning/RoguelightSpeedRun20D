@@ -28,11 +28,14 @@ public class DungeonShopManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
+        else
+            Destroy(gameObject);
     }
     private void Start()
     {
+        onBuy = null;
         purchaseCompletePanel = FindObjectOfType<PurchaseCompletePanelController>(true);
         InitSlot();
         SlotsReset();

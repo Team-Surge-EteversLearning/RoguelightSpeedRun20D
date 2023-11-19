@@ -113,8 +113,15 @@ public class DungeonManager : MonoBehaviour
     
     private void Awake()
     {
-        Instance = this;
-        
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+        RoomClearEvent = null;
+        SpawnStairEvent =  null;
+        BossRoomClearEvent = null;
+        BundleClearEvent  = null;
+
         roomCount = dungeonBundleDatas[0].roomCount;
         roomInFloor = dungeonBundleDatas[0].roomInFloor;
         floorHeight = dungeonBundleDatas[0].floorHeight;

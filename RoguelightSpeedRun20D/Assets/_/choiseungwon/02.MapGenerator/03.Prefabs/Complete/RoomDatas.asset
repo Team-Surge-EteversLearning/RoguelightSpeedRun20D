@@ -30,7 +30,7 @@ MonoBehaviour:
   - roomPrefab: {fileID: 6089483822839719903, guid: 8fe981cb45cb642f2b93557ff9fee8c7, type: 3}
   - roomPrefab: {fileID: 3492190888458431744, guid: 10b39e3f44f904a3b8661f1445ef39c9, type: 3}
   - roomPrefab: {fileID: 3492190888458431744, guid: 664fb14d3ed37454985c63a6c17c7c5d, type: 3}
-  - roomPrefab: {fileID: 5019094470277296039, guid: 7a7a7eedb2dc446a3bc2bf956424991c, type: 3}
+  - roomPrefab: {fileID: 1993919157333304183, guid: a4f754f6eb0fd446b891e812d77f26ac, type: 3}
   - roomPrefab: {fileID: 1993919157333304183, guid: a7436a689ceace449983524499f40596, type: 3}
   - roomPrefab: {fileID: 8931496021088591642, guid: d2861a2dd47fec54da12ba87ac3eef05, type: 3}
   - roomPrefab: {fileID: 8615109590014953584, guid: 87f48cf14c7044bbc8cdb3cf0350f264, type: 3}

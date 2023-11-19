@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 527153192613468130}
@@ -54,8 +54,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.12
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &6668437748102365115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
   attackTrigger: {fileID: 4523282850568049975}
   attackTime: 1
   maxHitCount: 1
-  projectileSpeed: 50
+  projectileSpeed: 10
   magicFower: 100
 --- !u!54 &8846928218934828553
 Rigidbody:
@@ -152,17 +152,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114101185890378664, guid: e865b065887ee5742b7282a5ea6554ee, type: 3}
-      propertyPath: speed
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1589245581719068, guid: e865b065887ee5742b7282a5ea6554ee, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5865253480925281879}
+      addedObject: {fileID: 8307902672466118138}
   m_SourcePrefab: {fileID: 100100000, guid: e865b065887ee5742b7282a5ea6554ee, type: 3}
 --- !u!4 &527153192613468130 stripped
 Transform:
@@ -174,7 +170,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1589245581719068, guid: e865b065887ee5742b7282a5ea6554ee, type: 3}
   m_PrefabInstance: {fileID: 531364421864789500}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5865253480925281879
+--- !u!114 &8307902672466118138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

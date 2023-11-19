@@ -24,7 +24,7 @@ public class SkillDataModel : IProductMaker
         //unlockSkills remove at lockaActive and add to unlockActive
         FireBall fireBall = new FireBall("fireBall", 1, 1);
         IceBolt iceBolt = new IceBolt("iceBolt", 10, 1);
-        SwordShoot swordShoot = new SwordShoot("swordShoot", 10, 1);
+        //SwordShoot swordShoot = new SwordShoot("swordShoot", 10, 1);
         BerSerk berSerk = new BerSerk("berSerk", 10, 1);
         Healing healing = new Healing("healing", 10, 1);
     }

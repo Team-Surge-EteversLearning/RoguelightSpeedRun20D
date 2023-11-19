@@ -16,6 +16,10 @@ public class Healing : ActiveSkill
 
     public override void _Use()
     {
+        PlayerSM playerSM = PlayerSM.playerObj.GetComponent<PlayerSM>();
+        GameObject aura = playerSM.skillPrefabs[2];
+        GameObject instantiatedObject = UnityEngine.Object.Instantiate(aura, playerSM.skillTransform.position, Quaternion.identity);
+        instantiatedObject.transform.parent = playerSM.transform;
         PlayerSM.hpNow = PlayerSM.hpNow + (int)(PlayerSM.hpMax * 0.2f);
     }
 }

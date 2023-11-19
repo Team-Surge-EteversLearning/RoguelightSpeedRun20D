@@ -1848,8 +1848,9 @@ MonoBehaviour:
   skillPrefabs:
   - {fileID: 618241033431001120, guid: 9f53240f1f87d9742b4b8dadc15f9a90, type: 3}
   - {fileID: 618241033431001120, guid: b1152163b1a6140459b3b5a4311e541c, type: 3}
-  - {fileID: 618241033431001120, guid: b1152163b1a6140459b3b5a4311e541c, type: 3}
+  - {fileID: 9017484664307500583, guid: 1245b8d2997d5b34fb1637be70a7eb05, type: 3}
   - {fileID: 5429363315059666685, guid: 083e37461e88e4e63b53c600c72684a7, type: 3}
+  - {fileID: 7155335147208632822, guid: 97c43495f80a3244fad1301dfafbe252, type: 3}
 --- !u!114 &1371094632323794439
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3331,7 +3331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5433472636282835181, guid: fd8cb5efb5b77e24d8bf58f693f5ea6b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3904,6 +3904,10 @@ PrefabInstance:
     - target: {fileID: 4434928818337371340, guid: f113b993b3ba24e2d8ba66cb06dbdbff, type: 3}
       propertyPath: m_Name
       value: LongSword_Nomal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434928818337371340, guid: f113b993b3ba24e2d8ba66cb06dbdbff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8506474333617753110, guid: f113b993b3ba24e2d8ba66cb06dbdbff, type: 3}
       propertyPath: m_LocalPosition.x

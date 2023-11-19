@@ -47,6 +47,7 @@ public class PlayerSM : StateManager
             {
                 GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
                 weaponModel.SetActive(true);
+                playerObj.GetComponent<PlayerSM>().attackable = playerObj.GetComponent<PlayerSM>().weaponModelNow.GetComponent<AttackAble>();
             }
         }
     }
@@ -116,12 +117,16 @@ public class PlayerSM : StateManager
     {
         ManagerStart();
         playerObj = gameObject;
-        weaponModelNow = weaponInstance[0];
-        attackable = weaponModelNow.GetComponent<AttackAble>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         ResetAfterGameOver();
+
+        GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
+        weaponModel.SetActive(true);
+        attackable = weaponModelNow.GetComponent<AttackAble>();
+        GameObject armorModel = _armorNow.MakeInGame(playerObj.GetComponent<PlayerSM>().armorInstance);
+        armorModel.SetActive(true);
     }
     public override void MakeState()
     {

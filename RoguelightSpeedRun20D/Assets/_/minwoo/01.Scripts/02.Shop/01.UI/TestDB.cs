@@ -9,7 +9,8 @@ public class TestDB : MonoBehaviour
     {
         if (instance == null)
             instance = this;
-
+        else
+            Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
     }
     public IconSet iconSet;

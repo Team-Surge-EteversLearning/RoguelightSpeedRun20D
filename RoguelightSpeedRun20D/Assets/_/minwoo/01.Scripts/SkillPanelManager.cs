@@ -122,6 +122,10 @@ public class SkillPanelManager : MonoBehaviour
             indicator2.SetActive(false);
         }
     }
+    private void OnDestroy()
+    {
+        emptySlots.Clear();
+    }
     private void OnPointExitProduct()
     {
         DescriptionController.onDescriptionComplete?.Invoke();

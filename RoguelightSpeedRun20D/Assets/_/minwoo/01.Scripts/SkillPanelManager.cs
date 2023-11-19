@@ -6,7 +6,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Rendering.CameraUI;
 
 public class SkillPanelManager : MonoBehaviour
 {
@@ -90,9 +89,9 @@ public class SkillPanelManager : MonoBehaviour
     {
         choicePanel.SetActive(true);
         Button[] buttons = choicePanel.GetComponentsInChildren<Button>();
-        buttons[0].onClick.AddListener(() => { PlayerSM.skill1Index = name; buttons[0].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); });
+        buttons[0].onClick.AddListener(() => { PlayerSM.skill1Index = name; buttons[0].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); Debug.LogWarning(PlayerSM.skill1Index);
+        });
         buttons[1].onClick.AddListener(() => { PlayerSM.skill2Index = name; buttons[1].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); });
-
         Debug.LogWarning($"{PlayerSM.skill1Index} / {PlayerSM.skill2Index}");
     }
     private void SetIndicator()

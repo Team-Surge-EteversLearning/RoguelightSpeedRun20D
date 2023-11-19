@@ -20,7 +20,7 @@ public class SwordShoot : ActiveSkill
     public override void _Use()
     {
         PlayerSM playerSM = PlayerSM.playerObj.GetComponent<PlayerSM>();
-        GameObject projectile = playerSM.skillPrefabs[2];
+        GameObject projectile = playerSM.skillPrefabs[3];
         //SetRotation
         Vector3 direction = playerSM.skillTransform.forward; 
         Quaternion rotation = Quaternion.LookRotation(direction);

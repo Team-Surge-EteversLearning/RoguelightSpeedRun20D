@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   miniNodePrefab: {fileID: 2940196112756244030, guid: 02aef14e8842243bf994e2dc8e155eee, type: 3}
-  miniMapSet: {fileID: 0}
+  miniMapCamera: {fileID: 0}
+  bossMark: {fileID: 21300000, guid: 4a341e267e8b14e4c89de5bb90b882fb, type: 3}

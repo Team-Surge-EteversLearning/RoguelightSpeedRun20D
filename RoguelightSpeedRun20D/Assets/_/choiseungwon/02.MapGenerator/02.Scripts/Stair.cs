@@ -33,15 +33,19 @@ public class Stair : MonoBehaviour
 
     public void UpStair(bool clear)
     {
-        StartCoroutine(UpStair());
+        if (clear == true)
+        {
+            StartCoroutine(UpStairCoroutine());
+        }
     }
 
-    IEnumerator UpStair()
+    IEnumerator UpStairCoroutine()
     {
         for (int i = 0; i < 10; i++)
         {
+            yield return new WaitForSeconds(1f);
+
             this.transform.position = Vector3.MoveTowards(this.transform.position, afterPosition, 0.5f);
-            yield return new WaitForSeconds(0.5f);
         }
         
         yield return new WaitForSeconds(10f);

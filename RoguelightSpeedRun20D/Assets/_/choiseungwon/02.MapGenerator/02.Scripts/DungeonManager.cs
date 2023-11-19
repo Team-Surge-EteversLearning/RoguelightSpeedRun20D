@@ -15,6 +15,8 @@ public class DungeonManager : MonoBehaviour
     
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
     [SerializeField] private MiniMapManager miniMapManager;
+
+    private Stair stair = new Stair();
     
     private int roomCount;
     private int roomInFloor;
@@ -75,7 +77,8 @@ public class DungeonManager : MonoBehaviour
                         Dungeon.Current.isSafe = true;
                         Door(true);
                         SpawnStair(true);
-                        BossRoomClear(true);
+                        // BossRoomClear(true);
+                        // UpStairCoroutine();
                     }
                 }
                 else
@@ -99,7 +102,7 @@ public class DungeonManager : MonoBehaviour
     {
         SpawnStairEvent?.Invoke(isBossRoomClear);
     }
-    public static void BossRoomClear(bool isBossRoomClear)
+    public static void UpStair(bool isBossRoomClear)
     {
         BossRoomClearEvent?.Invoke(isBossRoomClear);
     }

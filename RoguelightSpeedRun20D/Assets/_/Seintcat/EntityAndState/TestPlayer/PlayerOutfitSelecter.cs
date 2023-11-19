@@ -53,10 +53,4 @@ public class PlayerOutfitSelecter : MonoBehaviour
         weaponInstance[0].SetActive(true);
         armorInstance[0].SetActive(true);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

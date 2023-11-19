@@ -27,7 +27,6 @@ public class Village : MonoBehaviour
     public static Action<string> onBuy;
     private void Start()
     {
-        print($"nowCash {PlayerStatsManager.CashNow}");
         PlayerStatsManager.WareHouseCash += PlayerStatsManager.CashNow;
         PlayerStatsManager.CashNow = 0;
 

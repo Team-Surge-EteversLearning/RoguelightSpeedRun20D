@@ -63,7 +63,6 @@ public class PlayerStatsManager : IProductMaker
         priceTable.Add(stats[2], ManaMaxPrice);
         priceTable.Add(stats[3], SpeedPrice);
         priceTable.Add(stats[4], PowerWeightPrice);
-        PlayerSaveManager.LoadData("default");
     }
 
     public static void AddPrice(int index) 

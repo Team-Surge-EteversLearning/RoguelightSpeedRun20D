@@ -1391,11 +1391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6441125041412421017, guid: f56f5d24e3b2842028471235a8e5ee9b, type: 3}
       propertyPath: maxTier
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6441125041412421017, guid: f56f5d24e3b2842028471235a8e5ee9b, type: 3}
       propertyPath: minTier
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6644637890788334865, guid: f56f5d24e3b2842028471235a8e5ee9b, type: 3}
       propertyPath: m_LocalPosition.x

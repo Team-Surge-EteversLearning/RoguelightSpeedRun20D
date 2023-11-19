@@ -77,7 +77,7 @@ public class DungeonManager : MonoBehaviour
                         Dungeon.Current.isSafe = true;
                         Door(true);
                         SpawnStair(true);
-                        // BossRoomClear(true);
+                        UpStair(true);
                         // UpStairCoroutine();
                     }
                 }

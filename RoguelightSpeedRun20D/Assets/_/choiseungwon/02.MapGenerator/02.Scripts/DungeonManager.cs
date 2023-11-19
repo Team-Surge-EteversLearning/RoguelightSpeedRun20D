@@ -174,7 +174,7 @@ public class DungeonManager : MonoBehaviour
                     DoorGenerate(node, room.transform);
                     room.name = node.Position.ToString();
                     GameObjectNode.Add(room, node);
-                    normalRoomrandNum = Random.Range(0, 35);
+                    normalRoomrandNum = Random.Range(0, 49);
                     shopRoomrandNum = Random.Range(0, 10);
                     continue;
                 }
@@ -193,7 +193,7 @@ public class DungeonManager : MonoBehaviour
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             GameObjectNode.Add(room, node);
-            normalRoomrandNum = Random.Range(0, 35);
+            normalRoomrandNum = Random.Range(0, 49);
             shopRoomrandNum = Random.Range(0, 10);
         }
     }

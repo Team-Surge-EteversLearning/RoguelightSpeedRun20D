@@ -35,8 +35,17 @@ public class Armor : Equipment
 
     public override void Equip()
     {
-
-        PlayerOutfitSelecter.Instance.armorNow = this;
         PlayerSM.armorNow = this;
+        try
+        {
+            if (PlayerOutfitSelecter.Instance is not null)
+            {
+                PlayerOutfitSelecter.Instance.armorNow = this;
+            }
+        }
+        catch (MissingReferenceException)
+        {
+            return;
+        }
     }
 }

@@ -41,8 +41,17 @@ public class Weapon : Equipment
 
     public override void Equip()
     {
-        PlayerOutfitSelecter.Instance.weaponNow = this;
-
         PlayerSM.weaponNow = this;
+        try
+        {
+            if (PlayerOutfitSelecter.Instance is not null)
+            {
+                PlayerOutfitSelecter.Instance.weaponNow = this;
+            }
+        }
+        catch (MissingReferenceException)
+        {
+            return;
+        }
     }
 }

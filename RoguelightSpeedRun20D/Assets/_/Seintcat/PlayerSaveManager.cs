@@ -142,7 +142,6 @@ public static class PlayerSaveManager
             }
         }
         sql.ShutDown();
-
         EquipmentDataManager.Load(itemUnlock);
         SkillDataModel.Load(itemUnlock);
     }

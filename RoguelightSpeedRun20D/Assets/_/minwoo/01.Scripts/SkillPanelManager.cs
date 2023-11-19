@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Rendering.CameraUI;
 
 public class SkillPanelManager : MonoBehaviour
 {
@@ -13,17 +14,18 @@ public class SkillPanelManager : MonoBehaviour
     [SerializeField] GameObject choicePanel;
     [SerializeField] GameObject indicator1;
     [SerializeField] GameObject indicator2;
-    [SerializeField] GameObject skillNotificationPanel;
 
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject optPanel;
     [SerializeField] GameObject outfit;
 
+    [SerializeField] Button toggleBtn;
+
     public static List<Button> emptySlots = new List<Button>();
     public static Dictionary<Button, ActiveSkill> btnSkillPair = new Dictionary<Button, ActiveSkill>();
     public static Action<ActiveSkill> onLearnSkill;
 
-    private void Start()
+    private void Awake()
     {
         Button[] buttons = skillPanel.GetComponentsInChildren<Button>(true);
         foreach (var item in buttons)
@@ -31,24 +33,36 @@ public class SkillPanelManager : MonoBehaviour
             emptySlots.Add(item);
         }
         //Debug.Log(emptySlots.Count);
-        InitUnlockSkill();
         onLearnSkill = LearnSkill;
         SetIndicator();
+        toggleBtn.onClick.AddListener(OpenPanel);
     }
 
     public void OpenPanel()
     {
-        skillPanel.SetActive(!skillPanel.activeInHierarchy);
-        optPanel.SetActive(!skillPanel.activeInHierarchy);
-        shopPanel.SetActive(!optPanel.activeInHierarchy);
-        outfit.SetActive(!skillPanel.activeInHierarchy);
+        skillPanel.SetActive(true);
+        optPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        outfit.SetActive(false);
+
+        toggleBtn.onClick.RemoveListener(OpenPanel);
+        toggleBtn.onClick.AddListener(ClosePanel);
+
+        SetIndicator();
+    }
+    public void ClosePanel()
+    {
+        skillPanel.SetActive(false);
+        optPanel.SetActive(true);
+        shopPanel.SetActive(false);
+        outfit.SetActive(true);
+
+        toggleBtn.onClick.RemoveListener(ClosePanel);
+        toggleBtn.onClick.AddListener(OpenPanel);
         SetIndicator();
     }
 
-    private void InitUnlockSkill()
-    {
-        //ReadDB and LearnSkill Until UnlcokSkillsCount
-    }
+
 
     public void LearnSkill(ActiveSkill skill)
     {

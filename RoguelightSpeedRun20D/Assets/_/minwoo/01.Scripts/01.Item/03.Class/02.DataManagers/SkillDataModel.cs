@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class SkillDataModel : IProductMaker
 {
@@ -21,10 +23,10 @@ public class SkillDataModel : IProductMaker
         //lockActive add all skills
         //unlockSkills remove at lockaActive and add to unlockActive
         FireBall fireBall = new FireBall("fireBall", 1, 1);
-        //IceBolt iceBolt = new IceBolt("iceBolt", 10, 1);
-        //SwordShoot swordShoot = new SwordShoot("swordShoot", 10, 1);
-        //BerSerk berSerk = new BerSerk("berSerk", 10, 1);
-        //Healing healing = new Healing("healing", 10, 1);
+        IceBolt iceBolt = new IceBolt("iceBolt", 10, 1);
+        SwordShoot swordShoot = new SwordShoot("swordShoot", 10, 1);
+        BerSerk berSerk = new BerSerk("berSerk", 10, 1);
+        Healing healing = new Healing("healing", 10, 1);
     }
 
     public List<ShopProduct> Make(string info = "")
@@ -45,7 +47,24 @@ public class SkillDataModel : IProductMaker
 
     public static void Load(List<string> itemUnlock)
     {
+        for (int i = 0; i < itemUnlock.Count; i++)
+        {
 
+            foreach (var item in lockActive)
+            {
+                if (item.Key == itemUnlock[i])
+                {
+                    Debug.LogWarning(1);
+                    if (!unlockActive.ContainsKey(item.Key))
+                    {
+                        Debug.LogWarning(2);
+
+                        item.Value.Buy();
+                    }
+                    break;
+                }
+            }
+        }
     }
 }
 

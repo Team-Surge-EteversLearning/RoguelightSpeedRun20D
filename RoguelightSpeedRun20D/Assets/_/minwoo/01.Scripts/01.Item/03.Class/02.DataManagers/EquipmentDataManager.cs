@@ -23,6 +23,10 @@ public class EquipmentDataManager : IProductMaker
         //ShoesTableLoad();
         //read db
         //Categorize to each list
+        if (!unlocks.ContainsKey("armingSword"))
+            unlocks.Add("armingSword", locks["armingSword"]);
+        if (!unlocks.ContainsKey("pedora"))
+            unlocks.Add("pedora", locks["pedora"]);
     }
 
     private void WeaponTableLoad()
@@ -194,6 +198,16 @@ public class EquipmentDataManager : IProductMaker
 
     public static void Load(List<string> itemUnlock)
     {
-
+        for (int i = 0; i < itemUnlock.Count; i++)
+        {
+            foreach (var item in locks)
+            {
+                if (item.Key == itemUnlock[i] && !unlocks.ContainsKey(item.Key))
+                {
+                    unlocks.Add(item.Key, item.Value);
+                    break;
+                }
+            }
+        }
     }
 }

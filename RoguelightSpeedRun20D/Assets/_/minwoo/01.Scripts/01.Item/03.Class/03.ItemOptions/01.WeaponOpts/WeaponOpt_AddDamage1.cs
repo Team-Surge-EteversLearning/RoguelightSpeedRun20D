@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class WeaponOpt_AddDamage1 : EquipmentOption
 {
+    public WeaponOpt_AddDamage1(int priceOffset) : base(priceOffset)
+    {
+    }
+
     public override Equipment MakeEquipment(Equipment equipment)
     {
         this.optName = "Enhance_1";

@@ -153,7 +153,7 @@ public class DungeonManager : MonoBehaviour
         GameObject room;
         foreach (var node in target)
         {
-            Debug.Log(target.Ends.Count);
+            //Debug.Log(target.Ends.Count);
 
             Vector3 posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
             

@@ -69,7 +69,7 @@ public class EquipmentDataManager : IProductMaker
         sql.ShutDown();
         foreach (var item in locks.Keys)
         {
-            Debug.LogWarning(item);
+            //Debug.LogWarning(item);
         }
     }
     private void ShoesTableLoad()
@@ -176,6 +176,8 @@ public class EquipmentDataManager : IProductMaker
         }
         return temp;
     }
+
+
     //return string list in unlocks.keys
     private List<string> GetRandomItem(int n, Dictionary<string, BasicEquipments> pool)
     {

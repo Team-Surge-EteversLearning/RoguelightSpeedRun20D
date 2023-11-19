@@ -30,7 +30,7 @@ public class SkillPanelManager : MonoBehaviour
         {
             emptySlots.Add(item);
         }
-        Debug.Log(emptySlots.Count);
+        //Debug.Log(emptySlots.Count);
         InitUnlockSkill();
         onLearnSkill = LearnSkill;
         SetIndicator();

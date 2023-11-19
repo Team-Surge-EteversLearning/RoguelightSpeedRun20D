@@ -8,7 +8,11 @@ using UnityEngine;
 
 public class ArmorOpt_Special0 : EquipmentOption
 {
-	public override Equipment MakeEquipment(Equipment equipment)
+    public ArmorOpt_Special0(int priceOffset) : base(priceOffset)
+    {
+    }
+
+    public override Equipment MakeEquipment(Equipment equipment)
 	{
 		this.optName = "Int_2";
 		Armor tempArmor = (Armor)equipment;

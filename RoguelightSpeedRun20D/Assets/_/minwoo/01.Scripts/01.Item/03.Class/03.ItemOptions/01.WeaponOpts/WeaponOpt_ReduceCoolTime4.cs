@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class WeaponOpt_ReduceCoolTime4 : EquipmentOption
 {
+    public WeaponOpt_ReduceCoolTime4(int priceOffset) : base(priceOffset)
+    {
+    }
+
     public override Equipment MakeEquipment(Equipment equipment)
     {
         this.optName = "Lightweightinge_4";

@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class WeaponOpt_EvilPower: EquipmentOption
 {
+    public WeaponOpt_EvilPower(int priceOffset) : base(priceOffset)
+    {
+    }
+
     public override Equipment MakeEquipment(Equipment equipment)
     {
         this.optName = "EvilPower";

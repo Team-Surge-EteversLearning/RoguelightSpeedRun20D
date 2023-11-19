@@ -8,7 +8,11 @@ using UnityEngine;
 
 public class ArmorOpt_AddMaxMp2 : EquipmentOption
 {
-	public override Equipment MakeEquipment(Equipment equipment)
+    public ArmorOpt_AddMaxMp2(int priceOffset) : base(priceOffset)
+    {
+    }
+
+    public override Equipment MakeEquipment(Equipment equipment)
 	{
 		this.optName = "Int_2";
 		Armor tempArmor = (Armor)equipment;

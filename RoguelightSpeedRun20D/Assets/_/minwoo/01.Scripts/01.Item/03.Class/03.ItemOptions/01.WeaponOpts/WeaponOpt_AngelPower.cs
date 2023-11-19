@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class WeaponOpt_AngelPower: EquipmentOption
 {
+    public WeaponOpt_AngelPower(int priceOffset) : base(priceOffset)
+    {
+    }
+
     public override Equipment MakeEquipment(Equipment equipment)
     {
         this.optName = "AngelPower";

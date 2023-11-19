@@ -7,7 +7,7 @@ public class Shoes : Equipment
     int maxStamina;
     float staminaRegen;
 
-    public Shoes(string name, BasicEquipments basicData, ShoesData data, List<EquipmentOption> usableOptions, int tier = 0)
+    public Shoes(string name, BasicEquipments basicData, ShoesData data, List<EquipmentOption> usableOptions,int sellWhenClear, int tier = 0)
     {
         this.Name = name;
         this.SellWhenClear = basicData.SellWhenClear;
@@ -19,6 +19,8 @@ public class Shoes : Equipment
         this.ModelIndex = basicData.ModelIndex;
         this.usableOptions = new List<EquipmentOption> { };
         this.Tier = tier;
+        this.SellWhenClear = sellWhenClear;
+
 
         Shoes thisShoes = this;
         foreach (EquipmentOption option in usableOptions)

@@ -176,6 +176,8 @@ public class EquipmentDataManager : IProductMaker
         }
         return temp;
     }
+
+
     //return string list in unlocks.keys
     private List<string> GetRandomItem(int n, Dictionary<string, BasicEquipments> pool)
     {

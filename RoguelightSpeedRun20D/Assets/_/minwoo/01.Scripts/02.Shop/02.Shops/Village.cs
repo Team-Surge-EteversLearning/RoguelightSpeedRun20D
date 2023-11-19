@@ -27,6 +27,8 @@ public class Village : MonoBehaviour
     public static Action<string> onBuy;
     private void Start()
     {
+        PlayerStatsManager.WareHouseCash = PlayerStatsManager.CashNow;
+        PlayerStatsManager.CashNow = 0;
         //PlayerSaveManager.SaveData("default", PlayerStatsManager.WareHouseCash, PlayerStatsManager.HpMax, PlayerStatsManager.StaminaMax, PlayerStatsManager.ManaMax, PlayerStatsManager.PowerWeight, PlayerSM.skill1Index, PlayerSM.skill2Index, PlayerSaveManager.WrappingUnlocks());
         shopPanel.SetActive(false);
  
@@ -37,8 +39,6 @@ public class Village : MonoBehaviour
         onBuy += (string name) => cashTxt.text = PlayerStatsManager.WareHouseCash.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
         startBtn.onClick.AddListener(DungeonInsert);
-        PlayerStatsManager.WareHouseCash = PlayerStatsManager.CashNow;
-        PlayerStatsManager.CashNow = 0;
     }
 
     private void DungeonInsert()

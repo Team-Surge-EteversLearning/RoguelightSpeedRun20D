@@ -8,7 +8,11 @@ using UnityEngine;
 
 public class ArmorOpt_AddMaxHp2 : EquipmentOption
 {
-	public override Equipment MakeEquipment(Equipment equipment)
+    public ArmorOpt_AddMaxHp2(int priceOffset) : base(priceOffset)
+    {
+    }
+
+    public override Equipment MakeEquipment(Equipment equipment)
 	{
 		this.optName = "Life_2";
 		Armor tempArmor = (Armor)equipment;

@@ -25,29 +25,29 @@ public abstract class Equipment : IProduct
     public List<EquipmentOption> usableOptions;
     public readonly static List<EquipmentOption> weaponOptionPool = new List<EquipmentOption>
     {
-        new WeaponOpt_AddDamage0(),
-        new WeaponOpt_AddDamage1(),
-        new WeaponOpt_AddDamage2(),
-        new WeaponOpt_AddDamage3(),
-        new WeaponOpt_AddDamage4(),
-        new WeaponOpt_ReduceCoolTime0(),
-        new WeaponOpt_ReduceCoolTime1(),
-        new WeaponOpt_ReduceCoolTime2(),
-        new WeaponOpt_ReduceCoolTime3(),
-        new WeaponOpt_ReduceCoolTime4(),
-        new WeaponOpt_EvilPower(),
-        new WeaponOpt_AngelPower(),
+        new WeaponOpt_AddDamage0(10),
+        new WeaponOpt_AddDamage1(15),
+        new WeaponOpt_AddDamage2(20),
+        new WeaponOpt_AddDamage3(25),
+        new WeaponOpt_AddDamage4(30),
+        new WeaponOpt_ReduceCoolTime0(10),
+        new WeaponOpt_ReduceCoolTime1(15),
+        new WeaponOpt_ReduceCoolTime2(20),
+        new WeaponOpt_ReduceCoolTime3(25),
+        new WeaponOpt_ReduceCoolTime4(30),
+        new WeaponOpt_EvilPower(20),
+        new WeaponOpt_AngelPower(20),
     };
     public readonly static List<EquipmentOption> armorOptionPool = new List<EquipmentOption> 
     {
-        new ArmorOpt_AddMaxHp0(),
-        new ArmorOpt_AddMaxHp1(),
-        new ArmorOpt_AddMaxHp2(),
-        new ArmorOpt_AddMaxMp0(),
-        new ArmorOpt_AddMaxMp1(),
-        new ArmorOpt_AddMaxMp2(),
-        new ArmorOpt_Special0(),
-        new ArmorOpt_Special1(),
+        new ArmorOpt_AddMaxHp0(10),
+        new ArmorOpt_AddMaxHp1(15),
+        new ArmorOpt_AddMaxHp2(20),
+        new ArmorOpt_AddMaxMp0(10),
+        new ArmorOpt_AddMaxMp1(15),
+        new ArmorOpt_AddMaxMp2(20),
+        new ArmorOpt_Special0(20),
+        new ArmorOpt_Special1(20),
     };
     public readonly static List<EquipmentOption> shoesOptionPool = new List<EquipmentOption> { };
 
@@ -67,7 +67,10 @@ public abstract class Equipment : IProduct
     {
         GameObject thisWeapon = modelInstance[ModelIndex];
         foreach (EquipmentOption option in usableOptions)
+        {
             thisWeapon = option.MakeInGame(thisWeapon);
+            this.SellWhenClear += option.sellWhenClear;
+        }
 
         return thisWeapon;
     }

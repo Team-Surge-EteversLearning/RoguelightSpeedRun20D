@@ -29,7 +29,6 @@ public class PlayerSM : StateManager
     [SerializeField]
     private GameObject bomb;
 
-    private GameObject weaponModelNow;
     private AttackAble attackable;
 
     private static Weapon _weaponNow;
@@ -47,7 +46,7 @@ public class PlayerSM : StateManager
             {
                 GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
                 weaponModel.SetActive(true);
-                playerObj.GetComponent<PlayerSM>().attackable = playerObj.GetComponent<PlayerSM>().weaponModelNow.GetComponent<AttackAble>();
+                playerObj.GetComponent<PlayerSM>().attackable = weaponModel.GetComponent<AttackAble>();
             }
         }
     }
@@ -124,7 +123,7 @@ public class PlayerSM : StateManager
 
         GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
         weaponModel.SetActive(true);
-        attackable = weaponModelNow.GetComponent<AttackAble>();
+        attackable = weaponInstance[_weaponNow.ModelIndex].GetComponent<AttackAble>();
         GameObject armorModel = _armorNow.MakeInGame(playerObj.GetComponent<PlayerSM>().armorInstance);
         armorModel.SetActive(true);
     }
@@ -318,9 +317,9 @@ public class PlayerSM : StateManager
     {
         if(basicWeapon == null || basicArmor == null || basicShoes == null)
         {
-            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(1000, false, 1, 1.5f), new List<EquipmentOption>());
-            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(9999, false, 0, 0), new List<EquipmentOption>());
-            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0), new List<EquipmentOption>());
+            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(1000, false, 1, 1.5f), new List<EquipmentOption>(), 0);
+            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(9999, false, 0, 0), new List<EquipmentOption>(), 0);
+            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0), new List<EquipmentOption>(), 0);
         }
 
         if (_weaponNow == null)

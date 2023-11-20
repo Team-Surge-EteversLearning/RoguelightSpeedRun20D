@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class HuntingQuest : Quest
 {
     private int currentCount;
@@ -24,6 +26,8 @@ public class HuntingQuest : Quest
         {
             IsCompleted = true;
             PlayerStatsManager.CashNow += rewardGold;
+            UnityEngine.Debug.LogWarning("!!!!!!EEE@E");
+            DungeonShopManager.onBuy("");
         }
     }
     public override string GetProgress()

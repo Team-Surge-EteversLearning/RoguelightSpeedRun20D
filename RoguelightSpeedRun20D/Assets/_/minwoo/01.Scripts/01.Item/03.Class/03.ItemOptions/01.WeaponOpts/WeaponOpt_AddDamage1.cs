@@ -24,7 +24,6 @@ public class WeaponOpt_AddDamage1 : EquipmentOption
     {
         PlayerWeaponAttacks currentAttacks = gameObject.GetComponent<PlayerWeaponAttacks>(); //projectile
         WeaponOutfitHandle currentHandler = gameObject.GetComponent<WeaponOutfitHandle>(); // material
-        currentHandler.indexMaterial = 0;
 
         return gameObject;
     }

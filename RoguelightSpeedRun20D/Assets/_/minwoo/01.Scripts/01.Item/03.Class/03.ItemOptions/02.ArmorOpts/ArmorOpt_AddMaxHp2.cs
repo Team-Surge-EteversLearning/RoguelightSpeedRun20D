@@ -24,7 +24,6 @@ public class ArmorOpt_AddMaxHp2 : EquipmentOption
 	public override GameObject MakeInGame(GameObject gameObject)
 	{
         HeadOutFits currentHandler = gameObject.GetComponent<HeadOutFits>(); // material
-		currentHandler.materialIndex = 0;
 
 		return gameObject;
 	}

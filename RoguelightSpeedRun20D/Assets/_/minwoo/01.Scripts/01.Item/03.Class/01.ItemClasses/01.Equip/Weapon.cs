@@ -51,6 +51,7 @@ public class Weapon : Equipment
         }
         catch (System.Exception e)
         {
+            Debug.LogWarning(e);
             return;
         }
     }

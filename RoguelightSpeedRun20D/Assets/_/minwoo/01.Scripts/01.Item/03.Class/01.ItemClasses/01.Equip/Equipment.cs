@@ -80,7 +80,6 @@ public abstract class Equipment : IProduct
         {
             thisWeapon = option.MakeInGame(thisWeapon);
             this.SellWhenClear += option.sellWhenClear;
-        Debug.LogWarning($"sellWhenClear : {sellWhenClear}");
         }
         return thisWeapon;
     }

@@ -44,6 +44,7 @@ public class Armor : Equipment
         }
         catch (System.Exception e)
         {
+            Debug.LogWarning(e);
             return;
         }
     }

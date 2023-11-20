@@ -60,7 +60,7 @@ public class Village : MonoBehaviour
     }
     private void CreateShop()
     {
-        EquipShop v_EquipShop = new EquipShop(0, 3, 3);
+        EquipShop v_EquipShop = new EquipShop(0, 5, 10);
         nameShopPair.Add("v_EquipShop", v_EquipShop);
         nameShopPair["v_EquipShop"].InitShop(shopPanel, this);
 

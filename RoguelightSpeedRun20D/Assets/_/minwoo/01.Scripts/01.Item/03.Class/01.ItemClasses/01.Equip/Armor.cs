@@ -9,7 +9,7 @@ public class Armor : Equipment
     float manaRegen;
     ArmorData _data { get; set; }
 
-    public Armor(string name, BasicEquipments basicData, ArmorData data, List<EquipmentOption> usableOptions,int sellWhenClear, int tier = 0)
+    public Armor(string name, BasicEquipments basicData, ArmorData data, List<EquipmentOption> usableOptions,int tier = 0)
     {
         this.Name = name;
         this.SellWhenClear = basicData.SellWhenClear;
@@ -21,7 +21,6 @@ public class Armor : Equipment
         this.ModelIndex = basicData.ModelIndex;
         this.usableOptions = new List<EquipmentOption> { };
         this.Tier = tier;
-        this.SellWhenClear = sellWhenClear;
 
         Armor thisArmor = this;
         foreach (EquipmentOption option in usableOptions)

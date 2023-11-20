@@ -12,7 +12,7 @@ public class Weapon : Equipment
 
     WeaponData weaponData;
 
-    public Weapon(string name, BasicEquipments basicData, WeaponData data, List<EquipmentOption> usableOptions,int sellWhenClear  ,int tier = 0)
+    public Weapon(string name, BasicEquipments basicData, WeaponData data, List<EquipmentOption> usableOptions,int tier = 0)
     {
         this.Name = name;
         this.SellWhenClear = basicData.SellWhenClear;
@@ -26,7 +26,7 @@ public class Weapon : Equipment
         this.BasicData = basicData;
         this.weaponData = data;
         this.Tier = tier;
-        this.SellWhenClear = sellWhenClear;
+
 
         Weapon thisWeapon = this;
         foreach (EquipmentOption option in usableOptions)

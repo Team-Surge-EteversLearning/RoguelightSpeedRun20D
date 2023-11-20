@@ -14,7 +14,7 @@ public class ArmorOpt_Special0 : EquipmentOption
 
     public override Equipment MakeEquipment(Equipment equipment)
 	{
-		this.optName = "Int_2";
+		this.optName = "Special_0";
 		Armor tempArmor = (Armor)equipment;
 		tempArmor.MaxHp += 5;
 		tempArmor.MaxMana += 5;

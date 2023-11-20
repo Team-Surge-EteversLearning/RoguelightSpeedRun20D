@@ -149,7 +149,8 @@ public abstract class MonsterSM : StateManager, ITargetCatch
                 collider.enabled = false;
 
             hpNow = 0;
-            
+
+            DungeonManager.Instance.CurrentMonsterCount -= 1;
             _rigidbody.isKinematic = true;
             mainBody.enabled = false;
             ChangeState(monsterDeathState.stateName);

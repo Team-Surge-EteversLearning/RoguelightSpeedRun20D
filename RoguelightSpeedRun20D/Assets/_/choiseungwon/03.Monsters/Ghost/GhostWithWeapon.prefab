@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 2281591222651816743}
   - component: {fileID: 5845576555453893627}
   - component: {fileID: 8790623053395422172}
-  m_Layer: 23
+  m_Layer: 7
   m_Name: WizardEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}

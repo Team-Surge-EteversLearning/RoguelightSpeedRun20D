@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 1588967561472509984}
   - component: {fileID: 3583570497585578907}
   - component: {fileID: 5003573606334474605}
-  m_Layer: 23
+  m_Layer: 7
   m_Name: WolfEye
   m_TagString: Untagged
   m_Icon: {fileID: 0}

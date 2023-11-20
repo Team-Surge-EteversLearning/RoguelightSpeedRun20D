@@ -89,16 +89,16 @@ public class QuestSystem : MonoBehaviour
             new HuntingQuest("Zombie", "좀비 사냥꾼", "좀비 세 마리 사냥", 3, 200),
             new HuntingQuest("Zombie", "좀비 사냥꾼", "좀비 다섯 마리 사냥", 5, 500),
             new HuntingQuest("Zombie", "좀비 사냥꾼", "좀비 열 마리 사냥", 10, 1000),
-
-             new CollectItemQuest("longSword", "수집가", "Long Sword 수집", 1, 100),
-             new CollectItemQuest("armingSword", "수집가", "ArmingSword 수집", 1, 100),
-             new CollectItemQuest("cutlass", "수집가", "Cutlass 수집", 1, 200),
-             new CollectItemQuest("rapier", "수집가", "rapier 수집", 1, 100),
-             new CollectItemQuest("superSledgehammer", "수집가", "Super Sledge Hammer 수집", 1, 200),
-             new CollectItemQuest("warhammer", "수집가", "War Hammer 수집", 1, 200),
-             new CollectItemQuest("ironHelm", "수집가", "Iron Helm 수집", 1, 200),
-             new CollectItemQuest("steelHelm", "수집가", "Steel Helm 수집", 1, 200),
-
+            
+            new CollectItemQuest("longSword", "수집가", "Long Sword 수집", 1, 100),
+            new CollectItemQuest("armingSword", "수집가", "ArmingSword 수집", 1, 100),
+            new CollectItemQuest("cutlass", "수집가", "Cutlass 수집", 1, 200),
+            new CollectItemQuest("rapier", "수집가", "rapier 수집", 1, 100),
+            new CollectItemQuest("superSledgehammer", "수집가", "Super Sledge Hammer 수집", 1, 200),
+            new CollectItemQuest("warhammer", "수집가", "War Hammer 수집", 1, 200),
+            new CollectItemQuest("ironHelm", "수집가", "Iron Helm 수집", 1, 200),
+            new CollectItemQuest("steelHelm", "수집가", "Steel Helm 수집", 1, 200),
+            
             new OpenBoxQuest("상자 사랑꾼", "상자를 1개 여세요.", 1, 100),
             new OpenBoxQuest("상자 사랑꾼", "상자를 2개 여세요.", 2, 200),
             new OpenBoxQuest("상자 사랑꾼", "상자를 3개 여세요.", 3, 300),
@@ -114,10 +114,10 @@ public class QuestSystem : MonoBehaviour
             // new ClearTimeQuest("평범한 한국인", "15분 안에 클리어", 900, 500),
             // new ClearTimeQuest("진정한 한국인", "10분 안에 클리어", 50, 1000),
             //
-            new SuccessGuardQuest("방어 성공 1회","방어 성공 1회시, 완료", 1, 100),
-            new SuccessGuardQuest("방어 성공 2회","방어 성공 2회시, 완료", 2, 200),
-            new SuccessGuardQuest("방어 성공 3회","방어 성공 3회시, 완료", 3, 300),
-            new SuccessGuardQuest("방어 성공 4회","방어 성공 4회시, 완료", 4, 500),
+            new SuccessGuardQuest("방어 성공 1회", "방어 성공 1회시, 완료", 1, 100),
+            new SuccessGuardQuest("방어 성공 2회", "방어 성공 2회시, 완료", 2, 200),
+            new SuccessGuardQuest("방어 성공 3회", "방어 성공 3회시, 완료", 3, 300),
+            new SuccessGuardQuest("방어 성공 4회", "방어 성공 4회시, 완료", 4, 500),
         };
     }
 

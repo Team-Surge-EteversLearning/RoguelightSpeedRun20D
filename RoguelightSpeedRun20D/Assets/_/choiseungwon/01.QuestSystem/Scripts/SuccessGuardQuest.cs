@@ -27,6 +27,8 @@ public class SuccessGuardQuest : Quest
         if (currentCount >= targetCount)
         {
             IsCompleted = true;
+            PlayerStatsManager.CashNow += rewardGold;
+
         }
     }
 

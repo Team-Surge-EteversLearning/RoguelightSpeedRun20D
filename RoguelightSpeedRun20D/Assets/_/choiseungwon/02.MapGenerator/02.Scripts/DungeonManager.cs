@@ -185,7 +185,7 @@ public class DungeonManager : MonoBehaviour
                     room.name = node.Position.ToString();
                     GameObjectNode.Add(room, node);
                     normalRoomrandNum = Random.Range(0, 49);
-                    shopRoomrandNum = Random.Range(0, 10);
+                    shopRoomrandNum = Random.Range(0, 9);
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
@@ -204,7 +204,7 @@ public class DungeonManager : MonoBehaviour
             room.name = node.Position.ToString();
             GameObjectNode.Add(room, node);
             normalRoomrandNum = Random.Range(0, 49);
-            shopRoomrandNum = Random.Range(0, 10);
+            shopRoomrandNum = Random.Range(0, 9);
         }
     }
 

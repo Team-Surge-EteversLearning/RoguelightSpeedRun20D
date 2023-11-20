@@ -23,6 +23,7 @@ public class HuntingQuest : Quest
         if (currentCount >= targetCount)
         {
             IsCompleted = true;
+            PlayerStatsManager.CashNow += rewardGold;
         }
     }
     public override string GetProgress()

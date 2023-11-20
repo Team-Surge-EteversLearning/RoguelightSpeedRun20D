@@ -27,6 +27,8 @@ public class OpenBoxQuest : Quest
         if (currentCount >= targetCount)
         {
             IsCompleted = true;
+            PlayerStatsManager.CashNow += rewardGold;
+
         }
     }
     public override string GetProgress()

@@ -26,6 +26,8 @@ public class ClearTimeQuest : Quest
         if (currentTime <= targetTime)
         {
             IsCompleted = true;
+            PlayerStatsManager.CashNow += rewardGold;
+
         }
     }
 

@@ -29,6 +29,7 @@ public class ColletItemQuest : Quest
         if (currentCount >= targetCount)
         {
             IsCompleted = true;
+            PlayerStatsManager.CashNow += rewardGold;
         }
     }
 

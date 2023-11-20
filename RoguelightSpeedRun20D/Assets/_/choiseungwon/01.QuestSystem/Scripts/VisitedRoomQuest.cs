@@ -27,6 +27,8 @@ public class VisitedRoomQuest : Quest
         if (currentCount >= targetCount)
         {
             IsCompleted = true;
+            PlayerStatsManager.CashNow += rewardGold;
+
         }
     }
 

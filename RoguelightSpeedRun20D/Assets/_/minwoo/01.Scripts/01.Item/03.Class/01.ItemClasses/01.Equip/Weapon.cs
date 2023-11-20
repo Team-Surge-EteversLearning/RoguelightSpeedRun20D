@@ -49,7 +49,7 @@ public class Weapon : Equipment
                 PlayerOutfitSelecter.Instance.weaponNow = this;
             }
         }
-        catch (MissingReferenceException)
+        catch (System.Exception e)
         {
             return;
         }

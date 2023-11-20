@@ -36,6 +36,7 @@ public class DungeonShopManager : MonoBehaviour
     private void Start()
     {
         onBuy = null;
+        PlayerStatsManager.CashNow = 1000;
         purchaseCompletePanel = FindObjectOfType<PurchaseCompletePanelController>(true);
         InitSlot();
         SlotsReset();

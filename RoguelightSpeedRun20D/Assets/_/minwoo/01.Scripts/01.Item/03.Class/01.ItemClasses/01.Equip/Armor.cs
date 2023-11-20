@@ -42,7 +42,7 @@ public class Armor : Equipment
                 PlayerOutfitSelecter.Instance.armorNow = this;
             }
         }
-        catch (MissingReferenceException)
+        catch (System.Exception e)
         {
             return;
         }

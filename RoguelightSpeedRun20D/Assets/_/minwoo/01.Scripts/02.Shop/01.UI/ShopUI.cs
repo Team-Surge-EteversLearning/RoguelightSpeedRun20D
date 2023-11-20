@@ -68,6 +68,7 @@ public class ShopUI
             }
             else
             {
+                Debug.LogWarning(price);
                 DungeonShopManager.onBuy?.Invoke(name);
                 product.Buy();
                 PlayerStatsManager.CashNow -= price;

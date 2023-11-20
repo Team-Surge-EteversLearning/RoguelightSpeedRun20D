@@ -1089,25 +1089,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
+      propertyPath: movePoints.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: movePoints.Array.data[0]
       value: 
-      objectReference: {fileID: 2819760629815355467}
+      objectReference: {fileID: 7088670755927742484}
     - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: movePoints.Array.data[1]
       value: 
-      objectReference: {fileID: 1798154050225699445}
+      objectReference: {fileID: 6282330662929263477}
     - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: movePoints.Array.data[2]
       value: 
-      objectReference: {fileID: 7042705329463538140}
+      objectReference: {fileID: 7411779158008067518}
     - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: movePoints.Array.data[3]
       value: 
-      objectReference: {fileID: 2264115317782758338}
+      objectReference: {fileID: 1503552784467021163}
     - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: movePoints.Array.data[4]
       value: 
-      objectReference: {fileID: 7088670755927742484}
+      objectReference: {fileID: 6016201923795846209}
     - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: movePoints.Array.data[5]
       value: 
@@ -3345,6 +3349,10 @@ PrefabInstance:
     - target: {fileID: 212372228627398958, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
+      propertyPath: movePoints.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3093753732604110454, guid: e46840b52a00645a1838f31b065e42a0, type: 3}
       propertyPath: movePoints.Array.data[0]

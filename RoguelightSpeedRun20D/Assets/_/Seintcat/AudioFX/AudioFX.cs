@@ -9,6 +9,13 @@ public class AudioFX : MonoBehaviour
 
     public void FX(int index)
     {
-        AudioPlayer.PlayOneShot(clips[index]);
+        try
+        {
+            AudioPlayer.PlayOneShot(clips[index]);
+        }
+        catch 
+        {
+            Debug.LogError(gameObject.name + ", clips.Count > " + clips.Count + ", index > " + index);
+        }
     }
 }

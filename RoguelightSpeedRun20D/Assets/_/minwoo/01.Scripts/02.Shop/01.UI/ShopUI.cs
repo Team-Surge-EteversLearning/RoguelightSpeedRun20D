@@ -32,7 +32,7 @@ public class ShopUI
             s_product = value;
             product = value.Product;
             price = value.Price;
-            
+
             productButton.onClick.RemoveAllListeners();
             productButton.onClick.AddListener(CashCheckAndBuy);
             if (productButton.gameObject.GetComponent<EventTrigger>() != null)
@@ -49,26 +49,65 @@ public class ShopUI
     }
     private void CashCheckAndBuy()
     {
-        if (PlayerStatsManager.CashNow < price)
+        if (thisShop.GetType() == typeof(ChestShop) || thisShop.GetType() == typeof(InDungeonShop)) // in dun
         {
-            Debug.Log("µ·ºÎÁ·");
-            return;
+            if (PlayerStatsManager.CashNow < price)
+            {
+                Debug.Log("Not Enough");
+                return;
+            }
+            if (product.GetType() == typeof(Useable))
+            {
+                Useable useable = (Useable)product;
+                if (useable.Quantity > 0)
+                {
+                    DungeonShopManager.onBuy?.Invoke(name);
+                    PlayerStatsManager.CashNow -= price;
+                    product.Buy();
+                }
+            }
+            else
+            {
+                DungeonShopManager.onBuy?.Invoke(name);
+                product.Buy();
+                PlayerStatsManager.CashNow -= price;
+            }
         }
-        PlayerStatsManager.CashNow -= price;
-        product.Buy();
-        Village.onBuy?.Invoke(name);
-        DungeonShopManager.onBuy?.Invoke(name);
+        else                                                                                         // in vill
+        {
+            if (PlayerStatsManager.WareHouseCash < price)
+            {
+                Debug.Log("Not Enough");
+                return;
+            }
+            if (product.GetType() == typeof(Useable))
+            {
+                Useable useable = (Useable)product;
+                if (useable.Quantity > 0)
+                {
+                    Village.onBuy?.Invoke(name);
+                    PlayerStatsManager.WareHouseCash -= price;
+                    product.Buy();
+                }
+            }
+            else
+            {
+                Village.onBuy?.Invoke(name);
+                product.Buy();
+                PlayerStatsManager.WareHouseCash -= price;
+            }
+        }
         DescriptionController.onDescriptionComplete?.Invoke();
         if (productButton.gameObject.GetComponent<EventTrigger>() != null && product is Equipment)
         {
             UnityEngine.Object.Destroy(productButton.gameObject.GetComponent<EventTrigger>());
         }
 
-        if(price == 0)
+        if (price == 0)
             if (QuestSystem.currentQuests != null)
                 foreach (Quest quest in QuestSystem.currentQuests)
                     if (quest.Key == product.key)
-                        ((ColletItemQuest)quest).UpdateCurrentCount(1);
+                        ((CollectItemQuest)quest).UpdateCurrentCount(1);
         return;
     }
     private void Display()
@@ -110,7 +149,7 @@ public class ShopUI
             Stat stat = (Stat)product;
             productButton.GetComponentInChildren<TMP_Text>().text = "";
             pointerEnterEntry.callback.AddListener((eventData) => { OnPointEnterProduct(productButton, stat); });
-            name= stat.Name;
+            name = stat.Name;
             return stat.Name;
         }
         else
@@ -131,6 +170,9 @@ public class ShopUI
         {
             case Weapon weapon:
                 DescriptionController.onDescriptionWithOpts?.Invoke($"{weapon.Name} ( +{weapon.Tier})\nDamage: {weapon.Damage}\nCoolTime: {weapon.Cooltime}", weapon.usableOptions);
+                break;
+            case Armor armor:
+                DescriptionController.onDescriptionWithOpts?.Invoke($"{armor.Name} ( +{armor.Tier})\nMaxHp: {armor.MaxHp}\nMaxMana: {armor.MaxMana}\nManaRegen: {armor.ManaRegen}", armor.usableOptions);
                 break;
             case Useable useable:
                 string description = "";

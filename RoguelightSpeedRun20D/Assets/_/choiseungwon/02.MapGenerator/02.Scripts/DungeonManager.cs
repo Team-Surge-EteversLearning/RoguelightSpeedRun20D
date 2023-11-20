@@ -15,6 +15,8 @@ public class DungeonManager : MonoBehaviour
     
     [SerializeField] private List<DungeonBundleData> dungeonBundleDatas = new List<DungeonBundleData>();
     [SerializeField] private MiniMapManager miniMapManager;
+
+    private Stair stair = new Stair();
     
     private int roomCount;
     private int roomInFloor;
@@ -34,10 +36,13 @@ public class DungeonManager : MonoBehaviour
     
     public delegate void RoomClearDelegate(bool clear);
     public static event RoomClearDelegate RoomClearEvent;    
+    public delegate void SpawnStairDelegate(bool clear);
+    public static event SpawnStairDelegate SpawnStairEvent;    
     public delegate void BossRoomClearDelegate(bool clear);
     public static event BossRoomClearDelegate BossRoomClearEvent;
     public delegate void BundleClearDelegate(bool clear);
-    public static event BundleClearDelegate BundleClearEvent;
+    public static event BundleClearDelegate BundleClearEvent;    
+
     
     [SerializeField] private int _currentMonsterCount;
     public int CurrentMonsterCount 
@@ -47,15 +52,33 @@ public class DungeonManager : MonoBehaviour
         {
             _currentMonsterCount = value;
 
-            if (Dungeon.Ends.Contains(Dungeon.Current))
+            if (Dungeon.Current == Dungeon.Starts[0])
             {
-                if (Dungeon.Current == Dungeon.Ends[Dungeon.Ends.Count - 1])
+                if (_currentMonsterCount == 0)
                 {
+                    SpawnStair(false);
+                }
+            }
+            else
+            {
+                if (Dungeon.Ends.Contains(Dungeon.Current) || Dungeon.Starts.Contains(Dungeon.Current))
+                {
+                    if (Dungeon.Current == Dungeon.Ends[Dungeon.Ends.Count - 1])
+                    {
+                        if (_currentMonsterCount == 0)
+                        {
+                            Dungeon.Current.isSafe = true;
+                            Door(true);
+                            BundleClear(true);
+                        }
+                    }
                     if (_currentMonsterCount == 0)
                     {
                         Dungeon.Current.isSafe = true;
-                        ToggleDoor(true);
-                        BundleClear(true);
+                        Door(true);
+                        SpawnStair(true);
+                        UpStair(true);
+                        // UpStairCoroutine();
                     }
                 }
                 else
@@ -63,28 +86,23 @@ public class DungeonManager : MonoBehaviour
                     if (_currentMonsterCount == 0)
                     {
                         Dungeon.Current.isSafe = true;
-                        BossRoomClear(true);
-                        ToggleDoor(true);
+                        Door(true);
+                        SpawnStair(false);
                     }
-                }
-            }
-            else
-            {
-                if (_currentMonsterCount == 0)
-                {
-                    Dungeon.Current.isSafe = true;
-                    ToggleDoor(true);
                 }
             }
         } 
     }
 
-    public static void ToggleDoor(bool isRoomClear)
+    public static void Door(bool isRoomClear)
     {
         RoomClearEvent?.Invoke(isRoomClear);
     }
-
-    public static void BossRoomClear(bool isBossRoomClear)
+    public static void SpawnStair(bool isBossRoomClear)
+    {
+        SpawnStairEvent?.Invoke(isBossRoomClear);
+    }
+    public static void UpStair(bool isBossRoomClear)
     {
         BossRoomClearEvent?.Invoke(isBossRoomClear);
     }
@@ -95,8 +113,15 @@ public class DungeonManager : MonoBehaviour
     
     private void Awake()
     {
-        Instance = this;
-        
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+        RoomClearEvent = null;
+        SpawnStairEvent =  null;
+        BossRoomClearEvent = null;
+        BundleClearEvent  = null;
+
         roomCount = dungeonBundleDatas[0].roomCount;
         roomInFloor = dungeonBundleDatas[0].roomInFloor;
         floorHeight = dungeonBundleDatas[0].floorHeight;
@@ -130,7 +155,7 @@ public class DungeonManager : MonoBehaviour
     private void Generate(Dungeon target)
     {
         target.AddUntil(roomCount, roomInFloor);
-        target.SetShopNode(1);
+        target.SetShopNode(2);
     }
 
     private void GenerateRoom(Dungeon target, float height)
@@ -138,7 +163,7 @@ public class DungeonManager : MonoBehaviour
         GameObject room;
         foreach (var node in target)
         {
-            Debug.Log(target.Ends.Count);
+            //Debug.Log(target.Ends.Count);
 
             Vector3 posi = new Vector3(node.Position.x * roomDistance, height * node.Position.y, node.Position.z * roomDistance);
             
@@ -159,12 +184,12 @@ public class DungeonManager : MonoBehaviour
                     DoorGenerate(node, room.transform);
                     room.name = node.Position.ToString();
                     GameObjectNode.Add(room, node);
-                    normalRoomrandNum = Random.Range(0, 39);
+                    normalRoomrandNum = Random.Range(0, 49);
                     shopRoomrandNum = Random.Range(0, 10);
                     continue;
                 }
                 room = Instantiate(dungeonBundleDatas[0].bossRoomPresets[0].roomPrefab, posi, Quaternion.identity); // Stair point
-                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0, -5, 0), Quaternion.identity);
+                Instantiate(dungeonBundleDatas[0].stair, posi + new Vector3(0, -4.75f, 0), Quaternion.identity);
             }
             else if (node.IsShop)
             {
@@ -178,7 +203,7 @@ public class DungeonManager : MonoBehaviour
             DoorGenerate(node, room.transform);
             room.name = node.Position.ToString();
             GameObjectNode.Add(room, node);
-            normalRoomrandNum = Random.Range(0, 39);
+            normalRoomrandNum = Random.Range(0, 49);
             shopRoomrandNum = Random.Range(0, 10);
         }
     }

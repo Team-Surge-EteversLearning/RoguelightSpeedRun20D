@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,27 +20,31 @@ public class Village : MonoBehaviour
     [SerializeField] Button startBtn;
     [SerializeField] TMP_Text descriptionTxt;
 
+    [SerializeField] GameObject Outfit;
+
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
     public Action resetUI;
     public static Action<string> onBuy;
     private void Start()
     {
+        onBuy = null;
+        PlayerStatsManager.WareHouseCash += PlayerStatsManager.CashNow;
+        PlayerStatsManager.CashNow = 0;
+        purchaseCompletePanel = FindObjectOfType<PurchaseCompletePanelController>(true);
         //PlayerSaveManager.SaveData("default", PlayerStatsManager.WareHouseCash, PlayerStatsManager.HpMax, PlayerStatsManager.StaminaMax, PlayerStatsManager.ManaMax, PlayerStatsManager.PowerWeight, PlayerSM.skill1Index, PlayerSM.skill2Index, PlayerSaveManager.WrappingUnlocks());
         shopPanel.SetActive(false);
  
         CreateShop();
         OptionBtnConnect();
         SlotsReset();
-        cashTxt.text = PlayerStatsManager.CashNow.ToString();
-        onBuy += (string name) => cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        cashTxt.text = PlayerStatsManager.WareHouseCash.ToString();
+        onBuy += (string name) => cashTxt.text = PlayerStatsManager.WareHouseCash.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
         startBtn.onClick.AddListener(DungeonInsert);
     }
 
     private void DungeonInsert()
     {
-        PlayerStatsManager.WareHouseCash = PlayerStatsManager.CashNow;
-        PlayerStatsManager.CashNow = 0;
         SceneManager.LoadScene(1);
     }
 
@@ -49,13 +54,13 @@ public class Village : MonoBehaviour
 
         foreach (Button b in allPanelBtns)
         {
-            b.onClick.AddListener(ChangeUISet);
+            b.onClick.AddListener(ToggleShopUI);
             b.onClick.AddListener(() => ResetTargetShops(b.gameObject.name));
         }
     }
     private void CreateShop()
     {
-        EquipShop v_EquipShop = new EquipShop(0, 3, 3);
+        EquipShop v_EquipShop = new EquipShop(0, 5, 10);
         nameShopPair.Add("v_EquipShop", v_EquipShop);
         nameShopPair["v_EquipShop"].InitShop(shopPanel, this);
 
@@ -93,9 +98,10 @@ public class Village : MonoBehaviour
         };
     }
 
-    public void ChangeUISet()
+    public void ToggleShopUI()
     {
         shopPanel.SetActive(!shopPanel.activeInHierarchy);
+        Outfit.SetActive(!shopPanel.activeInHierarchy);
         optionPanel.SetActive(!optionPanel.activeInHierarchy); 
     }
 

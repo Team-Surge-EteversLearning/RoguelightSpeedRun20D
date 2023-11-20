@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Wolf
   cashDrop: 100
-  hpMax: 12
-  attackPower: 100
+  hpMax: 100
+  attackPower: 20
   attackCoolTime: 1
   attackRange: 1.5
   idleTime: 1

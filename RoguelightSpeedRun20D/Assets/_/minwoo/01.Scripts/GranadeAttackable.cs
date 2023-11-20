@@ -10,6 +10,8 @@ public class GranadeAttackable : AttackAble
     [SerializeField]
     private float projectileSpeed;
     [SerializeField] private int magicPower;
+    bool isExploted = false;
+    [SerializeField] GameObject exploEff;
     private Rigidbody rb;
     private void Awake()
     {
@@ -37,7 +39,7 @@ public class GranadeAttackable : AttackAble
     {
         rb.velocity = Vector3.zero;
         Vector3 diagonalForce = transform.forward + transform.up; // add forward, up
-        diagonalForce.Normalize(); 
+        diagonalForce.Normalize();
         rb.AddForce(diagonalForce * projectileSpeed, ForceMode.Impulse);
     }
 
@@ -48,6 +50,8 @@ public class GranadeAttackable : AttackAble
 
     protected override int _GetDamage(GameObject obj)
     {
+        if(!isExploted)
+            return 0;
         //Debug.LogWarning(obj.name);
         if ((!attackedObject.ContainsKey(obj) || attackedObject[obj] < maxHitCount))
         {
@@ -57,10 +61,22 @@ public class GranadeAttackable : AttackAble
         }
         return 0;
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        attackTrigger.enabled = true;
+        if (other.gameObject.layer != 6)
+        {
+            isExploted = true;  
+            Debug.LogWarning(other.transform.name);
+            attackTrigger.enabled = true;
+            GetComponentInChildren<Light>().enabled = false;
+            GameObject instance = Instantiate(exploEff);
+            instance.transform.position = transform.position;
+            Destroy(gameObject, 0.5f);
+        }
+        else
+        {
+            Debug.LogWarning("Player!");
+        }    
         //Destroy(gameObject);
     }
 }

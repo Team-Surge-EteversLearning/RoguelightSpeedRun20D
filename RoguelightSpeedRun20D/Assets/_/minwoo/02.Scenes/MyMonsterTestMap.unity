@@ -243,11 +243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2538334320454710798, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 1.11
       objectReference: {fileID: 0}
     - target: {fileID: 2538334320454710798, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.41
+      value: -0.68
       objectReference: {fileID: 0}
     - target: {fileID: 2538334320454710798, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -279,39 +279,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5453086864618078836, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
       propertyPath: m_Radius
-      value: 2.55
+      value: 3.3034134
       objectReference: {fileID: 0}
-    - target: {fileID: 6809567161740835327, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
-      propertyPath: attackTime
-      value: 1.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 6809567161740835327, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
-      propertyPath: magicFower
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6809567161740835327, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
-      propertyPath: maxHitCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6809567161740835327, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
-      propertyPath: projectileSpeed
-      value: 10
+    - target: {fileID: 5453086864618078836, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
+      propertyPath: m_Center.x
+      value: -0.33379078
       objectReference: {fileID: 0}
     - target: {fileID: 9096126917929880007, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
       propertyPath: m_Name
       value: Granade
       objectReference: {fileID: 0}
-    - target: {fileID: 9096126917929880007, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9096126917929880007, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1596867675}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
 --- !u!1 &686171454
 GameObject:
@@ -552,38 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b0bfe90889a774282eb26b4bc931fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1596867670 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9096126917929880007, guid: 1f3729a3cfce37d43a67abc8fac21d6b, type: 3}
-  m_PrefabInstance: {fileID: 659955892}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1596867675
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596867670}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &1819968465
 PrefabInstance:
   m_ObjectHideFlags: 0

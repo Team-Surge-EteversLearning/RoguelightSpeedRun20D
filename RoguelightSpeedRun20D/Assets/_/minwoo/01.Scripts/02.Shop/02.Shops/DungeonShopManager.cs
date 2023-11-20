@@ -10,8 +10,11 @@ public class DungeonShopManager : MonoBehaviour
 {
     public static DungeonShopManager Instance { get; private set; }
     [SerializeField] GameObject shopPanel;
-    [SerializeField] TMP_Text cashTxt;
-    [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
+    [SerializeField] TMP_Text cashTxt1;
+    [SerializeField] TMP_Text cashTxt2;
+    [SerializeField] Button exit;
+
+    PurchaseCompletePanelController purchaseCompletePanel;
 
     private Dictionary<Button, ShopUI> btnShopUIPair = new Dictionary<Button, ShopUI>();
     public Dictionary<Button, ShopUI> BtnShopUIPair { get => btnShopUIPair; set => btnShopUIPair = value; }
@@ -25,16 +28,25 @@ public class DungeonShopManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
+        else
+            Destroy(gameObject);
     }
     private void Start()
     {
+        onBuy = null;
+        purchaseCompletePanel = FindObjectOfType<PurchaseCompletePanelController>(true);
         InitSlot();
         SlotsReset();
-        cashTxt.text = PlayerStatsManager.CashNow.ToString();
-        onBuy += (string name) => cashTxt.text = PlayerStatsManager.CashNow.ToString();
+        cashTxt1.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += (string name) => cashTxt1.text = PlayerStatsManager.CashNow.ToString();
+        cashTxt2.text = PlayerStatsManager.CashNow.ToString();
+        onBuy += (string name) => cashTxt2.text = PlayerStatsManager.CashNow.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
+
+        exit.onClick.AddListener(() => { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; });
+        exit.onClick.AddListener(() => shopPanel.gameObject.SetActive(false));
     }
 
     private void InitSlot()

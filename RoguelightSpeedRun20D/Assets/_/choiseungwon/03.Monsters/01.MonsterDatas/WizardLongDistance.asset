@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: WizardLongDistance
   m_EditorClassIdentifier: 
   monsterName: WizardLongDistance
-  cashDrop: 100
-  hpMax: 50
-  attackPower: 100
-  attackCoolTime: 2
+  cashDrop: 200
+  hpMax: 250
+  attackPower: 15
+  attackCoolTime: 3
   attackRange: 10
   idleTime: 1
   moveSpeed: 20

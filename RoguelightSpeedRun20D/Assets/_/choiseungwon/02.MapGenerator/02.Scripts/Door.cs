@@ -10,7 +10,7 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-        DungeonManager.RoomClearEvent += ToggleDoor;
+        DungeonManager.RoomClearEvent += RoomClear;
     }
 
     private void Start()
@@ -19,7 +19,7 @@ public class Door : MonoBehaviour
     }
 
 
-    public void ToggleDoor(bool clear)
+    public void RoomClear(bool clear)
     {
         if (clear == false)
         {

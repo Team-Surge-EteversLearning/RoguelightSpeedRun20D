@@ -24,7 +24,7 @@ public class InDungeonShop : Shop
     }
     public InDungeonShop(int minTier, int maxTier, int amount, string type)
     {
-        this.range = $"{minTier},{maxTier},{amount}";
+        this.range = $"{minTier},{maxTier},{amount},D";
         this.type = type;
     }
 

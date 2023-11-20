@@ -15,5 +15,8 @@ public class MyDBInitializerTester : MonoBehaviour
         playerstats.Init();
         SkillDataModel skillDataModel = new SkillDataModel();
         skillDataModel.Init();
+
+        PlayerSaveManager.LoadData("default");
+
     }
 }

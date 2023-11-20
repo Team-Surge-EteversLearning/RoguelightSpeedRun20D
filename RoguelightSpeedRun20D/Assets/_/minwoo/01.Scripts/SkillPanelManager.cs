@@ -13,41 +13,61 @@ public class SkillPanelManager : MonoBehaviour
     [SerializeField] GameObject choicePanel;
     [SerializeField] GameObject indicator1;
     [SerializeField] GameObject indicator2;
-    [SerializeField] GameObject skillNotificationPanel;
+
+    [SerializeField] GameObject shopPanel;
+    [SerializeField] GameObject optPanel;
+    [SerializeField] GameObject outfit;
+
+    [SerializeField] Button toggleBtn;
 
     public static List<Button> emptySlots = new List<Button>();
     public static Dictionary<Button, ActiveSkill> btnSkillPair = new Dictionary<Button, ActiveSkill>();
     public static Action<ActiveSkill> onLearnSkill;
 
-    private void Start()
+    private void Awake()
     {
         Button[] buttons = skillPanel.GetComponentsInChildren<Button>(true);
-        foreach(var item in buttons)
+        foreach (var item in buttons)
         {
             emptySlots.Add(item);
         }
-        Debug.Log(emptySlots.Count);
-        InitUnlockSkill();
+        //Debug.Log(emptySlots.Count);
         onLearnSkill = LearnSkill;
         SetIndicator();
+        toggleBtn.onClick.AddListener(OpenPanel);
     }
 
     public void OpenPanel()
     {
-        skillPanel.SetActive(!skillPanel.activeInHierarchy);
+        skillPanel.SetActive(true);
+        optPanel.SetActive(false);
+        shopPanel.SetActive(false);
+        outfit.SetActive(false);
+
+        toggleBtn.onClick.RemoveListener(OpenPanel);
+        toggleBtn.onClick.AddListener(ClosePanel);
+
+        SetIndicator();
+    }
+    public void ClosePanel()
+    {
+        skillPanel.SetActive(false);
+        optPanel.SetActive(true);
+        shopPanel.SetActive(false);
+        outfit.SetActive(true);
+
+        toggleBtn.onClick.RemoveListener(ClosePanel);
+        toggleBtn.onClick.AddListener(OpenPanel);
         SetIndicator();
     }
 
-    private void InitUnlockSkill()
-    {
-        //ReadDB and LearnSkill Until UnlcokSkillsCount
-    }
+
 
     public void LearnSkill(ActiveSkill skill)
     {
         if (btnSkillPair.Any(pair => pair.Value == skill))
             return;
-        
+
         btnSkillPair.Add(emptySlots[0], skill);
         emptySlots[0].onClick.AddListener(() => OpenChoicePanel(skill.Name));
         emptySlots[0].GetComponentsInChildren<Image>(true)[1].sprite = TestDB.instance.iconSet.GetIcon(skill.Name);
@@ -69,19 +89,14 @@ public class SkillPanelManager : MonoBehaviour
     {
         choicePanel.SetActive(true);
         Button[] buttons = choicePanel.GetComponentsInChildren<Button>();
-        buttons[0].onClick.AddListener(() => { PlayerSM.skill1Index = name; buttons[0].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); });
+        buttons[0].onClick.AddListener(() => { PlayerSM.skill1Index = name; buttons[0].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); Debug.LogWarning(PlayerSM.skill1Index);
+        });
         buttons[1].onClick.AddListener(() => { PlayerSM.skill2Index = name; buttons[1].onClick.RemoveAllListeners(); SetIndicator(); choicePanel.SetActive(false); });
-
         Debug.LogWarning($"{PlayerSM.skill1Index} / {PlayerSM.skill2Index}");
     }
-    private void OpenNotificationPanel()
-    {
-
-    }
-
     private void SetIndicator()
     {
-        if(PlayerSM.skill1Index != null && SkillDataModel.UnlockActive.ContainsKey(PlayerSM.skill1Index))
+        if (PlayerSM.skill1Index != null && SkillDataModel.UnlockActive.ContainsKey(PlayerSM.skill1Index))
         {
             Debug.LogWarning(1);
             indicator1.SetActive(true);
@@ -106,6 +121,10 @@ public class SkillPanelManager : MonoBehaviour
         {
             indicator2.SetActive(false);
         }
+    }
+    private void OnDestroy()
+    {
+        emptySlots.Clear();
     }
     private void OnPointExitProduct()
     {

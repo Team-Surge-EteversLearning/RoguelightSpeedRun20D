@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Armor : Equipment
 {
@@ -8,7 +9,7 @@ public class Armor : Equipment
     float manaRegen;
     ArmorData _data { get; set; }
 
-    public Armor(string name, BasicEquipments basicData, ArmorData data, List<EquipmentOption> usableOptions, int tier = 0)
+    public Armor(string name, BasicEquipments basicData, ArmorData data, List<EquipmentOption> usableOptions,int tier = 0)
     {
         this.Name = name;
         this.SellWhenClear = basicData.SellWhenClear;
@@ -34,5 +35,16 @@ public class Armor : Equipment
     public override void Equip()
     {
         PlayerSM.armorNow = this;
+        try
+        {
+            if (PlayerOutfitSelecter.Instance is not null)
+            {
+                PlayerOutfitSelecter.Instance.armorNow = this;
+            }
+        }
+        catch (MissingReferenceException)
+        {
+            return;
+        }
     }
 }

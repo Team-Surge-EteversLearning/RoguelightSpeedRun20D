@@ -29,7 +29,6 @@ public class PlayerSM : StateManager
     [SerializeField]
     private GameObject bomb;
 
-    private GameObject weaponModelNow;
     private AttackAble attackable;
 
     private static Weapon _weaponNow;
@@ -47,6 +46,7 @@ public class PlayerSM : StateManager
             {
                 GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
                 weaponModel.SetActive(true);
+                playerObj.GetComponent<PlayerSM>().attackable = weaponModel.GetComponent<AttackAble>();
             }
         }
     }
@@ -116,12 +116,16 @@ public class PlayerSM : StateManager
     {
         ManagerStart();
         playerObj = gameObject;
-        weaponModelNow = weaponInstance[0];
-        attackable = weaponModelNow.GetComponent<AttackAble>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         ResetAfterGameOver();
+
+        GameObject weaponModel = _weaponNow.MakeInGame(playerObj.GetComponent<PlayerSM>().weaponInstance);
+        weaponModel.SetActive(true);
+        attackable = weaponInstance[_weaponNow.ModelIndex].GetComponent<AttackAble>();
+        GameObject armorModel = _armorNow.MakeInGame(playerObj.GetComponent<PlayerSM>().armorInstance);
+        armorModel.SetActive(true);
     }
     public override void MakeState()
     {
@@ -151,7 +155,6 @@ public class PlayerSM : StateManager
     void Update()
     {
         ManagerUpdate();
-
         if (InputHandler.skill1 && skill1Index != null && skill1Index != "" && skill1CoolTime < 0)
             SkillDataModel.UnlockActive[skill1Index].Use(true);
         if (InputHandler.skill2 && skill2Index != null && skill2Index != "" && skill2CoolTime < 0)
@@ -298,6 +301,10 @@ public class PlayerSM : StateManager
             animator.Play("Death", 1);
             enabled = false;
             DungeonEndUI.DungeonEnd(false);
+
+            _weaponNow = basicWeapon;
+            _armorNow = basicArmor;
+            _shoesNow = basicShoes;
         }
         else
         {
@@ -313,14 +320,17 @@ public class PlayerSM : StateManager
     {
         if(basicWeapon == null || basicArmor == null || basicShoes == null)
         {
-            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(1000, false, 1, 1.5f), new List<EquipmentOption>());
-            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(9999, false, 0, 0), new List<EquipmentOption>());
-            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0), new List<EquipmentOption>());
+            basicWeapon = new Weapon("BasicWeapon", new BasicEquipments(0, 0, 0, EquipmentType.Weapon, 0), new WeaponData(1000, false, 1, 1.5f), new List<EquipmentOption>(), 0);
+            basicArmor = new Armor("BasicArmor", new BasicEquipments(0, 0, 0, EquipmentType.Armor, 0), new ArmorData(9999, false, 0, 0), new List<EquipmentOption>(), 0);
+            basicShoes = new Shoes("BasicShoes", new BasicEquipments(0, 0, 0, EquipmentType.Shoes, 0), new ShoesData(0, 0, 0, 0), new List<EquipmentOption>(), 0);
         }
 
-        _weaponNow = basicWeapon;
-        _armorNow = basicArmor;
-        _shoesNow = basicShoes;
+        if (_weaponNow == null)
+            _weaponNow = basicWeapon;
+        if (_armorNow == null)
+            _armorNow = basicArmor;
+        if (_shoesNow == null)
+            _shoesNow = basicShoes;
 
         attackCooltime = 0;
 

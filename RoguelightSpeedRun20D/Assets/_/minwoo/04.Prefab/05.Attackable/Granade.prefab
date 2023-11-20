@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 6809567161740835327}
   - component: {fileID: 5453086864618078836}
   - component: {fileID: 3677089808275533657}
-  - component: {fileID: 7547755953772613816}
+  - component: {fileID: 3520958979983321965}
   m_Layer: 0
   m_Name: Granade
   m_TagString: Untagged
@@ -199,10 +199,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 5453086864618078836}
-  attackTime: 1
+  attackTime: 1.01
   maxHitCount: 1
-  projectileSpeed: 5
+  projectileSpeed: 3
   magicPower: 1000
+  exploEff: {fileID: 100000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
 --- !u!135 &5453086864618078836
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -222,7 +223,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Radius: 4.03
+  m_Radius: 2.55
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &3677089808275533657
 BoxCollider:
@@ -239,13 +240,13 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &7547755953772613816
+--- !u!54 &3520958979983321965
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

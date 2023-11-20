@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using UnityEngine;
 
 public class BerSerk : ActiveSkill
 {
@@ -14,6 +15,12 @@ public class BerSerk : ActiveSkill
 
     public override void _Use()
     {
+        PlayerSM playerSM = PlayerSM.playerObj.GetComponent<PlayerSM>();
+        GameObject aura = playerSM.skillPrefabs[4];
+        GameObject instantiatedObject = UnityEngine.Object.Instantiate(aura, playerSM.skillTransform.position, Quaternion.identity);
+
+        instantiatedObject.transform.parent = playerSM.transform;
+
         PlayerStatsManager.PowerWeight *= 2;
         PlayerSM.hpNow = (int)(PlayerSM.hpNow * 0.7f);
 

@@ -2018,6 +2018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Col
       objectReference: {fileID: 0}
+    - target: {fileID: 3372313222270831098, guid: 735cd86506d6b46d6bcd0697913c7f46, type: 3}
+      propertyPath: m_Center.y
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 4543758520056237331, guid: 735cd86506d6b46d6bcd0697913c7f46, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Crab
   m_EditorClassIdentifier: 
   monsterName: Crab
-  cashDrop: 1000
-  hpMax: 10
-  attackPower: 100
+  cashDrop: 500
+  hpMax: 400
+  attackPower: 25
   attackCoolTime: 1
   attackRange: 4.5
   idleTime: 1

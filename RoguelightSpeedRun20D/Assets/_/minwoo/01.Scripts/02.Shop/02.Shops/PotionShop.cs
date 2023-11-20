@@ -22,7 +22,7 @@ public class PotionShop : Shop
         potionFac = (DungeonItemManager)factory;
         potionFac.ResetShop();
         Products.Clear();
-        Products = potionFac.Make($"5,5,0,0,{type}");
+        Products = potionFac.Make($"3,3,0,0,{type}");
     }
 
     public override void ResetShop()
@@ -31,10 +31,16 @@ public class PotionShop : Shop
         productSlots.Clear();
         //products.Add(new ShopProduct(new Weapon("test", new BasicEquipments(0,0,0,EquipmentType.Weapon), new WeaponData(0,true,0,0))));
         SettingShopUI();
+        int index = 0;
+        
         foreach (var item in BtnUIPair)
         {
-            item.Key.GetComponentInChildren<TMP_Text>().text = "";
+            Useable useProd = (Useable)products[index].Product;
+            item.Key.GetComponentInChildren<TMP_Text>().text = useProd.Quantity.ToString();
             item.Value.ThisShop = this;
+            index++;
+            if (index >= products.Count)
+                break;
         }
     }
 }

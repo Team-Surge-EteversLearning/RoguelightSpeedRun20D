@@ -14,14 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultImg: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   icons:
-  - name: sword
-    icon: {fileID: 21300000, guid: 7843ad1a37df1d345913b4c8cbad065e, type: 3}
-  - name: club
-    icon: {fileID: 21300000, guid: 4f6a94c08feabbc47bfe7be1ce855587, type: 3}
-  - name: bigSword
-    icon: {fileID: 21300000, guid: 79cc5d9729cb1044b9c72a2122351fe4, type: 3}
-  - name: magicWeapon
-    icon: {fileID: 21300000, guid: c415d8d024d0dd54388fe20f88cb7876, type: 3}
   - name: 0
     icon: {fileID: 21300000, guid: 5ebef582a40153e4da449bbb50f9cdc3, type: 3}
   - name: 1
@@ -50,5 +42,33 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 0f8e499274385ae47ab5f565d7b48160, type: 3}
   - name: berSerk
     icon: {fileID: 21300000, guid: 9d2205cac73af3243bd55876bf497f92, type: 3}
+  - name: armingSword
+    icon: {fileID: -813549749, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: cutlass
+    icon: {fileID: -1325994642, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: daneAxe
+    icon: {fileID: 1806729112, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: longSword
+    icon: {fileID: 1487105229, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: rapier
+    icon: {fileID: 1110995760, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: superSledgehammer
+    icon: {fileID: 333609248, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: warAxe
+    icon: {fileID: -165870785, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: warhammer
+    icon: {fileID: 433340046, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: pedora
+    icon: {fileID: 21300000, guid: e68195f058f336c4d9ef6e2a2377c124, type: 3}
+  - name: sawMan
+    icon: {fileID: 21300000, guid: 8fd90da42f7a795489f10d628007c903, type: 3}
+  - name: steelHelm
+    icon: {fileID: 1886094822, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: oldPlagueMask
+    icon: {fileID: -850214657, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
+  - name: plagueMask
+    icon: {fileID: 1628417450, guid: 42b186ac1950e2742974687f03f3494f, type: 3}
   - name: healing
     icon: {fileID: 21300000, guid: 1941fcd054e7080409b836b3b5437e82, type: 3}
+  - name: mace
+    icon: {fileID: 604449004, guid: 42b186ac1950e2742974687f03f3494f, type: 3}

@@ -7,12 +7,13 @@ public class OpenBoxQuest : Quest
     public int currentCount;
     public int targetCount;
     
-    public OpenBoxQuest(string key, string name, string description, int reward, int targetCount) : base(QuestType.OpenBox)
+    public OpenBoxQuest(string name, string description, int targetCount, int rewardGold) : base(QuestType.OpenBox)
     {
-        this.Key = key;
+        this.Key = "01.TreasureChest";
         this.Name = name;
         this.Description = description;
         this.targetCount = targetCount;
+        this.rewardGold = rewardGold;
     }
 
     public void UpdateCurrentCount(int count)

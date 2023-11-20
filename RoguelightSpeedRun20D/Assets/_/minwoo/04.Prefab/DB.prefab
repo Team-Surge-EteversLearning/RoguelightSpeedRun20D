@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2341004678480812047}
   - component: {fileID: 2481176447608270292}
-  - component: {fileID: 3712649104446146291}
+  - component: {fileID: 1181976070791536895}
   m_Layer: 0
   m_Name: DB
   m_TagString: Untagged
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   iconSet: {fileID: 11400000, guid: 30331e91113692f4093c8ba3ad4f6226, type: 2}
---- !u!114 &3712649104446146291
+--- !u!114 &1181976070791536895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

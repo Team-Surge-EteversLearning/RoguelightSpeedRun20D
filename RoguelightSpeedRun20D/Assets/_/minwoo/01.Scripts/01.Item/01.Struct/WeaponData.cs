@@ -6,7 +6,7 @@ public struct WeaponData
     float size;
     float cooltime;
 
-    public WeaponData(int damage, bool isRangeAttack, int size, float cooltime)
+    public WeaponData(int damage, bool isRangeAttack, float size, float cooltime)
     {
         this.damage = damage;
         this.isRangeAttack = isRangeAttack;

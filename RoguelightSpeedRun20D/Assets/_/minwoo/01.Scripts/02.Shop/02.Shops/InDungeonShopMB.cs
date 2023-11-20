@@ -22,7 +22,7 @@ public class InDungeonShopMB : MonoBehaviour
     {
         bombAmount = Random.value < bombProbability ? 1 : 0;
         barrierAmount = Random.value < barrierProbability ? 1 : 0;
-        Debug.Log($"{barrierAmount} / {barrierAmount}");
+        //Debug.Log($"{barrierAmount} / {barrierAmount}");
         DungeonShopManager.Instance.CreateInDungeonShop(gameObject, minTier, maxTier, equipeAmount, $"{hpPotionAmount},{mpPotionAmount},{bombAmount},{barrierAmount},d");
     }
 

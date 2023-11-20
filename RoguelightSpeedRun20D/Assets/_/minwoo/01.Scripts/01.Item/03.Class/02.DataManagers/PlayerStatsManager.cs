@@ -8,7 +8,7 @@ using UnityEngine;
 public class PlayerStatsManager : IProductMaker
 {
     private static string name;
-    private static int cashNow = 1000;
+    private static int cashNow;
     private static int wareHouseCash;
 
     private static int hpMax = 10;
@@ -63,7 +63,6 @@ public class PlayerStatsManager : IProductMaker
         priceTable.Add(stats[2], ManaMaxPrice);
         priceTable.Add(stats[3], SpeedPrice);
         priceTable.Add(stats[4], PowerWeightPrice);
-        PlayerSaveManager.LoadData("default");
     }
 
     public static void AddPrice(int index) 
@@ -93,7 +92,7 @@ public class PlayerStatsManager : IProductMaker
     public static void Set(string _name, int _cashNow, int _hpMax, int _staminaMax, int _manaMax, int _powerWeight)
     {
         name = _name;
-        cashNow = _cashNow;
+        wareHouseCash = _cashNow;
         hpMax = _hpMax;
         staminaMax = _staminaMax;
         manaMax = _manaMax;

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ColletItemQuest : Quest
+public class CollectItemQuest : Quest
 {
     private int targetCount;
     private int currentCount;
 
-    public ColletItemQuest(string key, string name, string description, int targetCount, int rewardGold) 
+    public CollectItemQuest(string key, string name, string description, int targetCount, int rewardGold) 
         : base(QuestType.CollectItem)
     {
         this.Key = key;

@@ -69,9 +69,9 @@ public class ShopUI
             else
             {
                 Debug.LogWarning(price);
+                PlayerStatsManager.CashNow -= price;
                 DungeonShopManager.onBuy?.Invoke(name);
                 product.Buy();
-                PlayerStatsManager.CashNow -= price;
             }
         }
         else                                                                                         // in vill
@@ -93,9 +93,12 @@ public class ShopUI
             }
             else
             {
+                PlayerStatsManager.WareHouseCash -= price;
                 Village.onBuy?.Invoke(name);
                 product.Buy();
-                PlayerStatsManager.WareHouseCash -= price;
+
+                Debug.LogWarning(PlayerStatsManager.WareHouseCash);
+                Debug.LogWarning(PlayerStatsManager.WareHouseCash);
             }
         }
         DescriptionController.onDescriptionComplete?.Invoke();

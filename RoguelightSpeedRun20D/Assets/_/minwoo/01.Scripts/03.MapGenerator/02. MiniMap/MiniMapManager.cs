@@ -9,17 +9,17 @@ public class MiniMapManager : MonoBehaviour
     [SerializeField] GameObject miniMapCamera;
     [SerializeField] Sprite bossMark;
     private Dictionary<DungeonNode, GameObject> miniMapDict = new Dictionary<DungeonNode, GameObject>();
+    private List<DungeonNode> isBatchedNodes = new List<DungeonNode>();
 
-    private void Awake()
-    {
-    }
     public void MiniMapCreate()
     {
-        foreach(var node in DungeonManager.Instance.Dungeon)
+        float nodeSize = 1.3f; // 노드의 크기를 설정합니다. 이 값은 노드의 실제 크기에 따라 조정해야 합니다.
+
+        foreach (var node in DungeonManager.Instance.Dungeon)
         {
             GameObject miniNode = Instantiate(miniNodePrefab);
             miniNode.name = "mini" + node.Position.ToString();
-            miniNode.transform.position = new Vector3(node.Position.x, node.Position.y, node.Position.z);
+            miniNode.transform.position = new Vector3(node.Position.x * nodeSize, node.Position.y * nodeSize, node.Position.z * nodeSize);
             miniMapDict.Add(node, miniNode);
             if (node.Position.y != 0)
             {

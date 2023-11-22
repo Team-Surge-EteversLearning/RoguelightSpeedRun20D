@@ -17,6 +17,7 @@ public class SkillPanelManager : MonoBehaviour
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject optPanel;
     [SerializeField] GameObject outfit;
+    [SerializeField] GameObject shopKeeper;
 
     [SerializeField] Button toggleBtn;
 
@@ -43,6 +44,7 @@ public class SkillPanelManager : MonoBehaviour
         optPanel.SetActive(false);
         shopPanel.SetActive(false);
         outfit.SetActive(false);
+        shopKeeper.SetActive(false);
 
         toggleBtn.onClick.RemoveListener(OpenPanel);
         toggleBtn.onClick.AddListener(ClosePanel);
@@ -55,14 +57,12 @@ public class SkillPanelManager : MonoBehaviour
         optPanel.SetActive(true);
         shopPanel.SetActive(false);
         outfit.SetActive(true);
+        shopKeeper?.SetActive(true);
 
         toggleBtn.onClick.RemoveListener(ClosePanel);
         toggleBtn.onClick.AddListener(OpenPanel);
         SetIndicator();
     }
-
-
-
     public void LearnSkill(ActiveSkill skill)
     {
         if (btnSkillPair.Any(pair => pair.Value == skill))

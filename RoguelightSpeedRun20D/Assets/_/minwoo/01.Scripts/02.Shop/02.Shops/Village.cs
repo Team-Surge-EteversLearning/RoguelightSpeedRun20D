@@ -19,6 +19,8 @@ public class Village : MonoBehaviour
     [SerializeField] PurchaseCompletePanelController purchaseCompletePanel;
     [SerializeField] Button startBtn;
     [SerializeField] TMP_Text descriptionTxt;
+    
+    [SerializeField] TMP_Text shopKeeperTxt;
 
     [SerializeField] GameObject Outfit;
 
@@ -102,7 +104,11 @@ public class Village : MonoBehaviour
     {
         shopPanel.SetActive(!shopPanel.activeInHierarchy);
         Outfit.SetActive(!shopPanel.activeInHierarchy);
-        optionPanel.SetActive(!optionPanel.activeInHierarchy); 
+        optionPanel.SetActive(!optionPanel.activeInHierarchy);
+        if (shopPanel.activeInHierarchy)
+            shopKeeperTxt.text = "버튼을 눌러 원하는 상품을 구매해 보게.";
+        else if (!shopPanel.activeInHierarchy)
+            shopKeeperTxt.text = "모험을 떠나기 전 오른쪽 상점을 통해 아이템과\r\n스탯, 스킬을 구매해 보게";
     }
 
     [ContextMenu("INIT")]

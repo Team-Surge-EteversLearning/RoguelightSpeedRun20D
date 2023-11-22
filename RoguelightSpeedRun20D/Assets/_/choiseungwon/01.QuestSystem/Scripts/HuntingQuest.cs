@@ -26,8 +26,7 @@ public class HuntingQuest : Quest
         {
             IsCompleted = true;
             PlayerStatsManager.CashNow += rewardGold;
-            UnityEngine.Debug.LogWarning("!!!!!!EEE@E");
-            DungeonShopManager.onBuy("");
+            DungeonShopManager.onClear();
         }
     }
     public override string GetProgress()

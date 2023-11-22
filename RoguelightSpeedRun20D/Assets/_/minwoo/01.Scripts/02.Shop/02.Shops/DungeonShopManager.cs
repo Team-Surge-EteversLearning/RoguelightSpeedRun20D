@@ -22,8 +22,9 @@ public class DungeonShopManager : MonoBehaviour
 
     List<Button> shopButtons = new List<Button>();
     public static Action<string> onBuy;
+    public static Action onClear;
 
-    public  Dictionary<GameObject, Shop> GOShopShopPair = new Dictionary<GameObject, Shop>();
+    public Dictionary<GameObject, Shop> GOShopShopPair = new Dictionary<GameObject, Shop>();
     public  Dictionary<GameObject, List<ShopProduct>> DungeonShopSProductPair = new Dictionary<GameObject, List<ShopProduct>>();
 
     private void Awake()
@@ -36,6 +37,7 @@ public class DungeonShopManager : MonoBehaviour
     private void Start()
     {
         onBuy = null;
+        onClear = null;
         PlayerStatsManager.CashNow = 1000;
         purchaseCompletePanel = FindObjectOfType<PurchaseCompletePanelController>(true);
         InitSlot();
@@ -45,6 +47,9 @@ public class DungeonShopManager : MonoBehaviour
         cashTxt2.text = PlayerStatsManager.CashNow.ToString();
         onBuy += (string name) => cashTxt2.text = PlayerStatsManager.CashNow.ToString();
         onBuy += purchaseCompletePanel.ActiveAndDisable;
+        
+        onClear += () => cashTxt1.text = PlayerStatsManager.CashNow.ToString();
+        onClear += () => cashTxt2.text = PlayerStatsManager.CashNow.ToString();
 
         exit.onClick.AddListener(() => { Cursor.visible = false; Cursor.lockState = CursorLockMode.Locked; });
         exit.onClick.AddListener(() => shopPanel.gameObject.SetActive(false));
